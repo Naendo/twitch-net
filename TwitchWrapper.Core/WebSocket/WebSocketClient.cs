@@ -29,8 +29,6 @@ namespace TwitchWrapper.Core
 
         public async Task StartAsync(CancellationToken cancellationToken = default)
         {
-            _client.MessageReceived
-                .Subscribe(msg => SubscribeReceived?.Invoke(msg.Text));
             await _client.Start();
         }
 
@@ -72,7 +70,7 @@ namespace TwitchWrapper.Core
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        private void HandlePingAsync(CancellationToken cancellationToken = default)
+       /* private void HandlePingAsync(CancellationToken cancellationToken = default)
         {
             SubscribeReceived += async (message) =>
             {
@@ -81,7 +79,7 @@ namespace TwitchWrapper.Core
                     await SendAsync(new PongCommand(), cancellationToken);
                 }
             };
-        }
+        }*/
 
         public void Dispose()
         {

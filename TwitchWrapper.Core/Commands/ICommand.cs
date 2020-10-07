@@ -1,4 +1,4 @@
-﻿namespace TwitchWrapper.Core.Commands
+﻿namespace TwitchWrapper.Core
 {
     public interface ICommand
     {
