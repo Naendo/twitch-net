@@ -5,7 +5,6 @@ namespace TwitchWrapper.Core.Commands
     public class CommandManager
     {
         
-    
         public ICommand DetermindCommandType(string response)
         {
             var data = response.Split(' ');
