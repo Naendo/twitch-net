@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchWrapper.Core", "TwitchWrapper.Core\TwitchWrapper.Core.csproj", "{19455DB0-988C-407F-81F9-8E1B1D903AF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchWrapper.Test", "TwitchWrapper.Test\TwitchWrapper.Test.csproj", "{56AD6ED8-118D-4FDC-A14D-E9392B42CE38}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19455DB0-988C-407F-81F9-8E1B1D903AF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19455DB0-988C-407F-81F9-8E1B1D903AF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19455DB0-988C-407F-81F9-8E1B1D903AF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19455DB0-988C-407F-81F9-8E1B1D903AF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56AD6ED8-118D-4FDC-A14D-E9392B42CE38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56AD6ED8-118D-4FDC-A14D-E9392B42CE38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56AD6ED8-118D-4FDC-A14D-E9392B42CE38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56AD6ED8-118D-4FDC-A14D-E9392B42CE38}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
