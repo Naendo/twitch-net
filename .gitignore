@@ -4,7 +4,8 @@
 TwitchWrapper.sln.DotSettings.user
 global.json
 
-
+/.idea/*
+.idea/
 
 # User specific
 **/.idea/**/workspace.xml
