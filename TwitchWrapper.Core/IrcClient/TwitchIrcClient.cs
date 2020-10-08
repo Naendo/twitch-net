@@ -4,7 +4,6 @@ using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using TwitchWrapper.Core.Exceptions;
-using TwitchWrapper.Core.Responses;
 
 [assembly: InternalsVisibleTo("TwitchWrapper.Test")]
 

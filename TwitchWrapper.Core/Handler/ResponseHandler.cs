@@ -4,10 +4,6 @@ namespace TwitchWrapper.Core
 {
     internal class ResponseHandler
     {
-        public ResponseHandler()
-        {
-
-        }
 
         //:tmi.twitch.tv 001 <user> :Welcome, GLHF!
         //> :<user>!<user>@<user>.tmi.twitch.tv PART #<channel>

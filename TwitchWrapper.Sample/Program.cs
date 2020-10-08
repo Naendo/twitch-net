@@ -7,7 +7,7 @@ namespace TwitchWrapper.Sample
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static async Task Main()
         {
             Console.WriteLine("Hello World!");
 

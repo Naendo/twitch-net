@@ -41,7 +41,7 @@ namespace TwitchWrapper.Core
             {
                 var result = type.GetMethods()
                     .Where(x => Attribute.IsDefined(x, typeof(CommandAttribute)))
-                    .Select(x => new {Command = x.GetCustomAttribute<CommandAttribute>()!.Command, Method = x});
+                    .Select(x => new {x.GetCustomAttribute<CommandAttribute>()!.Command, Method = x});
 
                 foreach (var item in result)
                 {
@@ -78,6 +78,8 @@ namespace TwitchWrapper.Core
                 return;
 
             var result = command.MapResponse();
+
+            ExecuteCommand(result);
         }
 
 
@@ -91,11 +93,6 @@ namespace TwitchWrapper.Core
             {
                 var commandParam = responseStringAsArray[1..];
             }
-            
-            
-            
-            
-            
         }
     }
 }
