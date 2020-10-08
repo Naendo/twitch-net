@@ -1,7 +1,8 @@
 ﻿using TwitchWrapper.Core;
+using TwitchWrapper.Core.Responses;
 
 namespace TwitchWrapper.Core
 {
-    internal delegate void OnReceivedDelegate(ICommand command);
+    internal delegate void OnReceivedDelegate(IResponse command);
 
 }

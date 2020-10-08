@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Net;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -16,16 +15,16 @@ namespace TwitchWrapper.Core.IrcClient
         private readonly string _host;
         private readonly TcpClient _client;
         private readonly int _port;
-        private readonly CommandManager _manager;
+        private readonly ResponseHandler _responseHandler;
 
         internal TwitchIrcClient(string host, int port)
         {
             _host = host;
             _port = port;
             _client = new TcpClient(host, _port);
-            _manager = new CommandManager();
+            _responseHandler = new ResponseHandler();
         }
-        
+
         internal async Task SendAsync(ICommand command)
         {
             if (!_client.Connected) throw new IrcClientException("connection closed");
@@ -45,8 +44,10 @@ namespace TwitchWrapper.Core.IrcClient
                         var data = await reader.ReadLineAsync();
                         if (data is null) continue;
 
-                        var command = _manager.DetermindCommandType(data);
-                        SubscribeReceive?.Invoke(command);
+                        var response = _responseHandler.DeterminedResponseType(data);
+                        if (response is null) continue;
+                        
+                        SubscribeReceive?.Invoke(response);
                     }
                 }
             });

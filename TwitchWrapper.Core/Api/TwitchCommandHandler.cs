@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using TwitchWrapper.Core.Attributes;
 using TwitchWrapper.Core.Exceptions;
+using TwitchWrapper.Core.Responses;
 
 namespace TwitchWrapper.Core
 {
@@ -39,7 +40,7 @@ namespace TwitchWrapper.Core
             {
                 var result = type.GetMethods()
                     .Where(x => Attribute.IsDefined(x, typeof(CommandAttribute)))
-                    .Select(x => new {Command = x.GetCustomAttribute<CommandAttribute>().Command, Method = x});
+                    .Select(x => new {Command = x.GetCustomAttribute<CommandAttribute>()!.Command, Method = x});
                 
                 foreach (var item in result)
                 {
@@ -55,7 +56,7 @@ namespace TwitchWrapper.Core
         /// <summary>
         /// PLES GET RECEIVE AND DO THE COMMAND EXECUTION ON COMMAND TEXT YES
         /// </summary>
-        internal void HandleCommandRequest(ICommand command)
+        internal void HandleCommandRequest(IResponse command)
         {
             
         }

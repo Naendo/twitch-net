@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TwitchWrapper.Core;
 using TwitchWrapper.Core.Commands;
 using TwitchWrapper.Core.IrcClient;
+using TwitchWrapper.Core.Responses;
 using Xunit;
 
 namespace TwitchWrapper.Test
@@ -25,7 +26,7 @@ namespace TwitchWrapper.Test
                 client.SubscribeReceive += (command) =>
                 {
                     var result = command.Parse();
-                    Assert.Equal("Welcome, GLHF!", result);
+                    Assert.Equal("Welcome, GLHF!", result.Message);
                     tcs.TrySetResult(true);
                 };
 
@@ -45,10 +46,16 @@ namespace TwitchWrapper.Test
                 client.SubscribeReceive += (command) =>
                 {
                     var result = command.Parse();
+
+                    if (result.ResponseType == ResponseType.Join)
+                    {
+                        Assert.True(true);
+                        tcs.TrySetResult(true);
+                    }
                 };
 
                 client.StartReceive();
-                await client.SendAsync(new AuthenticateCommand("thatnandotho", "oauth:gv42lzn9if3crb3o6ezpbxh53rv9ok"));
+                await client.SendAsync(new AuthenticateCommand("thatnandotho", "oauth:c94vtiyy6cws1zlabypqphws6ci7i8"));
                 await client.SendAsync(new JoinCommand("thatnandotho"));
 
                 await tcs.Task;
