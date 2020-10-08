@@ -5,7 +5,7 @@ namespace TwitchWrapper.Core.Responses
         //PING :tmi.twitch.tv
 
 
-        ResponseModel IResponse.Parse()
+        ResponseModel IResponse.MapResponse()
         {
             return new ResponseModel()
             {

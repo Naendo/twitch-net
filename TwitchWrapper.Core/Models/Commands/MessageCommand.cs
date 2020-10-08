@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq.Expressions;
 
 namespace TwitchWrapper.Core.Commands
 {
@@ -14,14 +13,12 @@ namespace TwitchWrapper.Core.Commands
         {
             try
             {
-
-
                 _user = response[1..response.IndexOf('!')];
                 _message = response[response.IndexOf(' ')..];
             }
-            catch(Exception)
+            catch (Exception)
             {
-                
+                // ignored
             }
         }
 

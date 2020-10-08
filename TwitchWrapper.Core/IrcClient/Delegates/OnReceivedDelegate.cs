@@ -1,5 +1,4 @@
-﻿using TwitchWrapper.Core;
-using TwitchWrapper.Core.Responses;
+﻿using TwitchWrapper.Core.Responses;
 
 namespace TwitchWrapper.Core
 {

@@ -1,5 +1,3 @@
-using TwitchWrapper.Core.Responses;
-
 namespace TwitchWrapper.Core.Responses
 {
     internal class JoinResponse : IResponse
@@ -17,7 +15,7 @@ namespace TwitchWrapper.Core.Responses
         }
 
         //:<user>!<user>@<user>.tmi.twitch.tv JOIN #<channel>
-        ResponseModel IResponse.Parse()
+        ResponseModel IResponse.MapResponse()
         {
             return new ResponseModel()
             {

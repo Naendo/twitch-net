@@ -1,10 +1,5 @@
 using System;
-using System.Net;
-using System.Reactive;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using TwitchWrapper.Core;
 using TwitchWrapper.Core.Commands;
 using TwitchWrapper.Core.IrcClient;
 using TwitchWrapper.Core.Responses;
@@ -20,20 +15,23 @@ namespace TwitchWrapper.Test
         public async Task IrcClient_AuthenticateSucessfully()
         {
             var tcs = new TaskCompletionSource<bool>();
-
-            using (var client = new TwitchIrcClient("irc.twitch.tv", 6667))
+            using var client = new TwitchIrcClient("irc.twitch.tv", 6667);
+            client.SubscribeReceive += (command) =>
             {
-                client.SubscribeReceive += (command) =>
+                var result = command.MapResponse();
+
+                if (result.ResponseType == ResponseType.Join)
                 {
-                    var result = command.Parse();
-                    Assert.Equal("Welcome, GLHF!", result.Message);
+                    Assert.True(true);
                     tcs.TrySetResult(true);
-                };
+                }
+            };
 
-                await client.SendAsync(new AuthenticateCommand("thatnandotho", "oauth:gv42lzn9if3crb3o6ezpbxh53rv9ok"));
+            client.StartReceive();
+            await client.SendAsync(new AuthenticateCommand("thatnandotho",
+                "oauth:c94vtiyy6cws1zlabypqphws6ci7i8"));
 
-                await tcs.Task;
-            }
+            await tcs.Task;
         }
 
         [Fact]
@@ -41,25 +39,24 @@ namespace TwitchWrapper.Test
         {
             var tcs = new TaskCompletionSource<bool>();
 
-            using (var client = new TwitchIrcClient("irc.twitch.tv", 6667))
+            using var client = new TwitchIrcClient("irc.twitch.tv", 6667);
+            client.SubscribeReceive += (command) =>
             {
-                client.SubscribeReceive += (command) =>
+                var result = command.MapResponse();
+
+                if (result.ResponseType == ResponseType.Join)
                 {
-                    var result = command.Parse();
+                    Assert.True(true);
+                    tcs.TrySetResult(true);
+                }
+            };
 
-                    if (result.ResponseType == ResponseType.Join)
-                    {
-                        Assert.True(true);
-                        tcs.TrySetResult(true);
-                    }
-                };
+            client.StartReceive();
+            await client.SendAsync(new AuthenticateCommand("thatnandotho",
+                "oauth:c94vtiyy6cws1zlabypqphws6ci7i8"));
+            await client.SendAsync(new JoinCommand("thatnandotho"));
 
-                client.StartReceive();
-                await client.SendAsync(new AuthenticateCommand("thatnandotho", "oauth:c94vtiyy6cws1zlabypqphws6ci7i8"));
-                await client.SendAsync(new JoinCommand("thatnandotho"));
-
-                await tcs.Task;
-            }
+            await tcs.Task;
         }
     }
 }

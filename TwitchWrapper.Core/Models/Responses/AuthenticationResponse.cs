@@ -13,7 +13,7 @@ namespace TwitchWrapper.Core.Responses
         }
 
         //:tmi.twitch.tv 001 <user> :Welcome, GLHF!
-        ResponseModel IResponse.Parse()
+        ResponseModel IResponse.MapResponse()
         {
             return new ResponseModel()
             {

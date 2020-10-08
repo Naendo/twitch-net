@@ -1,5 +1,3 @@
-using TwitchWrapper.Core.Responses;
-
 namespace TwitchWrapper.Core.Responses
 {
     internal class PartResponse : IResponse
@@ -14,7 +12,7 @@ namespace TwitchWrapper.Core.Responses
         }
 
         //:<user>!<user>@<user>.tmi.twitch.tv PART #<channel>
-        ResponseModel IResponse.Parse()
+        ResponseModel IResponse.MapResponse()
         {
             return new ResponseModel()
             {
