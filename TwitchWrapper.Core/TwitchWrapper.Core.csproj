@@ -8,8 +8,4 @@
       <PackageReference Include="Websocket.Client" Version="4.3.21" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Models" />
-    </ItemGroup>
-
 </Project>

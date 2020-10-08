@@ -13,6 +13,7 @@ namespace TwitchWrapper.Core.IrcClient
     {
         private readonly TcpClient _client;
         private readonly ResponseHandler _responseHandler;
+        private bool IsListening = false;
 
         internal TwitchIrcClient(string host, int port)
         {
@@ -42,8 +43,10 @@ namespace TwitchWrapper.Core.IrcClient
         internal void StartReceive()
         {
             if (!_client.Connected) throw new IrcClientException($"connection aborted on {nameof(StartReceive)}");
+            if (IsListening) return;
             Task.Run(async () =>
             {
+                IsListening = true;
                 using var reader = new StreamReader(_client.GetStream());
                 while (_client.Connected)
                 {
@@ -52,7 +55,7 @@ namespace TwitchWrapper.Core.IrcClient
 
                     var response = _responseHandler.DeterminedResponseType(data);
                     if (response is null) continue;
-                    
+
                     SubscribeReceive?.Invoke(response);
                 }
             });

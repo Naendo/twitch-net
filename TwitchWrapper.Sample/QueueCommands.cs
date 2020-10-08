@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using TwitchWrapper.Core;
 using TwitchWrapper.Core.Attributes;
 
@@ -6,10 +8,11 @@ namespace TwitchWrapper.Sample
     public class QueueCommands :BaseModule
     {
 
-        [Command("point")]
-        public void asdha()
+        [Command("join")]
+        public async Task JoinCommand()
         {
-            
+            Console.WriteLine("Executed");
+            await SendAsync("!join was executed");
         }
         
         

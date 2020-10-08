@@ -10,15 +10,23 @@ namespace TwitchWrapper.Sample
         static async Task Main()
         {
             Console.WriteLine("Hello World!");
+            try
+            {
+                var bot = new TwitchBot("irc.twitch.tv", 6667, "thatnandotho");
+                var commander = new TwitchCommander(Assembly.GetAssembly(typeof(Program)), bot);
 
-            var bot = new TwitchBot("irc.twitch.tv", 6667,
-                new TwitchCommandHandler(Assembly.GetAssembly(typeof(Program))));
+                await commander.InitalizeCommanderAsync();
 
+                await bot.ConnectAsync("thatnandotho", "oauth:0vd62p7uvt1u7dflg4lb268d03ymfz");
 
-            await bot.ConnectAsync("thatnandotho", "oauth:0vd62p7uvt1u7dflg4lb268d03ymfz");
-            await bot.JoinChannelAsync("thatnandotho");
+                await bot.JoinAsync();
 
-            await Task.Delay(-1);
+                await Task.Delay(-1);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

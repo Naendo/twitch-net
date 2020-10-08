@@ -4,27 +4,20 @@ namespace TwitchWrapper.Core.Commands
 {
     public class MessageCommand : ICommand
     {
-        private readonly string _user;
         private readonly string _message;
+        private readonly string _channel;
 
 
         //:<user>!<user>@<user>.tmi.twitch.tv JOIN #<channel>;
-        public MessageCommand(string response)
+        public MessageCommand(string message, string channel)
         {
-            try
-            {
-                _user = response[1..response.IndexOf('!')];
-                _message = response[response.IndexOf(' ')..];
-            }
-            catch (Exception)
-            {
-                // ignored
-            }
+            _message = message;
+            _channel = channel.ToLower();
         }
 
         public string Parse()
         {
-            return $"{_user}: ${_message}";
+            return $"PRIVMSG #{_channel} :{_message}";
         }
     }
 }
