@@ -17,7 +17,7 @@ namespace TwitchWrapper.Sample
 
                 await commander.InitalizeCommanderAsync();
 
-                await bot.ConnectAsync("thatnandotho", "oauth:0vd62p7uvt1u7dflg4lb268d03ymfz");
+                await bot.ConnectAsync("thatnandotho", "oauth:wpsvvdjj6tru7o5fxmgwgct5kd3f1x");
 
                 await bot.JoinAsync();
 

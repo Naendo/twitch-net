@@ -14,6 +14,10 @@ namespace TwitchWrapper.Core
     public class TwitchCommander
     {
         private static Dictionary<string, MethodInfo> _commandCache = new Dictionary<string, MethodInfo>();
+
+        private static Dictionary<Type, ObjectActivator>
+            _objectActivatorCache = new Dictionary<Type, ObjectActivator>();
+
         private readonly Assembly _assembly;
         private readonly string _prefix;
         private readonly TwitchBot _bot;
@@ -76,7 +80,7 @@ namespace TwitchWrapper.Core
             var result = command.MapResponse();
 
 
-            Console.WriteLine($"User: {result.UserName}, Message: {result.Message}");
+            Console.WriteLine($"User: {result.Name}, Message: {result.Message}");
             await ExecuteCommandAsync(result);
         }
 
@@ -98,23 +102,35 @@ namespace TwitchWrapper.Core
         /// <summary>
         /// Execute Command if <see cref="IResponse"/> is registerd as <see cref="BaseModule"/> with Attribute <see cref="CommandAttribute"/>
         /// </summary>
-        /// <param name="responseModel"></param>
-        private async Task ExecuteCommandAsync(ResponseModel responseModel)
+        /// <param name="messageResponseModel"></param>
+        private async Task ExecuteCommandAsync(MessageResponseModel messageResponseModel)
         {
             //(1) Identify Command
-            var commandIdentifier = ParseResponse(responseModel);
+            var commandIdentifier = ParseResponse(messageResponseModel);
 
             //(2) Read Cache
             if (!_commandCache.TryGetValue(commandIdentifier.CommandKey, out var methodInfo))
                 return;
 
+            var user = new UserModel(messageResponseModel.IsBroadcaster,
+                messageResponseModel.IsVip,
+                messageResponseModel.IsSubscriber,
+                messageResponseModel.Name,
+                messageResponseModel.Color);
+
 
             //(3) Create Instance of Class and BaseModule
             var instance = CreateInstance(methodInfo.DeclaringType).Invoke();
-            instance.GetType()
-                .BaseType
+
+            var instanceType = instance.GetType();
+
+            instanceType.BaseType
                 .GetField("_bot", BindingFlags.NonPublic | BindingFlags.Instance)
                 .SetValue(instance, _bot);
+
+            instanceType.BaseType
+                .GetField("User", BindingFlags.NonPublic | BindingFlags.Instance)
+                .SetValue(instance, user);
 
             //(4) Invoke
             var task = (Task) methodInfo.Invoke(instance, commandIdentifier.Parameter);
@@ -126,7 +142,7 @@ namespace TwitchWrapper.Core
         /// <summary>
         /// Parse <see cref="IResponse"/> to <see cref="CommandModel"/>
         /// </summary>
-        private CommandModel ParseResponse(ResponseModel model)
+        private CommandModel ParseResponse(MessageResponseModel model)
         {
             var responseStringAsArray = model.Message.Split(' ');
             return new CommandModel
@@ -144,6 +160,9 @@ namespace TwitchWrapper.Core
         /// <exception cref="NullReferenceException"></exception>
         private static ObjectActivator CreateInstance(Type type)
         {
+            if (_objectActivatorCache.TryGetValue(type, out var objectActivator))
+                return objectActivator;
+
             if (type == null)
             {
                 throw new NullReferenceException("type");
@@ -156,7 +175,10 @@ namespace TwitchWrapper.Core
             ilGenerator.Emit(OpCodes.Nop);
             ilGenerator.Emit(OpCodes.Newobj, emptyConstructor);
             ilGenerator.Emit(OpCodes.Ret);
-            return (ObjectActivator) dynamicMethod.CreateDelegate(typeof(ObjectActivator));
+            var activator = (ObjectActivator) dynamicMethod.CreateDelegate(typeof(ObjectActivator));
+
+            _objectActivatorCache[type] = activator;
+            return activator;
         }
 
         private delegate object ObjectActivator();

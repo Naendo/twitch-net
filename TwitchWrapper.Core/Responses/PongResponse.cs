@@ -5,9 +5,9 @@ namespace TwitchWrapper.Core.Responses
         //PING :tmi.twitch.tv
 
 
-        ResponseModel IResponse.MapResponse()
+        MessageResponseModel IResponse.MapResponse()
         {
-            return new ResponseModel()
+            return new MessageResponseModel()
             {
                 Message = "PONG :tmi.twitch.tv",
                 ResponseType = ResponseType.Ping

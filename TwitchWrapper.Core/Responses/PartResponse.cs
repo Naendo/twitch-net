@@ -12,13 +12,14 @@ namespace TwitchWrapper.Core.Responses
         }
 
         //:<user>!<user>@<user>.tmi.twitch.tv PART #<channel>
-        ResponseModel IResponse.MapResponse()
+
+        public MessageResponseModel MapResponse()
         {
-            return new ResponseModel()
+            return new MessageResponseModel()
             {
                 Message = _message,
                 ResponseType = ResponseType.Part,
-                UserName = _userName
+                Name = _userName
             };
         }
     }

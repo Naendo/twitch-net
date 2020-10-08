@@ -34,6 +34,8 @@ namespace TwitchWrapper.Core
         {
             await StartListeningAsync();
             await Client.SendAsync(new JoinCommand(_channel));
+            await Client.SendAsync(new UserStateCommand(_channel));
+            await Client.SendAsync(new CapabilityCommand());
         }
 
         /// <summary>

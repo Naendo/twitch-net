@@ -5,16 +5,12 @@ using TwitchWrapper.Core.Attributes;
 
 namespace TwitchWrapper.Sample
 {
-    public class QueueCommands :BaseModule
+    public class QueueCommands : BaseModule
     {
-
         [Command("join")]
-        public async Task JoinCommand()
+        public async Task JoinCommand(string asdf, string s)
         {
-            Console.WriteLine("Executed");
-            await SendAsync("!join was executed");
+            await SendAsync($"{User.Name} has executed !join. His ChatColor is: {User.ChatColor},  Param: {asdf}");
         }
-        
-        
     }
 }

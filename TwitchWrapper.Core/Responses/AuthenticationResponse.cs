@@ -1,6 +1,6 @@
 namespace TwitchWrapper.Core.Responses
 {
-    public class AuthenticationResponse : IResponse
+    internal class AuthenticationResponse : IResponse
     {
         private readonly string _user;
         private readonly string _message;
@@ -13,13 +13,14 @@ namespace TwitchWrapper.Core.Responses
         }
 
         //:tmi.twitch.tv 001 <user> :Welcome, GLHF!
-        ResponseModel IResponse.MapResponse()
+
+        public MessageResponseModel MapResponse()
         {
-            return new ResponseModel()
+            return new MessageResponseModel()
             {
                 Message = _message,
                 ResponseType = ResponseType.Authenticate,
-                UserName = _user
+                Name = _user
             };
         }
     }

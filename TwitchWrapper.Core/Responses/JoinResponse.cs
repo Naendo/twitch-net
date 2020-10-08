@@ -15,13 +15,13 @@ namespace TwitchWrapper.Core.Responses
         }
 
         //:<user>!<user>@<user>.tmi.twitch.tv JOIN #<channel>
-        ResponseModel IResponse.MapResponse()
+        MessageResponseModel IResponse.MapResponse()
         {
-            return new ResponseModel()
+            return new MessageResponseModel()
             {
                 Message = _message,
                 ResponseType = ResponseType.Join,
-                UserName = _userName
+                Name = _userName
             };
         }
     }
