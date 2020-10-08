@@ -1,7 +1,8 @@
-﻿using TwitchWrapper.Core.Responses;
+﻿using System.Threading.Tasks;
+using TwitchWrapper.Core.Responses;
 
 namespace TwitchWrapper.Core
 {
-    internal delegate void OnReceivedDelegate(IResponse command);
+    internal delegate Task OnReceivedDelegate(IResponse command);
 
 }

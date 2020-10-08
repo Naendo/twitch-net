@@ -12,11 +12,8 @@ namespace TwitchWrapper.Core
         protected bool IsModerator { get; private set; }
 
         protected bool IsVip { get; private set; }
-
         
         
-        
-
         protected async Task SendAsync(string message)
         {
             await _bot.Client.SendAsync(new MessageCommand(message, _bot.Channel));

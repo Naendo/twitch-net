@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using TwitchWrapper.Core;
 using TwitchWrapper.Core.Attributes;
 
@@ -9,9 +10,9 @@ namespace TwitchWrapper.Sample
 
 
         [Command("sturmi")]
-        public void SturmiIstSehrUncool()
+        public async Task  SturmiIstSehrUncool()
         {
-            Console.WriteLine("JA TRUE STURMI STINKT WIE DRECK");
+            await SendAsync("true sturmi stinkt BRUTAL");
         }
         
         

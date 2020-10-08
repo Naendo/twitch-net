@@ -65,7 +65,7 @@ namespace TwitchWrapper.Core
         /// <summary>
         /// PLES GET RECEIVE AND DO THE COMMAND EXECUTION ON COMMAND TEXT YES
         /// </summary>
-        private void HandleCommandRequest(IResponse command)
+        private async Task HandleCommandRequest(IResponse command)
         {
             if (command.MapResponse().ResponseType == ResponseType.Authenticate)
                 Console.WriteLine("Connected");
@@ -77,7 +77,7 @@ namespace TwitchWrapper.Core
 
 
             Console.WriteLine($"User: {result.UserName}, Message: {result.Message}");
-            ExecuteCommand(result);
+            await ExecuteCommandAsync(result);
         }
 
 
@@ -99,13 +99,10 @@ namespace TwitchWrapper.Core
         /// Execute Command if <see cref="IResponse"/> is registerd as <see cref="BaseModule"/> with Attribute <see cref="CommandAttribute"/>
         /// </summary>
         /// <param name="responseModel"></param>
-        private void ExecuteCommand(ResponseModel responseModel)
+        private async Task ExecuteCommandAsync(ResponseModel responseModel)
         {
-            //Todo: Detect Command
-
-            //(1) Command identifn
+            //(1) Identify Command
             var commandIdentifier = ParseResponse(responseModel);
-
 
             //(2) Read Cache
             if (!_commandCache.TryGetValue(commandIdentifier.CommandKey, out var methodInfo))
@@ -116,16 +113,13 @@ namespace TwitchWrapper.Core
             var instance = CreateInstance(methodInfo.DeclaringType).Invoke();
             instance.GetType()
                 .BaseType
-                .GetField("_bot",  BindingFlags.NonPublic | BindingFlags.Instance)
+                .GetField("_bot", BindingFlags.NonPublic | BindingFlags.Instance)
                 .SetValue(instance, _bot);
 
+            //(4) Invoke
+            var task = (Task) methodInfo.Invoke(instance, commandIdentifier.Parameter);
 
-            //(4) Execute Method with params
-            var responseStringAsArray = responseModel.Message.Split(' ');
-
-
-            //(5) Invoke
-            methodInfo.Invoke(instance, commandIdentifier.Parameter);
+            await task.ConfigureAwait(false);
         }
 
 

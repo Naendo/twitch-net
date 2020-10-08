@@ -16,7 +16,7 @@ namespace TwitchWrapper.Test
         {
             var tcs = new TaskCompletionSource<bool>();
             using var client = new TwitchIrcClient("irc.twitch.tv", 6667);
-            client.SubscribeReceive += (command) =>
+            client.SubscribeReceive += async (command) =>
             {
                 var result = command.MapResponse();
 
@@ -40,7 +40,7 @@ namespace TwitchWrapper.Test
             var tcs = new TaskCompletionSource<bool>();
 
             using var client = new TwitchIrcClient("irc.twitch.tv", 6667);
-            client.SubscribeReceive += (command) =>
+            client.SubscribeReceive += async (command) =>
             {
                 var result = command.MapResponse();
 
