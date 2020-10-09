@@ -9,7 +9,6 @@ namespace TwitchWrapper.Sample
     {
         static async Task Main()
         {
-            Console.WriteLine("Hello World!");
             try
             {
                 var bot = new TwitchBot("irc.twitch.tv", 6667, "thatnandotho");

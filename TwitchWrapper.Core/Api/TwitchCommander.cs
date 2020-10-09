@@ -13,9 +13,9 @@ namespace TwitchWrapper.Core
 {
     public class TwitchCommander
     {
-        private static Dictionary<string, MethodInfo> _commandCache = new Dictionary<string, MethodInfo>();
+        private static readonly Dictionary<string, MethodInfo> _commandCache = new Dictionary<string, MethodInfo>();
 
-        private static Dictionary<Type, ObjectActivator>
+        private static readonly Dictionary<Type, ObjectActivator>
             _objectActivatorCache = new Dictionary<Type, ObjectActivator>();
 
         private readonly Assembly _assembly;
@@ -71,9 +71,6 @@ namespace TwitchWrapper.Core
         /// </summary>
         private async Task HandleCommandRequest(IResponse command)
         {
-            if (command.MapResponse().ResponseType == ResponseType.Authenticate)
-                Console.WriteLine("Connected");
-
             if (!IsCommand(command))
                 return;
 
@@ -83,8 +80,8 @@ namespace TwitchWrapper.Core
             Console.WriteLine($"User: {result.Name}, Message: {result.Message}");
             await ExecuteCommandAsync(result);
         }
-
-
+        
+        
         /// <summary>
         /// Check if <see cref="IResponse"/> is command by validating <see cref="_prefix"/> is first charactar
         /// </summary>
@@ -124,16 +121,19 @@ namespace TwitchWrapper.Core
 
             var instanceType = instance.GetType();
 
-            instanceType.BaseType
-                .GetField("_bot", BindingFlags.NonPublic | BindingFlags.Instance)
+            instanceType.BaseType!
+                .GetField("_bot", BindingFlags.NonPublic | BindingFlags.Instance)!
                 .SetValue(instance, _bot);
 
             instanceType.BaseType
-                .GetField("User", BindingFlags.NonPublic | BindingFlags.Instance)
+                .GetField("User", BindingFlags.NonPublic | BindingFlags.Instance)!
                 .SetValue(instance, user);
 
             //(4) Invoke
-            var task = (Task) methodInfo.Invoke(instance, commandIdentifier.Parameter);
+            var paramIndex = methodInfo.GetParameters().Length;
+            
+            // ReSharper disable once CoVariantArrayConversion
+            var task = (Task) methodInfo.Invoke(instance, commandIdentifier.Parameter[..paramIndex]);
 
             await task.ConfigureAwait(false);
         }
