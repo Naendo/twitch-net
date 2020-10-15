@@ -29,7 +29,7 @@ namespace TwitchWrapper.Core
             _bot = bot;
         }
 
-        public async Task InitalizeCommanderAsync()
+        public async Task InitalizeCommanderAsync(IServiceProvider serviceProvider)
         {
             await Task.Run(() =>
             {
@@ -80,8 +80,8 @@ namespace TwitchWrapper.Core
             Console.WriteLine($"User: {result.Name}, Message: {result.Message}");
             await ExecuteCommandAsync(result);
         }
-        
-        
+
+
         /// <summary>
         /// Check if <see cref="IResponse"/> is command by validating <see cref="_prefix"/> is first charactar
         /// </summary>
@@ -122,16 +122,16 @@ namespace TwitchWrapper.Core
             var instanceType = instance.GetType();
 
             instanceType.BaseType!
-                .GetField("_bot", BindingFlags.NonPublic | BindingFlags.Instance)!
+                    .GetField("_bot", BindingFlags.NonPublic | BindingFlags.Instance)!
                 .SetValue(instance, _bot);
 
             instanceType.BaseType
-                .GetField("User", BindingFlags.NonPublic | BindingFlags.Instance)!
+                    .GetField("User", BindingFlags.NonPublic | BindingFlags.Instance)!
                 .SetValue(instance, user);
 
             //(4) Invoke
             var paramIndex = methodInfo.GetParameters().Length;
-            
+
             // ReSharper disable once CoVariantArrayConversion
             var task = (Task) methodInfo.Invoke(instance, commandIdentifier.Parameter[..paramIndex]);
 

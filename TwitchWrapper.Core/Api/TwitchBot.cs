@@ -20,7 +20,7 @@ namespace TwitchWrapper.Core
         /// <summary>Sending authentication request to server.</summary>
         /// <param name="nick">twitch account username</param>
         /// <param name="token">oauth token</param>
-        public async Task ConnectAsync(string nick, string token)
+        public async Task LoginAsync(string nick, string token)
         {
             await Client.SendAsync(new AuthenticateCommand(nick, token));
         }
