@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using TwitchWrapper.Core;
 using TwitchWrapper.Core.Attributes;

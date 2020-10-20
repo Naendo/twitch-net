@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using System.Threading.Tasks;
 using TwitchWrapper.Core.Commands;
 using TwitchWrapper.Core.IrcClient;

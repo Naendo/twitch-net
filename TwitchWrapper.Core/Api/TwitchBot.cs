@@ -5,6 +5,8 @@ using TwitchWrapper.Core.IrcClient;
 
 namespace TwitchWrapper.Core
 {
+    internal delegate Task LogAsyncDelegate(string message);
+
     public class TwitchBot
     {
         internal readonly TwitchIrcClient Client;
@@ -20,6 +22,7 @@ namespace TwitchWrapper.Core
         public async Task LoginAsync(string nick, string token)
         {
             await Client.SendAsync(new AuthenticateCommand(nick, token));
+            OnLogAsync?.Invoke($"Bot authorized as [{nick}]");
         }
 
 
@@ -29,11 +32,15 @@ namespace TwitchWrapper.Core
         /// <param name="channel">twitch channel you want your bot to connect to</param>
         public async Task JoinAsync(string channel)
         {
-            await StartListeningAsync();
+          
             await Client.SendAsync(new JoinCommand(channel));
+            OnLogAsync?.Invoke($"Joined Channel: {channel}");
             await Client.SendAsync(new UserStateCommand(channel));
             await Client.SendAsync(new CapabilityCommand());
+            
+            await StartListeningAsync();
         }
+
 
         /// <summary>
         /// Start Listining on ChatMessages in Channel
@@ -41,7 +48,11 @@ namespace TwitchWrapper.Core
         private Task StartListeningAsync()
         {
             Client.StartReceive();
+            OnLogAsync?.Invoke($"Bot is now listining..");
             return Task.CompletedTask;
         }
+
+
+        internal event LogAsyncDelegate OnLogAsync;
     }
 }

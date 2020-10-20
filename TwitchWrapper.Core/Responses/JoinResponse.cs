@@ -15,7 +15,8 @@ namespace TwitchWrapper.Core.Responses
         }
 
         //:<user>!<user>@<user>.tmi.twitch.tv JOIN #<channel>
-        MessageResponseModel IResponse.MapResponse()
+
+        public MessageResponseModel MapResponse()
         {
             return new MessageResponseModel()
             {

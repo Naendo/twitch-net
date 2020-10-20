@@ -10,11 +10,10 @@ namespace TwitchWrapper.Core
     public abstract class BaseModule
     {
         private TwitchBot TwitchBot { get; set; }
+        protected UserProxy UserProxy { get; private set; }
+        protected ChannelProxy ChannelProxy { get; private set; }
 
-        protected UserProxy UserProxy { get; private protected set; }
-        protected ChannelProxy ChannelProxy { get; private protected set; }
-
-        protected CommandProxy CommandProxy { get; private protected set; }
+        protected CommandProxy CommandProxy { get; private set; }
 
 
         /// <summary>

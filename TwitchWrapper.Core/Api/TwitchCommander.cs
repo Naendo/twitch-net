@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -18,31 +19,36 @@ namespace TwitchWrapper.Core
     {
         private static readonly Dictionary<string, MethodInfo> _commandCache = new Dictionary<string, MethodInfo>();
 
-        private static readonly Dictionary<Type, ObjectActivator>
-            _objectActivatorCache = new Dictionary<Type, ObjectActivator>();
+        private Assembly _assembly;
 
-        private readonly Assembly _assembly;
         private readonly string _prefix;
+
         private readonly TwitchBot _bot;
 
         private IServiceProvider _serviceProvider;
 
-        public TwitchCommander(Assembly assembly, TwitchBot bot, string prefix = "!")
+        public TwitchCommander(TwitchBot bot, string prefix = "!")
         {
-            _assembly = assembly;
             _prefix = prefix;
             _bot = bot;
+            bot.OnLogAsync += OnLogAsyncHandler;
         }
 
-        public async Task InitalizeCommanderAsync(IServiceCollection serviceCollection)
+
+        /// <summary>
+        /// Initalize CommandModule Pattern and scan Methodes marked as <see cref="CommandAttribute"/> in Assembly
+        /// </summary>
+        /// <param name="serviceCollection">DI ServiceCollection</param>
+        /// <param name="assembly">Assembly Containing CommandModules marked with <see cref="BaseModule"/></param>
+        public async Task InitalizeCommanderAsync(IServiceCollection serviceCollection, Assembly assembly)
         {
+            _assembly = assembly;
             await Task.Run(() =>
             {
                 _bot.Client.SubscribeReceive += HandleCommandRequest;
                 ScanAssemblyForCommands(serviceCollection);
             });
         }
-
 
         /// <summary>
         /// Scan for Modules which inherit <see cref="BaseModule"/> and cache Methodes with <see cref="CommandAttribute"/>
@@ -77,11 +83,16 @@ namespace TwitchWrapper.Core
             _serviceProvider = serviceCollection.BuildServiceProvider();
         }
 
+
+        /// <summary>
+        /// Method for registering Modules marked as <see cref="BaseModule"/> in DI Container
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="serviceCollection"></param>
         private void RegisterTypeForDependencyInjection(Type type, IServiceCollection serviceCollection)
         {
             serviceCollection.TryAddTransient(type);
         }
-
 
         /// <summary>
         /// PLES GET RECEIVE AND DO THE COMMAND EXECUTION ON COMMAND TEXT YES
@@ -93,8 +104,6 @@ namespace TwitchWrapper.Core
 
             var result = command.MapResponse();
 
-
-            Console.WriteLine($"User: {result.Name}, Message: {result.Message}");
             await ExecuteCommandAsync(result);
         }
 
@@ -123,7 +132,7 @@ namespace TwitchWrapper.Core
             var commandIdentifier = ParseResponse(messageResponseModel);
 
             //(2) Read Cache
-            if (!_commandCache.TryGetValue(commandIdentifier.CommandKey, out var methodInfo))
+            if (!_commandCache.TryGetValue(commandIdentifier.CommandKey.ToLower(), out var methodInfo))
                 return;
 
 
@@ -193,35 +202,18 @@ namespace TwitchWrapper.Core
             };
         }
 
+
         /// <summary>
-        /// Creating <see cref="ObjectActivator"/> delegate for faster <see cref="Activator"/>
+        /// Authentication Log Handler
         /// </summary>
-        /// <param name="type">Instantiating <see cref="Type"/></param>
-        /// <returns></returns>
-        /// <exception cref="NullReferenceException"></exception>
-        private static ObjectActivator CreateInstance(Type type)
+        /// <param name="message"></param>
+        private Task OnLogAsyncHandler(string message)
         {
-            if (_objectActivatorCache.TryGetValue(type, out var objectActivator))
-                return objectActivator;
-
-            if (type == null)
-            {
-                throw new NullReferenceException("type");
-            }
-
-            ConstructorInfo emptyConstructor = type.GetConstructor(Type.EmptyTypes);
-            var dynamicMethod = new DynamicMethod("CreateInstance", type, Type.EmptyTypes, true);
-
-            ILGenerator ilGenerator = dynamicMethod.GetILGenerator();
-            ilGenerator.Emit(OpCodes.Nop);
-            ilGenerator.Emit(OpCodes.Newobj, emptyConstructor);
-            ilGenerator.Emit(OpCodes.Ret);
-            var activator = (ObjectActivator) dynamicMethod.CreateDelegate(typeof(ObjectActivator));
-
-            _objectActivatorCache[type] = activator;
-            return activator;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write($"[{DateTime.Now.ToString("MM/dd/yyyy, HH:mm:ss")}]: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(message);
+            return Task.CompletedTask;
         }
-
-        private delegate object ObjectActivator();
     }
 }

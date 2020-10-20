@@ -15,16 +15,16 @@ namespace TwitchWrapper.Sample
             {
                 var bot = new TwitchBot();
 
-                var commander = new TwitchCommander(Assembly.GetAssembly(typeof(Program)),
-                    bot);
+                var commander = new TwitchCommander(bot);
 
                 var serviceCollection = BuildServiceProvider();
 
-                await commander.InitalizeCommanderAsync(serviceCollection);
+                await commander.InitalizeCommanderAsync(serviceCollection,
+                    Assembly.GetAssembly(typeof(Program)));
 
                 await bot.LoginAsync("thatnandotho", "oauth:wpsvvdjj6tru7o5fxmgwgct5kd3f1x");
 
-                await bot.JoinAsync("niewoooooo");
+                await bot.JoinAsync("thatnandotho");
 
 
                 await Task.Delay(-1);

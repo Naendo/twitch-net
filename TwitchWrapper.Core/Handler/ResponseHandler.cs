@@ -12,18 +12,14 @@ namespace TwitchWrapper.Core
         {
             //data[1] = ResponseType on Commands
             var data = response.Split(' ');
-
-
+            
             if (data[0] == "PING")
                 return new PongResponse();
             if (data[1] == "JOIN")
                 return new JoinResponse(response);
-            if (data[2] == "PRIVMSG")
-            {
-                return new MessageResponse(response);
-            }
-
-            return null;
+            
+            
+            return data[2] == "PRIVMSG" ? new MessageResponse(response) : null;
         }
     }
 }
