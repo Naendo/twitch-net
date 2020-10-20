@@ -7,14 +7,11 @@ namespace TwitchWrapper.Core
 {
     public class TwitchBot
     {
-        private readonly string _channel;
         internal readonly TwitchIrcClient Client;
-        internal string Channel => _channel;
-        
-        public TwitchBot(string host, int port, string channel)
+
+        public TwitchBot()
         {
-            _channel = channel;
-            Client = new TwitchIrcClient(host, port);
+            Client = new TwitchIrcClient("irc.twitch.tv", 6667);
         }
 
         /// <summary>Sending authentication request to server.</summary>
@@ -30,11 +27,11 @@ namespace TwitchWrapper.Core
         /// Join Twitch Channel.
         /// </summary>
         /// <param name="channel">twitch channel you want your bot to connect to</param>
-        public async Task JoinAsync()
+        public async Task JoinAsync(string channel)
         {
             await StartListeningAsync();
-            await Client.SendAsync(new JoinCommand(_channel));
-            await Client.SendAsync(new UserStateCommand(_channel));
+            await Client.SendAsync(new JoinCommand(channel));
+            await Client.SendAsync(new UserStateCommand(channel));
             await Client.SendAsync(new CapabilityCommand());
         }
 

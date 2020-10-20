@@ -4,9 +4,12 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using TwitchWrapper.Core.Attributes;
 using TwitchWrapper.Core.Exceptions;
 using TwitchWrapper.Core.Models;
+using TwitchWrapper.Core.Proxies;
 using TwitchWrapper.Core.Responses;
 
 namespace TwitchWrapper.Core
@@ -22,6 +25,8 @@ namespace TwitchWrapper.Core
         private readonly string _prefix;
         private readonly TwitchBot _bot;
 
+        private IServiceProvider _serviceProvider;
+
         public TwitchCommander(Assembly assembly, TwitchBot bot, string prefix = "!")
         {
             _assembly = assembly;
@@ -29,12 +34,12 @@ namespace TwitchWrapper.Core
             _bot = bot;
         }
 
-        public async Task InitalizeCommanderAsync(IServiceProvider serviceProvider)
+        public async Task InitalizeCommanderAsync(IServiceCollection serviceCollection)
         {
             await Task.Run(() =>
             {
                 _bot.Client.SubscribeReceive += HandleCommandRequest;
-                ScanAssemblyForCommands();
+                ScanAssemblyForCommands(serviceCollection);
             });
         }
 
@@ -43,7 +48,7 @@ namespace TwitchWrapper.Core
         /// Scan for Modules which inherit <see cref="BaseModule"/> and cache Methodes with <see cref="CommandAttribute"/>
         /// </summary>
         /// <exception cref="DuplicatedCommandException"></exception>
-        private void ScanAssemblyForCommands()
+        private void ScanAssemblyForCommands(IServiceCollection serviceCollection)
         {
             var types = _assembly.GetTypes()
                 .Where(type => type.IsSubclassOf(typeof(BaseModule)));
@@ -54,6 +59,10 @@ namespace TwitchWrapper.Core
                     .Where(x => Attribute.IsDefined(x, typeof(CommandAttribute)))
                     .Select(x => new {x.GetCustomAttribute<CommandAttribute>()!.Command, Method = x});
 
+
+                RegisterTypeForDependencyInjection(type, serviceCollection);
+
+
                 foreach (var item in result)
                 {
                     if (!_commandCache.TryAdd(item.Command, item.Method))
@@ -63,6 +72,14 @@ namespace TwitchWrapper.Core
                     }
                 }
             }
+
+
+            _serviceProvider = serviceCollection.BuildServiceProvider();
+        }
+
+        private void RegisterTypeForDependencyInjection(Type type, IServiceCollection serviceCollection)
+        {
+            serviceCollection.TryAddTransient(type);
         }
 
 
@@ -109,25 +126,33 @@ namespace TwitchWrapper.Core
             if (!_commandCache.TryGetValue(commandIdentifier.CommandKey, out var methodInfo))
                 return;
 
-            var user = new UserModel(messageResponseModel.IsBroadcaster,
-                messageResponseModel.IsVip,
-                messageResponseModel.IsSubscriber,
-                messageResponseModel.Name,
-                messageResponseModel.Color);
-
 
             //(3) Create Instance of Class and BaseModule
-            var instance = CreateInstance(methodInfo.DeclaringType).Invoke();
+            var instance = _serviceProvider.GetService(methodInfo.DeclaringType);
+
+            //Without DI
+            //var instance = CreateInstance(methodInfo.DeclaringType).Invoke();
 
             var instanceType = instance.GetType();
 
-            instanceType.BaseType!
-                    .GetField("_bot", BindingFlags.NonPublic | BindingFlags.Instance)!
-                .SetValue(instance, _bot);
 
-            instanceType.BaseType
-                    .GetField("User", BindingFlags.NonPublic | BindingFlags.Instance)!
-                .SetValue(instance, user);
+            //Fill BaseModule
+
+            ProxyFactory(instance, new UserProxy
+            {
+                IsBroadcaster = messageResponseModel.IsBroadcaster,
+                IsVip = messageResponseModel.IsVip,
+                IsModerator = messageResponseModel.IsModerator,
+                IsSubscriber = messageResponseModel.IsSubscriber,
+                Name = messageResponseModel.Name,
+                Color = messageResponseModel.Color
+            });
+            ProxyFactory(instance, _bot);
+            ProxyFactory(instance, new ChannelProxy
+            {
+                Channel = messageResponseModel.Channel
+            });
+
 
             //(4) Invoke
             var paramIndex = methodInfo.GetParameters().Length;
@@ -136,6 +161,22 @@ namespace TwitchWrapper.Core
             var task = (Task) methodInfo.Invoke(instance, commandIdentifier.Parameter[..paramIndex]);
 
             await task.ConfigureAwait(false);
+        }
+
+
+        /// <summary>
+        /// Factory for creating BaseModule Proxies
+        /// </summary>
+        /// <param name="instance">Module instance</param>
+        /// <typeparam name="TProxy">Instance of Proxy</typeparam>
+        private void ProxyFactory<TProxy>(object instance, TProxy proxy) where TProxy : class
+        {
+            var instanceType = instance.GetType();
+
+            instanceType.BaseType!
+                    .GetProperty(proxy.GetType().Name,
+                        BindingFlags.Instance | BindingFlags.IgnoreCase | BindingFlags.NonPublic)!
+                .SetValue(instance, proxy);
         }
 
 

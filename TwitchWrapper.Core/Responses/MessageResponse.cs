@@ -20,13 +20,16 @@ namespace TwitchWrapper.Core.Responses
                 tags.Add(splitedTag[0], splitedTag[1]);
             }
 
+            var indexOfSecondHashTag = response.IndexOf('#', response.IndexOf('#') + 1) + 1;
             _response = new MessageResponseModel
             {
                 //first ':' to first '!'
                 Name = response[(response.IndexOf(':') + 1)..response.IndexOf('!')],
                 //second ':' to end
                 Message = response[(response.IndexOf(':', response.IndexOf(':') + 1) + 1)..],
-                ResponseType = ResponseType.PrivMsg
+                ResponseType = ResponseType.PrivMsg,
+                //First '#' to second ':' -1
+                Channel = response[indexOfSecondHashTag..(response.IndexOf(':', indexOfSecondHashTag))]
             };
 
             if (tags.TryGetValue("badges", out var badge))

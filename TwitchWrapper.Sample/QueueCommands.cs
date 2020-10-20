@@ -7,10 +7,17 @@ namespace TwitchWrapper.Sample
 {
     public class QueueCommands : BaseModule
     {
+        private readonly TestService _testService;
+
+        public QueueCommands(TestService testService)
+        {
+            _testService = testService;
+        }
+        
         [Command("join")]
         public async Task JoinCommand()
         {
-            await SendAsync($"{User.Name} has executed !join. His ChatColor is: {User.ChatColor}");
+            await SendAsync($"{UserProxy.Name} has executed !join. His ChatColor is: {UserProxy.Color}");
         }
     }
 }

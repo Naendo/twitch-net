@@ -13,15 +13,19 @@ namespace TwitchWrapper.Sample
         {
             try
             {
-                var bot = new TwitchBot("irc.twitch.tv", 6667, "thatnandotho");
-                
-                var commander = new TwitchCommander(Assembly.GetAssembly(typeof(Program)), bot);
+                var bot = new TwitchBot();
 
-                await commander.InitalizeCommanderAsync();
+                var commander = new TwitchCommander(Assembly.GetAssembly(typeof(Program)),
+                    bot);
+
+                var serviceCollection = BuildServiceProvider();
+
+                await commander.InitalizeCommanderAsync(serviceCollection);
 
                 await bot.LoginAsync("thatnandotho", "oauth:wpsvvdjj6tru7o5fxmgwgct5kd3f1x");
 
-                await bot.JoinAsync();
+                await bot.JoinAsync("niewoooooo");
+
 
                 await Task.Delay(-1);
             }
@@ -32,10 +36,10 @@ namespace TwitchWrapper.Sample
         }
 
 
-        public static IServiceProvider BuildServiceProvider()
+        private static IServiceCollection BuildServiceProvider()
         {
             return new ServiceCollection()
-                .BuildServiceProvider();
+                .AddSingleton<TestService>();
         }
     }
 }

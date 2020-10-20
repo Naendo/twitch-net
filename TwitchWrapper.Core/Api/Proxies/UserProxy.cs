@@ -1,6 +1,6 @@
-namespace TwitchWrapper.Core.Responses
+namespace TwitchWrapper.Core.Proxies
 {
-    internal class MessageResponseModel
+    public class UserProxy
     {
         public bool IsModerator { get; set; }
 
@@ -9,7 +9,7 @@ namespace TwitchWrapper.Core.Responses
         public bool IsSubscriber { get; set; }
 
         public bool IsTurbo { get; set; }
-
+        
         public bool IsVip { get; set; }
 
         public string Name { get; set; }
@@ -18,11 +18,6 @@ namespace TwitchWrapper.Core.Responses
         /// Color in Hexformat #FFFFFF
         /// </summary>
         public string Color { get; set; }
-
-
-        public string Channel { get; set; }
-
-        public string Message { get; set; }
-        public ResponseType ResponseType { get; set; }
+        
     }
 }

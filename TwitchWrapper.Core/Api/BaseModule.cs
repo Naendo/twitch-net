@@ -1,30 +1,29 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading.Channels;
+using System.Threading.Tasks;
 using TwitchWrapper.Core.Commands;
 using TwitchWrapper.Core.Models;
+using TwitchWrapper.Core.Proxies;
 
 
 namespace TwitchWrapper.Core
 {
     public abstract class BaseModule
     {
-        /// <summary>
-        /// Injected by Reflection in <see cref="TwitchCommander"/>
-        /// </summary>
-        private TwitchBot _bot;
+        private TwitchBot TwitchBot { get; set; }
 
-        /// <summary>
-        /// Injected by Reflection in <see cref="TwitchCommander"/>
-        /// </summary>
-        protected UserModel User;
+        protected UserProxy UserProxy { get; private protected set; }
+        protected ChannelProxy ChannelProxy { get; private protected set; }
 
-        
+        protected CommandProxy CommandProxy { get; private protected set; }
+
+
         /// <summary>
         /// Send reply to connected chat via <see cref="TwitchBot"/>
         /// </summary>
         /// <param name="message">Your response <see cref="string"/></param>
         protected async Task SendAsync(string message)
         {
-            await _bot.Client.SendAsync(new MessageCommand(message, _bot.Channel));
+            await TwitchBot.Client.SendAsync(new MessageCommand(message, ChannelProxy.Channel));
         }
     }
 }
