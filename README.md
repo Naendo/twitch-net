@@ -1,13 +1,21 @@
-# Twitch .NET
-<p align="center">
- <img src="https://img.shields.io/github/issues-raw/naendo/twitch-net">
- <img src="https://img.shields.io/badge/.NETCore-3.1-ff69b4.svg">
- <img src="https://img.shields.io/github/workflow/status/naendo/twitchwrapper/.NET%20Core">
- <img src="https://img.shields.io/discord/298408053970305024?logo=discord">
-</p>
+## About
 
-An unoffical .NET API Wrapper for [twitch.tv](https://www.twitch.tv).
-# Tutorial
+Twitch .NET is an unoffical Twitch API Wrapper targeting .NET Core 3.1. 
+Currently supporting full capabilities of Twitchs IRC Chat.
+
+## Why Twitch .NET?
+
+Twitch .NET focusing on clean code archtitecture, decoupling and performance. <br/>
+Full Dependency Injection support.
+
+Benchmarks:
+Coming soon..
+
+## Installation
+
+Install Twitch .NET via nuget [now](_blank). <img src="https://img.shields.io/nuget/dt/_blank?logo=nuget">
+
+## Basic Setup
 
 Below are basic examples of how to utilize the Twitch .NET API.
 
@@ -70,9 +78,8 @@ public class TestModule : BaseModule
         {
             await _dependency.AddAsync(value);
             await SendAsync($"{UserProxy.Name} sent a message: {value}");
-        }C#
+        }
 
 
 
 ```
-
