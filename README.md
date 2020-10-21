@@ -46,7 +46,8 @@ Below are basic examples of how to utilize the Twitch .NET API.
         }
 
         private static IServiceCollection BuildServiceCollection()
-            => new ServiceCollection();
+            => new ServiceCollection()
+            .AddSingelton<YourDependency>();
 ```
 
 
