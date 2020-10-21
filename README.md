@@ -1,5 +1,5 @@
 <p align="center">  
-<img src="https://workmate.blob.core.windows.net/images/gitlogo.png" alt="Space Cloud" style="max-height: 300px">
+# Twitch .NET
 </p>
 <p align="center">
  <img src="https://img.shields.io/github/issues-raw/naendo/twitch-net">
