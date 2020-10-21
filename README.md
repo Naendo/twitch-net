@@ -6,8 +6,7 @@
  <img src="https://img.shields.io/discord/298408053970305024?logo=discord">
 </p>
 
-An unoffical .NET API Wrapper for twitch.tv
-
+An unoffical .NET API Wrapper for [twitch.tv](https://www.twitch.tv).
 # Tutorial
 
 Below are basic examples of how to utilize the Twitch .NET API.
