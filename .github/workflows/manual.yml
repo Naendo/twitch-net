@@ -1,0 +1,2 @@
+- name: Upload WebApp1 Build Artifact
+  uses: actions/upload-artifact@v2
