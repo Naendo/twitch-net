@@ -49,3 +49,30 @@ Below are basic examples of how to utilize the Twitch .NET API.
         private static IServiceCollection BuildServiceCollection()
             => new ServiceCollection();
 ```
+
+
+#### Twitch.Command
+
+```C#  
+public class TestModule : BaseModule
+    {
+        private readonly YourDependency _dependency;
+        
+        public TestModule(YourDependency dependency)
+        {
+            _dependency = dependency;
+        }
+
+
+        //Triggers on !test textAfterCommand
+        [Command("test")]
+        public async Task TestCommand(string value)
+        {
+            await _dependency.AddAsync(value);
+            await SendAsync($"{UserProxy.Name} sent a message: {value}");
+        }C#
+
+
+
+```
+
