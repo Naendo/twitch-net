@@ -1,2 +1,9 @@
-# TwitchWrapper
-An unoffical .NET Wrapper for *Twitch Chat* and *Twitch Api v5* targeting .NET Core 3.1.
+<p align="center">  
+<img src="https://workmate.blob.core.windows.net/images/gitlogo.png" alt="Space Cloud" style="max-height: 300px">
+</p>
+<p align="center">
+ <img src="https://img.shields.io/github/issues-raw/naendo/twitchwrapper">
+ <img src="https://img.shields.io/badge/.NETCore-3.1-ff69b4.svg">
+ <img src="https://img.shields.io/github/workflow/status/naendo/twitchwrapper/.NET%20Core%20Desktop">
+ <img src="https://img.shields.io/discord/298408053970305024">
+</p>
