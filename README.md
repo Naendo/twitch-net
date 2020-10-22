@@ -10,10 +10,15 @@
 Twitch .NET is an unoffical Twitch API Wrapper targeting .NET Core 3.1. 
 Currently supporting full capabilities of Twitchs IRC Chat.
 
+Twitch .NET is still work in progress, if you are missing any features dont hesitate to [contact](#notes) me.
+
 ## Why Twitch .NET?
 
-Twitch .NET focusing on clean code archtitecture, decoupling and performance. <br/>
-Full Dependency Injection support.
+Twitch .NET is focusing on clean archtitecture, decoupling and performance for every user by default.<br/>
+We offer full [`Dependency Injection`](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-3.1) support.
+
+If you are familiar with [`Discord .NET`](https://github.com/discord-net/Discord.Net) you will easily be able to write your very own Twitch Bot in under 10 minutes.
+
 
 Benchmarks:
 Coming soon..
@@ -90,3 +95,8 @@ public class TestModule : BaseModule
 
 
 ```
+
+
+## Notes
+If you expirence any issues while using Twitch .NET, dont hesitate to contact me via Discord `ThatNandoTho#1852`, or just report an issue!
+
