@@ -52,12 +52,13 @@ Below are basic examples of how to utilize the Twitch .NET API.
 
         public async Task InitializeTwitchClientAsync()
         {
+
+            var commander = new TwitchCommander(_twitchBot);
+
             await _twitchBot.LoginAsync("nick", "oauth:token");
 
             await _twitchBot.JoinAsync("yourChannel");
 
-
-            var commander = new TwitchCommander(_twitchBot);
 
             await commander.InitalizeCommanderAsync(
                 serviceCollection: BuildServiceCollection(),
