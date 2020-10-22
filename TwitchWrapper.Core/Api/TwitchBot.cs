@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using TwitchWrapper.Core.Commands;
 using TwitchWrapper.Core.IrcClient;
+using TwitchWrapper.Core.Models;
 
 namespace TwitchWrapper.Core
 {
@@ -32,18 +33,28 @@ namespace TwitchWrapper.Core
         /// <param name="channel">twitch channel you want your bot to connect to</param>
         public async Task JoinAsync(string channel)
         {
-          
             await Client.SendAsync(new JoinCommand(channel));
             OnLogAsync?.Invoke($"Joined Channel: {channel}");
             await Client.SendAsync(new UserStateCommand(channel));
-            await Client.SendAsync(new CapabilityCommand());
-            
+            await Client.SendAsync(new TagCapabilityCommand());
+
             await StartListeningAsync();
         }
 
 
         /// <summary>
-        /// Start Listining on ChatMessages in Channel
+        /// Leave Twitch Channel
+        /// </summary>
+        /// <param name="channel">Twitch Channel you want your bot to leave</param>
+        public async Task PartAsync(string channel)
+        {
+            await Client.SendAsync(new PartCommand(channel));
+            OnLogAsync?.Invoke($"Leave Channel: {channel}");
+        }
+
+
+        /// <summary>
+        /// Start Listening on ChatMessages in Channel
         /// </summary>
         private Task StartListeningAsync()
         {

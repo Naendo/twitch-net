@@ -24,17 +24,20 @@ namespace TwitchWrapper.Samples
 
         public async Task InitializeTwitchClient()
         {
-            await _twitchBot.LoginAsync("nick", "oauth:token");
-
-            await _twitchBot.JoinAsync("yourChannel");
-
-
             var commander = new TwitchCommander(_twitchBot);
+            
+            await _twitchBot.LoginAsync("nick", "token");
+
+            await _twitchBot.JoinAsync("channel");
+            
 
             await commander.InitalizeCommanderAsync(
                 serviceCollection: BuildServiceCollection(),
                 assembly: Assembly.GetEntryAssembly()
             );
+
+
+            await Task.Delay(-1);
         }
 
         private static IServiceCollection BuildServiceCollection()

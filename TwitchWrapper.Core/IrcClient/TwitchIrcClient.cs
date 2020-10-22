@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq.Expressions;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -51,23 +52,31 @@ namespace TwitchWrapper.Core.IrcClient
                 using var reader = new StreamReader(_client.GetStream());
                 while (_client.Connected)
                 {
-                    var data = await reader.ReadLineAsync();
-                    if (data is null) continue;
+                    try
+                    {
+                        var data = await reader.ReadLineAsync();
+                        if (data is null) continue;
 
-                    var response = _responseHandler.DeterminedResponseType(data);
-                    if (response is null) continue;
+                        var response = _responseHandler.DeterminedResponseType(data);
+                        if (response is null) continue;
 
-                    SubscribeReceive?.Invoke(response);
+                        SubscribeReceive?.Invoke(response);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
-            });
-        }
-
-        internal event OnReceivedDelegate SubscribeReceive;
-
-        public void Dispose()
-        {
-            _client.Close();
-            _client.Dispose();
-        }
+        });
     }
+
+    internal event OnReceivedDelegate SubscribeReceive;
+
+    public void Dispose()
+    {
+    _client.Close();
+    _client.Dispose();
+    }
+}
+
 }

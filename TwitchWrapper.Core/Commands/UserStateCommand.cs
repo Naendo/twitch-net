@@ -6,7 +6,7 @@ namespace TwitchWrapper.Core.Commands
 
         public UserStateCommand(string channel)
         {
-            _channel = channel;
+            _channel = channel.ToLower();
         }
 
         public string Parse()

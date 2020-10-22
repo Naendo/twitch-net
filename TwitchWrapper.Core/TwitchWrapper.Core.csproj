@@ -2,6 +2,11 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageId>Naendo.Twitch.NET</PackageId>
+        <Title>Twitch .NET</Title>
+        <Authors>Naendo</Authors>
+        <Description>An unoffical .NET wrapper Twitch API</Description>
     </PropertyGroup>
 
     <ItemGroup>
