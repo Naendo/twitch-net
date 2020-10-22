@@ -1,7 +1,7 @@
 # Common IntelliJ Platform excludes
 
 TwitchWrapper.Samples/Program.cs
-
+/TwitchWrapper.Samples/Program.cs
 
 TwitchWrapper.sln.DotSettings.user
 global.json
