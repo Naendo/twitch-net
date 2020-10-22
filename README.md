@@ -63,6 +63,8 @@ Below are basic examples of how to utilize the Twitch .NET API.
                 serviceCollection: BuildServiceCollection(),
                 assembly: Assembly.GetEntryAssembly()
             );
+            
+            await Task.Delay(-1);
         }
 
         private static IServiceCollection BuildServiceCollection()
