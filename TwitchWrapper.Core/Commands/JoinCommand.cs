@@ -7,7 +7,7 @@
 
         public JoinCommand(string channel)
         {
-            _channel = channel;
+            _channel = channel.ToLower();
         }
 
         public string Parse()

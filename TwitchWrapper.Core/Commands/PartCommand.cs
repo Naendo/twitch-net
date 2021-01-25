@@ -1,12 +1,18 @@
-namespace TwitchWrapper.Core.Models.Commands
+namespace TwitchWrapper.Core.Models
 {
     public class PartCommand : ICommand
     {
-        
-        
+        private readonly string _userName;
+
+        public PartCommand(string userName)
+        {
+            _userName = userName;
+        }
+
+        //[PART](#part)
         public string Parse()
         {
-            throw new System.NotImplementedException();
+            return $"PART #{_userName}";
         }
     }
 }
