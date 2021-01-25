@@ -161,6 +161,10 @@ namespace TwitchWrapper.Core
             {
                 Channel = messageResponseModel.Channel
             });
+            ProxyFactory(instance, new CommandProxy
+            {
+                Message = messageResponseModel.Message
+            });
 
 
             //(4) Invoke

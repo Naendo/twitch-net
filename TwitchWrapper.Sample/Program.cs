@@ -26,7 +26,9 @@ namespace TwitchWrapper.Sample
 
                 await bot.JoinAsync("thatnandotho");
 
-
+                
+                
+                
                 await Task.Delay(-1);
             }
             catch (Exception ex)
