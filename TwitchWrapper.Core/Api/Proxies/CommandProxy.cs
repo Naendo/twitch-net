@@ -4,11 +4,9 @@ namespace TwitchWrapper.Core.Proxies
     {
         public string Message { get; set; }
 
-        public string Command =>
-            Message[0..Message.IndexOf(' ')];
 
-        public string Parameter => Message[(Message.IndexOf(' ') + 1)..];
-
-        private bool HasParameter => Command.Contains(' ');
+        private bool HasParameter => Message.Contains(' ');
+        public string Command => HasParameter ? Message[1..Message.IndexOf(' ')] : Message;
+        public string? Parameter => HasParameter ? Message[(Message.IndexOf(' ') + 1)..] : null;
     }
 }

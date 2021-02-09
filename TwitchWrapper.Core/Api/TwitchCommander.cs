@@ -142,11 +142,8 @@ namespace TwitchWrapper.Core
             //Without DI
             //var instance = CreateInstance(methodInfo.DeclaringType).Invoke();
 
-            var instanceType = instance.GetType();
-
 
             //Fill BaseModule
-
             ProxyFactory(instance, new UserProxy
             {
                 IsBroadcaster = messageResponseModel.IsBroadcaster,
