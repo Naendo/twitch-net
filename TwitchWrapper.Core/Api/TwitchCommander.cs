@@ -95,7 +95,7 @@ namespace TwitchWrapper.Core
         }
 
         /// <summary>
-        /// PLES GET RECEIVE AND DO THE COMMAND EXECUTION ON COMMAND TEXT YES
+        /// CommandReceive EventHandler
         /// </summary>
         private async Task HandleCommandRequest(IResponse command)
         {
@@ -135,15 +135,14 @@ namespace TwitchWrapper.Core
             if (!_commandCache.TryGetValue(commandIdentifier.CommandKey.ToLower(), out var methodInfo))
                 return;
 
-
             //(3) Create Instance of Class and BaseModule
             var instance = _serviceProvider.GetService(methodInfo.DeclaringType);
 
-            //Without DI
-            //var instance = CreateInstance(methodInfo.DeclaringType).Invoke();
 
+            if (!await ValidateRoleAttributesAsync(methodInfo, messageResponseModel))
+                return;
 
-            //Fill BaseModule
+            //(4) Initalize BaseModule.cs
             ProxyFactory(instance, new UserProxy
             {
                 IsBroadcaster = messageResponseModel.IsBroadcaster,
@@ -168,7 +167,7 @@ namespace TwitchWrapper.Core
             var paramIndex = methodInfo.GetParameters().Length;
 
             // ReSharper disable once CoVariantArrayConversion
-            var task = (Task) methodInfo.Invoke(instance, commandIdentifier.Parameter[..paramIndex]);
+            var task = (Task) methodInfo.Invoke(instance, commandIdentifier.Parameter[..paramIndex])!;
 
             await task.ConfigureAwait(false);
         }
@@ -215,6 +214,25 @@ namespace TwitchWrapper.Core
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(message);
             return Task.CompletedTask;
+        }
+
+
+        /// <summary>
+        /// Role-Attribute-Handler for IRC-Client Permissions
+        /// </summary>
+        /// <param name="methodInfo">Executing Command MethodInfo</param>
+        /// <param name="messageResponseModel">Executing Command ResponseModel</param>
+        /// <returns></returns>
+        private ValueTask<bool> ValidateRoleAttributesAsync(MethodInfo methodInfo,
+            MessageResponseModel messageResponseModel)
+        {
+            if (Attribute.IsDefined(methodInfo, typeof(BroadcasterAttribute)))
+                return new ValueTask<bool>(messageResponseModel.IsBroadcaster);
+
+            if (Attribute.IsDefined(methodInfo, typeof(ModeratorAttribute)))
+                return new ValueTask<bool>(messageResponseModel.IsBroadcaster || messageResponseModel.IsModerator);
+
+            return new ValueTask<bool>(true);
         }
     }
 }
