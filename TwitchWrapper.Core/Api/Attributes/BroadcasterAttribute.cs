@@ -1,6 +1,8 @@
+using System;
+
 namespace TwitchWrapper.Core.Attributes
 {
-    public class BroadcasterAttribute
+    public class BroadcasterAttribute : Attribute
     {
         
     }

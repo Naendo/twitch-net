@@ -1,6 +1,8 @@
+using System;
+
 namespace TwitchWrapper.Core.Attributes
 {
-    public class ModeratorAttribute
+    public class ModeratorAttribute : Attribute
     {
         
     }
