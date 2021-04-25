@@ -1,8 +1,8 @@
 ﻿namespace TwitchWrapper.Core.Commands
 {
-    public class PongCommand : ICommand
+    internal class PongCommand : ICommand
     {
-        public string Parse()
+        string ICommand.Parse()
         {
             return $"PONG:tmi.twitch.tv";
         }

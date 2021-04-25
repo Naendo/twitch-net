@@ -13,7 +13,7 @@ namespace TwitchWrapper.Core.Responses
 
         //:<user>!<user>@<user>.tmi.twitch.tv PART #<channel>
 
-        public MessageResponseModel MapResponse()
+        public MessageResponseModel GetResult()
         {
             return new MessageResponseModel()
             {

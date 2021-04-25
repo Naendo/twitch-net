@@ -1,6 +1,6 @@
 namespace TwitchWrapper.Core.Models
 {
-    public class PartCommand : ICommand
+    internal class PartCommand : ICommand
     {
         private readonly string _userName;
 
@@ -10,7 +10,7 @@ namespace TwitchWrapper.Core.Models
         }
 
         //[PART](#part)
-        public string Parse()
+        string ICommand.Parse()
         {
             return $"PART #{_userName}";
         }

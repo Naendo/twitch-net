@@ -14,7 +14,7 @@ namespace TwitchWrapper.Core.Responses
 
         //:tmi.twitch.tv 001 <user> :Welcome, GLHF!
 
-        public MessageResponseModel MapResponse()
+        public MessageResponseModel GetResult()
         {
             return new MessageResponseModel()
             {

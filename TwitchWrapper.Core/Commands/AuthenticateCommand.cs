@@ -2,7 +2,7 @@
 
 namespace TwitchWrapper.Core.Commands
 {
-    public class AuthenticateCommand : ICommand
+    internal class AuthenticateCommand : ICommand
     {
         private readonly string _nick;
         private readonly string _token;

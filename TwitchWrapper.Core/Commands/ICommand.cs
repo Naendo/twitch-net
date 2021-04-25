@@ -1,7 +1,7 @@
 ﻿namespace TwitchWrapper.Core
 {
-    public interface ICommand
+    internal interface ICommand
     {
-        public string Parse();
+        string Parse();
     }
 }

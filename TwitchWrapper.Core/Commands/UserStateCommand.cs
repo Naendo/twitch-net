@@ -1,6 +1,6 @@
 namespace TwitchWrapper.Core.Commands
 {
-    public class UserStateCommand : ICommand
+    internal class UserStateCommand : ICommand
     {
         private readonly string _channel;
 
@@ -9,7 +9,7 @@ namespace TwitchWrapper.Core.Commands
             _channel = channel.ToLower();
         }
 
-        public string Parse()
+        string ICommand.Parse()
         {
             return $":tmi.twitch.tv USERSTATE #{_channel}";
         }

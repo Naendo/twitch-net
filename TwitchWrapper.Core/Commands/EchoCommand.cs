@@ -2,7 +2,7 @@
 {
     internal class EchoCommand : ICommand
     {
-        public string Parse()
+        string ICommand.Parse()
         {
             return $"ECHO";
         }

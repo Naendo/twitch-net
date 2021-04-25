@@ -10,7 +10,7 @@
             _channel = channel.ToLower();
         }
 
-        public string Parse()
+        string ICommand.Parse()
         {
             return $"JOIN #{_channel}";
         }

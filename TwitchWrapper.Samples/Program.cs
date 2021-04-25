@@ -6,7 +6,7 @@ using TwitchWrapper.Core;
 
 namespace TwitchWrapper.Samples
 {
-    public class Program
+    public static class Program
     {
         static async Task Main(string[] args)
             => await new TwitchController().InitializeTwitchClient();
@@ -25,15 +25,15 @@ namespace TwitchWrapper.Samples
         public async Task InitializeTwitchClient()
         {
             var commander = new TwitchCommander(_twitchBot);
-            
+
             await _twitchBot.LoginAsync("talkmaster_", "oauth:wpsvvdjj6tru7o5fxmgwgct5kd3f1x");
 
             await _twitchBot.JoinAsync("jetpat");
-            
+
 
             await commander.InitalizeCommanderAsync(
                 serviceCollection: BuildServiceCollection(),
-                assembly: Assembly.GetEntryAssembly()
+                assembly: Assembly.GetEntryAssembly()!
             );
 
 

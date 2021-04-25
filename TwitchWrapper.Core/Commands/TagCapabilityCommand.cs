@@ -2,9 +2,9 @@ using System;
 
 namespace TwitchWrapper.Core.Commands
 {
-    public class TagCapabilityCommand : ICommand
+    internal class TagCapabilityCommand : ICommand
     {
-        public string Parse()
+        string ICommand.Parse()
         {
             return $"CAP REQ :twitch.tv/tags {Environment.NewLine}";
         }

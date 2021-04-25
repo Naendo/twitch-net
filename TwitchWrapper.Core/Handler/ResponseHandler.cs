@@ -17,8 +17,7 @@ namespace TwitchWrapper.Core
                 return new PongResponse();
             if (data[1] == "JOIN")
                 return new JoinResponse(response);
-
-
+            
             return data[2] == "PRIVMSG" ? new MessageResponse(response) : null;
         }
     }

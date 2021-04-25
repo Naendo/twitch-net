@@ -31,7 +31,7 @@ namespace TwitchWrapper.Core
         {
             _prefix = prefix;
             _bot = bot;
-            bot.OnLogAsync += OnLogAsyncHandler;
+            bot.OnLogAsync += OnLogHandlerAsync;
         }
 
 
@@ -63,7 +63,7 @@ namespace TwitchWrapper.Core
             {
                 var result = type.GetMethods()
                     .Where(x => Attribute.IsDefined(x, typeof(CommandAttribute)))
-                    .Select(x => new {x.GetCustomAttribute<CommandAttribute>()!.Command, Method = x});
+                    .Select(x => new{x.GetCustomAttribute<CommandAttribute>()!.Command, Method = x});
 
 
                 RegisterTypeForDependencyInjection(type, serviceCollection);
@@ -102,7 +102,7 @@ namespace TwitchWrapper.Core
             if (!IsCommand(command))
                 return;
 
-            var result = command.MapResponse();
+            var result = command.GetResult();
 
             await ExecuteCommandAsync(result);
         }
@@ -113,7 +113,7 @@ namespace TwitchWrapper.Core
         /// </summary>
         private bool IsCommand(IResponse response)
         {
-            var parsedResponse = response.MapResponse();
+            var parsedResponse = response.GetResult();
 
             if (parsedResponse.ResponseType != ResponseType.PrivMsg)
                 return false;
@@ -129,63 +129,43 @@ namespace TwitchWrapper.Core
         private async Task ExecuteCommandAsync(MessageResponseModel messageResponseModel)
         {
             //(1) Identify Command
-            var commandIdentifier = ParseResponse(messageResponseModel);
+            var commandModel = ParseResponse(messageResponseModel);
 
             //(2) Read Cache
-            if (!_commandCache.TryGetValue(commandIdentifier.CommandKey.ToLower(), out var methodInfo))
+            if (!_commandCache.TryGetValue(commandModel.CommandKey.ToLower(), out var methodInfo))
                 return;
 
             //(3) Create Instance of Class and BaseModule
-            var instance = _serviceProvider.GetService(methodInfo.DeclaringType);
+            var instance = (BaseModule) _serviceProvider.GetService(methodInfo.DeclaringType);
 
 
             if (!await ValidateRoleAttributesAsync(methodInfo, messageResponseModel))
                 return;
 
             //(4) Initalize BaseModule.cs
-            ProxyFactory(instance, new UserProxy
-            {
+            instance.ChannelProxy = new ChannelProxy{
+                Channel = messageResponseModel.Channel
+            };
+            instance.UserProxy = new UserProxy{
                 IsBroadcaster = messageResponseModel.IsBroadcaster,
                 IsVip = messageResponseModel.IsVip,
                 IsModerator = messageResponseModel.IsModerator,
                 IsSubscriber = messageResponseModel.IsSubscriber,
                 Name = messageResponseModel.Name,
                 Color = messageResponseModel.Color
-            });
-            ProxyFactory(instance, _bot);
-            ProxyFactory(instance, new ChannelProxy
-            {
-                Channel = messageResponseModel.Channel
-            });
-            ProxyFactory(instance, new CommandProxy
-            {
+            };
+            instance.CommandProxy = new CommandProxy{
                 Message = messageResponseModel.Message
-            });
+            };
+            instance.TwitchBot = _bot;
 
 
             //(4) Invoke
             var paramIndex = methodInfo.GetParameters().Length;
 
             // ReSharper disable once CoVariantArrayConversion
-            var task = (Task) methodInfo.Invoke(instance, commandIdentifier.Parameter[..paramIndex])!;
-
+            var task = (Task) methodInfo.Invoke(instance, commandModel.Parameter[..paramIndex])!;
             await task.ConfigureAwait(false);
-        }
-
-
-        /// <summary>
-        /// Factory for creating BaseModule Proxies
-        /// </summary>
-        /// <param name="instance">Module instance</param>
-        /// <typeparam name="TProxy">Instance of Proxy</typeparam>
-        private void ProxyFactory<TProxy>(object instance, TProxy proxy) where TProxy : class
-        {
-            var instanceType = instance.GetType();
-
-            instanceType.BaseType!
-                    .GetProperty(proxy.GetType().Name,
-                        BindingFlags.Instance | BindingFlags.IgnoreCase | BindingFlags.NonPublic)!
-                .SetValue(instance, proxy);
         }
 
 
@@ -195,8 +175,7 @@ namespace TwitchWrapper.Core
         private CommandModel ParseResponse(MessageResponseModel model)
         {
             var responseStringAsArray = model.Message.Split(' ');
-            return new CommandModel
-            {
+            return new CommandModel{
                 CommandKey = responseStringAsArray[0][1..],
                 Parameter = responseStringAsArray[1..]
             };
@@ -204,13 +183,13 @@ namespace TwitchWrapper.Core
 
 
         /// <summary>
-        /// Authentication Log Handler
+        /// Basic Log EventHandler
         /// </summary>
-        /// <param name="message"></param>
-        private Task OnLogAsyncHandler(string message)
+        /// <param name="message">Message to be Logged</param>
+        private Task OnLogHandlerAsync(string message)
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write($"[{DateTime.Now.ToString("MM/dd/yyyy, HH:mm:ss")}]: ");
+            Console.Write($"[{DateTime.Now:MM/dd/yyyy, HH:mm:ss}]: ");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(message);
             return Task.CompletedTask;

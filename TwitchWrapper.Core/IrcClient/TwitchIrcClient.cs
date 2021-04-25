@@ -33,7 +33,7 @@ namespace TwitchWrapper.Core.IrcClient
         {
             if (!_client.Connected) throw new IrcClientException("connection closed");
 
-            var writer = new StreamWriter(_client.GetStream()) {NewLine = "\r\n"};
+            var writer = new StreamWriter(_client.GetStream()){NewLine = "\r\n"};
             await writer.WriteLineAsync(command.Parse());
             await writer.FlushAsync();
         }

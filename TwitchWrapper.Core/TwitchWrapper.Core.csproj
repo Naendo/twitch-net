@@ -4,9 +4,13 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageId>Naendo.Twitch.NET </PackageId>
-        <PackageVersion>1.1.3</PackageVersion>
+        <PackageVersion>1.2.0</PackageVersion>
         <Authors>Naendo</Authors>
         <Nullable>enable</Nullable>
+        <PackageProjectUrl>https://github.com/Naendo/twitch-net</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/Naendo/twitch-net</RepositoryUrl>
+        <RepositoryType>GitHub</RepositoryType>
+        <PackageTags>twitch-wrapper</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>

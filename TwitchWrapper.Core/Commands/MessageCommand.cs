@@ -2,7 +2,7 @@
 
 namespace TwitchWrapper.Core.Commands
 {
-    public class MessageCommand : ICommand
+    internal class MessageCommand : ICommand
     {
         private readonly string _message;
         private readonly string _channel;
@@ -15,7 +15,7 @@ namespace TwitchWrapper.Core.Commands
             _channel = channel.ToLower();
         }
 
-        public string Parse()
+        string ICommand.Parse()
         {
             return $"PRIVMSG #{_channel} :{_message}";
         }
