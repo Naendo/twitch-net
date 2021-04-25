@@ -4,7 +4,7 @@
     {
         string ICommand.Parse()
         {
-            return $"PONG:tmi.twitch.tv";
+            return "PONG:tmi.twitch.tv";
         }
     }
 }

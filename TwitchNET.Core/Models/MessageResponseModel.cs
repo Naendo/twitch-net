@@ -18,7 +18,7 @@ namespace TwitchNET.Core.Responses
         public string Name { get; set; }
 
         /// <summary>
-        /// Color in Hexformat #FFFFFF
+        ///     Color in Hexformat #FFFFFF
         /// </summary>
         public string Color { get; set; }
 

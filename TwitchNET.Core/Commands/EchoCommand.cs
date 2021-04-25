@@ -4,7 +4,7 @@
     {
         string ICommand.Parse()
         {
-            return $"ECHO";
+            return "ECHO";
         }
     }
 }

@@ -27,7 +27,7 @@ namespace TwitchNET.Core
 
 
         /// <summary>
-        /// Join Twitch Channel.
+        ///     Join Twitch Channel.
         /// </summary>
         /// <param name="channel">twitch channel you want your bot to connect to</param>
         public async Task JoinAsync(string channel)
@@ -42,7 +42,7 @@ namespace TwitchNET.Core
 
 
         /// <summary>
-        /// Leave Twitch Channel
+        ///     Leave Twitch Channel
         /// </summary>
         /// <param name="channel">Twitch Channel you want your bot to leave</param>
         public async Task PartAsync(string channel)
@@ -53,12 +53,12 @@ namespace TwitchNET.Core
 
 
         /// <summary>
-        /// Start Listening on ChatMessages in Channel
+        ///     Start Listening on ChatMessages in Channel
         /// </summary>
         private Task StartListeningAsync()
         {
             Client.StartReceive();
-            OnLogAsync?.Invoke($"Bot is now listining..");
+            OnLogAsync?.Invoke("Bot is now listining..");
             return Task.CompletedTask;
         }
 

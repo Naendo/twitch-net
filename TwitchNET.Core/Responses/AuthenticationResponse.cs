@@ -2,8 +2,8 @@ namespace TwitchNET.Core.Responses
 {
     internal class AuthenticationResponse : IResponse
     {
-        private readonly string _user;
         private readonly string _message;
+        private readonly string _user;
 
         public AuthenticationResponse(string response)
         {
@@ -16,7 +16,7 @@ namespace TwitchNET.Core.Responses
 
         MessageResponseModel IResponse.GetResult()
         {
-            return new MessageResponseModel(){
+            return new(){
                 Message = _message,
                 ResponseType = ResponseType.Authenticate,
                 Name = _user

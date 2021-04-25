@@ -9,23 +9,22 @@ using TwitchNET.Core.Exceptions;
 using TwitchNET.Core.Responses;
 using TwitchNET.Modules;
 
-
 namespace TwitchNET.Core
 {
     public class TwitchCommander
     {
-        private static readonly Dictionary<string, CommandInfo> CommandCache = new Dictionary<string, CommandInfo>();
+        private static readonly Dictionary<string, CommandInfo> CommandCache = new();
+
+        private readonly TwitchBot _bot;
+
+        private readonly string _prefix;
 
 
         private Assembly _assembly;
 
-        private readonly string _prefix;
-
-        private readonly TwitchBot _bot;
+        private RequestBuilder _requestBuilder;
 
         private IServiceProvider _serviceProvider;
-
-        private RequestBuilder _requestBuilder;
 
 
         public TwitchCommander(TwitchBot bot, string prefix = "!")
@@ -37,10 +36,10 @@ namespace TwitchNET.Core
 
 
         /// <summary>
-        /// Initalize CommandModule Pattern and scan Methodes marked as <see cref="CommandAttribute"/> in Assembly
+        ///     Initalize CommandModule Pattern and scan Methodes marked as <see cref="CommandAttribute" /> in Assembly
         /// </summary>
         /// <param name="serviceCollection">DI ServiceCollection</param>
-        /// <param name="assembly">Assembly Containing CommandModules marked with <see cref="BaseModule"/></param>
+        /// <param name="assembly">Assembly Containing CommandModules marked with <see cref="BaseModule" /></param>
         public Task InitalizeCommanderAsync(IServiceCollection serviceCollection, Assembly assembly)
         {
             _assembly = assembly;
@@ -48,12 +47,13 @@ namespace TwitchNET.Core
             {
                 _bot.Client.SubscribeReceive += HandleCommandRequest;
                 ScanAssemblyForCommands(serviceCollection);
+                ConfigureMiddleware();
             });
         }
 
 
         /// <summary>
-        /// Scan for Modules which inherit <see cref="BaseModule"/> and cache Methodes with <see cref="CommandAttribute"/>
+        ///     Scan for Modules which inherit <see cref="BaseModule" /> and cache Methodes with <see cref="CommandAttribute" />
         /// </summary>
         /// <exception cref="DuplicatedCommandException"></exception>
         private void ScanAssemblyForCommands(IServiceCollection serviceCollection)
@@ -77,29 +77,21 @@ namespace TwitchNET.Core
 
 
                 foreach (var item in result)
-                {
                     if (!CommandCache.TryAdd(item.Command, new CommandInfo{
                         CommandKey = item.Command,
                         MethodInfo = item.Method
                     }))
-                    {
                         throw new DuplicatedCommandException(
                             $"Duplicated entry on {item.Command} on method {item.Method.Name}");
-                    }
-                }
             }
 
-
-            if (_serviceProvider is null)
-                throw new ArgumentNullException(
-                    $"{nameof(_serviceProvider)} was null. {nameof(InitalizeCommanderAsync)} invokation failed.");
 
             _serviceProvider = serviceCollection.BuildServiceProvider();
         }
 
 
         /// <summary>
-        /// Configure <see cref="RequestBuilder"/>
+        ///     Configure <see cref="RequestBuilder" />
         /// </summary>
         private void ConfigureMiddleware()
         {
@@ -111,7 +103,7 @@ namespace TwitchNET.Core
 
 
         /// <summary>
-        /// Method for registering Modules marked as <see cref="BaseModule"/> in DI Container
+        ///     Method for registering Modules marked as <see cref="BaseModule" /> in DI Container
         /// </summary>
         /// <param name="type"></param>
         /// <param name="serviceCollection"></param>
@@ -122,7 +114,7 @@ namespace TwitchNET.Core
 
 
         /// <summary>
-        /// CommandReceive EventHandler
+        ///     CommandReceive EventHandler
         /// </summary>
         private async Task HandleCommandRequest(IResponse command)
         {
@@ -136,7 +128,7 @@ namespace TwitchNET.Core
 
 
         /// <summary>
-        /// Check if <see cref="IResponse"/> is command by validating <see cref="_prefix"/> is first charactar
+        ///     Check if <see cref="IResponse" /> is command by validating <see cref="_prefix" /> is first charactar
         /// </summary>
         private bool IsCommand(IResponse response)
         {
@@ -150,18 +142,18 @@ namespace TwitchNET.Core
 
 
         /// <summary>
-        /// Execute Command if <see cref="IResponse"/> is registerd as <see cref="BaseModule"/> with Attribute <see cref="CommandAttribute"/>
+        ///     Execute Command if <see cref="IResponse" /> is registerd as <see cref="BaseModule" /> with Attribute
+        ///     <see cref="CommandAttribute" />
         /// </summary>
         private async Task ExecuteCommandAsync(MessageResponseModel messageResponseModel)
         {
-            //(1) Identify Command
             var commandModel = messageResponseModel.ParseResponse();
 
-            //(2) Read Cache
+
             if (!CommandCache.TryGetValue(commandModel.CommandKey.ToLower(), out var commandInfo))
                 return;
 
-            //(3) Create Instance of Class and BaseModule
+
             var instance = (BaseModule) _serviceProvider!.GetService(commandInfo.MethodInfo.DeclaringType!);
 
 
@@ -176,7 +168,7 @@ namespace TwitchNET.Core
 
 
         /// <summary>
-        /// Basic Log EventHandler
+        ///     Basic Log EventHandler
         /// </summary>
         /// <param name="message">Message to be Logged</param>
         private Task OnLogHandlerAsync(string message)
@@ -190,7 +182,7 @@ namespace TwitchNET.Core
 
 
         /// <summary>
-        /// Role-Attribute-Handler for IRC-Client Permissions
+        ///     Role-Attribute-Handler for IRC-Client Permissions
         /// </summary>
         /// <param name="methodInfo">Executing Command MethodInfo</param>
         /// <param name="messageResponseModel">Executing Command ResponseModel</param>

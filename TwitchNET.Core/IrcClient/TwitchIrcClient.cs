@@ -21,8 +21,14 @@ namespace TwitchNET.Core.IrcClient
             _responseHandler = new ResponseHandler();
         }
 
+        public void Dispose()
+        {
+            _client.Close();
+            _client.Dispose();
+        }
+
         /// <summary>
-        /// Send <see cref="ICommand"/>/>
+        ///     Send <see cref="ICommand" />/>
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
@@ -37,7 +43,7 @@ namespace TwitchNET.Core.IrcClient
         }
 
         /// <summary>
-        /// Start Listening on <see cref="TcpClient"/> Reader
+        ///     Start Listening on <see cref="TcpClient" /> Reader
         /// </summary>
         /// <exception cref="IrcClientException"></exception>
         internal void StartReceive()
@@ -49,7 +55,6 @@ namespace TwitchNET.Core.IrcClient
                 _isListening = true;
                 using var reader = new StreamReader(_client.GetStream());
                 while (_client.Connected)
-                {
                     try
                     {
                         var data = await reader.ReadLineAsync();
@@ -64,16 +69,9 @@ namespace TwitchNET.Core.IrcClient
                     {
                         Console.WriteLine(ex.Message);
                     }
-                }
             });
         }
 
         internal event OnReceivedDelegate SubscribeReceive;
-
-        public void Dispose()
-        {
-            _client.Close();
-            _client.Dispose();
-        }
     }
 }

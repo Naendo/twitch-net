@@ -1,7 +1,7 @@
 ﻿using TwitchNET.Core.Responses;
 using TwitchNET.Modules;
 
-namespace TwitchNET.Core
+namespace TwitchNET.Core.Middleware
 {
     public class RequestContext
     {

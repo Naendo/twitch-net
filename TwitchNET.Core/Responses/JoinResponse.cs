@@ -2,8 +2,8 @@ namespace TwitchNET.Core.Responses
 {
     internal class JoinResponse : IResponse
     {
-        private readonly string _userName;
         private readonly string _message;
+        private readonly string _userName;
 
         public JoinResponse(string response)
         {
@@ -18,8 +18,7 @@ namespace TwitchNET.Core.Responses
 
         MessageResponseModel IResponse.GetResult()
         {
-            return new MessageResponseModel()
-            {
+            return new(){
                 Message = _message,
                 ResponseType = ResponseType.Join,
                 Name = _userName

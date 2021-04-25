@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace TwitchNET.Core
+namespace TwitchNET.Core.Middleware
 {
     public class ParameterCollection : IReadOnlyList<object>
     {
-        internal object[] Values { get; }
-        
         internal ParameterCollection(object[] values)
         {
             Values = values;
         }
+
+        internal object[] Values { get; }
 
         public IEnumerator<object> GetEnumerator()
         {

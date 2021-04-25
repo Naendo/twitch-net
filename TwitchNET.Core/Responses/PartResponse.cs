@@ -2,8 +2,8 @@ namespace TwitchNET.Core.Responses
 {
     internal class PartResponse : IResponse
     {
-        private readonly string _userName;
         private readonly string _message;
+        private readonly string _userName;
 
         public PartResponse(string response)
         {
@@ -15,8 +15,7 @@ namespace TwitchNET.Core.Responses
 
         MessageResponseModel IResponse.GetResult()
         {
-            return new MessageResponseModel()
-            {
+            return new(){
                 Message = _message,
                 ResponseType = ResponseType.Part,
                 Name = _userName

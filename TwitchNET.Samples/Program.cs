@@ -28,12 +28,12 @@ namespace TwitchNET.Samples
 
             await _twitchBot.LoginAsync("talkmaster_", "oauth:wpsvvdjj6tru7o5fxmgwgct5kd3f1x");
 
-            await _twitchBot.JoinAsync("jetpat");
+            await _twitchBot.JoinAsync("thatnandotho");
 
 
             await commander.InitalizeCommanderAsync(
                 serviceCollection: BuildServiceCollection(),
-                assembly: Assembly.GetEntryAssembly()!
+                assembly: typeof(Program).Assembly
             );
 
 

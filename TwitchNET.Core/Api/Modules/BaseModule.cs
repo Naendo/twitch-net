@@ -2,7 +2,6 @@
 using TwitchNET.Core;
 using TwitchNET.Core.Commands;
 
-
 namespace TwitchNET.Modules
 {
     public abstract class BaseModule
@@ -14,9 +13,9 @@ namespace TwitchNET.Modules
 
 
         /// <summary>
-        /// Send reply to connected chat via <see cref="TwitchBot"/>
+        ///     Send reply to connected chat via <see cref="TwitchBot" />
         /// </summary>
-        /// <param name="message">Your response <see cref="string"/></param>
+        /// <param name="message">Your response <see cref="string" /></param>
         protected async Task SendAsync(string message)
         {
             await TwitchBot.Client.SendAsync(new MessageCommand(message, ChannelProxy.Channel!));

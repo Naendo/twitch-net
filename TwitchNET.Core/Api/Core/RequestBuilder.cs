@@ -6,12 +6,11 @@ using TwitchNET.Core.Middleware;
 using TwitchNET.Core.Responses;
 using TwitchNET.Modules;
 
-
 namespace TwitchNET.Core
 {
     public sealed class RequestBuilder
     {
-        private readonly List<Type> _middlewareTypes = new List<Type>();
+        private readonly List<Type> _middlewareTypes = new();
 
         private readonly IServiceCollection _serviceCollection = new ServiceCollection();
 

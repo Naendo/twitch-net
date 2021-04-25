@@ -7,8 +7,7 @@ namespace TwitchNET.Core.Responses
 
         MessageResponseModel IResponse.GetResult()
         {
-            return new MessageResponseModel()
-            {
+            return new(){
                 Message = "PONG :tmi.twitch.tv",
                 ResponseType = ResponseType.Ping
             };

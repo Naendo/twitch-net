@@ -1,10 +1,9 @@
-﻿
-namespace TwitchNET.Core.Commands
+﻿namespace TwitchNET.Core.Commands
 {
     internal class MessageCommand : ICommand
     {
-        private readonly string _message;
         private readonly string _channel;
+        private readonly string _message;
 
 
         //:<user>!<user>@<user>.tmi.twitch.tv JOIN #<channel>;

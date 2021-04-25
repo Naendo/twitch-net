@@ -28,13 +28,9 @@ namespace TwitchNET.Core.Middleware
                     //ToDo: Implement Custom-TypeReader
                     if (paramterInfo.ParameterType.IsPrimitive || typeCode == TypeCode.Decimal ||
                         typeCode == TypeCode.String)
-                    {
                         typeReaders[i] = MessageTypeReader.Default;
-                    }
                     else
-                    {
                         throw new NotImplementedException("CustomTypeReaders");
-                    }
                 }
 
                 context.CommandInfo.TypeReaders = typeReaders;
@@ -42,10 +38,8 @@ namespace TwitchNET.Core.Middleware
 
             //(2) On full Cache
             for (var i = 0; i < context.CommandInfo.Parameters.Count; i++)
-            {
                 context.Parameters.Values[i] = context.CommandInfo.TypeReaders[i]
                     .ConvertFrom(context.CommandInfo.Parameters[i].ParameterType, parameters[i]);
-            }
 
 
             return context;

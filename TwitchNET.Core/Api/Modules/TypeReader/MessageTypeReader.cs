@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace TwitchNET.Modules.TypeReader
 {
     public class MessageTypeReader : TypeReader
     {
+        public static MessageTypeReader Default = new();
+
         private MessageTypeReader()
         {
-            
         }
-        
-        public static MessageTypeReader Default = new MessageTypeReader();
 
         public override TType ConvertFrom<TType>(string input)
         {

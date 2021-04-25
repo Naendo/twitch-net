@@ -19,15 +19,14 @@ namespace TwitchNET.Core.Responses
             }
 
             var indexOfSecondHashTag = response.IndexOf('#', response.IndexOf('#') + 1) + 1;
-            _response = new MessageResponseModel
-            {
+            _response = new MessageResponseModel{
                 //first ':' to first '!'
                 Name = response[(response.IndexOf(':') + 1)..response.IndexOf('!')],
                 //second ':' to end
                 Message = response[(response.IndexOf(':', response.IndexOf(':') + 1) + 1)..],
                 ResponseType = ResponseType.PrivMsg,
                 //First '#' to second ':' -1
-                Channel = response[indexOfSecondHashTag..(response.IndexOf(':', indexOfSecondHashTag))]
+                Channel = response[indexOfSecondHashTag..response.IndexOf(':', indexOfSecondHashTag)]
             };
 
             if (tags.TryGetValue("badges", out var badge))
@@ -35,7 +34,6 @@ namespace TwitchNET.Core.Responses
                 var userBadges = badge.Split(',').Select(x => x[..x.IndexOf('/')]).ToList();
 
                 foreach (var userBadge in userBadges)
-                {
                     if (userBadge == "broadcaster")
                         _response.IsBroadcaster = true;
                     else if (userBadge == "vip")
@@ -44,7 +42,6 @@ namespace TwitchNET.Core.Responses
                         _response.IsModerator = true;
                     else if (userBadge == "subscriber")
                         _response.IsSubscriber = true;
-                }
             }
 
             if (tags.TryGetValue("color", out var color))

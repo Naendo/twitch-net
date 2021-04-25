@@ -6,7 +6,6 @@ namespace TwitchNET.Core.Middleware
     {
         public RequestContext Execute(RequestContext context)
         {
-           
             context.Endpoint.ChannelProxy = new ChannelProxy{
                 Channel = context.IrcResponseModel.Channel
             };
@@ -22,7 +21,7 @@ namespace TwitchNET.Core.Middleware
                 Message = context.IrcResponseModel.Message
             };
             context.Endpoint.TwitchBot = context.BotContext;
-            
+
             return context;
         }
     }
