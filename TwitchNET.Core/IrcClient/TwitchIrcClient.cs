@@ -68,7 +68,7 @@ namespace TwitchNET.Core.IrcClient
             });
         }
 
-        internal event OnReceivedDelegate? SubscribeReceive;
+        internal event OnReceivedDelegate SubscribeReceive;
 
         public void Dispose()
         {

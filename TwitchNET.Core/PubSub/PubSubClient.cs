@@ -39,6 +39,6 @@ namespace TwitchNET.Core.PubSub
         }
 
 
-        internal event ReceivePubSubDelegate? ReceivePubSubEvent;
+        internal event ReceivePubSubDelegate ReceivePubSubEvent;
     }
 }

@@ -63,6 +63,6 @@ namespace TwitchNET.Core
         }
 
 
-        internal event LogAsyncDelegate? OnLogAsync;
+        internal event LogAsyncDelegate OnLogAsync;
     }
 }

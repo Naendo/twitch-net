@@ -9,12 +9,12 @@ namespace TwitchNET.Modules
         public bool IsTurbo { get; internal set; }
         public bool IsVip { get; internal set; }
 
-        public string? Name { get; internal set; }
+        public string Name { get; internal set; }
 
         /// <summary>
         /// Color in Hexformat #FFFFFF
         /// </summary>
-        public string? Color { get; internal set; }
+        public string Color { get; internal set; }
         
     }
 }

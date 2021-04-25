@@ -17,13 +17,13 @@ namespace TwitchNET.Modules
     {
         private static readonly Dictionary<string, MethodInfo> CommandCache = new Dictionary<string, MethodInfo>();
 
-        private Assembly? _assembly;
+        private Assembly _assembly;
 
         private readonly string _prefix;
 
         private readonly TwitchBot _bot;
 
-        private IServiceProvider? _serviceProvider;
+        private IServiceProvider _serviceProvider;
 
         public TwitchCommander(TwitchBot bot, string prefix = "!")
         {

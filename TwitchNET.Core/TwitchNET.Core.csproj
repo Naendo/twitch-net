@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net5.0</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageId>Naendo.Twitch.NET </PackageId>
         <PackageVersion>1.2.0</PackageVersion>
         <Authors>Naendo</Authors>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
         <PackageProjectUrl>https://github.com/Naendo/twitch-net</PackageProjectUrl>
         <RepositoryUrl>https://github.com/Naendo/twitch-net</RepositoryUrl>
         <RepositoryType>GitHub</RepositoryType>

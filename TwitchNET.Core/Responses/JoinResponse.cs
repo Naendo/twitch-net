@@ -2,8 +2,8 @@ namespace TwitchNET.Core.Responses
 {
     internal class JoinResponse : IResponse
     {
-        private readonly string? _userName;
-        private readonly string? _message;
+        private readonly string _userName;
+        private readonly string _message;
 
         public JoinResponse(string response)
         {
