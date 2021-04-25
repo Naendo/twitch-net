@@ -163,6 +163,9 @@ namespace TwitchWrapper.Core
             //(4) Invoke
             var paramIndex = methodInfo.GetParameters().Length;
 
+            //(5) TypeReader Middleware
+
+
             // ReSharper disable once CoVariantArrayConversion
             var task = (Task) methodInfo.Invoke(instance, commandModel.Parameter[..paramIndex])!;
             await task.ConfigureAwait(false);
