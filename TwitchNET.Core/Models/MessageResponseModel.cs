@@ -1,6 +1,8 @@
+using TwitchNET.Core.Models;
+
 namespace TwitchNET.Core.Responses
 {
-    #nullable disable
+#nullable disable
     internal class MessageResponseModel
     {
         public bool IsModerator { get; set; }
@@ -25,5 +27,15 @@ namespace TwitchNET.Core.Responses
 
         public string Message { get; set; }
         public ResponseType ResponseType { get; set; }
+
+
+        internal CommandModel ParseResponse()
+        {
+            var responseStringAsArray = Message.Split(' ');
+            return new CommandModel{
+                CommandKey = responseStringAsArray[0][1..],
+                Parameter = responseStringAsArray[1..]
+            };
+        }
     }
 }

@@ -20,6 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Api\Modules\Reader" />
       <Folder Include="PubSub\PubSubCommands" />
       <Folder Include="PubSub\PubSubResponses" />
     </ItemGroup>

@@ -5,17 +5,18 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using TwitchNET.Core;
 using TwitchNET.Core.Exceptions;
 using TwitchNET.Core.Models;
 using TwitchNET.Core.Responses;
+using TwitchNET.Modules;
 
 
-namespace TwitchNET.Modules
+namespace TwitchNET.Core
 {
     public class TwitchCommander
     {
-        private static readonly Dictionary<string, MethodInfo> CommandCache = new Dictionary<string, MethodInfo>();
+        private static readonly Dictionary<string, CommandInfo> CommandCache = new Dictionary<string, CommandInfo>();
+
 
         private Assembly _assembly;
 
@@ -24,6 +25,9 @@ namespace TwitchNET.Modules
         private readonly TwitchBot _bot;
 
         private IServiceProvider _serviceProvider;
+
+        private RequestBuilder _requestBuilder;
+
 
         public TwitchCommander(TwitchBot bot, string prefix = "!")
         {
@@ -38,15 +42,16 @@ namespace TwitchNET.Modules
         /// </summary>
         /// <param name="serviceCollection">DI ServiceCollection</param>
         /// <param name="assembly">Assembly Containing CommandModules marked with <see cref="BaseModule"/></param>
-        public async Task InitalizeCommanderAsync(IServiceCollection serviceCollection, Assembly assembly)
+        public Task InitalizeCommanderAsync(IServiceCollection serviceCollection, Assembly assembly)
         {
             _assembly = assembly;
-            await Task.Run(() =>
+            return Task.Run(() =>
             {
                 _bot.Client.SubscribeReceive += HandleCommandRequest;
                 ScanAssemblyForCommands(serviceCollection);
             });
         }
+
 
         /// <summary>
         /// Scan for Modules which inherit <see cref="BaseModule"/> and cache Methodes with <see cref="CommandAttribute"/>
@@ -63,17 +68,21 @@ namespace TwitchNET.Modules
 
             foreach (var type in types)
             {
+                //ToDo: Remove LINQ
                 var result = type.GetMethods()
                     .Where(x => Attribute.IsDefined(x, typeof(CommandAttribute)))
                     .Select(x => new{x.GetCustomAttribute<CommandAttribute>()!.Command, Method = x});
 
 
-                RegisterTypeForDependencyInjection(type, serviceCollection);
+                ConfigureServiceCollection(type, serviceCollection);
 
 
                 foreach (var item in result)
                 {
-                    if (!CommandCache.TryAdd(item.Command, item.Method))
+                    if (!CommandCache.TryAdd(item.Command, new CommandInfo{
+                        CommandKey = item.Command,
+                        MethodInfo = item.Method
+                    }))
                     {
                         throw new DuplicatedCommandException(
                             $"Duplicated entry on {item.Command} on method {item.Method.Name}");
@@ -91,14 +100,25 @@ namespace TwitchNET.Modules
 
 
         /// <summary>
+        /// Configure <see cref="RequestBuilder"/>
+        /// </summary>
+        private void ConfigureMiddleware()
+        {
+            _requestBuilder.UseProxies();
+            _requestBuilder.UseTypeReader();
+        }
+
+
+        /// <summary>
         /// Method for registering Modules marked as <see cref="BaseModule"/> in DI Container
         /// </summary>
         /// <param name="type"></param>
         /// <param name="serviceCollection"></param>
-        private void RegisterTypeForDependencyInjection(Type type, IServiceCollection serviceCollection)
+        private void ConfigureServiceCollection(Type type, IServiceCollection serviceCollection)
         {
             serviceCollection.TryAddTransient(type);
         }
+
 
         /// <summary>
         /// CommandReceive EventHandler
@@ -131,64 +151,26 @@ namespace TwitchNET.Modules
         /// <summary>
         /// Execute Command if <see cref="IResponse"/> is registerd as <see cref="BaseModule"/> with Attribute <see cref="CommandAttribute"/>
         /// </summary>
-        /// <param name="messageResponseModel"></param>
         private async Task ExecuteCommandAsync(MessageResponseModel messageResponseModel)
         {
             //(1) Identify Command
-            var commandModel = ParseResponse(messageResponseModel);
+            var commandModel = messageResponseModel.ParseResponse();
 
             //(2) Read Cache
-            if (!CommandCache.TryGetValue(commandModel.CommandKey.ToLower(), out var methodInfo))
+            if (!CommandCache.TryGetValue(commandModel.CommandKey.ToLower(), out var commandInfo))
                 return;
-
 
             //(3) Create Instance of Class and BaseModule
-            var instance = (BaseModule) _serviceProvider!.GetService(methodInfo.DeclaringType);
+            var instance = (BaseModule) _serviceProvider!.GetService(commandInfo.MethodInfo.DeclaringType!);
 
 
-            if (!await ValidateRoleAttributesAsync(methodInfo, messageResponseModel))
+            if (!await ValidateRoleAttributesAsync(commandInfo.MethodInfo, messageResponseModel))
                 return;
 
-            //(4) Initalize BaseModule.cs
-            instance.ChannelProxy = new ChannelProxy{
-                Channel = messageResponseModel.Channel
-            };
-            instance.UserProxy = new UserProxy{
-                IsBroadcaster = messageResponseModel.IsBroadcaster,
-                IsVip = messageResponseModel.IsVip,
-                IsModerator = messageResponseModel.IsModerator,
-                IsSubscriber = messageResponseModel.IsSubscriber,
-                Name = messageResponseModel.Name,
-                Color = messageResponseModel.Color
-            };
-            instance.CommandProxy = new CommandProxy{
-                Message = messageResponseModel.Message
-            };
-            instance.TwitchBot = _bot;
 
+            var context = _requestBuilder.ExecutePipeline(commandInfo, instance, _bot, messageResponseModel);
 
-            //(4) Invoke
-            var paramIndex = methodInfo.GetParameters().Length;
-
-            //(5) TypeReader Middleware
-
-
-            // ReSharper disable once CoVariantArrayConversion
-            var task = (Task) methodInfo.Invoke(instance, commandModel.Parameter[..paramIndex])!;
-            await task.ConfigureAwait(false);
-        }
-
-
-        /// <summary>
-        /// Parse <see cref="IResponse"/> to <see cref="CommandModel"/>
-        /// </summary>
-        private CommandModel ParseResponse(MessageResponseModel model)
-        {
-            var responseStringAsArray = model.Message.Split(' ');
-            return new CommandModel{
-                CommandKey = responseStringAsArray[0][1..],
-                Parameter = responseStringAsArray[1..]
-            };
+            await _requestBuilder.InvokeEndpointAsync(context).ConfigureAwait(false);
         }
 
 
