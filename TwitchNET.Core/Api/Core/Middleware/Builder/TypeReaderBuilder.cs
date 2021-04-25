@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using TwitchNET.Modules.TypeReader;
 
 namespace TwitchNET.Core.Middleware

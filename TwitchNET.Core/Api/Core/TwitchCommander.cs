@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using TwitchNET.Core.Exceptions;
-using TwitchNET.Core.Models;
 using TwitchNET.Core.Responses;
 using TwitchNET.Modules;
 
@@ -104,6 +103,8 @@ namespace TwitchNET.Core
         /// </summary>
         private void ConfigureMiddleware()
         {
+            _requestBuilder = new RequestBuilder();
+
             _requestBuilder.UseProxies();
             _requestBuilder.UseTypeReader();
         }
