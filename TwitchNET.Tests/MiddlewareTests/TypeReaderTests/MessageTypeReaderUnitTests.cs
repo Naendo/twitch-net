@@ -53,10 +53,10 @@ namespace TwitchWrapper.Tests.MiddlewareTests.TypeReaderTests
         public void ConvertFrom_WithNullableInt()
         {
             var resultMin = MessageTypeReader.Default.ConvertFrom(typeof(int?), null);
-            Assert.IsType<int?>(resultMin);
+            Assert.Null(resultMin);
 
             var resultMax = MessageTypeReader.Default.ConvertFrom(typeof(int?), null);
-            Assert.IsType<int?>(resultMax);
+            Assert.Null(resultMax);
         }
 
         [Fact]
@@ -89,10 +89,10 @@ namespace TwitchWrapper.Tests.MiddlewareTests.TypeReaderTests
         public void ConvertFrom_WithNullableLong()
         {
             var resultMin = MessageTypeReader.Default.ConvertFrom(typeof(int?), null);
-            Assert.IsType<long?>(resultMin);
+            Assert.Null(resultMin);
 
             var resultMax = MessageTypeReader.Default.ConvertFrom(typeof(int?), null);
-            Assert.IsType<long?>(resultMax);
+            Assert.Null(resultMax);
         }
 
         [Fact]
@@ -112,10 +112,10 @@ namespace TwitchWrapper.Tests.MiddlewareTests.TypeReaderTests
         public void ConvertFrom_WithNullableDouble()
         {
             var resultMin = MessageTypeReader.Default.ConvertFrom(typeof(double?), null);
-            Assert.IsType<double?>(resultMin);
+            Assert.Null(resultMin);
 
             var resultMax = MessageTypeReader.Default.ConvertFrom(typeof(double?), null);
-            Assert.IsType<double?>(resultMax);
+            Assert.Null(resultMax);
         }
 
         [Fact]
@@ -148,10 +148,10 @@ namespace TwitchWrapper.Tests.MiddlewareTests.TypeReaderTests
         public void ConvertFrom_WithNullableByte()
         {
             var resultMin = MessageTypeReader.Default.ConvertFrom(typeof(byte?), null);
-            Assert.IsType<byte?>(resultMin);
+           Assert.Null(resultMin);
 
             var resultMax = MessageTypeReader.Default.ConvertFrom(typeof(byte?), null);
-            Assert.IsType<byte?>(resultMax);
+            Assert.Null(resultMax);
         }
 
 
@@ -173,10 +173,10 @@ namespace TwitchWrapper.Tests.MiddlewareTests.TypeReaderTests
         {
             var resultMin = (decimal?)MessageTypeReader.Default.ConvertFrom(typeof(decimal?), null);
             
-            Assert.IsType<Decimal?>(resultMin);
+            Assert.Null(resultMin);
 
             var resultMax = (decimal?)MessageTypeReader.Default.ConvertFrom(typeof(decimal?), null);
-            Assert.IsType<decimal?>(resultMax);
+            Assert.Null(resultMax);
         }
     }
 }
