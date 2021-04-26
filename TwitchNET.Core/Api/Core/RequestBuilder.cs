@@ -17,22 +17,6 @@ namespace TwitchNET.Core
         private readonly IServiceCollection _serviceCollection = new ServiceCollection();
 
 
-        public RequestBuilder UseMiddleware<TMiddleware>() where TMiddleware : IMiddleware
-        {
-            return TryRegisterCustomMiddleware<TMiddleware>();
-        }
-
-
-        internal RequestBuilder UseTypeReader()
-        {
-            return TryRegisterMiddleware<TypeReaderBuilder>();
-        }
-
-        internal RequestBuilder UseProxies()
-        {
-            return TryRegisterMiddleware<ProxyBuilder>();
-        }
-
         internal RequestContext ExecutePipeline(CommandInfo commandInfo, BaseModule endpoint, TwitchBot botContext,
             MessageResponseModel messageResponse)
         {
@@ -67,7 +51,7 @@ namespace TwitchNET.Core
                 requestContext.Parameters.Values)!;
         }
 
-        private RequestBuilder TryRegisterMiddleware<TType>() where TType : IMiddleware
+        internal RequestBuilder TryRegisterMiddleware<TType>() where TType : IMiddleware
         {
             var type = typeof(TType);
             if (_middlewareTypes.Contains(type))
@@ -78,7 +62,7 @@ namespace TwitchNET.Core
             return this;
         }
 
-        private RequestBuilder TryRegisterCustomMiddleware<TMiddleware>() where TMiddleware : IMiddleware
+        internal RequestBuilder TryRegisterCustomMiddleware<TMiddleware>() where TMiddleware : IMiddleware
         {
             var type = typeof(TMiddleware);
             if (_customMiddlewareTypes.Contains(type))

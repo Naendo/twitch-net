@@ -1,7 +1,7 @@
 # Common IntelliJ Platform excludes
 
-TwitchWrapper.Samples/Program.cs
-/TwitchWrapper.Samples/Program.cs
+TwitchNET.Samples/Program.cs
+/TwitchNET.Samples/Program.cs
 
 TwitchWrapper.sln.DotSettings.user
 global.json
@@ -41,3 +41,6 @@ _UpgradeReport_Files/
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+
+
