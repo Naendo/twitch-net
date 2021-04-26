@@ -24,6 +24,10 @@ namespace TwitchNET.Core.Middleware
 
         public int Count => Values.Length;
 
-        public object this[int index] => Values[index];
+        public object this[int index]
+        {
+            get => Values[index];
+            set => Values[index] = value;
+        }
     }
 }

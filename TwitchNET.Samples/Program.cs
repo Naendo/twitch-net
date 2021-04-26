@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using TwitchNET.Modules;
 using TwitchNET.Core;
+using TwitchNET.Samples.Middleware;
 
 namespace TwitchNET.Samples
 {
@@ -33,12 +34,16 @@ namespace TwitchNET.Samples
 
             await commander.InitalizeCommanderAsync(
                 serviceCollection: BuildServiceCollection(),
-                assembly: typeof(Program).Assembly
+                assembly: typeof(Program).Assembly,
+                BuildRequest()
             );
 
 
             await Task.Delay(-1);
         }
+
+        private static RequestBuilder BuildRequest() =>
+            new RequestBuilder().UseMiddleware<AppendStringToFirstParameterMiddleware>();
 
         private static IServiceCollection BuildServiceCollection()
             => new ServiceCollection();

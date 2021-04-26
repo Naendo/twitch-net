@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -19,7 +20,6 @@ namespace TwitchNET.Core
 
         private readonly string _prefix;
 
-
         private Assembly _assembly;
 
         private RequestBuilder _requestBuilder;
@@ -38,16 +38,18 @@ namespace TwitchNET.Core
         /// <summary>
         ///     Initalize CommandModule Pattern and scan Methodes marked as <see cref="CommandAttribute" /> in Assembly
         /// </summary>
-        /// <param name="serviceCollection">DI ServiceCollection</param>
-        /// <param name="assembly">Assembly Containing CommandModules marked with <see cref="BaseModule" /></param>
-        public Task InitalizeCommanderAsync(IServiceCollection serviceCollection, Assembly assembly)
+        /// <param name="serviceCollection">Dependency Injection - ServiceCollection</param>
+        /// <param name="assembly">Required: The assembly cointaining Command Modules inhereting <see cref="BaseModule"/></param>
+        /// <param name="requestBuilder"></param>
+        public Task InitalizeCommanderAsync(IServiceCollection serviceCollection, Assembly assembly,
+            RequestBuilder requestBuilder = null)
         {
             _assembly = assembly;
             return Task.Run(() =>
             {
                 _bot.Client.SubscribeReceive += HandleCommandRequest;
                 ScanAssemblyForCommands(serviceCollection);
-                ConfigureMiddleware();
+                ConfigureMiddleware(requestBuilder ?? new RequestBuilder());
             });
         }
 
@@ -93,12 +95,12 @@ namespace TwitchNET.Core
         /// <summary>
         ///     Configure <see cref="RequestBuilder" />
         /// </summary>
-        private void ConfigureMiddleware()
+        private void ConfigureMiddleware(RequestBuilder requestBuilder)
         {
-            _requestBuilder = new RequestBuilder();
+            requestBuilder.UseProxies();
+            requestBuilder.UseTypeReader();
 
-            _requestBuilder.UseProxies();
-            _requestBuilder.UseTypeReader();
+            _requestBuilder = requestBuilder;
         }
 
 
@@ -160,6 +162,9 @@ namespace TwitchNET.Core
             if (!await ValidateRoleAttributesAsync(commandInfo.MethodInfo, messageResponseModel))
                 return;
 
+
+            if (_requestBuilder is null)
+                throw new ArgumentNullException($"{nameof(_requestBuilder)}: Method {nameof(ExecuteCommandAsync)}");
 
             var context = _requestBuilder.ExecutePipeline(commandInfo, instance, _bot, messageResponseModel);
 
