@@ -7,5 +7,10 @@ namespace TwitchWrapper.Tests.MiddlewareTests.Setup
         public void DummyMethode(string param1, int param2)
         {
         }
+
+
+        public void CustomTypeReaderDummyMethode(TestEnum test)
+        {
+        }
     }
 }

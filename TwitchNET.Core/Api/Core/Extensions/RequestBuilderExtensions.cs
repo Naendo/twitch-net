@@ -1,4 +1,5 @@
 ﻿using TwitchNET.Core.Middleware;
+using TwitchNET.Modules.TypeReader;
 
 namespace TwitchNET.Core
 {
@@ -18,6 +19,12 @@ namespace TwitchNET.Core
         internal static RequestBuilder UseProxies(this RequestBuilder requestBuilder)
         {
             return requestBuilder.TryRegisterMiddleware<ProxyBuilder>();
+        }
+
+        public static RequestBuilder UseTypeReader<TType, TTypeReader>(this RequestBuilder requestBuilder)
+            where TTypeReader : ITypeReader
+        {
+            return requestBuilder.TryRegisterCustomTypeReader<TType, TTypeReader>();
         }
     }
 }

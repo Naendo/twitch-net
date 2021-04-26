@@ -2,7 +2,7 @@
 
 namespace TwitchNET.Modules.TypeReader
 {
-    internal interface ITypeReader
+    public interface ITypeReader
     {
         object ConvertFrom(Type type, string input);
     }

@@ -1,11 +1,12 @@
 ﻿using System;
+using TwitchNET.Core.Exceptions.TypeReaderException;
 using TwitchNET.Modules.TypeReader;
 
 namespace TwitchNET.Core.Middleware
 {
-    public sealed class TypeReaderBuilder : IMiddleware
+    internal sealed class TypeReaderBuilder : IMiddleware
     {
-        public RequestContext Execute(RequestContext context)
+        RequestContext IMiddleware.Execute(RequestContext context)
         {
             var parameters = context.IrcResponseModel.ParseResponse().Parameter;
 
@@ -25,12 +26,20 @@ namespace TwitchNET.Core.Middleware
                     var typeCode = Type.GetTypeCode(paramterInfo.ParameterType);
 
 
-                    //ToDo: Implement Custom-TypeReader
-                    if (paramterInfo.ParameterType.IsPrimitive || typeCode == TypeCode.Decimal ||
-                        typeCode == TypeCode.String)
+                    if (paramterInfo.ParameterType.IsPrimitive
+                        || typeCode == TypeCode.Decimal
+                        || typeCode == TypeCode.String)
                         typeReaders[i] = MessageTypeReader.Default;
+                    else if (context.CustomTypeReaders is not null &&
+                             context.CustomTypeReaders.ContainsKey(paramterInfo.ParameterType))
+                    {
+                        typeReaders[i] = context.CustomTypeReaders[paramterInfo.ParameterType];
+                    }
                     else
-                        throw new NotImplementedException("CustomTypeReaders");
+                    {
+                        throw new ArgumentException(
+                            $"There is no TypeReader registerd for type: {paramterInfo.ParameterType}");
+                    }
                 }
 
                 context.CommandInfo.TypeReaders = typeReaders;

@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using TwitchNET.Core.Middleware;
 using TwitchNET.Core.Responses;
 using TwitchNET.Modules;
+using TwitchNET.Modules.TypeReader;
 
 namespace TwitchNET.Core
 {
@@ -13,6 +14,8 @@ namespace TwitchNET.Core
     {
         private readonly List<Type> _middlewareTypes = new();
         private readonly List<Type> _customMiddlewareTypes = new();
+
+        private readonly Dictionary<Type, ITypeReader> _customTypeReader = new Dictionary<Type, ITypeReader>();
 
         private readonly IServiceCollection _serviceCollection = new ServiceCollection();
 
@@ -38,7 +41,8 @@ namespace TwitchNET.Core
                     CommandInfo = commandInfo,
                     Endpoint = endpoint,
                     IrcResponseModel = messageResponse,
-                    BotContext = botContext
+                    BotContext = botContext,
+                    CustomTypeReaders = _customTypeReader
                 });
             }
 
@@ -49,6 +53,18 @@ namespace TwitchNET.Core
         {
             return (Task) requestContext.CommandInfo.MethodInfo.Invoke(requestContext.Endpoint,
                 requestContext.Parameters.Values)!;
+        }
+
+
+        internal RequestBuilder TryRegisterCustomTypeReader<TType, TTypeReader>() where TTypeReader : ITypeReader
+        {
+            var type = typeof(TType);
+
+            if (_customTypeReader.ContainsKey(type))
+                return this;
+
+            _customTypeReader.Add(type, Activator.CreateInstance<TTypeReader>());
+            return this;
         }
 
         internal RequestBuilder TryRegisterMiddleware<TType>() where TType : IMiddleware

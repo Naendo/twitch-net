@@ -5,7 +5,7 @@ namespace TwitchNET.Modules.TypeReader
 {
     public class MessageTypeReader : TypeReader
     {
-        public static MessageTypeReader Default = new();
+        public static readonly MessageTypeReader Default = new();
 
         private MessageTypeReader()
         {
@@ -14,6 +14,7 @@ namespace TwitchNET.Modules.TypeReader
         public override TType ConvertFrom<TType>(string input)
         {
             var converter = TypeDescriptor.GetConverter(typeof(TType));
+
             return (TType) converter.ConvertFrom(input);
         }
 

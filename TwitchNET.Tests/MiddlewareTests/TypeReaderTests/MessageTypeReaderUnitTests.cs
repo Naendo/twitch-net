@@ -9,6 +9,16 @@ namespace TwitchWrapper.Tests.MiddlewareTests.TypeReaderTests
         [Theory]
         [InlineData("this is a string")]
         [InlineData("1231231 this is also a string")]
+        public void ConvertFrom_WithStringGeneric(string input)
+        {
+            var result = MessageTypeReader.Default.ConvertFrom<string>(input);
+            Assert.IsType<string>(result);
+        }
+
+
+        [Theory]
+        [InlineData("this is a string")]
+        [InlineData("1231231 this is also a string")]
         public void ConvertFrom_WithString(string input)
         {
             var result = MessageTypeReader.Default.ConvertFrom(typeof(string), input);
@@ -148,7 +158,7 @@ namespace TwitchWrapper.Tests.MiddlewareTests.TypeReaderTests
         public void ConvertFrom_WithNullableByte()
         {
             var resultMin = MessageTypeReader.Default.ConvertFrom(typeof(byte?), null);
-           Assert.Null(resultMin);
+            Assert.Null(resultMin);
 
             var resultMax = MessageTypeReader.Default.ConvertFrom(typeof(byte?), null);
             Assert.Null(resultMax);
@@ -171,11 +181,11 @@ namespace TwitchWrapper.Tests.MiddlewareTests.TypeReaderTests
         [Fact]
         public void ConvertFrom_WithNullableDecimal()
         {
-            var resultMin = (decimal?)MessageTypeReader.Default.ConvertFrom(typeof(decimal?), null);
-            
+            var resultMin = (decimal?) MessageTypeReader.Default.ConvertFrom(typeof(decimal?), null);
+
             Assert.Null(resultMin);
 
-            var resultMax = (decimal?)MessageTypeReader.Default.ConvertFrom(typeof(decimal?), null);
+            var resultMax = (decimal?) MessageTypeReader.Default.ConvertFrom(typeof(decimal?), null);
             Assert.Null(resultMax);
         }
     }
