@@ -1,8 +1,5 @@
 # Common IntelliJ Platform excludes
 
-TwitchNET.Samples/Program.cs
-/TwitchNET.Samples/Program.cs
-
 TwitchWrapper.sln.DotSettings.user
 global.json
 
@@ -43,4 +40,4 @@ Desktop.ini
 .DS_Store
 
 
-
+TwitchNET.Samples/Program.cs
