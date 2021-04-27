@@ -7,12 +7,17 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using TwitchNET.Core.Exceptions;
+using TwitchNET.Core.Middleware;
 using TwitchNET.Core.Responses;
 using TwitchNET.Modules;
 using TwitchWrapper.Core;
 
 namespace TwitchNET.Core
 {
+    /// <summary>
+    /// Executes and manages the module/command framework
+    /// </summary>
+    /// <remarks>The service provides a framework for registering and executing Twitch commands. To create a command module at compile-time, see <see cref="BaseModule"/></remarks>
     public class TwitchCommander
     {
         private static readonly Dictionary<string, CommandInfo> CommandCache = new();
@@ -28,6 +33,11 @@ namespace TwitchNET.Core
         private IServiceProvider _serviceProvider;
 
 
+        /// <summary>
+        /// Initalizes a new <see cref="TwitchCommander"/>
+        /// </summary>
+        /// <param name="bot">Insance of <see cref="TwitchBot"/></param>
+        /// <param name="prefix">Command Identifier</param>
         public TwitchCommander(TwitchBot bot, string prefix = "!")
         {
             _prefix = prefix;
@@ -36,12 +46,13 @@ namespace TwitchNET.Core
         }
 
 
-        /// <summary>
-        ///     Initalize CommandModule Pattern and scan Methodes marked as <see cref="CommandAttribute" /> in Assembly
+        ///<summary>
+        /// Initalizes the module framework and scans all commands marked with a <see cref="CommandAttribute"/> in an given <see cref="Assembly"/>
         /// </summary>
+        /// <remarks>Calling this methode will result in mapping the IRC-Inputs to registerd modules. Executing this method is required.</remarks>
         /// <param name="serviceCollection">Dependency Injection - ServiceCollection</param>
-        /// <param name="assembly">Required: The assembly cointaining Command Modules inhereting <see cref="BaseModule"/></param>
-        /// <param name="requestBuilder"></param>
+        /// <param name="assembly">The assembly cointaining Command Modules inhereting <see cref="BaseModule"/></param>
+        /// <param name="requestBuilder">Optional: ServiceCollection to register customized <see cref="IMiddleware"/></param>
         public Task InitalizeCommanderAsync(IServiceCollection serviceCollection, Assembly assembly,
             RequestBuilder requestBuilder = null)
         {
@@ -58,7 +69,6 @@ namespace TwitchNET.Core
         /// <summary>
         ///     Scan for Modules which inherit <see cref="BaseModule" /> and cache Methodes with <see cref="CommandAttribute" />
         /// </summary>
-        /// <exception cref="DuplicatedCommandException"></exception>
         private void ScanAssemblyForCommands(IServiceCollection serviceCollection)
         {
             if (_assembly is null)

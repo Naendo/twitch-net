@@ -36,7 +36,7 @@ namespace TwitchNET.Core.IrcClient
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        /// <exception cref="IrcClientException"></exception>
+        /// <exception cref="IrcClientException">Ensures an open Irc-Connection</exception>
         internal async Task SendAsync(ICommand command)
         {
             if (!_client.Connected) throw new IrcClientException("connection closed");

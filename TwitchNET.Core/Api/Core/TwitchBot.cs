@@ -9,6 +9,9 @@ namespace TwitchNET.Core
 {
     internal delegate Task LogAsyncDelegate(string message);
 
+    /// <summary>
+    /// Surface Api to manage connection states to the twitch irc chat
+    /// </summary>
     public class TwitchBot
     {
         internal TwitchIrcClient Client;
@@ -19,6 +22,9 @@ namespace TwitchNET.Core
         private TwitchBotCredentials _credentials = new TwitchBotCredentials();
 
 
+        /// <summary>
+        /// Initalizes a new TwitchBot
+        /// </summary>
         public TwitchBot()
         {
             InitalizeTwitchIrcClient();
@@ -30,9 +36,13 @@ namespace TwitchNET.Core
             Client.OnDisconnect += ReconnectHandler;
         }
 
+        
+        ///<summary>
+        /// Initialized connection to the Twitch-IRC chat.
+        /// </summary>
         /// <summary>Sending authentication request to server.</summary>
-        /// <param name="nick">twitch account username</param>
-        /// <param name="token">oauth token</param>
+        /// <param name="nick">Twitch Username</param>
+        /// <param name="token">Twitch OAuth Token"/></param>
         public async Task LoginAsync(string nick, string token)
         {
             _credentials.Token = token;
@@ -44,9 +54,9 @@ namespace TwitchNET.Core
 
 
         /// <summary>
-        ///     Join Twitch Channel
+        /// Initializes a connection to a given twitch channel
         /// </summary>
-        /// <param name="channel">Twitch Channel</param>
+        /// <param name="channel">Twitch Channel Name</param>
         public async Task JoinAsync(string channel)
         {
             _credentials.Channel = channel;
@@ -61,7 +71,7 @@ namespace TwitchNET.Core
 
 
         /// <summary>
-        ///     Leave Twitch Channel
+        ///     Leave a certained Twitch Channel
         /// </summary>
         /// <param name="channel">Twitch Channel you want your bot to leave</param>
         public async Task PartAsync(string channel)

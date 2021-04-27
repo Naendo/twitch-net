@@ -10,6 +10,35 @@ using TwitchNET.Modules.TypeReader;
 
 namespace TwitchNET.Core
 {
+    /// <summary>
+    /// Initializes an middleware framework using a <see cref="ServiceCollection"/>
+    /// </summary>
+    /// <example>
+    /// And example of how to utilize <see cref="RequestBuilder"/>
+    /// <code>
+    ///public async Task InitializeTwitchClient()
+    ///{
+    ///   var commander = new TwitchCommander(_twitchBot)
+    /// ;
+    ///   await _twitchBot.LoginAsync("nick", "oauth:token");
+    /// 
+    ///   await _twitchBot.JoinAsync("channel");
+    /// 
+    ///   await commander.InitalizeCommanderAsync(
+    ///     serviceCollection: BuildServiceCollection(),
+    ///     assembly: typeof(Program).Assembly,
+    ///     requestBuilder: BuildRequest()
+    ///    );
+    /// 
+    ///   await Task.Delay(-1);
+    ///}
+    /// 
+    ///private static RequestBuilder BuildRequest() =>
+    ///      new RequestBuilder()
+    ///       .UseMiddleware&lt;YourMiddleware&gt;();
+    ///</code>
+    /// </example>
+   
     public sealed class RequestBuilder
     {
         private readonly List<Type> _middlewareTypes = new();

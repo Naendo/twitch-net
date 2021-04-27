@@ -1,5 +1,6 @@
 namespace TwitchNET.Core.Responses
 {
+    /// <inheritdoc cref="IResponse"/>
     internal class PartResponse : IResponse
     {
         private readonly string _message;
@@ -11,8 +12,8 @@ namespace TwitchNET.Core.Responses
             _message = response[response.IndexOf(' ')..];
         }
 
-        //:<user>!<user>@<user>.tmi.twitch.tv PART #<channel>
-
+        
+        //:<user>!<user>@<user>.tmi.twitch.tv PART #
         MessageResponseModel IResponse.GetResult()
         {
             return new(){

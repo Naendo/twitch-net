@@ -1,5 +1,6 @@
 namespace TwitchNET.Core.Responses
 {
+    /// <inheritdoc cref="IResponse"/>
     internal class JoinResponse : IResponse
     {
         private readonly string _message;
@@ -16,6 +17,7 @@ namespace TwitchNET.Core.Responses
 
         //:<user>!<user>@<user>.tmi.twitch.tv JOIN #<channel>
 
+        /// <inheritdoc/>
         MessageResponseModel IResponse.GetResult()
         {
             return new(){

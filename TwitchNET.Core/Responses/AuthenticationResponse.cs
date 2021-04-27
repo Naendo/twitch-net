@@ -1,5 +1,6 @@
 namespace TwitchNET.Core.Responses
 {
+    /// <inheritdoc/>
     internal class AuthenticationResponse : IResponse
     {
         private readonly string _message;
@@ -14,6 +15,7 @@ namespace TwitchNET.Core.Responses
 
         //:tmi.twitch.tv 001 <user> :Welcome, GLHF!
 
+        /// <inheritdoc/>
         MessageResponseModel IResponse.GetResult()
         {
             return new(){

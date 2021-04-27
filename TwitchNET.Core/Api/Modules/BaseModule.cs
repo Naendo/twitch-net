@@ -4,6 +4,10 @@ using TwitchNET.Core.Commands;
 
 namespace TwitchNET.Modules
 {
+    
+    /// <summary>
+    /// Provides a base class for a command module to inherit from
+    /// </summary>
     public abstract class BaseModule
     {
         internal TwitchBot TwitchBot { get; set; } = null!;

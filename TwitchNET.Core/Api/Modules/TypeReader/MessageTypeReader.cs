@@ -3,9 +3,9 @@ using System.ComponentModel;
 
 namespace TwitchNET.Modules.TypeReader
 {
-    public class MessageTypeReader : TypeReader
+    internal class MessageTypeReader : TypeReader
     {
-        public static readonly MessageTypeReader Default = new();
+        internal static readonly MessageTypeReader Default = new();
 
         private MessageTypeReader()
         {
