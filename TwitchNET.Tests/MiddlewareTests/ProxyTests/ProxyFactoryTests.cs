@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestPlatform.Common.Hosting;
 using TwitchNET.Core;
 using TwitchNET.Modules;
-using TwitchWrapper.Tests.MiddlewareTests.Setup;
+using TwitchNET.Tests.MiddlewareTests.Setup;
 using Xunit;
 
-namespace TwitchWrapper.Tests.MiddlewareTests.ProxyTests
+namespace TwitchNET.Tests.MiddlewareTests.ProxyTests
 {
     public class ProxyFactoryTests
     {

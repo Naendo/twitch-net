@@ -1,10 +1,10 @@
 ﻿using TwitchNET.Core;
 using TwitchNET.Core.Responses;
 using TwitchNET.Modules;
-using TwitchWrapper.Tests.MiddlewareTests.Setup;
+using TwitchNET.Tests.MiddlewareTests.Setup;
 using Xunit;
 
-namespace TwitchWrapper.Tests.MiddlewareTests
+namespace TwitchNET.Tests.MiddlewareTests
 {
     public class PipelineIntegrationTests
     {

@@ -1,3 +1,4 @@
+using TwitchNET.Core.Exceptions;
 using TwitchNET.Core.Responses;
 
 namespace TwitchNET.Core
@@ -17,8 +18,11 @@ namespace TwitchNET.Core
                 return new PongResponse();
             if (data[1] == "JOIN")
                 return new JoinResponse(response);
-
-            return data[2] == "PRIVMSG" ? new MessageResponse(response) : null;
+            if (data[2] == "PRIVMSG")
+                return new MessageResponse(response);
+            if (data[1] == "NOTICE" && data[4] == "authentication")
+                throw new IrcClientException("IRC-Authentication failed!");
+            return null;
         }
     }
 }

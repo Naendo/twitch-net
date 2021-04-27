@@ -2,7 +2,7 @@
 using TwitchNET.Modules.TypeReader;
 using Xunit;
 
-namespace TwitchWrapper.Tests.MiddlewareTests.TypeReaderTests
+namespace TwitchNET.Tests.MiddlewareTests.TypeReaderTests
 {
     public class MessageTypeReaderUnitTests
     {

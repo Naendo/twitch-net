@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using TwitchNET.Core.Exceptions;
 using TwitchNET.Core.Responses;
 using TwitchNET.Modules;
+using TwitchWrapper.Core;
 
 namespace TwitchNET.Core
 {
@@ -176,13 +177,9 @@ namespace TwitchNET.Core
         ///     Basic Log EventHandler
         /// </summary>
         /// <param name="message">Message to be Logged</param>
-        private Task OnLogHandlerAsync(string message)
+        private async Task OnLogHandlerAsync(string message)
         {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write($"[{DateTime.Now:MM/dd/yyyy, HH:mm:ss}]: ");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(message);
-            return Task.CompletedTask;
+            await InternalLogger.LogEventsAsync(message);
         }
 
 

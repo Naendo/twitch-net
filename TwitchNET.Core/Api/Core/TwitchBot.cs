@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿#nullable enable
+using System.Reflection.Metadata.Ecma335;
+using System.Threading.Tasks;
 using TwitchNET.Core.Commands;
 using TwitchNET.Core.IrcClient;
 using TwitchNET.Core.Models;
@@ -9,11 +11,23 @@ namespace TwitchNET.Core
 
     public class TwitchBot
     {
-        internal readonly TwitchIrcClient Client;
+        internal TwitchIrcClient Client;
+
+        public int Type { get; set; }
+
+
+        private TwitchBotCredentials _credentials = new TwitchBotCredentials();
+
 
         public TwitchBot()
         {
+            InitalizeTwitchIrcClient();
+        }
+
+        private void InitalizeTwitchIrcClient()
+        {
             Client = new TwitchIrcClient("irc.twitch.tv", 6667);
+            Client.OnDisconnect += ReconnectHandler;
         }
 
         /// <summary>Sending authentication request to server.</summary>
@@ -21,17 +35,22 @@ namespace TwitchNET.Core
         /// <param name="token">oauth token</param>
         public async Task LoginAsync(string nick, string token)
         {
+            _credentials.Token = token;
+            _credentials.Nick = nick;
+
             await Client.SendAsync(new AuthenticateCommand(nick, token));
             OnLogAsync?.Invoke($"Bot authorized as [{nick}]");
         }
 
 
         /// <summary>
-        ///     Join Twitch Channel.
+        ///     Join Twitch Channel
         /// </summary>
-        /// <param name="channel">twitch channel you want your bot to connect to</param>
+        /// <param name="channel">Twitch Channel</param>
         public async Task JoinAsync(string channel)
         {
+            _credentials.Channel = channel;
+
             await Client.SendAsync(new JoinCommand(channel));
             OnLogAsync?.Invoke($"Joined Channel: {channel}");
             await Client.SendAsync(new UserStateCommand(channel));
@@ -49,6 +68,7 @@ namespace TwitchNET.Core
         {
             await Client.SendAsync(new PartCommand(channel));
             OnLogAsync?.Invoke($"Leave Channel: {channel}");
+            Client.OnDisconnect -= ReconnectHandler;
         }
 
 
@@ -60,6 +80,17 @@ namespace TwitchNET.Core
             Client.StartReceive();
             OnLogAsync?.Invoke("Bot is now listining..");
             return Task.CompletedTask;
+        }
+
+
+        private async Task ReconnectHandler(int reconnectInterval)
+        {
+            InitalizeTwitchIrcClient();
+
+            await Task.Delay(reconnectInterval * 1000);
+            OnLogAsync?.Invoke($"Reconnecting to: {_credentials.Channel}");
+            await LoginAsync(_credentials.Nick, _credentials.Token);
+            await JoinAsync(_credentials.Channel);
         }
 
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using TwitchNET.Modules.TypeReader;
 
-namespace TwitchWrapper.Tests.MiddlewareTests.Setup
+namespace TwitchNET.Tests.MiddlewareTests.Setup
 {
     public enum TestEnum
     {

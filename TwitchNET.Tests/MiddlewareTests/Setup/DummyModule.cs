@@ -1,6 +1,6 @@
 ﻿using TwitchNET.Modules;
 
-namespace TwitchWrapper.Tests.MiddlewareTests.Setup
+namespace TwitchNET.Tests.MiddlewareTests.Setup
 {
     public class DummyModule : BaseModule
     {

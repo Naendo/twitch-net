@@ -4,6 +4,8 @@ using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using TwitchNET.Core.Exceptions;
+using TwitchNET.Core.Responses;
+using TwitchWrapper.Core;
 
 [assembly: InternalsVisibleTo("TwitchNET.Tests")]
 
@@ -14,6 +16,8 @@ namespace TwitchNET.Core.IrcClient
         private readonly TcpClient _client;
         private readonly ResponseHandler _responseHandler;
         private bool _isListening;
+        private readonly int _reconnectInterval = 2;
+
 
         internal TwitchIrcClient(string host, int port)
         {
@@ -55,6 +59,7 @@ namespace TwitchNET.Core.IrcClient
                 _isListening = true;
                 using var reader = new StreamReader(_client.GetStream());
                 while (_client.Connected)
+                {
                     try
                     {
                         var data = await reader.ReadLineAsync();
@@ -64,14 +69,24 @@ namespace TwitchNET.Core.IrcClient
                         if (response is null) continue;
 
                         SubscribeReceive?.Invoke(response);
+
+
+                        if (_client.Connected == false)
+                        {
+                            _client.Close();
+                            OnDisconnect?.Invoke(_reconnectInterval);
+                        }
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
+                        await InternalLogger.LogExceptionAsync(ex);
                     }
+                }
             });
         }
 
+
         internal event OnReceivedDelegate SubscribeReceive;
+        internal event OnDisconnectDelegate OnDisconnect;
     }
 }

@@ -1,7 +1,7 @@
-﻿using TwitchWrapper.Tests.MiddlewareTests.Setup;
+﻿using TwitchNET.Tests.MiddlewareTests.Setup;
 using Xunit;
 
-namespace TwitchWrapper.Tests.MiddlewareTests.TypeReaderTests
+namespace TwitchNET.Tests.MiddlewareTests.TypeReaderTests
 {
     public class CustomTypeReaderTests
     {
