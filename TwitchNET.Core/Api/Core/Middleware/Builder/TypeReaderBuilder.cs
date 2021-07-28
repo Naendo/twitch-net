@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using TwitchNET.Core.Exceptions.TypeReaderException;
 using TwitchNET.Modules.TypeReader;
 
@@ -8,27 +9,31 @@ namespace TwitchNET.Core.Middleware
     {
         RequestContext IMiddleware.Execute(RequestContext context)
         {
-            var parameters = context.IrcResponseModel.ParseResponse().Parameter;
+            var parameters = context.IrcResponseModel.ParseResponse().Parameter.ToList();
+            //ToDo: MethodInfo null-check
+            context.CommandInfo.Parameters = context.CommandInfo.MethodInfo.GetParameters();
 
-            context.Parameters = new ParameterCollection(new object[parameters.Length]);
+            context.Parameters = new ParameterCollection(new object[context.CommandInfo.Parameters.Count]);
 
             //(1) Manage Cache
             if (context.CommandInfo.TypeReaders is null)
             {
-                //ToDo: MethodInfo null-check
-                context.CommandInfo.Parameters = context.CommandInfo.MethodInfo.GetParameters();
-
-                var typeReaders = new ITypeReader[parameters.Length];
+                
+                var typeReaders = new ITypeReader[context.CommandInfo.Parameters.Count];
 
                 for (var i = 0; i < context.CommandInfo.Parameters.Count; i++)
                 {
                     var paramterInfo = context.CommandInfo.Parameters[i];
                     var typeCode = Type.GetTypeCode(paramterInfo.ParameterType);
 
-
-                    if (paramterInfo.ParameterType.IsPrimitive
-                        || typeCode == TypeCode.Decimal
-                        || typeCode == TypeCode.String)
+                    if (paramterInfo.IsOptional && parameters.Count < context.Parameters.Count)
+                    {
+                        typeReaders[i] = MessageTypeReader.Default;
+                        parameters.Add(null);
+                    }
+                    else if (paramterInfo.ParameterType.IsPrimitive
+                             || typeCode == TypeCode.Decimal
+                             || typeCode == TypeCode.String)
                         typeReaders[i] = MessageTypeReader.Default;
                     else if (context.CustomTypeReaders is not null &&
                              context.CustomTypeReaders.ContainsKey(paramterInfo.ParameterType))

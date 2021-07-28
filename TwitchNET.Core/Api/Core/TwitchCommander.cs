@@ -177,9 +177,20 @@ namespace TwitchNET.Core
             if (_requestBuilder is null)
                 throw new ArgumentNullException($"{nameof(_requestBuilder)}: Method {nameof(ExecuteCommandAsync)}");
 
-            var context = _requestBuilder.ExecutePipeline(commandInfo, instance, _bot, messageResponseModel);
+            try
+            {
+                var context = _requestBuilder.ExecutePipeline(commandInfo, instance, _bot, messageResponseModel);
 
-            await _requestBuilder.InvokeEndpointAsync(context).ConfigureAwait(false);
+                await _requestBuilder.InvokeEndpointAsync(context).ConfigureAwait(false);
+            }
+            //Catch Exception caused by wrong commands - not real exceptions!
+            catch (Exception)
+            {
+                
+            }
+         
+
+           
         }
 
 

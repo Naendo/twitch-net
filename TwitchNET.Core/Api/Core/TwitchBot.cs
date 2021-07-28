@@ -17,13 +17,12 @@ namespace TwitchNET.Core
         internal TwitchIrcClient Client;
 
         public int Type { get; set; }
-
-
-        private TwitchBotCredentials _credentials = new TwitchBotCredentials();
+        
+        private readonly TwitchBotCredentials _credentials = new TwitchBotCredentials();
 
 
         /// <summary>
-        /// Initalizes a new TwitchBot
+        /// Initiates connection with irc.twitch.tv:6667
         /// </summary>
         public TwitchBot()
         {
@@ -88,7 +87,7 @@ namespace TwitchNET.Core
         private Task StartListeningAsync()
         {
             Client.StartReceive();
-            OnLogAsync?.Invoke("Bot is now listining..");
+            OnLogAsync?.Invoke("Bot is connected..");
             return Task.CompletedTask;
         }
 

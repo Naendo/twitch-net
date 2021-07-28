@@ -20,6 +20,9 @@ namespace TwitchNET.Modules.TypeReader
 
         public override object ConvertFrom(Type type, string input)
         {
+            if (input is null)
+                return null;
+            
             var converter = TypeDescriptor.GetConverter(type);
 
             return converter.ConvertFrom(input);
