@@ -30,7 +30,7 @@ namespace TwitchNET.Tests.MiddlewareTests.TypeReaderTests
         public void ConvertFrom_WithNullableString(string? input)
         {
             var result = MessageTypeReader.Default.ConvertFrom(typeof(string), input);
-            Assert.IsType<string>(result);
+            Assert.Null(result);
         }
 
         [Fact]

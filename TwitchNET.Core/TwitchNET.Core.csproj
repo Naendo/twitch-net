@@ -10,8 +10,9 @@
         <PackageProjectUrl>https://github.com/Naendo/twitch-net</PackageProjectUrl>
         <RepositoryUrl>https://github.com/Naendo/twitch-net</RepositoryUrl>
         <RepositoryType>GitHub</RepositoryType>
-        <PackageTags>twitch-wrapper</PackageTags>
+        <PackageTags>twitch-wrapper .netcore</PackageTags>
         <RootNamespace>TwitchWrapper.Core</RootNamespace>
+        <Title>A .NET Core TwitchAPI Wrapper</Title>
     </PropertyGroup>
 
     <ItemGroup>
