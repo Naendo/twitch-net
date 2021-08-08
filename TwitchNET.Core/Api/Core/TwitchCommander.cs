@@ -15,9 +15,9 @@ using TwitchWrapper.Core;
 namespace TwitchNET.Core
 {
     /// <summary>
-    /// Executes and manages the module/command framework
+    /// Executes and manages the command framework.
     /// </summary>
-    /// <remarks>The service provides a framework for registering and executing Twitch commands. To create a command module at compile-time, see <see cref="BaseModule"/></remarks>
+    /// <remarks>The service provides a framework for registering and execute Chat Commands. To create a command module at compile-time, see <see cref="BaseModule"/>.</remarks>
     public class TwitchCommander
     {
         private static readonly Dictionary<string, CommandInfo> CommandCache = new();
@@ -47,7 +47,7 @@ namespace TwitchNET.Core
 
 
         ///<summary>
-        /// Initalizes the module framework and scans all commands marked with a <see cref="CommandAttribute"/> in an given <see cref="Assembly"/>
+        /// Initalizes the module framework and scans all commands marked with a <see cref="CommandAttribute"/> in a given <see cref="Assembly"/>
         /// </summary>
         /// <remarks>Calling this methode will result in mapping the IRC-Inputs to registerd modules. Executing this method is required.</remarks>
         /// <param name="serviceCollection">Dependency Injection - ServiceCollection</param>
@@ -83,14 +83,15 @@ namespace TwitchNET.Core
                 //ToDo: Remove LINQ
                 var result = type.GetMethods()
                     .Where(x => Attribute.IsDefined(x, typeof(CommandAttribute)))
-                    .Select(x => new{x.GetCustomAttribute<CommandAttribute>()!.Command, Method = x});
+                    .Select(x => new {x.GetCustomAttribute<CommandAttribute>()!.Command, Method = x});
 
 
                 ConfigureServiceCollection(type, serviceCollection);
 
 
                 foreach (var item in result)
-                    if (!CommandCache.TryAdd(item.Command, new CommandInfo{
+                    if (!CommandCache.TryAdd(item.Command, new CommandInfo
+                    {
                         CommandKey = item.Command,
                         MethodInfo = item.Method
                     }))
@@ -160,37 +161,34 @@ namespace TwitchNET.Core
         /// </summary>
         private async Task ExecuteCommandAsync(MessageResponseModel messageResponseModel)
         {
-            var commandModel = messageResponseModel.ParseResponse();
-
-
-            if (!CommandCache.TryGetValue(commandModel.CommandKey.ToLower(), out var commandInfo))
-                return;
-
-
-            var instance = (BaseModule) _serviceProvider!.GetService(commandInfo.MethodInfo.DeclaringType!);
-
-
-            if (!await ValidateRoleAttributesAsync(commandInfo.MethodInfo, messageResponseModel))
-                return;
-
-
-            if (_requestBuilder is null)
-                throw new ArgumentNullException($"{nameof(_requestBuilder)}: Method {nameof(ExecuteCommandAsync)}");
-
             try
             {
+                var commandModel = messageResponseModel.ParseResponse();
+
+
+                if (!CommandCache.TryGetValue(commandModel.CommandKey.ToLower(), out var commandInfo))
+                    return;
+
+
+                var instance = (BaseModule) _serviceProvider!.GetService(commandInfo.MethodInfo.DeclaringType!);
+
+
+                if (!await ValidateRoleAttributesAsync(commandInfo.MethodInfo, messageResponseModel))
+                    return;
+
+
+                if (_requestBuilder is null)
+                    throw new ArgumentNullException($"{nameof(_requestBuilder)}: Method {nameof(ExecuteCommandAsync)}");
+
+
                 var context = _requestBuilder.ExecutePipeline(commandInfo, instance, _bot, messageResponseModel);
 
                 await _requestBuilder.InvokeEndpointAsync(context).ConfigureAwait(false);
             }
-            //Catch Exception caused by wrong commands - not real exceptions!
-            catch (Exception)
+            catch (Exception ex)
             {
-                
+                Console.WriteLine(ex.ToString());
             }
-         
-
-           
         }
 
 
@@ -213,11 +211,11 @@ namespace TwitchNET.Core
         private ValueTask<bool> ValidateRoleAttributesAsync(MethodInfo methodInfo,
             MessageResponseModel messageResponseModel)
         {
-            if (Attribute.IsDefined(methodInfo, typeof(BroadcasterAttribute)))
-                return new ValueTask<bool>(messageResponseModel.IsBroadcaster);
-
             if (Attribute.IsDefined(methodInfo, typeof(ModeratorAttribute)))
                 return new ValueTask<bool>(messageResponseModel.IsBroadcaster || messageResponseModel.IsModerator);
+
+            if (Attribute.IsDefined(methodInfo, typeof(BroadcasterAttribute)))
+                return new ValueTask<bool>(messageResponseModel.IsBroadcaster);
 
             return new ValueTask<bool>(true);
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
@@ -13,16 +14,15 @@ namespace TwitchNET.Core.IrcClient
 {
     internal class TwitchIrcClient : IDisposable
     {
-        private readonly TcpClient _client;
-        private readonly ResponseHandler _responseHandler;
+        private TcpClient _client;
+        private ResponseHandler _responseHandler;
         private bool _isListening;
         private readonly int _reconnectInterval = 2;
 
 
-        internal TwitchIrcClient(string host, int port)
+        internal TwitchIrcClient()
         {
-            _client = new TcpClient(host, port);
-            _responseHandler = new ResponseHandler();
+
         }
 
         public void Dispose()
@@ -30,6 +30,13 @@ namespace TwitchNET.Core.IrcClient
             _client.Close();
             _client.Dispose();
         }
+
+        internal void InitializeIrcClient(string host, int port)
+        {
+            _client = new TcpClient(host, port);
+            _responseHandler = new ResponseHandler();
+        }
+
 
         /// <summary>
         ///     Send <see cref="ICommand" />/>
@@ -41,9 +48,8 @@ namespace TwitchNET.Core.IrcClient
         {
             if (!_client.Connected) throw new IrcClientException("connection closed");
 
-            var writer = new StreamWriter(_client.GetStream()) {NewLine = "\r\n"};
+            var writer = new StreamWriter(_client.GetStream()) {NewLine = "\r\n", AutoFlush = true};
             await writer.WriteLineAsync(command.Parse());
-            await writer.FlushAsync();
         }
 
         /// <summary>
@@ -56,31 +62,23 @@ namespace TwitchNET.Core.IrcClient
             if (_isListening) return;
             Task.Run(async () =>
             {
-                _isListening = true;
-                using var reader = new StreamReader(_client.GetStream());
+                await using var stream = _client.GetStream();
+                using var reader = new StreamReader(stream);
+
+
                 while (_client.Connected)
                 {
-                    try
+                    var data = await reader.ReadLineAsync();
+                    if (data is null)
                     {
-                        var data = await reader.ReadLineAsync();
-                        if (data is null) continue;
-
-                        var response = _responseHandler.DeterminedResponseType(data);
-                        if (response is null) continue;
-
-                        SubscribeReceive?.Invoke(response);
-
-
-                        if (_client.Connected == false)
-                        {
-                            _client.Close();
-                            OnDisconnect?.Invoke(_reconnectInterval);
-                        }
+                        OnDisconnect?.Invoke(1000);
+                        break;
                     }
-                    catch (Exception ex)
-                    {
-                        await InternalLogger.LogExceptionAsync(ex);
-                    }
+
+                    var response = _responseHandler.DeterminedResponseType(data);
+                    if (response is null) continue;
+
+                    SubscribeReceive?.Invoke(response);
                 }
             });
         }

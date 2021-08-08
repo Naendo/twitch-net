@@ -11,7 +11,7 @@ namespace TwitchWrapper.Core
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write($"[{DateTime.Now:MM/dd/yyyy, HH:mm:ss}]: ");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(message.Message);
+            Console.WriteLine(message.ToString());
             return Task.CompletedTask;
         }
 

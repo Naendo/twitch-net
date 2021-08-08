@@ -16,26 +16,22 @@ namespace TwitchNET.Core
     {
         internal TwitchIrcClient Client;
 
-        public int Type { get; set; }
-        
         private readonly TwitchBotCredentials _credentials = new TwitchBotCredentials();
 
+        private const string URI = "irc.twitch.tv";
+        private const int PORT = 6667;
 
         /// <summary>
         /// Initiates connection with irc.twitch.tv:6667
         /// </summary>
         public TwitchBot()
         {
-            InitalizeTwitchIrcClient();
-        }
-
-        private void InitalizeTwitchIrcClient()
-        {
-            Client = new TwitchIrcClient("irc.twitch.tv", 6667);
+            Client = new TwitchIrcClient();
+            Client.InitializeIrcClient(URI,PORT);
             Client.OnDisconnect += ReconnectHandler;
         }
 
-        
+
         ///<summary>
         /// Initialized connection to the Twitch-IRC chat.
         /// </summary>
@@ -62,10 +58,9 @@ namespace TwitchNET.Core
 
             await Client.SendAsync(new JoinCommand(channel));
             OnLogAsync?.Invoke($"Joined Channel: {channel}");
-            await Client.SendAsync(new UserStateCommand(channel));
             await Client.SendAsync(new TagCapabilityCommand());
 
-            await StartListeningAsync();
+            StartListening();
         }
 
 
@@ -84,20 +79,19 @@ namespace TwitchNET.Core
         /// <summary>
         ///     Start Listening on ChatMessages in Channel
         /// </summary>
-        private Task StartListeningAsync()
+        private void StartListening()
         {
             Client.StartReceive();
             OnLogAsync?.Invoke("Bot is connected..");
-            return Task.CompletedTask;
         }
 
 
         private async Task ReconnectHandler(int reconnectInterval)
         {
-            InitalizeTwitchIrcClient();
-
-            await Task.Delay(reconnectInterval * 1000);
+            await Task.Delay(reconnectInterval);
             OnLogAsync?.Invoke($"Reconnecting to: {_credentials.Channel}");
+            
+            Client.InitializeIrcClient(URI,PORT);
             await LoginAsync(_credentials.Nick, _credentials.Token);
             await JoinAsync(_credentials.Channel);
         }

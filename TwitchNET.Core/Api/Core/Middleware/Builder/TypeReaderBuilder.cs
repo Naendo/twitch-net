@@ -9,7 +9,7 @@ namespace TwitchNET.Core.Middleware
     {
         RequestContext IMiddleware.Execute(RequestContext context)
         {
-            var parameters = context.IrcResponseModel.ParseResponse().Parameter.ToList();
+            var parameters = context.IrcResponseModel.ParseResponse().Parameter;
             //ToDo: MethodInfo null-check
             context.CommandInfo.Parameters = context.CommandInfo.MethodInfo.GetParameters();
 
@@ -18,7 +18,6 @@ namespace TwitchNET.Core.Middleware
             //(1) Manage Cache
             if (context.CommandInfo.TypeReaders is null)
             {
-                
                 var typeReaders = new ITypeReader[context.CommandInfo.Parameters.Count];
 
                 for (var i = 0; i < context.CommandInfo.Parameters.Count; i++)
@@ -26,10 +25,9 @@ namespace TwitchNET.Core.Middleware
                     var paramterInfo = context.CommandInfo.Parameters[i];
                     var typeCode = Type.GetTypeCode(paramterInfo.ParameterType);
 
-                    if (paramterInfo.IsOptional && parameters.Count < context.Parameters.Count)
+                    if (paramterInfo.IsOptional && parameters.Length < context.Parameters.Count)
                     {
                         typeReaders[i] = MessageTypeReader.Default;
-                        parameters.Add(null);
                     }
                     else if (paramterInfo.ParameterType.IsPrimitive
                              || typeCode == TypeCode.Decimal
@@ -53,7 +51,10 @@ namespace TwitchNET.Core.Middleware
             //(2) On full Cache
             for (var i = 0; i < context.CommandInfo.Parameters.Count; i++)
                 context.Parameters.Values[i] = context.CommandInfo.TypeReaders[i]
-                    .ConvertFrom(context.CommandInfo.Parameters[i].ParameterType, parameters[i]);
+                    .ConvertFrom(context.CommandInfo.Parameters[i].ParameterType,
+                        parameters.Length == 0
+                            ? context.CommandInfo.Parameters[i].DefaultValue?.ToString()
+                            : parameters[i]);
 
 
             return context;

@@ -27,23 +27,22 @@ namespace TwitchNET.Samples
         {
             var commander = new TwitchCommander(_twitchBot);
 
-            await _twitchBot.LoginAsync("botname", "oauth:oauth");
+            await _twitchBot.LoginAsync("thatnandotho", "oauth:bw7v6tykdoazc1l2a1qcvcouvktynv");
 
-            await _twitchBot.JoinAsync("channel");
+            await _twitchBot.JoinAsync("thatnandotho");
 
 
             await commander.InitalizeCommanderAsync(
                 serviceCollection: BuildServiceCollection(),
-                assembly: typeof(Program).Assembly,
-                BuildRequest()
+                assembly: typeof(Program).Assembly
             );
 
 
             await Task.Delay(-1);
         }
 
-        private static RequestBuilder BuildRequest() =>
-            new RequestBuilder().UseMiddleware<AppendStringToFirstParameterMiddleware>();
+        /* private static RequestBuilder BuildRequest() =>
+             new RequestBuilder().UseMiddleware<AppendStringToFirstParameterMiddleware>();*/
 
         private static IServiceCollection BuildServiceCollection()
             => new ServiceCollection();

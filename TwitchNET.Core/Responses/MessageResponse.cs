@@ -33,6 +33,9 @@ namespace TwitchNET.Core.Responses
 
             if (tags.TryGetValue("badges", out var badge))
             {
+                if (badge is "")
+                    return;
+                
                 var userBadges = badge.Split(',').Select(x => x[..x.IndexOf('/')]).ToList();
 
                 foreach (var userBadge in userBadges)
@@ -44,6 +47,7 @@ namespace TwitchNET.Core.Responses
                         _response.IsModerator = true;
                     else if (userBadge == "subscriber")
                         _response.IsSubscriber = true;
+                    
             }
 
             if (tags.TryGetValue("color", out var color))

@@ -1,3 +1,4 @@
+using System;
 using TwitchNET.Core.Exceptions;
 using TwitchNET.Core.Responses;
 
@@ -14,14 +15,19 @@ namespace TwitchNET.Core
             //data[1] = ResponseType on Commands
             var data = response.Split(' ');
 
-            if (data[0] == "PING")
+            if (data[0].ToLower() == "ping")
+            {
+                Console.WriteLine("Ping");
                 return new PongResponse();
+            }
             if (data[1] == "JOIN")
                 return new JoinResponse(response);
             if (data[2] == "PRIVMSG")
                 return new MessageResponse(response);
             if (data[1] == "NOTICE" && data[4] == "authentication")
                 throw new IrcClientException("IRC-Authentication failed!");
+
+            Console.WriteLine(response);
             return null;
         }
     }
