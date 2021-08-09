@@ -14,15 +14,22 @@ namespace TwitchNET.Core.IrcClient
 {
     internal class TwitchIrcClient : IDisposable
     {
+        private const string URI = "irc.twitch.tv";
+        private const int PORT = 6667;
         private TcpClient _client;
         private ResponseHandler _responseHandler;
-        private bool _isListening;
-        private readonly int _reconnectInterval = 2;
 
 
         internal TwitchIrcClient()
         {
+            _client = new TcpClient();
+            _responseHandler = new ResponseHandler();
+        }
 
+        internal async Task ConnectAsync()
+        {
+            _client = new TcpClient();
+            await _client.ConnectAsync(URI, PORT);
         }
 
         public void Dispose()
@@ -30,13 +37,6 @@ namespace TwitchNET.Core.IrcClient
             _client.Close();
             _client.Dispose();
         }
-
-        internal void InitializeIrcClient(string host, int port)
-        {
-            _client = new TcpClient(host, port);
-            _responseHandler = new ResponseHandler();
-        }
-
 
         /// <summary>
         ///     Send <see cref="ICommand" />/>
@@ -59,7 +59,6 @@ namespace TwitchNET.Core.IrcClient
         internal void StartReceive()
         {
             if (!_client.Connected) throw new IrcClientException($"connection aborted on {nameof(StartReceive)}");
-            if (_isListening) return;
             Task.Run(async () =>
             {
                 await using var stream = _client.GetStream();
@@ -72,7 +71,7 @@ namespace TwitchNET.Core.IrcClient
                     if (data is null)
                     {
                         OnDisconnect?.Invoke(1000);
-                        break;
+                        return;
                     }
 
                     var response = _responseHandler.DeterminedResponseType(data);

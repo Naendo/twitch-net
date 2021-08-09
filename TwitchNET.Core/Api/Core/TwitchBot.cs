@@ -18,8 +18,6 @@ namespace TwitchNET.Core
 
         private readonly TwitchBotCredentials _credentials = new TwitchBotCredentials();
 
-        private const string URI = "irc.twitch.tv";
-        private const int PORT = 6667;
 
         /// <summary>
         /// Initiates connection with irc.twitch.tv:6667
@@ -27,24 +25,28 @@ namespace TwitchNET.Core
         public TwitchBot()
         {
             Client = new TwitchIrcClient();
-            Client.InitializeIrcClient(URI,PORT);
             Client.OnDisconnect += ReconnectHandler;
         }
 
 
-        ///<summary>
-        /// Initialized connection to the Twitch-IRC chat.
-        /// </summary>
-        /// <summary>Sending authentication request to server.</summary>
-        /// <param name="nick">Twitch Username</param>
-        /// <param name="token">Twitch OAuth Token"/></param>
-        public async Task LoginAsync(string nick, string token)
+        /// <summary>
+        ///  Initialized connection to the Twitch-IRC chat.
+        ///  </summary>
+        ///  <summary>Sending authentication request to server.</summary>
+        ///  <param name="nick">Twitch Username</param>
+        ///  <param name="token">Twitch OAuth Token"/></param>
+        /// <param name="isReconnecting">Optional Parameter to handel Logging</param>
+        public async Task LoginAsync(string nick, string token, bool isReconnecting = false)
         {
+            await Client.ConnectAsync();
+
             _credentials.Token = token;
             _credentials.Nick = nick;
 
             await Client.SendAsync(new AuthenticateCommand(nick, token));
-            OnLogAsync?.Invoke($"Bot authorized as [{nick}]");
+
+            if (!isReconnecting)
+                OnLogAsync?.Invoke($"Bot authorized as [{nick}]");
         }
 
 
@@ -52,14 +54,16 @@ namespace TwitchNET.Core
         /// Initializes a connection to a given twitch channel
         /// </summary>
         /// <param name="channel">Twitch Channel Name</param>
-        public async Task JoinAsync(string channel)
+        /// <param name="isReconnecting"></param>
+        public async Task JoinAsync(string channel, bool isReconnecting = false)
         {
             _credentials.Channel = channel;
 
             await Client.SendAsync(new JoinCommand(channel));
-            OnLogAsync?.Invoke($"Joined Channel: {channel}");
-            await Client.SendAsync(new TagCapabilityCommand());
+            if (!isReconnecting)
+                OnLogAsync?.Invoke($"Joined Channel: {channel}");
 
+            await Client.SendAsync(new TagCapabilityCommand());
             StartListening();
         }
 
@@ -88,12 +92,11 @@ namespace TwitchNET.Core
 
         private async Task ReconnectHandler(int reconnectInterval)
         {
-            await Task.Delay(reconnectInterval);
             OnLogAsync?.Invoke($"Reconnecting to: {_credentials.Channel}");
-            
-            Client.InitializeIrcClient(URI,PORT);
-            await LoginAsync(_credentials.Nick, _credentials.Token);
-            await JoinAsync(_credentials.Channel);
+
+            await Client.ConnectAsync();
+            await LoginAsync(_credentials.Nick, _credentials.Token,true);
+            await JoinAsync(_credentials.Channel,true);
         }
 
 
