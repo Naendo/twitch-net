@@ -32,26 +32,29 @@ namespace TwitchNET.Core
 
         private IServiceProvider _serviceProvider;
 
+        private Logger _logger;
+
 
         /// <summary>
         /// Initalizes a new <see cref="TwitchCommander"/>
         /// </summary>
         /// <param name="bot">Insance of <see cref="TwitchBot"/></param>
         /// <param name="prefix">Command Identifier</param>
-        public TwitchCommander(TwitchBot bot, string prefix = "!")
+        public TwitchCommander(TwitchBot bot, string prefix = "!", LogOutput logOutput = LogOutput.Console)
         {
             _prefix = prefix;
             _bot = bot;
-            bot.OnLogAsync += OnLogHandlerAsync;
+            _logger = new Logger(logOutput);
+            bot.OnLogAsync += _logger.OnLogHandlerAsync;
         }
 
 
         ///<summary>
-        /// Initalizes the module framework and scans all commands marked with a <see cref="CommandAttribute"/> in a given <see cref="Assembly"/>
+        /// Initializes the module framework and scans all commands marked with a <see cref="CommandAttribute"/> in a given <see cref="Assembly"/>
         /// </summary>
-        /// <remarks>Calling this methode will result in mapping the IRC-Inputs to registerd modules. Executing this method is required.</remarks>
+        /// <remarks>Calling this methode will result in mapping the IRC-Inputs to registered modules. Executing this method is required.</remarks>
         /// <param name="serviceCollection">Dependency Injection - ServiceCollection</param>
-        /// <param name="assembly">The assembly cointaining Command Modules inhereting <see cref="BaseModule"/></param>
+        /// <param name="assembly">The assembly containing Command Modules inheriting <see cref="BaseModule"/></param>
         /// <param name="requestBuilder">Optional: ServiceCollection to register customized <see cref="IMiddleware"/></param>
         public Task InitalizeCommanderAsync(IServiceCollection serviceCollection, Assembly assembly,
             RequestBuilder requestBuilder = null)
