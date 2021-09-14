@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using TwitchNET.Core.Exceptions;
-using TwitchNET.Core.Responses;
-using TwitchWrapper.Core;
 
 [assembly: InternalsVisibleTo("TwitchNET.Tests")]
 

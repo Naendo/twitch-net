@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -20,7 +19,7 @@ namespace TwitchNET.Core
     /// <remarks>The service provides a framework for registering and execute Chat Commands. To create a command module at compile-time, see <see cref="BaseModule"/>.</remarks>
     public class TwitchCommander
     {
-        private static readonly Dictionary<string, CommandInfo> CommandCache = new();
+        private static readonly Dictionary<string, CommandInfo> _commandCache = new();
 
         private readonly TwitchBot _bot;
 
@@ -32,20 +31,19 @@ namespace TwitchNET.Core
 
         private IServiceProvider _serviceProvider;
 
-        private Logger _logger;
-
 
         /// <summary>
         /// Initalizes a new <see cref="TwitchCommander"/>
         /// </summary>
         /// <param name="bot">Insance of <see cref="TwitchBot"/></param>
         /// <param name="prefix">Command Identifier</param>
+        /// <param name="logOutput">Log via File or Console</param>
         public TwitchCommander(TwitchBot bot, string prefix = "!", LogOutput logOutput = LogOutput.Console)
         {
             _prefix = prefix;
             _bot = bot;
-            _logger = new Logger(logOutput);
-            bot.OnLogAsync += _logger.OnLogHandlerAsync;
+            var logger = new Logger(logOutput);
+            bot.OnLogAsync += logger.OnLogHandlerAsync;
         }
 
 
@@ -93,7 +91,7 @@ namespace TwitchNET.Core
 
 
                 foreach (var item in result)
-                    if (!CommandCache.TryAdd(item.Command, new CommandInfo
+                    if (!_commandCache.TryAdd(item.Command, new CommandInfo
                     {
                         CommandKey = item.Command,
                         MethodInfo = item.Method
@@ -169,7 +167,7 @@ namespace TwitchNET.Core
                 var commandModel = messageResponseModel.ParseResponse();
 
 
-                if (!CommandCache.TryGetValue(commandModel.CommandKey.ToLower(), out var commandInfo))
+                if (!_commandCache.TryGetValue(commandModel.CommandKey.ToLower(), out var commandInfo))
                     return;
 
 

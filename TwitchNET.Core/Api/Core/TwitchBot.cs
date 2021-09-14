@@ -1,5 +1,4 @@
 ﻿#nullable enable
-using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
 using TwitchNET.Core.Commands;
 using TwitchNET.Core.IrcClient;
@@ -46,7 +45,7 @@ namespace TwitchNET.Core
             await Client.SendAsync(new AuthenticateCommand(nick, token));
 
             if (!isReconnecting)
-                OnLogAsync?.Invoke($"Bot authorized as [{nick}]");
+                await OnLogAsync.Invoke($"Bot authorized as [{nick}]");
         }
 
 
@@ -61,7 +60,7 @@ namespace TwitchNET.Core
 
             await Client.SendAsync(new JoinCommand(channel));
             if (!isReconnecting)
-                OnLogAsync?.Invoke($"Joined Channel: {channel}");
+               await OnLogAsync.Invoke($"Joined Channel: {channel}");
 
             await Client.SendAsync(new TagCapabilityCommand());
             StartListening();
@@ -75,7 +74,7 @@ namespace TwitchNET.Core
         public async Task PartAsync(string channel)
         {
             await Client.SendAsync(new PartCommand(channel));
-            OnLogAsync?.Invoke($"Leave Channel: {channel}");
+            await OnLogAsync.Invoke($"Leave Channel: {channel}");
             Client.OnDisconnect -= ReconnectHandler;
         }
 
@@ -86,13 +85,13 @@ namespace TwitchNET.Core
         private void StartListening()
         {
             Client.StartReceive();
-            OnLogAsync?.Invoke("Bot is connected..");
+            OnLogAsync.Invoke("Bot is connected..");
         }
 
 
         private async Task ReconnectHandler(int reconnectInterval)
         {
-            OnLogAsync?.Invoke($"Reconnecting to: {_credentials.Channel}");
+            await OnLogAsync.Invoke($"Reconnecting to: {_credentials.Channel}");
 
             await Client.ConnectAsync();
             await LoginAsync(_credentials.Nick, _credentials.Token,true);
