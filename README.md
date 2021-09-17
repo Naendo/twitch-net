@@ -7,7 +7,7 @@
 
 ## About
 
-Twitch .NET is an unoffical Twitch API Wrapper targeting .NET Core 3.1. 
+Twitch .NET is an unoffical Twitch API Wrapper targeting .NET Core 5.0. 
 Currently supporting full capabilities of Twitchs IRC Chat.
 
 Twitch .NET is still work in progress, if you are missing any features dont hesitate to [contact](#notes) me.
