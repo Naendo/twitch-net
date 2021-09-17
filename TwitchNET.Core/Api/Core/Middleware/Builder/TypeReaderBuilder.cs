@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using TwitchNET.Core.Exceptions.TypeReaderException;
 using TwitchNET.Modules.TypeReader;
 
 namespace TwitchNET.Core.Middleware

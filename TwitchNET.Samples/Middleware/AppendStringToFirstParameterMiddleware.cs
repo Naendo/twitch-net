@@ -1,5 +1,4 @@
-﻿using System.Net.Sockets;
-using TwitchNET.Core.Middleware;
+﻿using TwitchNET.Core.Middleware;
 
 namespace TwitchNET.Samples.Middleware
 {

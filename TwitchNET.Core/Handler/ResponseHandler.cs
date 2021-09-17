@@ -1,4 +1,3 @@
-using System;
 using TwitchNET.Core.Exceptions;
 using TwitchNET.Core.Responses;
 
