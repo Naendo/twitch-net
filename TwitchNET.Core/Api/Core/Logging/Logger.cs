@@ -9,6 +9,7 @@ namespace TwitchNET.Core
 {
     public class Logger
     {
+        private const string PATH = "log.txt";
         private LogOutput _output;
 
         public Logger(LogOutput logOutput)
@@ -25,12 +26,7 @@ namespace TwitchNET.Core
                     await InternalLogger.LogEventsAsync(message);
                     break;
                 case LogOutput.File:
-                {
-                    message = $"[{DateTime.Now:MM/dd/yyyy, HH:mm:ss}]: {message}";
-                    await using var file = File.Create("log.txt");
-                    await file.WriteAsync(new ReadOnlyMemory<byte>(Encoding.UTF8.GetBytes(message)));
                     break;
-                }
             }
         }
     }

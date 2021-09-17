@@ -86,7 +86,7 @@ namespace TwitchNET.Core
         private void StartListening()
         {
             Client.StartReceive();
-            OnLogAsync?.Invoke("Bot is connected..");
+            //OnLogAsync?.Invoke("Bot is connected..");
         }
 
 

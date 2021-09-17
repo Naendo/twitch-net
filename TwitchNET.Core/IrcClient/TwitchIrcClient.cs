@@ -64,7 +64,6 @@ namespace TwitchNET.Core.IrcClient
                 await using var stream = _client.GetStream();
                 using var reader = new StreamReader(stream);
 
-
                 while (_client.Connected)
                 {
                     var data = await reader.ReadLineAsync();

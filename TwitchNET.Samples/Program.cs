@@ -25,7 +25,7 @@ namespace TwitchNET.Samples
 
         public async Task InitializeTwitchClient()
         {
-            var commander = new TwitchCommander(_twitchBot,logOutput: LogOutput.File);
+            var commander = new TwitchCommander(_twitchBot);
 
             await _twitchBot.LoginAsync("thatnandotho", "oauth:bw7v6tykdoazc1l2a1qcvcouvktynv");
 
