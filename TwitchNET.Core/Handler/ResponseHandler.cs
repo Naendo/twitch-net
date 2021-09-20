@@ -14,6 +14,8 @@ namespace TwitchNET.Core
             //data[1] = ResponseType on Commands
             var data = response.Split(' ');
 
+            if (data[0] == "PING")
+                return new PongResponse();
             if (data[1] == "JOIN")
                 return new JoinResponse(response);
             if (data[2] == "PRIVMSG")
