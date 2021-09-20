@@ -1,9 +1,11 @@
 ﻿#nullable enable
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using TwitchNET.Core.Commands;
 using TwitchNET.Core.IrcClient;
 using TwitchNET.Core.Models;
 
+[assembly: InternalsVisibleTo("TwitchNET.Benchmarks")]
 namespace TwitchNET.Core
 {
     internal delegate Task LogAsyncDelegate(string message);
@@ -13,6 +15,7 @@ namespace TwitchNET.Core
     /// </summary>
     public class TwitchBot
     {
+
         internal TwitchIrcClient Client;
 
         private readonly TwitchBotCredentials _credentials = new TwitchBotCredentials();
