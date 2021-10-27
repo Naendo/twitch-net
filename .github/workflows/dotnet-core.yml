@@ -22,5 +22,10 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
+    - name: Run .NET Core Tests in v5.0.x
+      uses: actions/setup-dotnet@v1
+      with:
+          dotnet-version: '5.0.x'
+          include-prerelease: true
+    - run: dotnet build 
+    - run: dotnet test
