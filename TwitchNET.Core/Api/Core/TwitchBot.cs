@@ -1,4 +1,5 @@
 ﻿#nullable enable
+using System;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using TwitchNET.Core.Commands;
@@ -9,7 +10,7 @@ using TwitchNET.Core.Models;
 
 namespace TwitchNET.Core
 {
-    internal delegate Task LogAsyncDelegate(string message);
+    internal delegate Task LogAsyncDelegate(string message, bool isException = false);
 
     /// <summary>
     /// Surface Api to manage connection states to the twitch irc chat
@@ -40,15 +41,22 @@ namespace TwitchNET.Core
         /// <param name="isReconnecting">Optional Parameter to handel Logging</param>
         public async Task LoginAsync(string nick, string token, bool isReconnecting = false)
         {
-            await Client.ConnectAsync();
+            try
+            {
+                await Client.ConnectAsync();
 
-            _credentials.Token = token;
-            _credentials.Nick = nick;
+                _credentials.Token = token;
+                _credentials.Nick = nick;
 
-            await Client.SendAsync(new AuthenticateCommand(nick, token));
+                await Client.SendAsync(new AuthenticateCommand(nick, token));
 
-            if (!isReconnecting)
-                await OnLogAsync.Invoke($"Bot authorized as [{nick}]");
+                if (!isReconnecting)
+                    await OnLogAsync.Invoke($"Bot authorized as [{nick}]");
+            }
+            catch (Exception ex)
+            {
+                await OnLogAsync.Invoke($"Login failed with \"{ex.Message}\"", true);
+            }
         }
 
 
@@ -71,7 +79,7 @@ namespace TwitchNET.Core
 
 
         /// <summary>
-        ///     Leave a certained Twitch Channel
+        ///     Leave a certain Twitch Channel
         /// </summary>
         /// <param name="channel">Twitch Channel you want your bot to leave</param>
         public async Task PartAsync(string channel)
@@ -107,6 +115,6 @@ namespace TwitchNET.Core
             Client.OnInvoke(message);
         }
 
-        internal event LogAsyncDelegate OnLogAsync;
+        internal event LogAsyncDelegate OnLogAsync = null!;
     }
 }

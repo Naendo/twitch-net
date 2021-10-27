@@ -44,9 +44,10 @@ namespace TwitchNET.Core.IrcClient
         /// <exception cref="IrcClientException">Ensures an open Irc-Connection</exception>
         internal async Task SendAsync(ICommand command)
         {
+            
             if (!_client.Connected) throw new IrcClientException("connection closed");
 
-            var writer = new StreamWriter(_client.GetStream()) {NewLine = "\r\n", AutoFlush = true};
+            var writer = new StreamWriter(_client.GetStream()) { NewLine = "\r\n", AutoFlush = true };
             await writer.WriteLineAsync(command.Parse());
         }
 
@@ -59,22 +60,29 @@ namespace TwitchNET.Core.IrcClient
             if (!_client.Connected) throw new IrcClientException($"connection aborted on {nameof(StartReceive)}");
             Task.Run(async () =>
             {
-                await using var stream = _client.GetStream();
-                using var reader = new StreamReader(stream);
-
-                while (_client.Connected)
+                try
                 {
-                    var data = await reader.ReadLineAsync();
-                    if (data is null)
+                    await using var stream = _client.GetStream();
+                    using var reader = new StreamReader(stream);
+
+                    while (_client.Connected)
                     {
-                        OnDisconnect?.Invoke(1000);
-                        return;
+                        var data = await reader.ReadLineAsync();
+                        if (data is null)
+                        {
+                            OnDisconnect?.Invoke(1000);
+                            return;
+                        }
+
+                        var response = _responseHandler.DeterminedResponseType(data);
+                        if (response is null) continue;
+
+                        SubscribeReceive?.Invoke(response);
                     }
-
-                    var response = _responseHandler.DeterminedResponseType(data);
-                    if (response is null) continue;
-
-                    SubscribeReceive?.Invoke(response);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
                 }
             });
         }
@@ -84,7 +92,7 @@ namespace TwitchNET.Core.IrcClient
         {
             SubscribeReceive?.Invoke(new MessageResponse(message));
         }
-        
+
         internal event OnReceivedDelegate SubscribeReceive;
         internal event OnDisconnectDelegate OnDisconnect;
     }

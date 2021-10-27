@@ -27,7 +27,7 @@ namespace TwitchNET.Tests.MiddlewareTests.TypeReaderTests
 
         [Theory]
         [InlineData(null)]
-        public void ConvertFrom_WithNullableString(string? input)
+        public void ConvertFrom_WithNullableString(string input)
         {
             var result = MessageTypeReader.Default.ConvertFrom(typeof(string), input);
             Assert.Null(result);
