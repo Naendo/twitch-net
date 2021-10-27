@@ -14,12 +14,15 @@ using TwitchNET.Core;
 
 namespace TwitchNET.Benchmarks.TwitchNET.Setup
 {
+    [WarmupCount(40)]
+    [LongRunJob(RuntimeMoniker.Net50)]
     public class SetupBenchmark
     {
-        [WarmupCount(40)]
-        [Benchmark(OperationsPerInvoke = 60000)]
+        [Benchmark]
         public async Task CompleteSetup_TwitchNET()
         {
+            var bot = new TwitchBot();
+            
             var commander = new TwitchCommander(new TwitchBot(), logOutput: LogOutput.File);
 
             await commander.InitalizeCommanderAsync(
@@ -27,7 +30,7 @@ namespace TwitchNET.Benchmarks.TwitchNET.Setup
                 assembly: typeof(Program).Assembly
             );
         }
-        
+
         [Benchmark]
         public void CompleteSetup_TwitchLib()
         {

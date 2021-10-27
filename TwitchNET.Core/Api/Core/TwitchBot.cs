@@ -6,6 +6,7 @@ using TwitchNET.Core.IrcClient;
 using TwitchNET.Core.Models;
 
 [assembly: InternalsVisibleTo("TwitchNET.Benchmarks")]
+
 namespace TwitchNET.Core
 {
     internal delegate Task LogAsyncDelegate(string message);
@@ -15,7 +16,6 @@ namespace TwitchNET.Core
     /// </summary>
     public class TwitchBot
     {
-
         internal TwitchIrcClient Client;
 
         private readonly TwitchBotCredentials _credentials = new TwitchBotCredentials();
@@ -63,7 +63,7 @@ namespace TwitchNET.Core
 
             await Client.SendAsync(new JoinCommand(channel));
             if (!isReconnecting)
-               await OnLogAsync.Invoke($"Joined Channel: {channel}");
+                await OnLogAsync.Invoke($"Joined Channel: {channel}");
 
             await Client.SendAsync(new TagCapabilityCommand());
             StartListening();
@@ -97,10 +97,15 @@ namespace TwitchNET.Core
             await OnLogAsync.Invoke($"Reconnecting to: {_credentials.Channel}");
 
             await Client.ConnectAsync();
-            await LoginAsync(_credentials.Nick, _credentials.Token,true);
-            await JoinAsync(_credentials.Channel,true);
+            await LoginAsync(_credentials.Nick, _credentials.Token, true);
+            await JoinAsync(_credentials.Channel, true);
         }
 
+
+        internal void OnInvoke(string message)
+        {
+            Client.OnInvoke(message);
+        }
 
         internal event LogAsyncDelegate OnLogAsync;
     }

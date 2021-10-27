@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using TwitchNET.Core.Exceptions;
+using TwitchNET.Core.Responses;
 
 [assembly: InternalsVisibleTo("TwitchNET.Tests")]
 
@@ -79,6 +80,11 @@ namespace TwitchNET.Core.IrcClient
         }
 
 
+        internal void OnInvoke(string message)
+        {
+            SubscribeReceive?.Invoke(new MessageResponse(message));
+        }
+        
         internal event OnReceivedDelegate SubscribeReceive;
         internal event OnDisconnectDelegate OnDisconnect;
     }

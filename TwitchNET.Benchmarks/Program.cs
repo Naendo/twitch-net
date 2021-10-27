@@ -19,10 +19,11 @@ namespace TwitchNET.Benchmarks
             config.AddLogger(DefaultConfig.Instance.GetLoggers().ToArray());
             config.AddColumnProvider(DefaultConfig.Instance.GetColumnProviders().ToArray());
 
-            BenchmarkRunner.Run<SetupBenchmark>(config);
+            BenchmarkRunner.Run<TwitchClientBenchmark>(config);
+
+            //new TwitchClientBenchmark().TwitchClient_TwitchLib();
 
             //BenchmarkRunner.Run<TwitchClientBenchmark>(config);
-
         }
     }
 }
