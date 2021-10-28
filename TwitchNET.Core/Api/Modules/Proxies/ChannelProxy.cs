@@ -1,4 +1,4 @@
-namespace TwitchNET.Modules
+namespace TwitchNET.Core.Modules
 {
     public class ChannelProxy
     {

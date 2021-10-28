@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using TwitchNET.Core.Modules;
 using TwitchNET.Core.Responses;
-using TwitchNET.Modules;
-using TwitchNET.Modules.TypeReader;
+using TwitchNET.Core.Interfaces;
 
 namespace TwitchNET.Core.Middleware
 {

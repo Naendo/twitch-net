@@ -1,6 +1,7 @@
 ﻿using TwitchNET.Core;
+using TwitchNET.Core.Extensions;
 using TwitchNET.Core.Responses;
-using TwitchNET.Modules;
+using TwitchNET.Core.Modules;
 using TwitchNET.Tests.MiddlewareTests.Setup;
 using Xunit;
 
@@ -12,7 +13,7 @@ namespace TwitchNET.Tests.MiddlewareTests
         public void ExecutePipeline_PrimitivParameters()
         {
             //Arange
-            var requestBuilder = new RequestBuilder();
+            var requestBuilder = new MiddlewareBuilder();
             requestBuilder.UseProxies();
             requestBuilder.UseTypeReader();
 
@@ -48,7 +49,7 @@ namespace TwitchNET.Tests.MiddlewareTests
         public void ExecutePipeline_CustomParameters()
         {
             //Arange
-            var requestBuilder = new RequestBuilder();
+            var requestBuilder = new MiddlewareBuilder();
             requestBuilder.UseProxies();
             requestBuilder.UseTypeReader();
             requestBuilder.UseTypeReader<TestEnum, CustomTypeReader>();

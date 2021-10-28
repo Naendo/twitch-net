@@ -3,43 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using TwitchNET.Core.Interfaces;
 using TwitchNET.Core.Middleware;
+using TwitchNET.Core.Modules;
 using TwitchNET.Core.Responses;
-using TwitchNET.Modules;
-using TwitchNET.Modules.TypeReader;
 
 namespace TwitchNET.Core
 {
-    /// <summary>
-    /// Initializes an middleware framework using a <see cref="ServiceCollection"/>
-    /// </summary>
-    /// <example>
-    /// And example of how to utilize <see cref="RequestBuilder"/>
-    /// <code>
+    
+    ///<summary>
+    ///The <see cref="MiddlewareBuilder"/> defines a middleware framework for the chat request pipeline.
+    ///<para>By default two internal middlewares: <see cref="ProxyBuilder"/> and <see cref="TypeReaderBuilder"/> are invoked before a
+    ///custom middleware can be invoked.</para>
+    ///<para>Lifecycle: -> <see cref="ProxyBuilder"/> -> <see cref="TypeReaderBuilder"/> -> custom middleware with <see cref="IMiddleware"/>
+    /// -> CommandModule</para>
+    ///</summary>
+    ///<example>
+    ///And example of how to utilize <see cref="MiddlewareBuilder"/>
+    ///<code>
     ///public async Task InitializeTwitchClient()
     ///{
-    ///   var commander = new TwitchCommander(_twitchBot)
-    /// ;
-    ///   await _twitchBot.LoginAsync("nick", "oauth:token");
-    /// 
-    ///   await _twitchBot.JoinAsync("channel");
-    /// 
-    ///   await commander.InitalizeCommanderAsync(
+    ///   ...
+    ///  
+    ///   await commander.InitializeCommanderAsync(
     ///     serviceCollection: BuildServiceCollection(),
     ///     assembly: typeof(Program).Assembly,
     ///     requestBuilder: BuildRequest()
-    ///    );
+    ///   );
     /// 
     ///   await Task.Delay(-1);
     ///}
     /// 
     ///private static RequestBuilder BuildRequest() =>
     ///      new RequestBuilder()
-    ///       .UseMiddleware&lt;YourMiddleware&gt;();
+    ///         .UseMiddleware&lt;YourMiddleware&gt;();
     ///</code>
-    /// </example>
-   
-    public sealed class RequestBuilder
+    ///</example>
+    public sealed class MiddlewareBuilder
     {
         private readonly List<Type> _middlewareTypes = new();
         private readonly List<Type> _customMiddlewareTypes = new();
@@ -85,7 +85,7 @@ namespace TwitchNET.Core
         }
 
 
-        internal RequestBuilder TryRegisterCustomTypeReader<TType, TTypeReader>() where TTypeReader : ITypeReader
+        internal MiddlewareBuilder TryRegisterCustomTypeReader<TType, TTypeReader>() where TTypeReader : ITypeReader
         {
             var type = typeof(TType);
 
@@ -96,7 +96,7 @@ namespace TwitchNET.Core
             return this;
         }
 
-        internal RequestBuilder TryRegisterMiddleware<TType>() where TType : IMiddleware
+        internal MiddlewareBuilder TryRegisterMiddleware<TType>() where TType : IMiddleware
         {
             var type = typeof(TType);
             if (_middlewareTypes.Contains(type))
@@ -107,7 +107,7 @@ namespace TwitchNET.Core
             return this;
         }
 
-        internal RequestBuilder TryRegisterCustomMiddleware<TMiddleware>() where TMiddleware : IMiddleware
+        internal MiddlewareBuilder TryRegisterCustomMiddleware<TMiddleware>() where TMiddleware : IMiddleware
         {
             var type = typeof(TMiddleware);
             if (_customMiddlewareTypes.Contains(type))

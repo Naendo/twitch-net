@@ -1,4 +1,6 @@
-﻿namespace TwitchNET.Core.Middleware
+﻿using TwitchNET.Core.Middleware;
+
+namespace TwitchNET.Core.Interfaces
 {
     public interface IMiddleware
     {

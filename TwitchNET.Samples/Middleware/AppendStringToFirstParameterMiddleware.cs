@@ -1,4 +1,5 @@
-﻿using TwitchNET.Core.Middleware;
+﻿using TwitchNET.Core.Interfaces;
+using TwitchNET.Core.Middleware;
 
 namespace TwitchNET.Samples.Middleware
 {

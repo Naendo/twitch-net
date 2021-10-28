@@ -1,9 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
+using TwitchNET.Core.Modules;
 
-namespace TwitchNET.Modules.TypeReader
+namespace TwitchNET.Core.Modules
 {
-    internal class MessageTypeReader : TypeReader
+    internal class MessageTypeReader : TypeReaderBase
     {
         internal static readonly MessageTypeReader Default = new();
 

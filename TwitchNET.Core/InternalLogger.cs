@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace TwitchWrapper.Core
+namespace TwitchNET.Core.Logging
 {
     public class InternalLogger
     {

@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
-using TwitchNET.Modules;
+using TwitchNET.Core.Modules;
 using TwitchNET.Core;
 using TwitchNET.Samples.Middleware;
 
@@ -32,7 +32,7 @@ namespace TwitchNET.Samples
             await _twitchBot.JoinAsync("channelToJoin");
 
 
-            await commander.InitalizeCommanderAsync(
+            await commander.InitializeCommanderAsync(
                 serviceCollection: BuildServiceCollection(),
                 assembly: typeof(Program).Assembly
             );

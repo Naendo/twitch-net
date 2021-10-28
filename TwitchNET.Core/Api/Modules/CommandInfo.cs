@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
-using TwitchNET.Modules.TypeReader;
+using TwitchNET.Core.Interfaces;
 
-namespace TwitchNET.Modules
+namespace TwitchNET.Core.Modules
 {
     internal class CommandInfo
     {

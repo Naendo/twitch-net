@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
 using TwitchNET.Core;
 using TwitchNET.Core.Commands;
+using TwitchNET.Core.Modules;
 
-namespace TwitchNET.Modules
+namespace TwitchNET.Core.Modules
 {
     
     /// <summary>
@@ -17,7 +18,7 @@ namespace TwitchNET.Modules
 
 
         /// <summary>
-        ///     Send reply to connected chat via <see cref="TwitchBot" />
+        /// Send reply to connected chat via <see cref="TwitchBot" />
         /// </summary>
         /// <param name="message">Your response <see cref="string" /></param>
         protected async Task SendAsync(string message)

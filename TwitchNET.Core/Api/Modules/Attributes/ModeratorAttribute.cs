@@ -1,6 +1,6 @@
 using System;
 
-namespace TwitchNET.Modules
+namespace TwitchNET.Core.Modules
 {
     public class ModeratorAttribute : Attribute
     {

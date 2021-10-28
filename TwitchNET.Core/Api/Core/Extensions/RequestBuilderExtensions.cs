@@ -1,11 +1,11 @@
 ﻿using System;
+using TwitchNET.Core.Interfaces;
 using TwitchNET.Core.Middleware;
-using TwitchNET.Modules.TypeReader;
 
-namespace TwitchNET.Core
+namespace TwitchNET.Core.Extensions
 {
     /// <summary>
-    /// Extensions for <see cref="RequestBuilder"/>/>
+    /// Extensions for <see cref="MiddlewareBuilder"/>. Use the extension methods to register your custom middleware.
     /// </summary>
     public static class RequestBuilderExtensions
     {
@@ -13,10 +13,10 @@ namespace TwitchNET.Core
         /// Extension methode to register customized <see cref="IMiddleware"/>
         /// </summary>
         /// <typeparam name="TMiddleware">TMiddleware must implement IMiddleware</typeparam>
-        public static RequestBuilder UseMiddleware<TMiddleware>(this RequestBuilder requestBuilder)
+        public static MiddlewareBuilder UseMiddleware<TMiddleware>(this MiddlewareBuilder middlewareBuilder)
             where TMiddleware : IMiddleware
         {
-            return requestBuilder.TryRegisterCustomMiddleware<TMiddleware>();
+            return middlewareBuilder.TryRegisterCustomMiddleware<TMiddleware>();
         }
 
         /// <summary>
@@ -24,22 +24,21 @@ namespace TwitchNET.Core
         /// </summary>
         /// <typeparam name="TType">Intended output <see cref="Type"/> for customized <see cref="ITypeReader"/></typeparam>
         /// <typeparam name="TTypeReader">Customized TypeReader which implements <see cref="ITypeReader"/></typeparam>
-        public static RequestBuilder UseTypeReader<TType, TTypeReader>(this RequestBuilder requestBuilder)
+        public static MiddlewareBuilder UseTypeReader<TType, TTypeReader>(this MiddlewareBuilder middlewareBuilder)
             where TTypeReader : ITypeReader
         {
-            return requestBuilder.TryRegisterCustomTypeReader<TType, TTypeReader>();
+            return middlewareBuilder.TryRegisterCustomTypeReader<TType, TTypeReader>();
         }
 
-        
-        
-        internal static RequestBuilder UseTypeReader(this RequestBuilder requestBuilder)
+
+        internal static MiddlewareBuilder UseTypeReader(this MiddlewareBuilder middlewareBuilder)
         {
-            return requestBuilder.TryRegisterMiddleware<TypeReaderBuilder>();
+            return middlewareBuilder.TryRegisterMiddleware<TypeReaderBuilder>();
         }
 
-        internal static RequestBuilder UseProxies(this RequestBuilder requestBuilder)
+        internal static MiddlewareBuilder UseProxies(this MiddlewareBuilder middlewareBuilder)
         {
-            return requestBuilder.TryRegisterMiddleware<ProxyBuilder>();
+            return middlewareBuilder.TryRegisterMiddleware<ProxyBuilder>();
         }
     }
 }

@@ -6,17 +6,36 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using TwitchNET.Core.Exceptions;
-using TwitchNET.Core.Middleware;
+using TwitchNET.Core.Extensions;
+using TwitchNET.Core.Interfaces;
+using TwitchNET.Core.Logging;
+using TwitchNET.Core.Modules;
 using TwitchNET.Core.Responses;
-using TwitchNET.Modules;
-using TwitchWrapper.Core;
 
 namespace TwitchNET.Core
 {
     /// <summary>
-    /// Executes and manages the command framework.
+    /// The <see cref="TwitchCommander"/> defines a framework for our module framework. The Commander invokes the request pipeline using
+    /// <see cref="MiddlewareBuilder"/> and <see cref="ServiceCollection"/>.
+    /// To utilize the module framework see <see cref="BaseModule"/>
     /// </summary>
-    /// <remarks>The service provides a framework for registering and execute Chat Commands. To create a command module at compile-time, see <see cref="BaseModule"/>.</remarks>
+    /// <example>
+    /// The following code shows, how to utilize the <see cref="TwitchCommander"/>.
+    /// <code>
+    /// await commander.InitializeCommanderAsync(
+    ///     serviceCollection: BuildServiceCollection(),
+    ///     assembly: typeof(Program).Assembly,
+    ///     requestBuilder: null
+    /// );
+    /// </code>
+    ///
+    /// This Methode will now scan all classes that inherit from <see cref="BaseModule"/>.
+    ///
+    /// <code>
+    ///  public class ExampleModule : BaseModule { }
+    /// </code>
+    /// 
+    /// </example>
     public class TwitchCommander
     {
         private static readonly Dictionary<string, CommandInfo> _commandCache = new();
@@ -27,16 +46,16 @@ namespace TwitchNET.Core
 
         private Assembly _assembly;
 
-        private RequestBuilder _requestBuilder;
+        private MiddlewareBuilder _middlewareBuilder;
 
         private IServiceProvider _serviceProvider;
 
 
         /// <summary>
-        /// Initalizes a new <see cref="TwitchCommander"/>
+        /// Initialize a new <see cref="TwitchCommander"/>
         /// </summary>
-        /// <param name="bot">Insance of <see cref="TwitchBot"/></param>
-        /// <param name="prefix">Command Identifier</param>
+        /// <param name="bot">Instance of <see cref="TwitchBot"/></param>
+        /// <param name="prefix">Choose your command prefix!</param>
         /// <param name="logOutput">Log via File or Console</param>
         public TwitchCommander(TwitchBot bot, string prefix = "!", LogOutput logOutput = LogOutput.Console)
         {
@@ -53,16 +72,16 @@ namespace TwitchNET.Core
         /// <remarks>Calling this methode will result in mapping the IRC-Inputs to registered modules. Executing this method is required.</remarks>
         /// <param name="serviceCollection">Dependency Injection - ServiceCollection</param>
         /// <param name="assembly">The assembly containing Command Modules inheriting <see cref="BaseModule"/></param>
-        /// <param name="requestBuilder">Optional: ServiceCollection to register customized <see cref="IMiddleware"/></param>
-        public Task InitalizeCommanderAsync(IServiceCollection serviceCollection, Assembly assembly,
-            RequestBuilder requestBuilder = null)
+        /// <param name="middlewareBuilder">Optional: ServiceCollection to register customized <see cref="IMiddleware"/></param>
+        public Task InitializeCommanderAsync(IServiceCollection serviceCollection, Assembly assembly,
+            MiddlewareBuilder middlewareBuilder = null)
         {
             _assembly = assembly;
             return Task.Run(() =>
             {
                 _bot.Client.SubscribeReceive += HandleCommandRequest;
                 ScanAssemblyForCommands(serviceCollection);
-                ConfigureMiddleware(requestBuilder ?? new RequestBuilder());
+                ConfigureMiddleware(middlewareBuilder ?? new MiddlewareBuilder());
             });
         }
 
@@ -74,7 +93,7 @@ namespace TwitchNET.Core
         {
             if (_assembly is null)
                 throw new ArgumentNullException(
-                    $"{nameof(_assembly)} was null. {nameof(InitalizeCommanderAsync)} invokation failed.");
+                    $"{nameof(_assembly)} was null. {nameof(InitializeCommanderAsync)} invokation failed.");
 
             var types = _assembly.GetTypes()
                 .Where(type => type.IsSubclassOf(typeof(BaseModule)));
@@ -106,14 +125,14 @@ namespace TwitchNET.Core
 
 
         /// <summary>
-        ///     Configure <see cref="RequestBuilder" />
+        ///     Configure <see cref="MiddlewareBuilder" />
         /// </summary>
-        private void ConfigureMiddleware(RequestBuilder requestBuilder)
+        private void ConfigureMiddleware(MiddlewareBuilder middlewareBuilder)
         {
-            requestBuilder.UseProxies();
-            requestBuilder.UseTypeReader();
+            middlewareBuilder.UseProxies();
+            middlewareBuilder.UseTypeReader();
 
-            _requestBuilder = requestBuilder;
+            _middlewareBuilder = middlewareBuilder;
         }
 
 
@@ -178,13 +197,13 @@ namespace TwitchNET.Core
                     return;
 
 
-                if (_requestBuilder is null)
-                    throw new ArgumentNullException($"{nameof(_requestBuilder)}: Method {nameof(ExecuteCommandAsync)}");
+                if (_middlewareBuilder is null)
+                    throw new ArgumentNullException($"{nameof(_middlewareBuilder)}: Method {nameof(ExecuteCommandAsync)}");
 
 
-                var context = _requestBuilder.ExecutePipeline(commandInfo, instance, _bot, messageResponseModel);
+                var context = _middlewareBuilder.ExecutePipeline(commandInfo, instance, _bot, messageResponseModel);
 
-                await _requestBuilder.InvokeEndpointAsync(context).ConfigureAwait(false);
+                await _middlewareBuilder.InvokeEndpointAsync(context).ConfigureAwait(false);
             }
             catch (Exception ex)
             {

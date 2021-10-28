@@ -13,7 +13,8 @@ namespace TwitchNET.Core
     internal delegate Task LogAsyncDelegate(string message, bool isException = false);
 
     /// <summary>
-    /// Surface Api to manage connection states to the twitch irc chat
+    /// The <see cref="TwitchBot"/> acts as surface API for everything connection related.
+    /// This class also stores and manages your credentials. 
     /// </summary>
     public class TwitchBot
     {
@@ -36,9 +37,8 @@ namespace TwitchNET.Core
         ///  Initialized connection to the Twitch-IRC chat.
         ///  </summary>
         ///  <summary>Sending authentication request to server.</summary>
-        ///  <param name="nick">Twitch Username</param>
-        ///  <param name="token">Twitch OAuth Token"/></param>
-        /// <param name="isReconnecting">Optional Parameter to handel Logging</param>
+        ///  <param name="nick">Username on Twitch</param>
+        ///  <param name="token">OAuth2 Token. Recommended format oauth:token</param>
         public async Task LoginAsync(string nick, string token, bool isReconnecting = false)
         {
             try

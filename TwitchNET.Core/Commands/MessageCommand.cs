@@ -1,5 +1,6 @@
 ﻿namespace TwitchNET.Core.Commands
 {
+    /// <inheritdoc cref="ICommand"/>
     internal class MessageCommand : ICommand
     {
         private readonly string _channel;

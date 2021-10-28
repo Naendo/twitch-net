@@ -1,4 +1,5 @@
-﻿using TwitchNET.Modules;
+﻿using TwitchNET.Core.Interfaces;
+using TwitchNET.Core.Modules;
 
 namespace TwitchNET.Core.Middleware
 {

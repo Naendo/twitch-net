@@ -1,4 +1,4 @@
-﻿using TwitchNET.Modules;
+﻿using TwitchNET.Core.Modules;
 
 namespace TwitchNET.Tests.MiddlewareTests.Setup
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TwitchNET.Modules
+namespace TwitchNET.Core.Modules
 {
     /// <summary>
     /// Marks a <see cref="BaseModule"/> Member as a command

@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestPlatform.Common.Hosting;
 using TwitchNET.Core;
-using TwitchNET.Modules;
+using TwitchNET.Core.Modules;
 using TwitchNET.Tests.MiddlewareTests.Setup;
 using Xunit;
 

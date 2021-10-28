@@ -1,5 +1,5 @@
 ﻿using System;
-using TwitchNET.Modules.TypeReader;
+using TwitchNET.Core.Interfaces;
 
 namespace TwitchNET.Tests.MiddlewareTests.Setup
 {

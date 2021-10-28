@@ -4,10 +4,10 @@ namespace TwitchNET.Core.Responses
     public class PongResponse : IResponse
     {
         ///<example>Pong Response Template: PING :tmi.twitch.tv</example>
-        /// <inheritdoc/>
         MessageResponseModel IResponse.GetResult()
         {
-            return new(){
+            return new()
+            {
                 Message = "PONG :tmi.twitch.tv",
                 ResponseType = ResponseType.Ping
             };

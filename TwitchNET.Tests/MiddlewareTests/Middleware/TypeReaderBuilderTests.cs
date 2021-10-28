@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using TwitchNET.Core.Interfaces;
 using TwitchNET.Core.Middleware;
 using TwitchNET.Core.Responses;
-using TwitchNET.Modules;
-using TwitchNET.Modules.TypeReader;
+using TwitchNET.Core.Modules;
 using TwitchNET.Tests.MiddlewareTests.Setup;
 using Xunit;
 

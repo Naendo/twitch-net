@@ -1,7 +1,7 @@
 namespace TwitchNET.Core.Responses
 {
     /// <summary>
-    /// IRC-Response Model
+    /// <see cref="IResponse"/> manages different irc formats.
     /// </summary>
     internal interface IResponse
     {

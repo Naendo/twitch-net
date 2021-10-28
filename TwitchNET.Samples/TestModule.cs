@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using TwitchNET.Modules;
+using TwitchNET.Core.Modules;
 
 namespace TwitchNET.Samples
 {

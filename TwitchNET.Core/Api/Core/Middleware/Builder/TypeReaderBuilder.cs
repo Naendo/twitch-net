@@ -1,5 +1,6 @@
 ﻿using System;
-using TwitchNET.Modules.TypeReader;
+using TwitchNET.Core.Interfaces;
+using TwitchNET.Core.Modules;
 
 namespace TwitchNET.Core.Middleware
 {

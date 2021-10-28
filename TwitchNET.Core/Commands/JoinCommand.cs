@@ -1,7 +1,7 @@
 ﻿namespace TwitchNET.Core.Commands
 {
-    //JOIN #<channel>
-    public class JoinCommand : ICommand
+    /// <inheritdoc cref="ICommand"/>
+    internal class JoinCommand : ICommand
     {
         private readonly string _channel;
 

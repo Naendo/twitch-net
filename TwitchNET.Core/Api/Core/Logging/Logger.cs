@@ -1,15 +1,16 @@
 using System;
-using System.IO;
-using System.IO.IsolatedStorage;
-using System.Text;
 using System.Threading.Tasks;
-using TwitchWrapper.Core;
 
-namespace TwitchNET.Core
+namespace TwitchNET.Core.Logging
 {
-    public class Logger
+    /// <summary>
+    /// <see cref="Logger"/> acts as an internal Logging Handler.
+    /// The logger gets configured on <see cref="TwitchBot"/> initialisation.
+    /// Is uses <see cref="LogOutput"/> to clarify whether the logger targets the system console or the log file "twitch.log". 
+    /// </summary>
+    internal class Logger
     {
-        private const string PATH = "log.txt";
+        private const string PATH = "twitch.log";
         private LogOutput _output;
 
         public Logger(LogOutput logOutput)

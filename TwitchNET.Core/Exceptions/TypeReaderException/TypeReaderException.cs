@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace TwitchNET.Core.Exceptions.TypeReaderException
+namespace TwitchNET.Core.Exceptions
 {
     [Serializable]
     public class TypeReaderException : Exception

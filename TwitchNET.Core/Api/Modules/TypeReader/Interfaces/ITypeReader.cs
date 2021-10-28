@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TwitchNET.Modules.TypeReader
+namespace TwitchNET.Core.Interfaces
 {
     /// <summary>
     /// Provides an interface to create customized TypeReader

@@ -1,5 +1,5 @@
-﻿using System;
-using TwitchNET.Modules.TypeReader;
+﻿
+using TwitchNET.Core.Modules;
 using Xunit;
 
 namespace TwitchNET.Tests.MiddlewareTests.TypeReaderTests

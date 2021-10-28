@@ -2,6 +2,7 @@
 
 namespace TwitchNET.Core.Commands
 {
+    /// <inheritdoc cref="ICommand"/>
     internal class AuthenticateCommand : ICommand
     {
         private readonly string _nick;
