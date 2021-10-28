@@ -49,7 +49,7 @@ namespace TwitchNET.Core
         private readonly IServiceCollection _serviceCollection = new ServiceCollection();
 
 
-        internal RequestContext ExecutePipeline(CommandInfo commandInfo, BaseModule endpoint, TwitchBot botContext,
+        internal RequestContext ExecutePipeline(CommandInfo commandInfo, BaseModule endpoint, TwitchClient botContext,
             MessageResponseModel messageResponse)
         {
             var serviceProvider = _serviceCollection.BuildServiceProvider();

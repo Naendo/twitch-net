@@ -11,7 +11,7 @@ namespace TwitchNET.Core.Modules
     /// </summary>
     public abstract class BaseModule
     {
-        internal TwitchBot TwitchBot { get; set; } = null!;
+        internal TwitchClient TwitchBot { get; set; } = null!;
         protected internal UserProxy UserProxy { get; internal set; } = null!;
         protected internal ChannelProxy ChannelProxy { get; internal set; } = null!;
         protected internal CommandProxy CommandProxy { get; internal set; } = null!;

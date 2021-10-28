@@ -40,7 +40,7 @@ namespace TwitchNET.Core
     {
         private static readonly Dictionary<string, CommandInfo> _commandCache = new();
 
-        private readonly TwitchBot _bot;
+        private readonly TwitchClient _bot;
 
         private readonly string _prefix;
 
@@ -57,12 +57,10 @@ namespace TwitchNET.Core
         /// <param name="bot">Instance of <see cref="TwitchBot"/></param>
         /// <param name="prefix">Choose your command prefix!</param>
         /// <param name="logOutput">Log via File or Console</param>
-        public TwitchCommander(TwitchBot bot, string prefix = "!", LogOutput logOutput = LogOutput.Console)
+        public TwitchCommander(TwitchClient bot, string prefix = "!", LogOutput logOutput = LogOutput.Console)
         {
             _prefix = prefix;
             _bot = bot;
-            var logger = new Logger(logOutput);
-            bot.OnLogAsync += logger.OnLogHandlerAsync;
         }
 
 
@@ -74,12 +72,12 @@ namespace TwitchNET.Core
         /// <param name="assembly">The assembly containing Command Modules inheriting <see cref="BaseModule"/></param>
         /// <param name="middlewareBuilder">Optional: ServiceCollection to register customized <see cref="IMiddleware"/></param>
         public Task InitializeCommanderAsync(IServiceCollection serviceCollection, Assembly assembly,
-            MiddlewareBuilder middlewareBuilder = null)
+            MiddlewareBuilder? middlewareBuilder = null)
         {
             _assembly = assembly;
             return Task.Run(() =>
             {
-                _bot.Client.SubscribeReceive += HandleCommandRequest;
+                _bot.Client.OnMessageReceive += HandleCommandRequest;
                 ScanAssemblyForCommands(serviceCollection);
                 ConfigureMiddleware(middlewareBuilder ?? new MiddlewareBuilder());
             });
@@ -103,7 +101,7 @@ namespace TwitchNET.Core
                 //ToDo: Remove LINQ
                 var result = type.GetMethods()
                     .Where(x => Attribute.IsDefined(x, typeof(CommandAttribute)))
-                    .Select(x => new {x.GetCustomAttribute<CommandAttribute>()!.Command, Method = x});
+                    .Select(x => new { x.GetCustomAttribute<CommandAttribute>()!.Command, Method = x });
 
 
                 ConfigureServiceCollection(type, serviceCollection);
@@ -190,7 +188,7 @@ namespace TwitchNET.Core
                     return;
 
 
-                var instance = (BaseModule) _serviceProvider!.GetService(commandInfo.MethodInfo.DeclaringType!);
+                var instance = (BaseModule)_serviceProvider!.GetService(commandInfo.MethodInfo.DeclaringType!);
 
 
                 if (!await ValidateRoleAttributesAsync(commandInfo.MethodInfo, messageResponseModel))
@@ -198,7 +196,8 @@ namespace TwitchNET.Core
 
 
                 if (_middlewareBuilder is null)
-                    throw new ArgumentNullException($"{nameof(_middlewareBuilder)}: Method {nameof(ExecuteCommandAsync)}");
+                    throw new ArgumentNullException(
+                        $"{nameof(_middlewareBuilder)}: Method {nameof(ExecuteCommandAsync)}");
 
 
                 var context = _middlewareBuilder.ExecutePipeline(commandInfo, instance, _bot, messageResponseModel);
@@ -209,16 +208,6 @@ namespace TwitchNET.Core
             {
                 Console.WriteLine(ex.ToString());
             }
-        }
-
-
-        /// <summary>
-        ///     Basic Log EventHandler
-        /// </summary>
-        /// <param name="message">Message to be Logged</param>
-        private async Task OnLogHandlerAsync(string message)
-        {
-            await InternalLogger.LogEventsAsync(message);
         }
 
 

@@ -6,7 +6,7 @@
         <PackageId>TwitchNET</PackageId>
         <PackageVersion>2.1.0</PackageVersion>
         <Authors>Naendo</Authors>
-        <Nullable>disable</Nullable>
+        <Nullable>enable</Nullable>
         <PackageProjectUrl>https://github.com/naendo/twitch-net</PackageProjectUrl>
         <RepositoryUrl>https://github.com/naendo/twitch-net</RepositoryUrl>
         <RepositoryType>GitHub</RepositoryType>
@@ -14,7 +14,7 @@
         <RootNamespace>TwitchWrapper.Core</RootNamespace>
         <Title>A .NET Core TwitchAPI Wrapper</Title>
         <Description>Open Spource Twitch Irc Wrapper</Description>
-        <LangVersion>10</LangVersion>
+        <LangVersion>9</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>

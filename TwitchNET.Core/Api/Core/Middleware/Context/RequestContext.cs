@@ -11,7 +11,7 @@ namespace TwitchNET.Core.Middleware
         internal CommandInfo CommandInfo { get; init; }
         internal BaseModule Endpoint { get; init; }
         internal MessageResponseModel IrcResponseModel { get; init; }
-        internal TwitchBot BotContext { get; init; }
+        internal TwitchClient BotContext { get; init; }
 
         internal Dictionary<Type, ITypeReader> CustomTypeReaders { get; set; }
 

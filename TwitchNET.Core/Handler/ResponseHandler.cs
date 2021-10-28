@@ -3,13 +3,13 @@ using TwitchNET.Core.Responses;
 
 namespace TwitchNET.Core
 {
-    internal class ResponseHandler
+    internal static class ResponseHandler
     {
         //:tmi.twitch.tv 001 <user> :Welcome, GLHF!
         //> :<user>!<user>@<user>.tmi.twitch.tv PART #<channel>
         //> :<user>!<user>@<user>.tmi.twitch.tv PRIVMSG #<channel> :This is a sample message
         //> :<user>!<user>@<user>.tmi.twitch.tv JOIN #<channel>
-        internal IResponse DeterminedResponseType(string response)
+        internal static IResponse? DeterminedResponseType(string response)
         {
             //data[1] = ResponseType on Commands
             var data = response.Split(' ');

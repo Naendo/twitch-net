@@ -16,20 +16,20 @@ namespace TwitchNET.Samples
 
     public class TwitchController
     {
-        private readonly TwitchBot _twitchBot;
+        private readonly TwitchClient _twitchBot;
 
         public TwitchController()
         {
-            _twitchBot = new TwitchBot();
+            _twitchBot = new TwitchClient();
         }
 
         public async Task InitializeTwitchClient()
         {
             var commander = new TwitchCommander(_twitchBot, logOutput: LogOutput.Console);
 
-            await _twitchBot.LoginAsync("username", "oauth:token");
+            await _twitchBot.LoginAsync("thatnandotho", "oauth:3l85zlratpecvxc0qxq1q52el0ygpw");
 
-            await _twitchBot.JoinAsync("channelToJoin");
+            await _twitchBot.JoinAsync("thatnandotho");
 
 
             await commander.InitializeCommanderAsync(
