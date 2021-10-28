@@ -27,9 +27,9 @@ namespace TwitchNET.Samples
         {
             var commander = new TwitchCommander(_twitchBot, logOutput: LogOutput.Console);
 
-            await _twitchBot.LoginAsync("thatnandotho", "oauth:rndv96f5vafgt063bkgnnrfxsglwyj");
+            await _twitchBot.LoginAsync("username", "oauth:token");
 
-            await _twitchBot.JoinAsync("thatnandotho");
+            await _twitchBot.JoinAsync("channelToJoin");
 
 
             await commander.InitalizeCommanderAsync(
