@@ -9,7 +9,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Middleware" />
+      <Compile Remove="Middleware\**" />
+      <EmbeddedResource Remove="Middleware\**" />
+      <None Remove="Middleware\**" />
     </ItemGroup>
 
     <ItemGroup>
