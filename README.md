@@ -71,6 +71,7 @@ Below are basic examples of how to utilize the Twitch .NET API.
         private static IServiceCollection BuildServiceCollection()
             => new ServiceCollection()
             .AddSingelton<YourDependency>();
+     }
 ```
 
 
@@ -95,7 +96,7 @@ public class TestModule : BaseModule
             await SendAsync($"{UserProxy.Name} sent a message: {value}");
         }
 
-
+    }
 
 ```
 
