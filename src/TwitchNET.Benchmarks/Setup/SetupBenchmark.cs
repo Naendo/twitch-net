@@ -11,6 +11,7 @@ using TwitchLib.Client.Models;
 using TwitchLib.Communication.Clients;
 using TwitchLib.Communication.Models;
 using TwitchNET.Core;
+using TwitchClient = TwitchNET.Core.TwitchClient;
 
 namespace TwitchNET.Benchmarks.TwitchNET.Setup
 {
@@ -21,9 +22,9 @@ namespace TwitchNET.Benchmarks.TwitchNET.Setup
         [Benchmark]
         public async Task CompleteSetup_TwitchNET()
         {
-            var bot = new TwitchBot();
+            var bot = new TwitchClient();
             
-            var commander = new TwitchCommander(new TwitchBot(), logOutput: LogOutput.File);
+            var commander = new TwitchCommander(new TwitchClient(), logOutput: LogOutput.File);
 
             await commander.InitializeCommanderAsync(
                 serviceCollection: new ServiceCollection(),
@@ -34,7 +35,7 @@ namespace TwitchNET.Benchmarks.TwitchNET.Setup
         [Benchmark]
         public void CompleteSetup_TwitchLib()
         {
-            TwitchClient client;
+            TwitchLib.Client.TwitchClient client;
             ConnectionCredentials credentials = new ConnectionCredentials("twitch_username", "access_token");
             var clientOptions = new ClientOptions
             {
@@ -42,7 +43,7 @@ namespace TwitchNET.Benchmarks.TwitchNET.Setup
                 ThrottlingPeriod = TimeSpan.FromSeconds(30)
             };
             WebSocketClient customClient = new WebSocketClient(clientOptions);
-            client = new TwitchClient(customClient);
+            client = new  TwitchLib.Client.TwitchClient(customClient);
             client.Initialize(credentials, "channel");
 
             client.OnLog += Client_OnLog;

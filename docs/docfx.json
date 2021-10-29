@@ -4,7 +4,7 @@
       "src": [
         {
           "files": [
-            "TwitchNET.Core/TwitchNET.Core.csproj"
+            "src/TwitchNET.Core/TwitchNET.Core.csproj"
           ],
           "exclude": [
             "**/obj/**",

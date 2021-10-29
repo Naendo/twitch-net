@@ -1,12 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchNET.Core", "TwitchNET.Core\TwitchNET.Core.csproj", "{19455DB0-988C-407F-81F9-8E1B1D903AF1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B82E936E-0E76-4B08-9097-DA8922467C0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchNET.Samples", "TwitchNET.Samples\TwitchNET.Samples.csproj", "{EB233414-97AE-4804-BAEF-0D4F957B36B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchNET.Benchmarks", "src\TwitchNET.Benchmarks\TwitchNET.Benchmarks.csproj", "{7592CD9E-B8AE-4679-A6A1-6C537509E96F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchNET.Tests", "TwitchNET.Tests\TwitchNET.Tests.csproj", "{43C20DE9-8C45-48D5-A153-F69056A8407A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchNET.Core", "src\TwitchNET.Core\TwitchNET.Core.csproj", "{0D08144C-F19B-4094-8261-8A4694FD4B7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchNET.Benchmarks", "TwitchNET.Benchmarks\TwitchNET.Benchmarks.csproj", "{518957CE-8F4E-4A4C-BBF3-D91B69DBF58D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchNET.Samples", "src\TwitchNET.Samples\TwitchNET.Samples.csproj", "{62114146-88F7-4DE5-BB36-DE1DC1761C47}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2AC542BD-DF3D-4AD9-BF48-E774728F8B25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,21 +16,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{19455DB0-988C-407F-81F9-8E1B1D903AF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{19455DB0-988C-407F-81F9-8E1B1D903AF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{19455DB0-988C-407F-81F9-8E1B1D903AF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{19455DB0-988C-407F-81F9-8E1B1D903AF1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EB233414-97AE-4804-BAEF-0D4F957B36B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EB233414-97AE-4804-BAEF-0D4F957B36B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EB233414-97AE-4804-BAEF-0D4F957B36B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EB233414-97AE-4804-BAEF-0D4F957B36B5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{43C20DE9-8C45-48D5-A153-F69056A8407A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{43C20DE9-8C45-48D5-A153-F69056A8407A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{43C20DE9-8C45-48D5-A153-F69056A8407A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{43C20DE9-8C45-48D5-A153-F69056A8407A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{518957CE-8F4E-4A4C-BBF3-D91B69DBF58D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{518957CE-8F4E-4A4C-BBF3-D91B69DBF58D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{518957CE-8F4E-4A4C-BBF3-D91B69DBF58D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{518957CE-8F4E-4A4C-BBF3-D91B69DBF58D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7592CD9E-B8AE-4679-A6A1-6C537509E96F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7592CD9E-B8AE-4679-A6A1-6C537509E96F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7592CD9E-B8AE-4679-A6A1-6C537509E96F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7592CD9E-B8AE-4679-A6A1-6C537509E96F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D08144C-F19B-4094-8261-8A4694FD4B7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D08144C-F19B-4094-8261-8A4694FD4B7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D08144C-F19B-4094-8261-8A4694FD4B7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D08144C-F19B-4094-8261-8A4694FD4B7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62114146-88F7-4DE5-BB36-DE1DC1761C47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62114146-88F7-4DE5-BB36-DE1DC1761C47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62114146-88F7-4DE5-BB36-DE1DC1761C47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62114146-88F7-4DE5-BB36-DE1DC1761C47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7592CD9E-B8AE-4679-A6A1-6C537509E96F} = {B82E936E-0E76-4B08-9097-DA8922467C0F}
+		{0D08144C-F19B-4094-8261-8A4694FD4B7C} = {B82E936E-0E76-4B08-9097-DA8922467C0F}
+		{62114146-88F7-4DE5-BB36-DE1DC1761C47} = {B82E936E-0E76-4B08-9097-DA8922467C0F}
 	EndGlobalSection
 EndGlobal

@@ -16,7 +16,7 @@ namespace TwitchNET.Core
 {
     /// <summary>
     /// The <see cref="TwitchCommander"/> defines a framework for our module framework. The Commander invokes the request pipeline using
-    /// <see cref="MiddlewareBuilder"/> and <see cref="ServiceCollection"/>.
+    /// <see cref="PipelineBuilder"/> and <see cref="ServiceCollection"/>.
     /// To utilize the module framework see <see cref="BaseModule"/>
     /// </summary>
     /// <example>
@@ -46,7 +46,7 @@ namespace TwitchNET.Core
 
         private Assembly _assembly;
 
-        private MiddlewareBuilder _middlewareBuilder;
+        private PipelineBuilder _pipelineBuilder;
 
         private IServiceProvider _serviceProvider;
 
@@ -72,14 +72,14 @@ namespace TwitchNET.Core
         /// <param name="assembly">The assembly containing Command Modules inheriting <see cref="BaseModule"/></param>
         /// <param name="middlewareBuilder">Optional: ServiceCollection to register customized <see cref="IMiddleware"/></param>
         public Task InitializeCommanderAsync(IServiceCollection serviceCollection, Assembly assembly,
-            MiddlewareBuilder? middlewareBuilder = null)
+            PipelineBuilder? middlewareBuilder = null)
         {
             _assembly = assembly;
             return Task.Run(() =>
             {
                 _bot.Client.OnMessageReceive += HandleCommandRequest;
                 ScanAssemblyForCommands(serviceCollection);
-                ConfigureMiddleware(middlewareBuilder ?? new MiddlewareBuilder());
+                ConfigureMiddleware(middlewareBuilder ?? new PipelineBuilder());
             });
         }
 
@@ -123,14 +123,14 @@ namespace TwitchNET.Core
 
 
         /// <summary>
-        ///     Configure <see cref="MiddlewareBuilder" />
+        ///     Configure <see cref="PipelineBuilder" />
         /// </summary>
-        private void ConfigureMiddleware(MiddlewareBuilder middlewareBuilder)
+        private void ConfigureMiddleware(PipelineBuilder pipelineBuilder)
         {
-            middlewareBuilder.UseProxies();
-            middlewareBuilder.UseTypeReader();
+            pipelineBuilder.UseProxies();
+            pipelineBuilder.UseTypeReader();
 
-            _middlewareBuilder = middlewareBuilder;
+            _pipelineBuilder = pipelineBuilder;
         }
 
 
@@ -195,14 +195,14 @@ namespace TwitchNET.Core
                     return;
 
 
-                if (_middlewareBuilder is null)
+                if (_pipelineBuilder is null)
                     throw new ArgumentNullException(
-                        $"{nameof(_middlewareBuilder)}: Method {nameof(ExecuteCommandAsync)}");
+                        $"{nameof(_pipelineBuilder)}: Method {nameof(ExecuteCommandAsync)}");
 
 
-                var context = _middlewareBuilder.ExecutePipeline(commandInfo, instance, _bot, messageResponseModel);
+                var context = _pipelineBuilder.ExecutePipeline(commandInfo, instance, _bot, messageResponseModel);
 
-                await _middlewareBuilder.InvokeEndpointAsync(context).ConfigureAwait(false);
+                await _pipelineBuilder.InvokeEndpointAsync(context).ConfigureAwait(false);
             }
             catch (Exception ex)
             {

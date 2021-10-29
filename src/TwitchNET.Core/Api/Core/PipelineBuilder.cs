@@ -12,14 +12,14 @@ namespace TwitchNET.Core
 {
     
     ///<summary>
-    ///The <see cref="MiddlewareBuilder"/> defines a middleware framework for the chat request pipeline.
+    ///The <see cref="PipelineBuilder"/> defines a middleware framework for the chat request pipeline.
     ///<para>By default two internal middlewares: <see cref="ProxyBuilder"/> and <see cref="TypeReaderBuilder"/> are invoked before a
     ///custom middleware can be invoked.</para>
     ///<para>Lifecycle: -> <see cref="ProxyBuilder"/> -> <see cref="TypeReaderBuilder"/> -> custom middleware with <see cref="IMiddleware"/>
     /// -> CommandModule</para>
     ///</summary>
     ///<example>
-    ///And example of how to utilize <see cref="MiddlewareBuilder"/>
+    ///And example of how to utilize <see cref="PipelineBuilder"/>
     ///<code>
     ///public async Task InitializeTwitchClient()
     ///{
@@ -35,11 +35,11 @@ namespace TwitchNET.Core
     ///}
     /// 
     ///private static RequestBuilder BuildRequest() =>
-    ///      new RequestBuilder()
+    ///      new PipelineBuilder()
     ///         .UseMiddleware&lt;YourMiddleware&gt;();
     ///</code>
     ///</example>
-    public sealed class MiddlewareBuilder
+    public sealed class PipelineBuilder
     {
         private readonly List<Type> _middlewareTypes = new();
         private readonly List<Type> _customMiddlewareTypes = new();
@@ -84,8 +84,7 @@ namespace TwitchNET.Core
                 requestContext.Parameters.Values)!;
         }
 
-
-        internal MiddlewareBuilder TryRegisterCustomTypeReader<TType, TTypeReader>() where TTypeReader : ITypeReader
+        internal PipelineBuilder TryRegisterCustomTypeReader<TType, TTypeReader>() where TTypeReader : ITypeReader
         {
             var type = typeof(TType);
 
@@ -96,7 +95,7 @@ namespace TwitchNET.Core
             return this;
         }
 
-        internal MiddlewareBuilder TryRegisterMiddleware<TType>() where TType : IMiddleware
+        internal PipelineBuilder TryRegisterMiddleware<TType>() where TType : IMiddleware
         {
             var type = typeof(TType);
             if (_middlewareTypes.Contains(type))
@@ -107,7 +106,7 @@ namespace TwitchNET.Core
             return this;
         }
 
-        internal MiddlewareBuilder TryRegisterCustomMiddleware<TMiddleware>() where TMiddleware : IMiddleware
+        internal PipelineBuilder TryRegisterCustomMiddleware<TMiddleware>() where TMiddleware : IMiddleware
         {
             var type = typeof(TMiddleware);
             if (_customMiddlewareTypes.Contains(type))

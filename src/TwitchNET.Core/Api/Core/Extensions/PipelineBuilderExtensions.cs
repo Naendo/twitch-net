@@ -5,18 +5,18 @@ using TwitchNET.Core.Middleware;
 namespace TwitchNET.Core.Extensions
 {
     /// <summary>
-    /// Extensions for <see cref="MiddlewareBuilder"/>. Use the extension methods to register your custom middleware.
+    /// Extensions for <see cref="PipelineBuilder"/>. Use the extension methods to register your custom middleware.
     /// </summary>
-    public static class RequestBuilderExtensions
+    public static class PipelineBuilderExtensions
     {
         /// <summary>
         /// Extension methode to register customized <see cref="IMiddleware"/>
         /// </summary>
         /// <typeparam name="TMiddleware">TMiddleware must implement IMiddleware</typeparam>
-        public static MiddlewareBuilder UseMiddleware<TMiddleware>(this MiddlewareBuilder middlewareBuilder)
+        public static PipelineBuilder UseMiddleware<TMiddleware>(this PipelineBuilder pipelineBuilder)
             where TMiddleware : IMiddleware
         {
-            return middlewareBuilder.TryRegisterCustomMiddleware<TMiddleware>();
+            return pipelineBuilder.TryRegisterCustomMiddleware<TMiddleware>();
         }
 
         /// <summary>
@@ -24,21 +24,21 @@ namespace TwitchNET.Core.Extensions
         /// </summary>
         /// <typeparam name="TType">Intended output <see cref="Type"/> for customized <see cref="ITypeReader"/></typeparam>
         /// <typeparam name="TTypeReader">Customized TypeReader which implements <see cref="ITypeReader"/></typeparam>
-        public static MiddlewareBuilder UseTypeReader<TType, TTypeReader>(this MiddlewareBuilder middlewareBuilder)
+        public static PipelineBuilder UseTypeReader<TType, TTypeReader>(this PipelineBuilder pipelineBuilder)
             where TTypeReader : ITypeReader
         {
-            return middlewareBuilder.TryRegisterCustomTypeReader<TType, TTypeReader>();
+            return pipelineBuilder.TryRegisterCustomTypeReader<TType, TTypeReader>();
         }
 
 
-        internal static MiddlewareBuilder UseTypeReader(this MiddlewareBuilder middlewareBuilder)
+        internal static PipelineBuilder UseTypeReader(this PipelineBuilder pipelineBuilder)
         {
-            return middlewareBuilder.TryRegisterMiddleware<TypeReaderBuilder>();
+            return pipelineBuilder.TryRegisterMiddleware<TypeReaderBuilder>();
         }
 
-        internal static MiddlewareBuilder UseProxies(this MiddlewareBuilder middlewareBuilder)
+        internal static PipelineBuilder UseProxies(this PipelineBuilder pipelineBuilder)
         {
-            return middlewareBuilder.TryRegisterMiddleware<ProxyBuilder>();
+            return pipelineBuilder.TryRegisterMiddleware<ProxyBuilder>();
         }
     }
 }

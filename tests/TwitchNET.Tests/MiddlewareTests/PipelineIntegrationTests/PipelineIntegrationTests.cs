@@ -13,7 +13,7 @@ namespace TwitchNET.Tests.MiddlewareTests
         public void ExecutePipeline_PrimitivParameters()
         {
             //Arange
-            var requestBuilder = new MiddlewareBuilder();
+            var requestBuilder = new PipelineBuilder();
             requestBuilder.UseProxies();
             requestBuilder.UseTypeReader();
 
@@ -49,7 +49,7 @@ namespace TwitchNET.Tests.MiddlewareTests
         public void ExecutePipeline_CustomParameters()
         {
             //Arange
-            var requestBuilder = new MiddlewareBuilder();
+            var requestBuilder = new PipelineBuilder();
             requestBuilder.UseProxies();
             requestBuilder.UseTypeReader();
             requestBuilder.UseTypeReader<TestEnum, CustomTypeReader>();
