@@ -52,7 +52,7 @@ To get started we will establish a connection to Twitch using our [TwitchClient]
 
 
 ```c#
-     public async static Task SetupAsync()
+     public static async Task SetupAsync()
         {
             var twitchClient = new TwitchClient();
             
@@ -62,7 +62,7 @@ To get started we will establish a connection to Twitch using our [TwitchClient]
             //Some alternative options would be to keep your token in an Environment Variable or a standalone file.
             // var token = Environment.GetEnvironmentVariable("NameOfYourEnvironmentVariable");
             // var token = File.ReadAllText("token.txt");
-            // var token = JsonConvert.DeserializeObject<AConfigurationClass>                                             		 (File.ReadAllText("config.json")).Token;
+            // var token = JsonConvert.DeserializeObject<AConfigurationClass>                     	(File.ReadAllText("config.json")).Token;
             
             await _twitchBot.LoginAsync("nick", "oauth:token");
             
@@ -125,7 +125,7 @@ To put the whole framework together, Twitch .NET includes our [TwitchCommander](
 ```C#
 public async static Task SetupAsync()
 {
-    ...
+    // ...
         
     var commander = new TwitchCommander(_twitchBot);   
     
