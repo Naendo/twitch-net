@@ -98,7 +98,7 @@
 <p>Before you write your very own bot, we recommend creating a new account via <a href="" https://www.twitch.tv/%22"="">twitch.tv</a>.</p>
 <ol>
 <li>Create your <a href="" https://www.twitch.tv/%22"="">account</a>.</li>
-<li>Now get your oauth Token for your bot via. a token <a href="" https://twitchapps.com/tmi/%22"="">generator</a> for example. You can also write a service to get the Token though the <a href="" https://dev.twitch.tv/docs/irc/guide%22"="">Twitch API</a>. This'll be a inbuild feature in future releases.</li>
+<li>Now get your OAuth Token for your bot via. a token <a href="" https://twitchapps.com/tmi/%22"="">generator</a> for example. You can also write a service to get the Token though the <a href="" https://dev.twitch.tv/docs/irc/guide%22"="">Twitch API</a>. This 'll be a inbuild feature in future releases.</li>
 <li>Get ready to code! 🚀</li>
 </ol>
 <h3 id="connect-to-twitch">Connect to Twitch</h3>
@@ -112,7 +112,7 @@
     static async Task Main(string[] args)
         =&gt; await SetupAsync();
     
-    public async static Task SetupAsync()
+    public static async Task SetupAsync()
     {
     }
 }
@@ -124,7 +124,7 @@
 <h5>Important</h5>
 <p>We want to clarify how important the security of your OAuth Token really is. Giving away your OAuth Token can be compared to  telling everyone your password. Make sure to store it safely!</p>
 </div>
-<pre><code class="lang-c#">     public async static Task SetupAsync()
+<pre><code class="lang-c#">     public static async Task SetupAsync()
         {
             var twitchClient = new TwitchClient();
             
@@ -134,15 +134,12 @@
             //Some alternative options would be to keep your token in an Environment Variable or a standalone file.
             // var token = Environment.GetEnvironmentVariable(&quot;NameOfYourEnvironmentVariable&quot;);
             // var token = File.ReadAllText(&quot;token.txt&quot;);
-            // var token = JsonConvert.DeserializeObject&lt;AConfigurationClass&gt;                                             		 (File.ReadAllText(&quot;config.json&quot;)).Token;
+            // var token = JsonConvert.DeserializeObject&lt;AConfigurationClass&gt;File.ReadAllText(&quot;config.json&quot;)).Token;
             
-            await _twitchBot.LoginAsync(&quot;nick&quot;, &quot;oauth:token&quot;);
-            
-            await _twitchBot.JoinAsync(&quot;thatnandotho&quot;);
-
+            await _twitchBot.LoginAsync(&quot;nick&quot;, &quot;oauth:token&quot;);            
+            await _twitchBot.JoinAsync(&quot;channel&quot;);
             await _twitchBot.StartAsync();
          
-        
             // This Line blockes the task until the program is finally closed.
             await Task.Delay(-1);
         }   
@@ -152,7 +149,7 @@
 <h4 id="adding-our-commands">Adding our Commands</h4>
 <p>Creating commands for your bot was never easier. We'll guide you through a few steps and explain some functionality behind the szene.</p>
 <h5 id="step-1-build-the-command">Step 1: Build the Command</h5>
-<p>To build commands we use a base class called <a href="%22%22">BaseModule</a>. It'll later provide us with information about the command context and it is also necessary to later register your commands with our <a href="%22%22">TwitchCommander</a>.</p>
+<p>To build commands we use a base class called <a href="%22%22">BaseModule</a>. It will later provide us with information about the command context and it is also necessary to later register your commands with our <a href="%22%22">TwitchCommander</a>.</p>
 <pre><code class="lang-c#">public class EchoModule : BaseModule
 {
     [Command(&quot;say&quot;)]
@@ -164,10 +161,14 @@
 </code></pre>
 <p>To break down the code.</p>
 <ul>
-<li>The attribute <a href="%22%22">Command</a> registers our method as command. It's parameter defines a keyword. Through this keyword the system will invoke the method when the right command was sent.</li>
-<li>The method name is completely up to you. There are no naming schemes in Twitch .NET.</li>
-<li>In our example, the method parameter is a string. Parameters are by default divided by a Space -&gt; &quot; &quot;. To trigger this exact method the message has to look like <code>!say ThisIsAMessage</code>. It is important to not have spaces between your words if you work with one parameter. Although, if a dynamic number of parameters, we offer full <a href="" https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable?view="net-5.0%22" "="">IEnumerable</a> support.</li>
-<li>The base class gives us the functionality of <code>await SendAsync()</code>. This method will return a string back to the twitch channel.</li>
+<li><p>The attribute <a href="%22%22">Command</a> registers our method as an command. It's parameter defines a keyword. Through this keyword, the system will invoke the method when the right command was sent.</p>
+</li>
+<li><p>The method name is completely up to you. There are no naming schemes in Twitch .NET.</p>
+</li>
+<li><p>In our example, the method parameter is a string. Parameters are by default divided by a Space -&gt; &quot; &quot;. To trigger this exact method the message has to look like <code>!say ThisIsAMessage</code>. It is important to not have spaces between your words if you work with one parameter. Although, if a dynamic number of parameters is required, we offer full <a href="" https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable?view="net-5.0%22" "="">IEnumerable</a> support for parameters.</p>
+</li>
+<li><p>The base class gives us the functionality of <code>await SendAsync()</code>. This method will return a string back to the twitch channel. It also gives us the functionality of <a href="%22%22">UserProxy</a>. Via proxies we can get informtion about the user, for example its name, chat color, subscriber status and so on.</p>
+</li>
 </ul>
 <p>Congratulations👏 You just built your very first command with Twitch .NET.</p>
 <div class="NOTE">
@@ -176,9 +177,9 @@
 </div>
 <h5 id="step-2-register-the-command">Step 2: Register the Command</h5>
 <p>To put the whole framework together, Twitch .NET includes our <a href="%22%22">TwitchCommander</a>. His main mission is to register commands and map incoming command context to the correct method.</p>
-<pre><code class="lang-C#">public async static Task SetupAsync()
+<pre><code class="lang-C#">public static async Task SetupAsync()
 {
-    ...
+    // ...
         
     var commander = new TwitchCommander(_twitchBot);   
     

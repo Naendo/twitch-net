@@ -33,7 +33,7 @@ public static class Program
     static async Task Main(string[] args)
         => await SetupAsync();
     
-    public async static Task SetupAsync()
+    public static async Task SetupAsync()
     {
     }
 }
@@ -62,15 +62,12 @@ To get started we will establish a connection to Twitch using our [TwitchClient]
             //Some alternative options would be to keep your token in an Environment Variable or a standalone file.
             // var token = Environment.GetEnvironmentVariable("NameOfYourEnvironmentVariable");
             // var token = File.ReadAllText("token.txt");
-            // var token = JsonConvert.DeserializeObject<AConfigurationClass>                     	(File.ReadAllText("config.json")).Token;
+            // var token = JsonConvert.DeserializeObject<AConfigurationClass>File.ReadAllText("config.json")).Token;
             
-            await _twitchBot.LoginAsync("nick", "oauth:token");
-            
+            await _twitchBot.LoginAsync("nick", "oauth:token");            
             await _twitchBot.JoinAsync("channel");
-
             await _twitchBot.StartAsync();
          
-        
             // This Line blockes the task until the program is finally closed.
             await Task.Delay(-1);
         }   
@@ -123,7 +120,7 @@ Congratulations👏 You just built your very first command with Twitch .NET.
 To put the whole framework together, Twitch .NET includes our [TwitchCommander](""). His main mission is to register commands and map incoming command context to the correct method. 
 
 ```C#
-public async static Task SetupAsync()
+public static async Task SetupAsync()
 {
     // ...
         

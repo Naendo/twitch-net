@@ -399,10 +399,10 @@
       "output": {
         ".html": {
           "relative_path": "guides/Tutorial/Setup.html",
-          "hash": "16rmIRK9IgZ4rZ7taJmebcVjEhzhCK7r5YGlK7G63Ik="
+          "hash": "1uOVHVdFKMXeBtq3l+oJSAQR5oWGY7VkcTpR0FZ8nO8="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -485,7 +485,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 6,
-          "skipped_file_count": 5
+          "skipped_file_count": 6
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
