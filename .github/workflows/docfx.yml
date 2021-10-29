@@ -9,7 +9,7 @@ on:
 jobs:
   Build-Documentation:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Build DocFX
     steps:
     - uses: actions/checkout@v1
     # ...
