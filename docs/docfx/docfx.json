@@ -29,8 +29,13 @@
       },
       {
         "files": [
-          "articles/**.md",
-          "articles/**/toc.yml",
+          "guides/**.md",
+          "guides/**/**.md",
+          "guides/toc.yml"
+        ]
+      },
+      {
+        "files": [
           "toc.yml",
           "*.md"
         ]
@@ -63,7 +68,8 @@
     },
     "fileMetadataFiles": [],
     "template": [
-      "default","templates/discordfx"
+      "default",
+      "templates/discordfx"
     ],
     "postProcessors": [],
     "markdownEngineName": "markdig",

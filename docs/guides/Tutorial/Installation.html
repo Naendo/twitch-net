@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Twitch .NET Installation | Twitch .NET Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Twitch .NET Installation | Twitch .NET Documentation ">
+    <meta name="generator" content="docfx 2.58.5.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/night-owl.min.css">
+    <link rel="stylesheet" href="../../styles/colors.css">
+    <link rel="stylesheet" href="../../styles/discord.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+
+  <body>
+        <div class="top-navbar">
+
+            <a href="javascript:void(0);" class="burger-icon" onclick="toggleMenu()">
+                <svg name="Hamburger" style="vertical-align: middle;" width="24" height="24" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
+            </a>
+
+            
+            <a class="brand" href="../../index.html">
+              <img src="../../logo.svg" alt="" class="logomark">
+              <span class="brand-title"></span>
+            </a>
+        </div>
+
+        <div class="body-content">
+
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+
+                <div class="sidebar">
+                    
+                    
+                    
+                    
+                    <div>
+                      
+                      <a class="brand" href="../../index.html">
+                        <img src="../../logo.svg" alt="" class="logomark">
+                        <span class="brand-title"></span>
+                      </a>
+                      <div id="navbar">
+                    
+                      </div>
+                    
+                    </div>
+                    
+
+                    <div class="sidebar-item-separator"></div>
+
+                        
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+
+                </div>
+
+                <div class="footer">
+                  <span>Copyright &copy; Naendo</span>
+                  
+                </div>
+            </nav>
+
+            <main class="main-panel">
+
+                <div role="main" class="hide-when-search">
+
+                        
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                    <article class="content wrap" id="_content" data-uid="Guides.GettingStarted.Installation">
+<h2 id="twitch-net-installation">Twitch .NET Installation</h2>
+
+<p>You can download Twitch .NET via the NuGet package manager which we <strong>strongly</strong> recommend. Alternatively, you may also compile the library yourself if you see any advantage in that.</p>
+<h2 id="supported-platform">Supported Platform</h2>
+<p>Twitch .NET currently only targets <a href="" https://docs.microsoft.com/en-us/dotnet/standard/net-standard%22"="">.NET Standard</a> 2.1. This means you can create applications with <a href="" https://docs.microsoft.com/en-us/dotnet/fundamentals/%22"="">.NET Core</a> 3.0 or higher.</p>
+<h2 id="installing-with-nuget">Installing with NuGet</h2>
+<div class="tabGroup" id="tabgroup_bHGHmlrG6S">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_bHGHmlrG6S_visualstudio-install" role="tab" aria-controls="tabpanel_bHGHmlrG6S_visualstudio-install" data-tab="visualstudio-install" tabindex="0" aria-selected="true">Using Visual Studio</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_bHGHmlrG6S_rider-install" role="tab" aria-controls="tabpanel_bHGHmlrG6S_rider-install" data-tab="rider-install" tabindex="-1">Using JetBrains Rider</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_bHGHmlrG6S_npm-install" role="tab" aria-controls="tabpanel_bHGHmlrG6S_npm-install" data-tab="npm-install" tabindex="-1">Using the Nuget Package Manager</a>
+</li>
+</ul>
+<section id="tabpanel_bHGHmlrG6S_visualstudio-install" role="tabpanel" data-tab="visualstudio-install">
+
+<ol>
+<li><p>Right click on 'References', and 'Manage Nuget packages'</p>
+</li>
+<li><p>In the &quot;Browse&quot; tab, search for <code>Naendo.Twitch.NET</code></p>
+</li>
+<li><p>Click install.</p>
+</li>
+</ol>
+</section>
+<section id="tabpanel_bHGHmlrG6S_rider-install" role="tabpanel" data-tab="rider-install" aria-hidden="true" hidden="hidden">
+
+<ol>
+<li><p>Open the NuGet windows (Tools &gt; NuGet &gt; Manage NuGet packages for Solution)</p>
+</li>
+<li><p>In the &quot;Packages&quot; tab, search <code>Naendo.Twitch.NET</code></p>
+</li>
+</ol>
+</section>
+<section id="tabpanel_bHGHmlrG6S_npm-install" role="tabpanel" data-tab="npm-install" aria-hidden="true" hidden="hidden">
+
+<ol>
+<li>Click on 'Tools', 'Nuget Package Manager' and 'Package Manager Console'</li>
+<li>Enter <code>Install-Package Naendo.Twitch.NET</code></li>
+</ol>
+</section>
+</div>
+</article>
+              
+                </div>
+            </main>
+        </div>
+
+        
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<script type="text/javascript" src="../../styles/jquery.twbsPagination.js"></script>
+<script type="text/javascript" src="../../styles/url.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
+<script type="text/javascript" src="../../styles/docfx.js"></script>
+<script type="text/javascript" src="../../styles/main.js"></script>
+
+    </body>
+
+</html>

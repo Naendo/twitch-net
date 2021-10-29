@@ -1,4 +1,21 @@
 /* Discord Style */
+#toc_filter_input{
+display:none;
+}
+
+.hljs-keyword{
+    font-style:normal!important;
+}
+
+.hljs-title{
+    font-style:normal!important;
+}
+
+
+
+
+
+
 
 ::-webkit-scrollbar {
     width: 10px;

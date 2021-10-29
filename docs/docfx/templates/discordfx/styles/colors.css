@@ -2,35 +2,35 @@
 :root 
 {
     /* General */
-    --main-bg-color: #36393f;
-    --footer-bg-color: rgba(0,0,0,.4);
+    --main-bg-color: #212121;
+    --footer-bg-color: #616161;
     --table-strip-bg-color: #121315;
     --table-header-bg-color: #202225;;
     --table-header-color: hsla(0,0%,100%,.8);
     --table-header-border-color: #040405;
 
     /* Text */
-    --text-color: #dcddde;
-    --link-color: #00b0f4;
-    --link-hover-color: #4bd5ff;
-    --link-active-color: #fff;
-    --link-active-bg-color: #7289da;
-    --h3-color: #ffffff85;
-    --h4-color: #ffffffeb;
-    --h5-color: #ffffffd1;
+    --text-color: silver;
+    --link-color: #64b5f6;
+    --link-hover-color: #2196f3
+    --link-active-color: #64b5f6;
+    --link-active-bg-color: transparent;
+    --h3-color: #e0e0e0;
+    --h4-color: #e0e0e0;
+    --h5-color: #e0e0e0;
     
     /* Topbar */
-    --topbar-bg-color: #18191c;
+    --topbar-bg-color: #2c2f33;
     
     /* Button */
     --button-color: #747f8d;
 
     /* Sidebar */
     --separator-color: #4f545c;
-    --sidebar-bg-color: #2f3136;
-    --sidebar-item-color: #b9bbbe;
-    --sidebar-item-2nd-color: hsla(0,0%,100%,.35);
-    --sidebar-item-3rd-color: hsla(0,0%,100%,.25);
+    --sidebar-bg-color: transparent
+    --sidebar-item-color: transparent
+    --sidebar-item-2nd-color: hsla(0,0%,100%,.75);
+    --sidebar-item-3rd-color: hsla(0,0%,100%,.55);
 
     /* Scrollbar */
     --scrollbar-bg-color: transparent;
@@ -56,18 +56,18 @@
     --breadcrumb-bg-color: #2f3136;
 
     /* Code Higlighting */
-    --code-bg-color: #18191c;
-    --code-color: #8790A3;
-    --code-keyword-color: #569cd6;
+    --code-bg-color: #161B22;
+    --code-color: #c9d1d9;
+    --code-keyword-color: #ff7b72;
     --code-comment-color: #57a64a;
     --code-macro-color: #beb7ff;
-    --code-string-color: #d69d85;
-    --code-string-escape-color: #ffd68f;
-    --code-field-color: #c8c8c8;
-    --code-function-color: #dcdcaa;
-    --code-control-color: #d8a0df;
-    --code-class-color: #4ec9b0;
+    --code-string-color: #a5d6ff;
+    --code-string-escape-color: #161B22;
+    --code-field-color: #d2a8ff;
+    --code-function-color: #d2a8ff;
+    --code-control-color: #d2a8ff;
+    --code-class-color: #d2a8ff;
     --code-number-color: #b5cea8;
-    --code-params-color: #9a9a9a;
+    --code-params-color: #d2a8ff;
     --code-breakpoint-color: #8c2f2f;
 }

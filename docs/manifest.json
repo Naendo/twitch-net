@@ -12,7 +12,7 @@
           "hash": "tHv4/9Vg2Q8XIfPSB7Mz1x4CrbbDpRoUNwNV9J9OaGQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -24,7 +24,7 @@
           "hash": "YTzmgxgcsH0LRPEPlak8czZ0Z40HXQMpvDm0h1ixgvM="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -36,7 +36,7 @@
           "hash": "MXAvQveqQ4vF+R4mNihvV9R1NN8VW4s6R5S+LyYDme4="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -48,7 +48,7 @@
           "hash": "ze8Tp8VFudZEExVp4ijxAO5sc0Rgo+0O6Z3dSLU4hUI="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -57,10 +57,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Extensions.PipelineBuilderExtensions.html",
-          "hash": "xW+24DJzYpcbS5hOshXvZYwViE7GEUBM5pHELUzk39c="
+          "hash": "nOHMIGxl/A4G5ti97SKgylQHHcjImGGuKoQ5apJoKnU="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -72,7 +72,7 @@
           "hash": "EZEb5uYf5dcHNA9ch1bJ0cZeQW5Qm6khaOTr1CzYt7U="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -84,7 +84,7 @@
           "hash": "st7gv86Ig0YLlEKsKEOXMrHK7K5za0LS/Sdmq/uvB5c="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -96,7 +96,7 @@
           "hash": "acl41X3PIJYdbn/SR/ipInuww+cHwlGwKNND7uPqOj4="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -108,7 +108,7 @@
           "hash": "1Zal/QX7TXfkUBlCMsgXn+IMNQfWK5ZkEr3SCXfat+0="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -120,7 +120,7 @@
           "hash": "yhc/QvtoGXyApwoTxxKeHjvu6kOdOBoTdUP7wpTpxtM="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -132,7 +132,7 @@
           "hash": "MzKIQlNoT7rO79OgIcyF8XYKT7sosD0BE2UhMEXrz7s="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -144,7 +144,7 @@
           "hash": "Fv6KP+Cfm2wN9il0e2+m2EylffP9v/Zappd1P0gsiTg="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -156,7 +156,7 @@
           "hash": "sxCsGc56XKZoEdDoFFbTRlLZVNXK5aRMvdTJmg1CQc0="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -168,7 +168,7 @@
           "hash": "4Cid0eEI9Ub5bcsr84KJBh9qqWU6E0f78jlzGmgI29U="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -180,7 +180,7 @@
           "hash": "NjOinSVDSNjFUexZFIs4QrhHNmQr1gkxN6x0EOXl8Zw="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -192,7 +192,7 @@
           "hash": "RtqvMAKUmF/CL+3Ps8BqkBXCG/N7nrbHjqgu5z2O+oQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -204,7 +204,7 @@
           "hash": "wI9RD2faV2RRPVrphgW+miVOwJ3dZm0W173q8YA+8ng="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -216,7 +216,7 @@
           "hash": "UEmG9oW0PUQr/l4bpwUYQoOJKQMmf+94g62MrvSZ0Qc="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -228,7 +228,7 @@
           "hash": "zR09KMdFSAE87RnErKlKT3hdVSfJB5OW/VtO52IBMIg="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -240,7 +240,7 @@
           "hash": "EFzAaM7dA9M9NqOYSkyfwA54jvMk26q1p0CsvOOEM0c="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -252,7 +252,7 @@
           "hash": "0uZwusyIZ9FIcAU6HRFGBD0sXzR7R7L1KkU77Gz8iwo="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -264,7 +264,7 @@
           "hash": "Eky6c0Nl08y+2OyqeTfoEtr637w/W5sbBd9ElFoGloc="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -276,7 +276,7 @@
           "hash": "l/TlwpJr3LZn5pgHzLn+DUci6uls/Poz5ps79ccSvYI="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -288,7 +288,7 @@
           "hash": "onF0GWHotgRpqftXdjGc1XCc15z84xWz4or6CL0oIRs="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -300,7 +300,7 @@
           "hash": "ihxC/UKBnHrBCsK6QlX1wZRrHpGdNbwJ28c5nBCuUWk="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -312,7 +312,7 @@
           "hash": "dpHo/S8H1AKP+N+njxyQ7tijqxAJ3MixKCB9HAI4MlY="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -321,10 +321,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.TwitchClient.html",
-          "hash": "9kIMCkyB1V8VT7pkWGs5gSRMbbqcP4ZbNeKgTP0eJqk="
+          "hash": "F3i/DWyA79jM7+asYTEWKnSX2bgNaYgzVo1WtCDDYmA="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -336,7 +336,7 @@
           "hash": "UpMHp6XfksC2mYTGHFTTZWKkrIt88W4dIqPU7ifWESA="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -348,19 +348,22 @@
           "hash": "WLwwg1Ubp7zGG3QVTvrieX/YPwMaAsDlatJq7Zq6Lrs="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "api/index.md",
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "03yeA8trQSo65lzCQsajwxo4veIcYbP3AbRZRSUS1N0="
+          "hash": "i6rf4okbfbBFCvNkwjbdeWBDzo88xfX0nyAycrhRVTA="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -377,23 +380,26 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "articles/intro.md",
+      "source_relative_path": "guides/Tutorial/Installation.md",
       "output": {
         ".html": {
-          "relative_path": "articles/intro.html",
-          "hash": "+mXwEwlwQ1o6MPfce7sM0XWd2bVFG1qMhjq5RnXpoQc="
+          "relative_path": "guides/Tutorial/Installation.html",
+          "hash": "9E7NaIqPzS4r1KXt1T20UBut7BPyuw7D7ehPyIucMf4="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
-      "type": "Toc",
-      "source_relative_path": "articles/toc.yml",
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "guides/Tutorial/Setup.md",
       "output": {
         ".html": {
-          "relative_path": "articles/toc.html",
-          "hash": "MTE4wnxF8zicaPO1GqwDApP2vWR+Ef8T1e6H7M+f1pw="
+          "relative_path": "guides/Tutorial/Setup.html",
+          "hash": "16rmIRK9IgZ4rZ7taJmebcVjEhzhCK7r5YGlK7G63Ik="
         }
       },
       "is_incremental": false,
@@ -401,14 +407,56 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "guides/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/getting-started.html",
+          "hash": "r4OTwyJ4/xRWSQt914QEmfZn2jELwNeCGupybXRrnRc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "guides/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "guides/intro.html",
+          "hash": "iCnQbSRlCEkME/QS00PnIS5rR1DGCRworew2ALD1NRk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "guides/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "guides/toc.html",
+          "hash": "wfruQZfyNNbfq/JFei+R+vcdWCm2s86dIWFhI1MFcnE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "lDqQzKEGqWROt/VV7k//x+a+epR28Lx6qMlcggzRc+E="
+          "hash": "aeWpLzoHz6v0NkVuhNSQ53w1dD4uys3gZ0dxTFtNrfQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -417,7 +465,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "EM8HF3+meUrwkVMnryT8+3EpVnNyN+Nxdf9PYKP6TKc="
+          "hash": "rMy5bmOcuJmMJsYMndkiY8aNhxC+PNus1Wy3oEU6mVw="
         }
       },
       "is_incremental": false,
@@ -427,25 +475,23 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot build incrementally because config changed.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "ConfigChanged"
+        "skipped_file_count": 0
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 3,
-          "skipped_file_count": 0
+          "total_file_count": 6,
+          "skipped_file_count": 5
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 29,
-          "skipped_file_count": 0
+          "skipped_file_count": 29
         },
         "TocDocumentProcessor": {
           "can_incremental": false,

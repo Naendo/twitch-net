@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Setup for Twitch .NET | Twitch .NET Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Setup for Twitch .NET | Twitch .NET Documentation ">
+    <meta name="generator" content="docfx 2.58.5.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/night-owl.min.css">
+    <link rel="stylesheet" href="../../styles/colors.css">
+    <link rel="stylesheet" href="../../styles/discord.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+
+  <body>
+        <div class="top-navbar">
+
+            <a href="javascript:void(0);" class="burger-icon" onclick="toggleMenu()">
+                <svg name="Hamburger" style="vertical-align: middle;" width="24" height="24" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
+            </a>
+
+            
+            <a class="brand" href="../../index.html">
+              <img src="../../logo.svg" alt="" class="logomark">
+              <span class="brand-title"></span>
+            </a>
+        </div>
+
+        <div class="body-content">
+
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+
+                <div class="sidebar">
+                    
+                    
+                    
+                    
+                    <div>
+                      
+                      <a class="brand" href="../../index.html">
+                        <img src="../../logo.svg" alt="" class="logomark">
+                        <span class="brand-title"></span>
+                      </a>
+                      <div id="navbar">
+                    
+                      </div>
+                    
+                    </div>
+                    
+
+                    <div class="sidebar-item-separator"></div>
+
+                        
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+
+                </div>
+
+                <div class="footer">
+                  <span>Copyright &copy; Naendo</span>
+                  
+                </div>
+            </nav>
+
+            <main class="main-panel">
+
+                <div role="main" class="hide-when-search">
+
+                        
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                    <article class="content wrap" id="_content" data-uid="Guides.GettingStarted.Setup">
+<h2 id="twitch-net-setup">Twitch .NET Setup</h2>
+
+<p>One of the best ways to get started with Twitch .NET is to write a basic echo bot. This bot will respond to a simple command !say 'Whatever you want to say' with an exact copy of your message. We will expand on this to create more diverse commands later, but for now, it is a good starting point.</p>
+<h3 id="create-a-twitch-bot">Create a Twitch Bot</h3>
+<p>Before you write your very own bot, we recommend creating a new account via <a href="" https://www.twitch.tv/%22"="">twitch.tv</a>.</p>
+<ol>
+<li>Create your <a href="" https://www.twitch.tv/%22"="">account</a>.</li>
+<li>Now get your oauth Token for your bot via. a token <a href="" https://twitchapps.com/tmi/%22"="">generator</a> for example. You can also write a service to get the Token though the <a href="" https://dev.twitch.tv/docs/irc/guide%22"="">Twitch API</a>. This'll be a inbuild feature in future releases.</li>
+<li>Get ready to code! 🚀</li>
+</ol>
+<h3 id="connect-to-twitch">Connect to Twitch</h3>
+<p>If you haven't already created a project and installed Twitch .NET, do that now.</p>
+<p>For more information, see <a href="%22%22">Installing Twitch .NET</a>.</p>
+<h4 id="async">Async</h4>
+<p>Twitch .NET uses .NET's <a href="" https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/%22"="">Asynchronous Pattern</a> in pretty much every operation. In normal cases it is necessary to await every operation that can be, to establish an async context whenever possible.</p>
+<p>To create an async context right away, we will rewrite the static main method to handle async operations.</p>
+<pre><code class="lang-c#">public static class Program
+{
+    static async Task Main(string[] args)
+        =&gt; await SetupAsync();
+    
+    public async static Task SetupAsync()
+    {
+    }
+}
+</code></pre>
+<h4 id="creating-a-twitch-client">Creating a Twitch Client</h4>
+<p>Now the <strong>fun</strong> begins.😋</p>
+<p>To get started we will establish a connection to Twitch using our <a href="%22%22">TwitchClient</a>.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>We want to clarify how important the security of your OAuth Token really is. Giving away your OAuth Token can be compared to  telling everyone your password. Make sure to store it safely!</p>
+</div>
+<pre><code class="lang-c#">     public async static Task SetupAsync()
+        {
+            var twitchClient = new TwitchClient();
+            
+            // You can assign your oauth token to a string, and pass that in to connect.
+            //This is, however, insecure, particularly if you plan to have your code hosted in a public repository.
+            
+            //Some alternative options would be to keep your token in an Environment Variable or a standalone file.
+            // var token = Environment.GetEnvironmentVariable(&quot;NameOfYourEnvironmentVariable&quot;);
+            // var token = File.ReadAllText(&quot;token.txt&quot;);
+            // var token = JsonConvert.DeserializeObject&lt;AConfigurationClass&gt;                                             		 (File.ReadAllText(&quot;config.json&quot;)).Token;
+            
+            await _twitchBot.LoginAsync(&quot;nick&quot;, &quot;oauth:token&quot;);
+            
+            await _twitchBot.JoinAsync(&quot;thatnandotho&quot;);
+
+            await _twitchBot.StartAsync();
+         
+        
+            // This Line blockes the task until the program is finally closed.
+            await Task.Delay(-1);
+        }   
+      
+</code></pre>
+<p>At this point, we established a working connection! We'll now move on, to building our very own commands.</p>
+<h4 id="adding-our-commands">Adding our Commands</h4>
+<p>Creating commands for your bot was never easier. We'll guide you through a few steps and explain some functionality behind the szene.</p>
+<h5 id="step-1-build-the-command">Step 1: Build the Command</h5>
+<p>To build commands we use a base class called <a href="%22%22">BaseModule</a>. It'll later provide us with information about the command context and it is also necessary to later register your commands with our <a href="%22%22">TwitchCommander</a>.</p>
+<pre><code class="lang-c#">public class EchoModule : BaseModule
+{
+    [Command(&quot;say&quot;)]
+    public async Task EchoCommandAsync(string value)
+    {
+        await SendAsync($&quot;{UserProxy.Name} sent a message: {value}&quot;);
+    }
+}
+</code></pre>
+<p>To break down the code.</p>
+<ul>
+<li>The attribute <a href="%22%22">Command</a> registers our method as command. It's parameter defines a keyword. Through this keyword the system will invoke the method when the right command was sent.</li>
+<li>The method name is completely up to you. There are no naming schemes in Twitch .NET.</li>
+<li>In our example, the method parameter is a string. Parameters are by default divided by a Space -&gt; &quot; &quot;. To trigger this exact method the message has to look like <code>!say ThisIsAMessage</code>. It is important to not have spaces between your words if you work with one parameter. Although, if a dynamic number of parameters, we offer full <a href="" https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable?view="net-5.0%22" "="">IEnumerable</a> support.</li>
+<li>The base class gives us the functionality of <code>await SendAsync()</code>. This method will return a string back to the twitch channel.</li>
+</ul>
+<p>Congratulations👏 You just built your very first command with Twitch .NET.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>If you wish to see the full capability and functionality of the Command Framework please visit our <a href="%22%22">Docs</a>.</p>
+</div>
+<h5 id="step-2-register-the-command">Step 2: Register the Command</h5>
+<p>To put the whole framework together, Twitch .NET includes our <a href="%22%22">TwitchCommander</a>. His main mission is to register commands and map incoming command context to the correct method.</p>
+<pre><code class="lang-C#">public async static Task SetupAsync()
+{
+    ...
+        
+    var commander = new TwitchCommander(_twitchBot);   
+    
+    await commander.InitializeCommanderAsync(
+        serviceCollection: BuildServiceCollection(),
+        assembly: typeof(Program).Assembly
+    );
+    
+    await Task.Delay(-1);
+}
+
+private static IServiceCollection BuildServiceCollection()
+    =&gt; new ServiceCollection();
+</code></pre>
+<p>With these lines added your bot is ready and working but lets no get to excited yet.</p>
+<p>What exactly does this code do. Well, first we initialize the Commander and tell him which bot he is working for. (Yes, this implies you can have multiple bots running side-by-side!) Next, in which assembly he can find our commands and last but not least, we tell him if there are any services to inject. (ref. <a href="%22%22">Dependency Injection</a>)</p>
+</article>
+              
+                </div>
+            </main>
+        </div>
+
+        
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<script type="text/javascript" src="../../styles/jquery.twbsPagination.js"></script>
+<script type="text/javascript" src="../../styles/url.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
+<script type="text/javascript" src="../../styles/docfx.js"></script>
+<script type="text/javascript" src="../../styles/main.js"></script>
+
+    </body>
+
+</html>

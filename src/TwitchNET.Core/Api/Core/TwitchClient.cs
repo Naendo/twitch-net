@@ -65,10 +65,15 @@ namespace TwitchNET.Core
                 await LogAsync?.Invoke($"Joined Channel: {channel}");
 
             await Client.SendAsync(new TagCapabilityCommand());
-
-            await Client.ReadAsync();
         }
 
+        /// <summary>
+        /// <see cref="StartAsync"/> will start the <see cref="TcpListener"/> to await content from Twitch.
+        /// </summary>
+        public async Task StartAsync()
+        {
+            await Client.ReadAsync();
+        }
 
         /// <summary>
         ///Leave a certain Twitch Channel

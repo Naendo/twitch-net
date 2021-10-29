@@ -1,6 +1,21 @@
 ### YamlMime:XRefMap
 sorted: true
 references:
+- uid: API.Documentation
+  name: Twitch.NET | API Documentation
+  href: api/index.html
+- uid: Guides.GettingStarted
+  name: Getting Started | Twitch.NET Documentation
+  href: guides/getting-started.html
+- uid: Guides.GettingStarted.Installation
+  name: Twitch .NET Installation
+  href: guides/Tutorial/Installation.html
+- uid: Guides.GettingStarted.Setup
+  name: Setup for Twitch .NET
+  href: guides/Tutorial/Setup.html
+- uid: Guides.Introduction
+  name: Introduction | Twitch.NET Documentation
+  href: guides/intro.html
 - uid: TwitchNET.Core
   name: TwitchNET.Core
   href: api/TwitchNET.Core.html
@@ -672,6 +687,19 @@ references:
   isSpec: "True"
   fullName: TwitchNET.Core.TwitchClient.PartAsync
   nameWithType: TwitchClient.PartAsync
+- uid: TwitchNET.Core.TwitchClient.StartAsync
+  name: StartAsync()
+  href: api/TwitchNET.Core.TwitchClient.html#TwitchNET_Core_TwitchClient_StartAsync
+  commentId: M:TwitchNET.Core.TwitchClient.StartAsync
+  fullName: TwitchNET.Core.TwitchClient.StartAsync()
+  nameWithType: TwitchClient.StartAsync()
+- uid: TwitchNET.Core.TwitchClient.StartAsync*
+  name: StartAsync
+  href: api/TwitchNET.Core.TwitchClient.html#TwitchNET_Core_TwitchClient_StartAsync_
+  commentId: Overload:TwitchNET.Core.TwitchClient.StartAsync
+  isSpec: "True"
+  fullName: TwitchNET.Core.TwitchClient.StartAsync
+  nameWithType: TwitchClient.StartAsync
 - uid: TwitchNET.Core.TwitchCommander
   name: TwitchCommander
   href: api/TwitchNET.Core.TwitchCommander.html
