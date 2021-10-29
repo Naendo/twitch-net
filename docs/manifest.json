@@ -1,0 +1,476 @@
+{
+  "homepages": [],
+  "source_base_path": "E:/twitch-net/docs/docfx",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Exceptions.DuplicatedCommandException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Exceptions.DuplicatedCommandException.html",
+          "hash": "tHv4/9Vg2Q8XIfPSB7Mz1x4CrbbDpRoUNwNV9J9OaGQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Exceptions.IrcClientException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Exceptions.IrcClientException.html",
+          "hash": "YTzmgxgcsH0LRPEPlak8czZ0Z40HXQMpvDm0h1ixgvM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Exceptions.TypeReaderException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Exceptions.TypeReaderException.html",
+          "hash": "MXAvQveqQ4vF+R4mNihvV9R1NN8VW4s6R5S+LyYDme4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Exceptions.html",
+          "hash": "ze8Tp8VFudZEExVp4ijxAO5sc0Rgo+0O6Z3dSLU4hUI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Extensions.PipelineBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Extensions.PipelineBuilderExtensions.html",
+          "hash": "xW+24DJzYpcbS5hOshXvZYwViE7GEUBM5pHELUzk39c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Extensions.html",
+          "hash": "EZEb5uYf5dcHNA9ch1bJ0cZeQW5Qm6khaOTr1CzYt7U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Interfaces.IMiddleware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Interfaces.IMiddleware.html",
+          "hash": "st7gv86Ig0YLlEKsKEOXMrHK7K5za0LS/Sdmq/uvB5c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Interfaces.ITypeReader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Interfaces.ITypeReader.html",
+          "hash": "acl41X3PIJYdbn/SR/ipInuww+cHwlGwKNND7uPqOj4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Interfaces.html",
+          "hash": "1Zal/QX7TXfkUBlCMsgXn+IMNQfWK5ZkEr3SCXfat+0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.LogOutput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.LogOutput.html",
+          "hash": "yhc/QvtoGXyApwoTxxKeHjvu6kOdOBoTdUP7wpTpxtM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Logging.InternalLogger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Logging.InternalLogger.html",
+          "hash": "MzKIQlNoT7rO79OgIcyF8XYKT7sosD0BE2UhMEXrz7s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Logging.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Logging.html",
+          "hash": "Fv6KP+Cfm2wN9il0e2+m2EylffP9v/Zappd1P0gsiTg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Middleware.ParameterCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Middleware.ParameterCollection.html",
+          "hash": "sxCsGc56XKZoEdDoFFbTRlLZVNXK5aRMvdTJmg1CQc0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Middleware.RequestContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Middleware.RequestContext.html",
+          "hash": "4Cid0eEI9Ub5bcsr84KJBh9qqWU6E0f78jlzGmgI29U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Middleware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Middleware.html",
+          "hash": "NjOinSVDSNjFUexZFIs4QrhHNmQr1gkxN6x0EOXl8Zw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Models.CommandModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Models.CommandModel.html",
+          "hash": "RtqvMAKUmF/CL+3Ps8BqkBXCG/N7nrbHjqgu5z2O+oQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Models.html",
+          "hash": "wI9RD2faV2RRPVrphgW+miVOwJ3dZm0W173q8YA+8ng="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Modules.BaseModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Modules.BaseModule.html",
+          "hash": "UEmG9oW0PUQr/l4bpwUYQoOJKQMmf+94g62MrvSZ0Qc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Modules.BroadcasterAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Modules.BroadcasterAttribute.html",
+          "hash": "zR09KMdFSAE87RnErKlKT3hdVSfJB5OW/VtO52IBMIg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Modules.ChannelProxy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Modules.ChannelProxy.html",
+          "hash": "EFzAaM7dA9M9NqOYSkyfwA54jvMk26q1p0CsvOOEM0c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Modules.CommandAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Modules.CommandAttribute.html",
+          "hash": "0uZwusyIZ9FIcAU6HRFGBD0sXzR7R7L1KkU77Gz8iwo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Modules.CommandProxy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Modules.CommandProxy.html",
+          "hash": "Eky6c0Nl08y+2OyqeTfoEtr637w/W5sbBd9ElFoGloc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Modules.ModeratorAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Modules.ModeratorAttribute.html",
+          "hash": "l/TlwpJr3LZn5pgHzLn+DUci6uls/Poz5ps79ccSvYI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Modules.UserProxy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Modules.UserProxy.html",
+          "hash": "onF0GWHotgRpqftXdjGc1XCc15z84xWz4or6CL0oIRs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Modules.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Modules.html",
+          "hash": "ihxC/UKBnHrBCsK6QlX1wZRrHpGdNbwJ28c5nBCuUWk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.PipelineBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.PipelineBuilder.html",
+          "hash": "dpHo/S8H1AKP+N+njxyQ7tijqxAJ3MixKCB9HAI4MlY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.TwitchClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.TwitchClient.html",
+          "hash": "9kIMCkyB1V8VT7pkWGs5gSRMbbqcP4ZbNeKgTP0eJqk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.TwitchCommander.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.TwitchCommander.html",
+          "hash": "UpMHp6XfksC2mYTGHFTTZWKkrIt88W4dIqPU7ifWESA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.html",
+          "hash": "WLwwg1Ubp7zGG3QVTvrieX/YPwMaAsDlatJq7Zq6Lrs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "03yeA8trQSo65lzCQsajwxo4veIcYbP3AbRZRSUS1N0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "yjfGR07gMouBtjtg8/A+YJ0dI4YHKcooFPgCenHsx2k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "+mXwEwlwQ1o6MPfce7sM0XWd2bVFG1qMhjq5RnXpoQc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "MTE4wnxF8zicaPO1GqwDApP2vWR+Ef8T1e6H7M+f1pw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "lDqQzKEGqWROt/VV7k//x+a+epR28Lx6qMlcggzRc+E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "EM8HF3+meUrwkVMnryT8+3EpVnNyN+Nxdf9PYKP6TKc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because config changed.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "ConfigChanged"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 29,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

@@ -11,7 +11,7 @@
             "**/bin/**",
             "_site/**"
           ],
-          "cwd": ".."
+          "cwd": "../.."
         }
       ],
       "dest": "api",
@@ -54,8 +54,13 @@
         ]
       }
     ],
-    "dest": "_site",
+    "dest": "../",
     "globalMetadataFiles": [],
+    "globalMetadata": {
+      "_appTitle": "Twitch .NET Documentation",
+      "_appFooter": "<span>Copyright &copy; Naendo</span>",
+      "_enableSearch": "true"
+    },
     "fileMetadataFiles": [],
     "template": [
       "default","templates/discordfx"

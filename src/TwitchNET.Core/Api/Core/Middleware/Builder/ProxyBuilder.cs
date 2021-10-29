@@ -21,7 +21,7 @@ namespace TwitchNET.Core.Middleware
             context.Endpoint.CommandProxy = new CommandProxy{
                 Message = context.IrcResponseModel.Message
             };
-            context.Endpoint.TwitchBot = context.BotContext;
+            context.Endpoint.TwitchClient = context.BotContext;
 
             return context;
         }

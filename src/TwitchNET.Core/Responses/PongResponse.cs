@@ -1,7 +1,7 @@
 namespace TwitchNET.Core.Responses
 {
     /// <inheritdoc cref="IResponse"/>
-    public class PongResponse : IResponse
+    internal class PongResponse : IResponse
     {
         ///<example>Pong Response Template: PING :tmi.twitch.tv</example>
         MessageResponseModel IResponse.GetResult()
