@@ -66,7 +66,7 @@ To get started we will establish a connection to Twitch using our [TwitchClient]
             
             await _twitchBot.LoginAsync("nick", "oauth:token");
             
-            await _twitchBot.JoinAsync("thatnandotho");
+            await _twitchBot.JoinAsync("channel");
 
             await _twitchBot.StartAsync();
          
@@ -85,7 +85,7 @@ Creating commands for your bot was never easier. We'll guide you through a few s
 
 ##### Step 1: Build the Command
 
-To build commands we use a base class called [BaseModule](""). It'll later provide us with information about the command context and it is also necessary to later register your commands with our [TwitchCommander]("").
+To build commands we use a base class called [BaseModule](""). It will later provide us with information about the command context and it is also necessary to later register your commands with our [TwitchCommander]("").
 
 ```c#
 public class EchoModule : BaseModule
@@ -100,10 +100,15 @@ public class EchoModule : BaseModule
 
 To break down the code. 
 
-- The attribute [Command]("") registers our method as command. It's parameter defines a keyword. Through this keyword the system will invoke the method when the right command was sent.
+- The attribute [Command]("") registers our method as an command. It's parameter defines a keyword. Through this keyword, the system will invoke the method when the right command was sent.
+
 - The method name is completely up to you. There are no naming schemes in Twitch .NET.
-- In our example, the method parameter is a string. Parameters are by default divided by a Space -> " ". To trigger this exact method the message has to look like `!say ThisIsAMessage`. It is important to not have spaces between your words if you work with one parameter. Although, if a dynamic number of parameters, we offer full [IEnumerable]("https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable?view=net-5.0") support.
-- The base class gives us the functionality of `await SendAsync()`. This method will return a string back to the twitch channel. 
+
+- In our example, the method parameter is a string. Parameters are by default divided by a Space -> " ". To trigger this exact method the message has to look like `!say ThisIsAMessage`. It is important to not have spaces between your words if you work with one parameter. Although, if a dynamic number of parameters is required, we offer full [IEnumerable]("https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable?view=net-5.0") support for parameters.
+
+- The base class gives us the functionality of `await SendAsync()`. This method will return a string back to the twitch channel. It also gives us the functionality of [UserProxy](""). Via proxies we can get informtion about the user, for example its name, chat color, subscriber status and so on.
+
+  
 
 
 
