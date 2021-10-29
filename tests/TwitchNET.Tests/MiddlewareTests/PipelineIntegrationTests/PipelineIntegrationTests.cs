@@ -24,7 +24,7 @@ namespace TwitchNET.Tests.MiddlewareTests
             };
 
             //Act
-            var context = requestBuilder.ExecutePipeline(commandInfo, new DummyModule(), new TwitchBot(),
+            var context = requestBuilder.ExecutePipeline(commandInfo, new DummyModule(), new TwitchClient(),
                 new MessageResponseModel{
                     Message = "!test asdf 12",
                     Channel = "testchannel",
@@ -35,7 +35,7 @@ namespace TwitchNET.Tests.MiddlewareTests
             //Assert
             Assert.NotNull(context.Endpoint.ChannelProxy);
             Assert.NotNull(context.Endpoint.CommandProxy);
-            Assert.NotNull(context.Endpoint.TwitchBot);
+            Assert.NotNull(context.Endpoint.TwitchClient);
             Assert.NotNull(context.Endpoint.UserProxy);
 
 
@@ -61,7 +61,7 @@ namespace TwitchNET.Tests.MiddlewareTests
             };
 
             //Act
-            var context = requestBuilder.ExecutePipeline(commandInfo, new DummyModule(), new TwitchBot(),
+            var context = requestBuilder.ExecutePipeline(commandInfo, new DummyModule(), new TwitchClient(),
                 new MessageResponseModel{
                     Message = $"!test {TestEnum.Test2}",
                     Channel = "testchannel",
@@ -72,7 +72,7 @@ namespace TwitchNET.Tests.MiddlewareTests
             //Assert
             Assert.NotNull(context.Endpoint.ChannelProxy);
             Assert.NotNull(context.Endpoint.CommandProxy);
-            Assert.NotNull(context.Endpoint.TwitchBot);
+            Assert.NotNull(context.Endpoint.TwitchClient);
             Assert.NotNull(context.Endpoint.UserProxy);
 
 

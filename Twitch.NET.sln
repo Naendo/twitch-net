@@ -1,14 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B82E936E-0E76-4B08-9097-DA8922467C0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchNET.Benchmarks", "src\TwitchNET.Benchmarks\TwitchNET.Benchmarks.csproj", "{7592CD9E-B8AE-4679-A6A1-6C537509E96F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwitchNET.Benchmarks", "src\TwitchNET.Benchmarks\TwitchNET.Benchmarks.csproj", "{7592CD9E-B8AE-4679-A6A1-6C537509E96F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchNET.Core", "src\TwitchNET.Core\TwitchNET.Core.csproj", "{0D08144C-F19B-4094-8261-8A4694FD4B7C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchNET.Samples", "src\TwitchNET.Samples\TwitchNET.Samples.csproj", "{62114146-88F7-4DE5-BB36-DE1DC1761C47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwitchNET.Core", "src\TwitchNET.Core\TwitchNET.Core.csproj", "{0D08144C-F19B-4094-8261-8A4694FD4B7C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2AC542BD-DF3D-4AD9-BF48-E774728F8B25}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwitchNET.Tests", "tests\TwitchNET.Tests\TwitchNET.Tests.csproj", "{473CB318-E3BB-4DF8-9325-AD56A5898A0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,14 +27,20 @@ Global
 		{0D08144C-F19B-4094-8261-8A4694FD4B7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D08144C-F19B-4094-8261-8A4694FD4B7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D08144C-F19B-4094-8261-8A4694FD4B7C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{62114146-88F7-4DE5-BB36-DE1DC1761C47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{62114146-88F7-4DE5-BB36-DE1DC1761C47}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{62114146-88F7-4DE5-BB36-DE1DC1761C47}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{62114146-88F7-4DE5-BB36-DE1DC1761C47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{473CB318-E3BB-4DF8-9325-AD56A5898A0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{473CB318-E3BB-4DF8-9325-AD56A5898A0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{473CB318-E3BB-4DF8-9325-AD56A5898A0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{473CB318-E3BB-4DF8-9325-AD56A5898A0B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7592CD9E-B8AE-4679-A6A1-6C537509E96F} = {B82E936E-0E76-4B08-9097-DA8922467C0F}
 		{0D08144C-F19B-4094-8261-8A4694FD4B7C} = {B82E936E-0E76-4B08-9097-DA8922467C0F}
-		{62114146-88F7-4DE5-BB36-DE1DC1761C47} = {B82E936E-0E76-4B08-9097-DA8922467C0F}
+		{473CB318-E3BB-4DF8-9325-AD56A5898A0B} = {2AC542BD-DF3D-4AD9-BF48-E774728F8B25}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9961B93-C3A8-4820-946C-85BE08654443}
 	EndGlobalSection
 EndGlobal
