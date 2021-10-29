@@ -57,7 +57,7 @@ namespace TwitchNET.Core
         /// <param name="bot">Instance of <see cref="TwitchClient"/></param>
         /// <param name="prefix">Choose your command prefix!</param>
         /// <param name="logOutput">Log via File or Console</param>
-        public TwitchCommander(TwitchClient bot, string prefix = "!", LogOutput logOutput = LogOutput.Console)
+        public TwitchCommander(TwitchClient bot, string prefix = "!")
         {
             _prefix = prefix;
             _bot = bot;
