@@ -23,7 +23,7 @@ namespace TwitchNET.Tests.MiddlewareTests.ProxyTests
                 Message = "this is a message ;)"
             };
 
-            module.TwitchBot = new TwitchBot();
+            module.TwitchClient = new TwitchClient();
 
             module.UserProxy = new UserProxy{
                 Color = "green",
@@ -38,7 +38,7 @@ namespace TwitchNET.Tests.MiddlewareTests.ProxyTests
 
             Assert.NotNull(baseModule.ChannelProxy);
             Assert.NotNull(baseModule.CommandProxy);
-            Assert.NotNull(baseModule.TwitchBot);
+            Assert.NotNull(baseModule.TwitchClient);
             Assert.NotNull(baseModule.UserProxy);
         }
     }

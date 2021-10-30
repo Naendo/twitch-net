@@ -21,9 +21,9 @@ namespace TwitchNET.Sample
             var commander = new TwitchCommander(_client);
 
 
-            await _client.LoginAsync("nick", "oauth:token");
+            await _client.LoginAsync("thatnandotho", "z6bnnwg9vda3mockuj0zny4lmtf6ww");
 
-            await _client.JoinAsync("channel");
+            await _client.JoinAsync("thatnandotho");
 
             await _client.StartAsync();
 
@@ -33,6 +33,8 @@ namespace TwitchNET.Sample
                 typeof(Program).Assembly,
                 middlewareBuilder: BuildRequestPipeline()
             );
+
+            await Task.Delay(-1);
         }
 
 

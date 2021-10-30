@@ -54,9 +54,7 @@ namespace TwitchNET.Core
         {
             var serviceProvider = _serviceCollection.BuildServiceProvider();
 
-            List<Type> middlewareCollection;
-
-            middlewareCollection = _customMiddlewareTypes.Count != 0
+            var middlewareCollection = _customMiddlewareTypes.Count != 0
                 ? _middlewareTypes.Concat(_customMiddlewareTypes).ToList()
                 : _middlewareTypes;
 

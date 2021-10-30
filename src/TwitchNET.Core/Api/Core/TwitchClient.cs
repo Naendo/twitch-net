@@ -11,9 +11,9 @@ namespace TwitchNET.Core
 {
     public class TwitchClient
     {
-        private string _nick;
-        private string _token;
-        private string _connectedChannel;
+        internal string Nick;
+        internal string Token;
+        internal string ConnectedChannel;
 
         internal readonly TwitchSocketClient Client;
 
@@ -36,10 +36,10 @@ namespace TwitchNET.Core
             {
                 await Client.ConnectAsync();
 
-                _token = token;
-                _nick = nick;
+                Token = token;
+                Nick = nick;
 
-                await Client.SendAsync(new AuthenticateCommand(nick, token));
+                 await Client.SendAsync(new AuthenticateCommand(Nick, Token));
 
                 if (!isReconnecting)
                     await LogAsync?.Invoke($"Bot authorized as [{nick}]");
@@ -58,25 +58,26 @@ namespace TwitchNET.Core
         /// <param name="isReconnecting"></param>
         public async Task JoinAsync(string channel, bool isReconnecting = false)
         {
-            _connectedChannel = channel;
+            ConnectedChannel = channel;
 
-            await Client.SendAsync(new JoinCommand(channel));
+            await Client.SendAsync(new JoinCommand(ConnectedChannel));
             if (!isReconnecting)
-                await LogAsync?.Invoke($"Joined Channel: {channel}");
+                await LogAsync?.Invoke($"Joined Channel: {ConnectedChannel}");
 
+            await Client.SendAsync(new UserStateCommand(channel));
             await Client.SendAsync(new TagCapabilityCommand());
         }
 
         /// <summary>
         /// <see cref="StartAsync"/> will start the <see cref="TcpListener"/> to await content from Twitch.
         /// </summary>
-        public async Task StartAsync()
+        public Task StartAsync()
         {
-            await Client.ReadAsync();
+            return Client.ReadAsync();
         }
 
         /// <summary>
-        ///Leave a certain Twitch Channel
+        /// Leave a certain Twitch Channel
         /// </summary>
         /// <param name="channel">Twitch Channel you want your bot to leave</param>
         public async Task PartAsync(string channel)
