@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TwitchNET.Core\TwitchNET.Core.csproj" />
+      <ProjectReference Include="..\..\src\TwitchNET.Core\TwitchNET.Core.csproj" />
     </ItemGroup>
 
 </Project>

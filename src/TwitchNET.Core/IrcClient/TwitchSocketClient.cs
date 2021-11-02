@@ -27,7 +27,7 @@ namespace TwitchNET.Core.IrcClient
             await _tcpClient.ConnectAsync(URI, PORT);
         }
 
-        internal async Task ReconnectAsync()
+        private async Task ReconnectAsync()
         {
             var timer = 1;
             do
@@ -38,7 +38,15 @@ namespace TwitchNET.Core.IrcClient
                     timer++;
                 else
                     timer *= timer;
+
+                await _client.OnLogAsync($"Log {timer * 1000}");
             } while (!_tcpClient.Connected);
+
+            await _client.LoginAsync(_client.Nick, _client.Token, isReconnecting: true);
+
+            await _client.JoinAsync(_client.ConnectedChannel);
+
+            await _client.StartAsync();
         }
 
         internal async Task SendAsync(ICommand command)
@@ -63,6 +71,7 @@ namespace TwitchNET.Core.IrcClient
                         var data = await reader.ReadLineAsync();
                         if (data is null)
                         {
+                            await _client.OnLogAsync($"You received an empty stream on {nameof(ReadAsync)}");
                             await ReconnectAsync();
                             return;
                         }

@@ -10,7 +10,6 @@ using TwitchNET.Core.Responses;
 
 namespace TwitchNET.Core
 {
-    
     ///<summary>
     ///The <see cref="PipelineBuilder"/> defines a middleware framework for the chat request pipeline.
     ///<para>By default two internal middlewares: <see cref="ProxyBuilder"/> and <see cref="TypeReaderBuilder"/> are invoked before a
@@ -54,9 +53,7 @@ namespace TwitchNET.Core
         {
             var serviceProvider = _serviceCollection.BuildServiceProvider();
 
-            List<Type> middlewareCollection;
-
-            middlewareCollection = _customMiddlewareTypes.Count != 0
+            var middlewareCollection = _customMiddlewareTypes.Count != 0
                 ? _middlewareTypes.Concat(_customMiddlewareTypes).ToList()
                 : _middlewareTypes;
 
@@ -66,7 +63,8 @@ namespace TwitchNET.Core
             foreach (var type in middlewareCollection)
             {
                 var middleware = serviceProvider.GetService(type) as IMiddleware;
-                context = middleware.Execute(context ?? new RequestContext{
+                context = middleware.Execute(context ?? new RequestContext
+                {
                     CommandInfo = commandInfo,
                     Endpoint = endpoint,
                     IrcResponseModel = messageResponse,
@@ -80,7 +78,7 @@ namespace TwitchNET.Core
 
         internal Task InvokeEndpointAsync(RequestContext requestContext)
         {
-            return (Task) requestContext.CommandInfo.MethodInfo.Invoke(requestContext.Endpoint,
+            return (Task)requestContext.CommandInfo.MethodInfo.Invoke(requestContext.Endpoint,
                 requestContext.Parameters.Values)!;
         }
 

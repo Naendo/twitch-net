@@ -57,7 +57,7 @@ namespace TwitchNET.Core
         /// <param name="bot">Instance of <see cref="TwitchClient"/></param>
         /// <param name="prefix">Choose your command prefix!</param>
         /// <param name="logOutput">Log via File or Console</param>
-        public TwitchCommander(TwitchClient bot, string prefix = "!", LogOutput logOutput = LogOutput.Console)
+        public TwitchCommander(TwitchClient bot, string prefix = "!")
         {
             _prefix = prefix;
             _bot = bot;
@@ -187,12 +187,10 @@ namespace TwitchNET.Core
                 if (!_commandCache.TryGetValue(commandModel.CommandKey.ToLower(), out var commandInfo))
                     return;
 
-
-                var instance = (BaseModule)_serviceProvider!.GetService(commandInfo.MethodInfo.DeclaringType!);
-
-
                 if (!await ValidateRoleAttributesAsync(commandInfo.MethodInfo, messageResponseModel))
                     return;
+
+                var instance = (BaseModule)_serviceProvider!.GetService(commandInfo.MethodInfo.DeclaringType!);
 
 
                 if (_pipelineBuilder is null)
@@ -206,7 +204,7 @@ namespace TwitchNET.Core
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                await _bot.OnLogAsync(ex);
             }
         }
 
@@ -223,7 +221,7 @@ namespace TwitchNET.Core
             if (Attribute.IsDefined(methodInfo, typeof(ModeratorAttribute)))
                 return new ValueTask<bool>(messageResponseModel.IsBroadcaster || messageResponseModel.IsModerator);
 
-            if (Attribute.IsDefined(methodInfo, typeof(BroadcasterAttribute)))
+            else if (Attribute.IsDefined(methodInfo, typeof(BroadcasterAttribute)))
                 return new ValueTask<bool>(messageResponseModel.IsBroadcaster);
 
             return new ValueTask<bool>(true);

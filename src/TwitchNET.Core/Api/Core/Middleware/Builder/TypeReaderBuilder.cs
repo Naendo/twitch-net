@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using TwitchNET.Core.Interfaces;
 using TwitchNET.Core.Modules;
 
+
+[assembly:InternalsVisibleTo("TwitchNET.Tests")]
 namespace TwitchNET.Core.Middleware
 {
     internal sealed class TypeReaderBuilder : IMiddleware

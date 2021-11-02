@@ -24,7 +24,7 @@ namespace TwitchNET.Benchmarks.TwitchNET.Setup
         {
             var bot = new TwitchClient();
             
-            var commander = new TwitchCommander(new TwitchClient(), logOutput: LogOutput.File);
+            var commander = new TwitchCommander(new TwitchClient());
 
             await commander.InitializeCommanderAsync(
                 serviceCollection: new ServiceCollection(),
