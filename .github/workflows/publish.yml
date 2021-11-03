@@ -1,0 +1,23 @@
+name: Publish to NuGet
+on:
+  push:
+    branches:
+      - release
+jobs:
+  publish:
+    name: build, pack & publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup .NET 6.0
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.100-rc.1.21463.6
+
+      - name: Publish Twitch .NET on version changed
+        uses: TwentyFourMinutes/PublishNuget@dev
+        with:
+          name: TwitchNET.Core
+          project_file_path: src/TwitchNET.Core/TwitchNET.Core.csproj
+          nuget_key: ${{secrets.NUGET_API_KEY}}
