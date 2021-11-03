@@ -27,7 +27,7 @@ Coming soon..
 
 ## Installation
 
-Install Twitch .NET via nuget [now](https://www.nuget.org/packages/Naendo.Twitch.NET). <img src="https://img.shields.io/nuget/dt/Naendo.Twitch.Net?logo=nuget">
+Install Twitch .NET via nuget [now](https://www.nuget.org/packages/TwitchNET). <img src="https://img.shields.io/nuget/dt/TwitchNET?logo=nuget">
 
 ## Basic Setup
 
