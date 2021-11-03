@@ -526,6 +526,25 @@ references:
   commentId: T:TwitchNET.Core.Modules.ModeratorAttribute
   fullName: TwitchNET.Core.Modules.ModeratorAttribute
   nameWithType: ModeratorAttribute
+- uid: TwitchNET.Core.Modules.PrefixAttribute
+  name: PrefixAttribute
+  href: api/TwitchNET.Core.Modules.PrefixAttribute.html
+  commentId: T:TwitchNET.Core.Modules.PrefixAttribute
+  fullName: TwitchNET.Core.Modules.PrefixAttribute
+  nameWithType: PrefixAttribute
+- uid: TwitchNET.Core.Modules.PrefixAttribute.#ctor(System.String)
+  name: PrefixAttribute(String)
+  href: api/TwitchNET.Core.Modules.PrefixAttribute.html#TwitchNET_Core_Modules_PrefixAttribute__ctor_System_String_
+  commentId: M:TwitchNET.Core.Modules.PrefixAttribute.#ctor(System.String)
+  fullName: TwitchNET.Core.Modules.PrefixAttribute.PrefixAttribute(System.String)
+  nameWithType: PrefixAttribute.PrefixAttribute(String)
+- uid: TwitchNET.Core.Modules.PrefixAttribute.#ctor*
+  name: PrefixAttribute
+  href: api/TwitchNET.Core.Modules.PrefixAttribute.html#TwitchNET_Core_Modules_PrefixAttribute__ctor_
+  commentId: Overload:TwitchNET.Core.Modules.PrefixAttribute.#ctor
+  isSpec: "True"
+  fullName: TwitchNET.Core.Modules.PrefixAttribute.PrefixAttribute
+  nameWithType: PrefixAttribute.PrefixAttribute
 - uid: TwitchNET.Core.Modules.UserProxy
   name: UserProxy
   href: api/TwitchNET.Core.Modules.UserProxy.html
@@ -706,12 +725,12 @@ references:
   commentId: T:TwitchNET.Core.TwitchCommander
   fullName: TwitchNET.Core.TwitchCommander
   nameWithType: TwitchCommander
-- uid: TwitchNET.Core.TwitchCommander.#ctor(TwitchNET.Core.TwitchClient,System.String,TwitchNET.Core.LogOutput)
-  name: TwitchCommander(TwitchClient, String, LogOutput)
-  href: api/TwitchNET.Core.TwitchCommander.html#TwitchNET_Core_TwitchCommander__ctor_TwitchNET_Core_TwitchClient_System_String_TwitchNET_Core_LogOutput_
-  commentId: M:TwitchNET.Core.TwitchCommander.#ctor(TwitchNET.Core.TwitchClient,System.String,TwitchNET.Core.LogOutput)
-  fullName: TwitchNET.Core.TwitchCommander.TwitchCommander(TwitchNET.Core.TwitchClient, System.String, TwitchNET.Core.LogOutput)
-  nameWithType: TwitchCommander.TwitchCommander(TwitchClient, String, LogOutput)
+- uid: TwitchNET.Core.TwitchCommander.#ctor(TwitchNET.Core.TwitchClient,System.String)
+  name: TwitchCommander(TwitchClient, String)
+  href: api/TwitchNET.Core.TwitchCommander.html#TwitchNET_Core_TwitchCommander__ctor_TwitchNET_Core_TwitchClient_System_String_
+  commentId: M:TwitchNET.Core.TwitchCommander.#ctor(TwitchNET.Core.TwitchClient,System.String)
+  fullName: TwitchNET.Core.TwitchCommander.TwitchCommander(TwitchNET.Core.TwitchClient, System.String)
+  nameWithType: TwitchCommander.TwitchCommander(TwitchClient, String)
 - uid: TwitchNET.Core.TwitchCommander.#ctor*
   name: TwitchCommander
   href: api/TwitchNET.Core.TwitchCommander.html#TwitchNET_Core_TwitchCommander__ctor_
@@ -732,3 +751,16 @@ references:
   isSpec: "True"
   fullName: TwitchNET.Core.TwitchCommander.InitializeCommanderAsync
   nameWithType: TwitchCommander.InitializeCommanderAsync
+- uid: TwitchNET.Core.TwitchCommander.MultiplePrefixes
+  name: MultiplePrefixes
+  href: api/TwitchNET.Core.TwitchCommander.html#TwitchNET_Core_TwitchCommander_MultiplePrefixes
+  commentId: P:TwitchNET.Core.TwitchCommander.MultiplePrefixes
+  fullName: TwitchNET.Core.TwitchCommander.MultiplePrefixes
+  nameWithType: TwitchCommander.MultiplePrefixes
+- uid: TwitchNET.Core.TwitchCommander.MultiplePrefixes*
+  name: MultiplePrefixes
+  href: api/TwitchNET.Core.TwitchCommander.html#TwitchNET_Core_TwitchCommander_MultiplePrefixes_
+  commentId: Overload:TwitchNET.Core.TwitchCommander.MultiplePrefixes
+  isSpec: "True"
+  fullName: TwitchNET.Core.TwitchCommander.MultiplePrefixes
+  nameWithType: TwitchCommander.MultiplePrefixes

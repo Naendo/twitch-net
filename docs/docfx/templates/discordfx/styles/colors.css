@@ -28,7 +28,7 @@
     /* Sidebar */
     --separator-color: #4f545c;
     --sidebar-bg-color: transparent
-    --sidebar-item-color: transparent
+    --sidebar-item-color: inherit;
     --sidebar-item-2nd-color: hsla(0,0%,100%,.75);
     --sidebar-item-3rd-color: hsla(0,0%,100%,.55);
 

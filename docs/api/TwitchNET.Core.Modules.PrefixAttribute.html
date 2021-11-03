@@ -6,10 +6,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class CommandAttribute
+    <title>Class PrefixAttribute
    | Twitch .NET Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class CommandAttribute
+    <meta name="title" content="Class PrefixAttribute
    | Twitch .NET Documentation ">
     <meta name="generator" content="docfx 2.58.5.0">
     
@@ -92,19 +92,18 @@
                           </div>
                         </div>
 
-                    <article class="content wrap" id="_content" data-uid="TwitchNET.Core.Modules.CommandAttribute">
+                    <article class="content wrap" id="_content" data-uid="TwitchNET.Core.Modules.PrefixAttribute">
   
   
-  <h1 id="TwitchNET_Core_Modules_CommandAttribute" data-uid="TwitchNET.Core.Modules.CommandAttribute" class="text-break">Class CommandAttribute
+  <h1 id="TwitchNET_Core_Modules_PrefixAttribute" data-uid="TwitchNET.Core.Modules.PrefixAttribute" class="text-break">Class PrefixAttribute
   </h1>
-  <div class="markdown level0 summary"><p>Marks a <a class="xref" href="TwitchNET.Core.Modules.BaseModule.html">BaseModule</a> Member as a command</p>
-</div>
+  <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">System.Attribute</span></div>
-    <div class="level2"><span class="xref">CommandAttribute</span></div>
+    <div class="level2"><span class="xref">PrefixAttribute</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -237,26 +236,27 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="TwitchNET.Core.Modules.html">TwitchNET.Core.Modules</a></h6>
   <h6><strong>Assembly</strong>: TwitchNET.Core.dll</h6>
-  <h5 id="TwitchNET_Core_Modules_CommandAttribute_syntax">Syntax</h5>
+  <h5 id="TwitchNET_Core_Modules_PrefixAttribute_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class CommandAttribute : Attribute</code></pre>
+    <pre><code class="lang-csharp hljs">[AttributeUsage(AttributeTargets.Class)]
+public class PrefixAttribute : Attribute</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Naendo/twitch-net/new/development/apiSpec/new?filename=TwitchNET_Core_Modules_CommandAttribute__ctor_System_String_.md&amp;value=---%0Auid%3A%20TwitchNET.Core.Modules.CommandAttribute.%23ctor(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Naendo/twitch-net/new/development/apiSpec/new?filename=TwitchNET_Core_Modules_PrefixAttribute__ctor_System_String_.md&amp;value=---%0Auid%3A%20TwitchNET.Core.Modules.PrefixAttribute.%23ctor(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Naendo/twitch-net/blob/development/src/TwitchNET.Core/Api/Modules/Attributes/CommandAttribute.cs/#L10">View Source</a>
+    <a href="https://github.com/Naendo/twitch-net/blob/development/src/TwitchNET.Core/Api/Modules/Attributes/PrefixAttribute.cs/#L10">View Source</a>
   </span>
-  <a id="TwitchNET_Core_Modules_CommandAttribute__ctor_" data-uid="TwitchNET.Core.Modules.CommandAttribute.#ctor*"></a>
-  <h4 id="TwitchNET_Core_Modules_CommandAttribute__ctor_System_String_" data-uid="TwitchNET.Core.Modules.CommandAttribute.#ctor(System.String)">CommandAttribute(String)</h4>
+  <a id="TwitchNET_Core_Modules_PrefixAttribute__ctor_" data-uid="TwitchNET.Core.Modules.PrefixAttribute.#ctor*"></a>
+  <h4 id="TwitchNET_Core_Modules_PrefixAttribute__ctor_System_String_" data-uid="TwitchNET.Core.Modules.PrefixAttribute.#ctor(System.String)">PrefixAttribute(String)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CommandAttribute(string commandName)</code></pre>
+    <pre><code class="lang-csharp hljs">public PrefixAttribute(string prefix)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -270,40 +270,7 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">commandName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Naendo/twitch-net/new/development/apiSpec/new?filename=TwitchNET_Core_Modules_CommandAttribute_Command.md&amp;value=---%0Auid%3A%20TwitchNET.Core.Modules.CommandAttribute.Command%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Naendo/twitch-net/blob/development/src/TwitchNET.Core/Api/Modules/Attributes/CommandAttribute.cs/#L18">View Source</a>
-  </span>
-  <a id="TwitchNET_Core_Modules_CommandAttribute_Command_" data-uid="TwitchNET.Core.Modules.CommandAttribute.Command*"></a>
-  <h4 id="TwitchNET_Core_Modules_CommandAttribute_Command" data-uid="TwitchNET.Core.Modules.CommandAttribute.Command">Command</h4>
-  <div class="markdown level1 summary"><p>Containing the Command-Key</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Command { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">prefix</span></td>
         <td></td>
       </tr>
     </tbody>

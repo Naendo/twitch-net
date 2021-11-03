@@ -9,10 +9,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Exceptions.DuplicatedCommandException.html",
-          "hash": "tHv4/9Vg2Q8XIfPSB7Mz1x4CrbbDpRoUNwNV9J9OaGQ="
+          "hash": "qJOgiJiQbECrlmdzbqo3nJcerLkMDmT+ewaac2hpZOA="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -21,10 +21,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Exceptions.IrcClientException.html",
-          "hash": "YTzmgxgcsH0LRPEPlak8czZ0Z40HXQMpvDm0h1ixgvM="
+          "hash": "tgSVw92DM2w8ZzM5+GI8Euud321I6rjX/QBpqtRz5I0="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -33,10 +33,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Exceptions.TypeReaderException.html",
-          "hash": "MXAvQveqQ4vF+R4mNihvV9R1NN8VW4s6R5S+LyYDme4="
+          "hash": "O8vFdf6oV/GxcPqgwDvVYt2xVjY+mU/HdQHHOrQw0z0="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -48,7 +48,7 @@
           "hash": "ze8Tp8VFudZEExVp4ijxAO5sc0Rgo+0O6Z3dSLU4hUI="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -57,10 +57,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Extensions.PipelineBuilderExtensions.html",
-          "hash": "nOHMIGxl/A4G5ti97SKgylQHHcjImGGuKoQ5apJoKnU="
+          "hash": "rjQbRtRmIGWPePjaV4qK+r4mR845Y7Lbojby73apj4E="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -72,7 +72,7 @@
           "hash": "EZEb5uYf5dcHNA9ch1bJ0cZeQW5Qm6khaOTr1CzYt7U="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -81,10 +81,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Interfaces.IMiddleware.html",
-          "hash": "st7gv86Ig0YLlEKsKEOXMrHK7K5za0LS/Sdmq/uvB5c="
+          "hash": "wiy8WOGRAh5E3AbEEMpjzgGEbNllWD+QJYpWpCf4LsA="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -93,10 +93,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Interfaces.ITypeReader.html",
-          "hash": "acl41X3PIJYdbn/SR/ipInuww+cHwlGwKNND7uPqOj4="
+          "hash": "KROKbXCIuDP1QhB5+aLyAIfG6KZpVgo6lg/DhICF/x4="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -108,7 +108,7 @@
           "hash": "1Zal/QX7TXfkUBlCMsgXn+IMNQfWK5ZkEr3SCXfat+0="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -120,7 +120,7 @@
           "hash": "yhc/QvtoGXyApwoTxxKeHjvu6kOdOBoTdUP7wpTpxtM="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -132,7 +132,7 @@
           "hash": "MzKIQlNoT7rO79OgIcyF8XYKT7sosD0BE2UhMEXrz7s="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -144,7 +144,7 @@
           "hash": "Fv6KP+Cfm2wN9il0e2+m2EylffP9v/Zappd1P0gsiTg="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -153,10 +153,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Middleware.ParameterCollection.html",
-          "hash": "sxCsGc56XKZoEdDoFFbTRlLZVNXK5aRMvdTJmg1CQc0="
+          "hash": "KCHLwzX+XCyzYZCboPebOXqYRXjlyYW5ykWUAH/sOX0="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -165,10 +165,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Middleware.RequestContext.html",
-          "hash": "4Cid0eEI9Ub5bcsr84KJBh9qqWU6E0f78jlzGmgI29U="
+          "hash": "+xTiSBWgJZNVjHwq0Ul+yK7OPxU4sF1ZLwSrzR5ziWo="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -180,7 +180,7 @@
           "hash": "NjOinSVDSNjFUexZFIs4QrhHNmQr1gkxN6x0EOXl8Zw="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -189,10 +189,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Models.CommandModel.html",
-          "hash": "RtqvMAKUmF/CL+3Ps8BqkBXCG/N7nrbHjqgu5z2O+oQ="
+          "hash": "6A9ThJQivDtCj2uOmLwQKtcuIYNn4OGA1jA8tR81QZg="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -204,7 +204,7 @@
           "hash": "wI9RD2faV2RRPVrphgW+miVOwJ3dZm0W173q8YA+8ng="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -213,10 +213,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Modules.BaseModule.html",
-          "hash": "UEmG9oW0PUQr/l4bpwUYQoOJKQMmf+94g62MrvSZ0Qc="
+          "hash": "UfHqIfbSVvp7V8Q6N+0mmdUFpp+NzeWhMv2umjJ9YFI="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -228,7 +228,7 @@
           "hash": "zR09KMdFSAE87RnErKlKT3hdVSfJB5OW/VtO52IBMIg="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -237,10 +237,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Modules.ChannelProxy.html",
-          "hash": "EFzAaM7dA9M9NqOYSkyfwA54jvMk26q1p0CsvOOEM0c="
+          "hash": "vT+7PpJ71EAQOTk3ZA0ZKruEP/qPRTdTuvdw7tvXvDE="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -249,10 +249,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Modules.CommandAttribute.html",
-          "hash": "0uZwusyIZ9FIcAU6HRFGBD0sXzR7R7L1KkU77Gz8iwo="
+          "hash": "yvW/gEGFZ5POQCkK7QXQOruyB/B70gz54WcajA1EUUU="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -261,10 +261,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Modules.CommandProxy.html",
-          "hash": "Eky6c0Nl08y+2OyqeTfoEtr637w/W5sbBd9ElFoGloc="
+          "hash": "WTeiqxakUkba8fz3a1zrpCbT9sIsGBjrF4ZCAA1REgA="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -276,7 +276,19 @@
           "hash": "l/TlwpJr3LZn5pgHzLn+DUci6uls/Poz5ps79ccSvYI="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/TwitchNET.Core.Modules.PrefixAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/TwitchNET.Core.Modules.PrefixAttribute.html",
+          "hash": "pKBFJyn17dK6/QJDR4z84njBmSajjLtSXXHhQuttSwY="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -285,10 +297,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Modules.UserProxy.html",
-          "hash": "onF0GWHotgRpqftXdjGc1XCc15z84xWz4or6CL0oIRs="
+          "hash": "gcADFT5lxJfbmqL7Fsz89+8FgZdYPM8DO77VaCn5Nxg="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -297,10 +309,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Modules.html",
-          "hash": "ihxC/UKBnHrBCsK6QlX1wZRrHpGdNbwJ28c5nBCuUWk="
+          "hash": "0kyjK1+badmbMu63Hs4v8bnk0ILzXoz3KRyRBKx5Tis="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -312,7 +324,7 @@
           "hash": "dpHo/S8H1AKP+N+njxyQ7tijqxAJ3MixKCB9HAI4MlY="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -321,10 +333,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.TwitchClient.html",
-          "hash": "F3i/DWyA79jM7+asYTEWKnSX2bgNaYgzVo1WtCDDYmA="
+          "hash": "5jLDVmzICyIXEp0im9/oXZ9zUCqqtsmfV3E13qtJnrE="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -333,10 +345,10 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.TwitchCommander.html",
-          "hash": "UpMHp6XfksC2mYTGHFTTZWKkrIt88W4dIqPU7ifWESA="
+          "hash": "GMbI5zgtKg3sdLMcRO9n7BGnWwUO0jHxzFSdqY1Ccrk="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -348,7 +360,7 @@
           "hash": "WLwwg1Ubp7zGG3QVTvrieX/YPwMaAsDlatJq7Zq6Lrs="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -363,7 +375,7 @@
           "hash": "i6rf4okbfbBFCvNkwjbdeWBDzo88xfX0nyAycrhRVTA="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -372,7 +384,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "yjfGR07gMouBtjtg8/A+YJ0dI4YHKcooFPgCenHsx2k="
+          "hash": "ho4/jAx3rs5koIB1MFGN7dR8zQmo/ZRJjEpcAefb6tc="
         }
       },
       "is_incremental": false,
@@ -387,7 +399,7 @@
           "hash": "9E7NaIqPzS4r1KXt1T20UBut7BPyuw7D7ehPyIucMf4="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -402,7 +414,7 @@
           "hash": "1uOVHVdFKMXeBtq3l+oJSAQR5oWGY7VkcTpR0FZ8nO8="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -414,7 +426,7 @@
           "hash": "r4OTwyJ4/xRWSQt914QEmfZn2jELwNeCGupybXRrnRc="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -429,7 +441,7 @@
           "hash": "iCnQbSRlCEkME/QS00PnIS5rR1DGCRworew2ALD1NRk="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -456,7 +468,7 @@
           "hash": "aeWpLzoHz6v0NkVuhNSQ53w1dD4uys3gZ0dxTFtNrfQ="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -490,8 +502,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 29,
-          "skipped_file_count": 29
+          "total_file_count": 30,
+          "skipped_file_count": 30
         },
         "TocDocumentProcessor": {
           "can_incremental": false,

@@ -10,8 +10,13 @@ display:none;
 .hljs-title{
     font-style:normal!important;
 }
+a.sidebar-item:active{
+color: var(--link-color)!important;
+}
 
-
+.active{
+color: var(--link-color)!important;
+}
 
 
 
