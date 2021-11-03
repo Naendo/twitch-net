@@ -1,20 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.1</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageId>TwitchNET</PackageId>
-        <PackageVersion>2.1.0</PackageVersion>
+        <PackageId>TwitchNET.Core</PackageId>
+        <PackageVersion>1.0.0</PackageVersion>
         <Authors>Naendo</Authors>
         <Nullable>disable</Nullable>
         <PackageProjectUrl>https://github.com/naendo/twitch-net</PackageProjectUrl>
         <RepositoryUrl>https://github.com/naendo/twitch-net</RepositoryUrl>
         <RepositoryType>GitHub</RepositoryType>
-        <PackageTags>twitch-wrapper .netcore</PackageTags>
-        <RootNamespace>TwitchWrapper.Core</RootNamespace>
-        <Title>A .NET Core TwitchAPI Wrapper</Title>
-        <Description>Open Spource Twitch Irc Wrapper</Description>
+        <PackageTags>twitch.net .netcore</PackageTags>
+        <Title>A modular, easy to use twitch api wrapper</Title>
+        <Description>This library gives you an easy to use surface api to handle imconing request from a twitch chat of your choice!</Description>
         <LangVersion>9</LangVersion>
+        <TargetFrameworks>net5.0;net6.0;netstandard2.1</TargetFrameworks>
     </PropertyGroup>
 
     <ItemGroup>
