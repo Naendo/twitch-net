@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageId>TwitchNET.Core</PackageId>
-        <Version>1.0.0</Version>
+        <PackageId>TwitchNET</PackageId>
+        <Version>3.0.0</Version>
         <Authors>Naendo</Authors>
         <Nullable>disable</Nullable>
         <PackageProjectUrl>https://github.com/naendo/twitch-net</PackageProjectUrl>

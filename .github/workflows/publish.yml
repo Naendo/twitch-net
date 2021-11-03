@@ -18,6 +18,6 @@ jobs:
       - name: Publish Twitch .NET on version changed
         uses: TwentyFourMinutes/PublishNuget@dev
         with:
-          name: TwitchNET.Core
+          name: TwitchNET
           project_file_path: src/TwitchNET.Core/TwitchNET.Core.csproj
           nuget_key: ${{secrets.NUGET_API_KEY}}
