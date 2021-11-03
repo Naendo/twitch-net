@@ -4,6 +4,7 @@ using TwitchNET.Sample.Services;
 
 namespace TwitchNET.Sample.Module
 {
+    [Prefix("!")]
     public class DummyModule : BaseModule
     {
         private readonly DummyService _service;

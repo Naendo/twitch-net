@@ -51,12 +51,13 @@ namespace TwitchNET.Core
         private IServiceProvider _serviceProvider;
 
 
+        public bool MultiplePrefixes { get; set; } = false;
+
         /// <summary>
         /// Initialize a new <see cref="TwitchCommander"/>
         /// </summary>
         /// <param name="bot">Instance of <see cref="TwitchClient"/></param>
         /// <param name="prefix">Choose your command prefix!</param>
-        /// <param name="logOutput">Log via File or Console</param>
         public TwitchCommander(TwitchClient bot, string prefix = "!")
         {
             _prefix = prefix;
@@ -95,6 +96,10 @@ namespace TwitchNET.Core
 
             var types = _assembly.GetTypes()
                 .Where(type => type.IsSubclassOf(typeof(BaseModule)));
+
+            if (MultiplePrefixes)
+                types = types.Where(x => x.GetCustomAttribute<PrefixAttribute>().Prefix == _prefix);
+
 
             foreach (var type in types)
             {
