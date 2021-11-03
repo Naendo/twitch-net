@@ -7,5 +7,18 @@
      topicUid: Guides.GettingStarted.Installation
    - name: Setup
      topicUid: Guides.GettingStarted.Setup
+- name: Advanced
+  topicUid: Guides.Advanced
+  items:
+   - name: TypeReader
+     topicUid: Guides.Advanced.TypeReader
+   - name: Middleware
+     topicUid: Guides.Advanced.Middleware 
+   - name: Dependency Injection
+     topicUid: Guides.Advanced.DependencyInjection
+   - name: Prefixing
+     topicUid: Guides.Advanced.Prefixing
+   - name: No Prefixing
+     topicUid: Guides.Advanced.NoPrefixing
 
 

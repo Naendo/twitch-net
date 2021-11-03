@@ -4,6 +4,24 @@ references:
 - uid: API.Documentation
   name: Twitch.NET | API Documentation
   href: api/index.html
+- uid: Guides.Advanced
+  name: Advanced Guides | Twitch.NET Documentation
+  href: guides/advanced.html
+- uid: Guides.Advanced.DependencyInjection
+  name: Dependency Injection | Twitch.NET Documentation
+  href: guides/advanced/Dependency%20Injection.html
+- uid: Guides.Advanced.Middleware
+  name: Middleware| Twitch.NET Documentation
+  href: guides/advanced/Middleware.html
+- uid: Guides.Advanced.NoPrefixing
+  name: No Prefixing| Twitch.NET Documentation
+  href: guides/advanced/NoFilter.html
+- uid: Guides.Advanced.Prefixing
+  name: Prefixing | Twitch.NET Documentation
+  href: guides/advanced/MultiPrefixing.html
+- uid: Guides.Advanced.TypeReader
+  name: TypeReader| Twitch.NET Documentation
+  href: guides/advanced/TypeReader.html
 - uid: Guides.GettingStarted
   name: Getting Started | Twitch.NET Documentation
   href: guides/getting-started.html
