@@ -37,10 +37,7 @@ namespace TwitchNET.Sample
             await Task.Delay(-1);
         }
 
-
-        private static PipelineBuilder BuildRequestPipeline()
-            => new PipelineBuilder()
-                .UseTypeReader<DummyTypeReader>();
+        
 
         private static IServiceCollection BuildServiceCollection()
             => new ServiceCollection().AddSingleton<DummyService>();
