@@ -37,7 +37,10 @@ namespace TwitchNET.Sample
             await Task.Delay(-1);
         }
 
-        
+
+        private static PipelineBuilder BuildRequestPipeline()
+            => new PipelineBuilder()
+                .UseMiddleware<DummyMiddleware>();
 
         private static IServiceCollection BuildServiceCollection()
             => new ServiceCollection().AddSingleton<DummyService>();
