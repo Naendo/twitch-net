@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Exceptions.DuplicatedCommandException.html",
-          "hash": "qJOgiJiQbECrlmdzbqo3nJcerLkMDmT+ewaac2hpZOA="
+          "hash": "QNs2q0upLGxIGZ6GkoDq9kBS+xi4uxGTxw8nHifwhz0="
         }
       },
       "is_incremental": false,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Exceptions.IrcClientException.html",
-          "hash": "tgSVw92DM2w8ZzM5+GI8Euud321I6rjX/QBpqtRz5I0="
+          "hash": "PO7HCADHUpq0Mzwprkt4G6dlCflOJRFg/EN7RS87xDw="
         }
       },
       "is_incremental": false,
@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Exceptions.TypeReaderException.html",
-          "hash": "O8vFdf6oV/GxcPqgwDvVYt2xVjY+mU/HdQHHOrQw0z0="
+          "hash": "X5JbBP/NnmTiwYANRRD0a73vc+R/klvkE594wOqbCb0="
         }
       },
       "is_incremental": false,
@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Extensions.PipelineBuilderExtensions.html",
-          "hash": "rjQbRtRmIGWPePjaV4qK+r4mR845Y7Lbojby73apj4E="
+          "hash": "0dRtFoZmR8LPm4YODXMoeNZ3xpfnFtW2bx7G0HISHho="
         }
       },
       "is_incremental": false,
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Interfaces.IMiddleware.html",
-          "hash": "wiy8WOGRAh5E3AbEEMpjzgGEbNllWD+QJYpWpCf4LsA="
+          "hash": "S2eMRZNTo1Wz7qfl/vu0eF6nQeku4s6pginyPoW3sfI="
         }
       },
       "is_incremental": false,
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Interfaces.ITypeReader.html",
-          "hash": "KROKbXCIuDP1QhB5+aLyAIfG6KZpVgo6lg/DhICF/x4="
+          "hash": "bj7/mksCoc722HpUe846ksheu22Htkmrchlseun/o3c="
         }
       },
       "is_incremental": false,
@@ -153,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Middleware.ParameterCollection.html",
-          "hash": "KCHLwzX+XCyzYZCboPebOXqYRXjlyYW5ykWUAH/sOX0="
+          "hash": "hhqLt+z87O+HYc8j5Y33lWpT4EKcv6Q1yQp+5CqEiMM="
         }
       },
       "is_incremental": false,
@@ -165,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Middleware.RequestContext.html",
-          "hash": "+xTiSBWgJZNVjHwq0Ul+yK7OPxU4sF1ZLwSrzR5ziWo="
+          "hash": "NeqGE9vNokcQ38RHsqONm/dr83Qo1KwljRm2tSyuTmQ="
         }
       },
       "is_incremental": false,
@@ -189,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Models.CommandModel.html",
-          "hash": "6A9ThJQivDtCj2uOmLwQKtcuIYNn4OGA1jA8tR81QZg="
+          "hash": "YOIBaCTGXBFLmDD29nIWuhbYd1zFFL2WIhQAmfBFTjY="
         }
       },
       "is_incremental": false,
@@ -213,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Modules.BaseModule.html",
-          "hash": "UfHqIfbSVvp7V8Q6N+0mmdUFpp+NzeWhMv2umjJ9YFI="
+          "hash": "VH9pqJIT+NtHoZ0Qq+rPvRbdTouQeGQvLC/J+7uV1xQ="
         }
       },
       "is_incremental": false,
@@ -237,7 +237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Modules.ChannelProxy.html",
-          "hash": "vT+7PpJ71EAQOTk3ZA0ZKruEP/qPRTdTuvdw7tvXvDE="
+          "hash": "em9OOeumczUuvHma3QyU4JXQmBV/AIsbgYcSKZfa920="
         }
       },
       "is_incremental": false,
@@ -249,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Modules.CommandAttribute.html",
-          "hash": "yvW/gEGFZ5POQCkK7QXQOruyB/B70gz54WcajA1EUUU="
+          "hash": "Bi5ges4HolD89UPz/De2um3kJ9YRQ4dTMKBEtQ0kURk="
         }
       },
       "is_incremental": false,
@@ -261,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Modules.CommandProxy.html",
-          "hash": "WTeiqxakUkba8fz3a1zrpCbT9sIsGBjrF4ZCAA1REgA="
+          "hash": "FZ2f4GKUQLigRVNwOvDb3/gB3JsSde1rexFQJibcn4Y="
         }
       },
       "is_incremental": false,
@@ -285,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Modules.PrefixAttribute.html",
-          "hash": "pKBFJyn17dK6/QJDR4z84njBmSajjLtSXXHhQuttSwY="
+          "hash": "2myqtp8tcDNssG1ntp7ps6P922/dt1nYpspYdSvVmhY="
         }
       },
       "is_incremental": false,
@@ -297,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.Modules.UserProxy.html",
-          "hash": "gcADFT5lxJfbmqL7Fsz89+8FgZdYPM8DO77VaCn5Nxg="
+          "hash": "1KH1XyeHk36lblxbNgcBYmlqNursbIcW60ntfkgc73w="
         }
       },
       "is_incremental": false,
@@ -333,7 +333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.TwitchClient.html",
-          "hash": "5jLDVmzICyIXEp0im9/oXZ9zUCqqtsmfV3E13qtJnrE="
+          "hash": "qfaL/5kWJ/jbAu9JxyUL/tFRyIZDQS8gvXY7MeBabkw="
         }
       },
       "is_incremental": false,
@@ -345,7 +345,7 @@
       "output": {
         ".html": {
           "relative_path": "api/TwitchNET.Core.TwitchCommander.html",
-          "hash": "GMbI5zgtKg3sdLMcRO9n7BGnWwUO0jHxzFSdqY1Ccrk="
+          "hash": "DKa8dHB0S3geKl0PDhaCG+mUaJXjjcUaF6ECWcqOh/s="
         }
       },
       "is_incremental": false,
@@ -375,7 +375,7 @@
           "hash": "i6rf4okbfbBFCvNkwjbdeWBDzo88xfX0nyAycrhRVTA="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -399,7 +399,7 @@
           "hash": "9E7NaIqPzS4r1KXt1T20UBut7BPyuw7D7ehPyIucMf4="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -414,7 +414,7 @@
           "hash": "1uOVHVdFKMXeBtq3l+oJSAQR5oWGY7VkcTpR0FZ8nO8="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -426,7 +426,7 @@
           "hash": "SM/aqtHTJjtK52uQAhH7Z9zUodrYqb19GiPfIeftf9E="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -438,7 +438,7 @@
           "hash": "vK+Fjn5oVEbeyWy7+HmAVbfyOfmuDGCq4bjiJPiB3oY="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -450,7 +450,7 @@
           "hash": "tpcATBZkcSH6evgAcmORGNSLWaQfk2sL6ydd5pdC6Uc="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -462,7 +462,7 @@
           "hash": "+gVzW9oZowDzihHN5cHI5Cax1+LlZmBUhoKbNdskd3w="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -474,16 +474,19 @@
           "hash": "+A3ZsPmKUFwecvVmARwYFbgDooBR9yK69uIFVaUcqgQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "guides/advanced/TypeReader.md",
       "output": {
         ".html": {
           "relative_path": "guides/advanced/TypeReader.html",
-          "hash": "HfedX5THkX5IaTnnmv4i6VyxH/QDR5y2dDW0v8n5B9k="
+          "hash": "WUQrB7I8rVKMFxIe9b0bRjSUGcgjNybTt06pE1iQsQ0="
         }
       },
       "is_incremental": false,
@@ -498,7 +501,7 @@
           "hash": "M6BGdswTrOoMsLZd1XaQyN/hOQdyUVwaf6e42bvQNCg="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -513,7 +516,7 @@
           "hash": "iCnQbSRlCEkME/QS00PnIS5rR1DGCRworew2ALD1NRk="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -523,6 +526,17 @@
         ".html": {
           "relative_path": "guides/toc.html",
           "hash": "FWh5UeZSvULZErPWLUvE5rymyG3fovCv+Zg88CMFZbU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Lifecycle.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/Lifecycle.svg"
         }
       },
       "is_incremental": false,
@@ -540,7 +554,7 @@
           "hash": "aeWpLzoHz6v0NkVuhNSQ53w1dD4uys3gZ0dxTFtNrfQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -569,13 +583,20 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 12,
-          "skipped_file_count": 12
+          "skipped_file_count": 11
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 30,
-          "skipped_file_count": 30
+          "skipped_file_count": 8
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
           "can_incremental": false,

@@ -91,8 +91,46 @@
                         </div>
 
                     <article class="content wrap" id="_content" data-uid="Guides.Advanced.TypeReader">
-<h2 id="typereader">TypeReader</h2>
+<h1 id="typereader">TypeReader</h1>
 
+<p>This section will give you a general idea of how type readers work and how you can write your custom ones.</p>
+<h2 id="what-are-typereaders">What are TypeReaders</h2>
+<p>What are <strong>TypeReaders</strong> even? Short answer. They are converters. They are used if you want your module parameter to not just be a simple string. Maybe you want it to be a <strong>collection</strong>, an <strong>enum</strong> or an <strong>integer</strong>. TwitchNET already has implemented a few <em>default</em> converters.</p>
+<p>Value types that are supported:</p>
+<ul>
+<li>string</li>
+<li>int</li>
+<li>uint</li>
+<li>double</li>
+<li>long</li>
+<li>ulong</li>
+<li>byte</li>
+<li>sbyte</li>
+</ul>
+<h3 id="how-to-utilize-type-readers">How to utilize Type Readers</h3>
+<p>Maybe you ask yourself now, how do I use these converters now? Well to answer that question, I want you to explain you the lifecycle of an incoming request in TwitchNET.</p>
+<img src="../../images/Lifecycle.svg" alt="life cycle diagram" style="zoom:75%;">
+<p>The <strong>blue</strong> fields in the lifecycle are always called. The <strong>yellow</strong> ones is your custom input. In the section &quot;Apply TypeReader on Parameter&quot; all registered converters are getting pulled and the converter for the <strong>Type</strong> you used as an parameter in your module will convert the string.</p>
+<h3 id="register--typereader">Register  TypeReader</h3>
+<p>Each <a href="">TwitchCommander</a> has the option to register custom <strong>Middleware</strong> and custom <strong>TypeReader</strong> with the parameter <strong>middlewareBuilder</strong>.</p>
+<pre><code class="lang-c#">public async Task InitializeAsync()
+{
+    
+    //...
+    
+   await commander.InitializeCommanderAsync(
+   	serviceCollection: BuildServiceCollection(),
+         typeof(Program).Assembly,
+         middlewareBuilder: BuildRequestPipeline()
+    );
+}	
+
+private static PipelineBuilder BuildRequestPipeline()
+   =&gt; new PipelineBuilder()
+    		.UseTypeReader&lt;DummyTypeReader&gt;();
+
+</code></pre>
+<p>The class <a href="%22%22">PipelineBuilder</a> has extension methodes to register your custom <strong>TypeReader</strong>.</p>
 </article>
               
                 </div>
