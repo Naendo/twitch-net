@@ -4,19 +4,6 @@ using TwitchNET.Core.Modules;
 using TwitchNET.Core.Responses;
 using TwitchNET.Core.Interfaces;
 
-namespace System.Runtime.CompilerServices
-{
-    using System.ComponentModel;
-
-    /// <summary>
-    /// Reserved to be used by the compiler for tracking metadata.
-    /// This class should not be used by developers in source code.
-    /// </summary>
-    internal static class IsExternalInit
-    {
-    }
-}
-
 
 namespace TwitchNET.Core.Middleware
 {

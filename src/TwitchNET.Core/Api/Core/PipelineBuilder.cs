@@ -63,14 +63,15 @@ namespace TwitchNET.Core
             foreach (var type in middlewareCollection)
             {
                 var middleware = serviceProvider.GetService(type) as IMiddleware;
-                context = middleware.Execute(context ?? new RequestContext
-                {
-                    CommandInfo = commandInfo,
-                    Endpoint = endpoint,
-                    IrcResponseModel = messageResponse,
-                    BotContext = botContext,
-                    CustomTypeReaders = _customTypeReader
-                });
+                if (middleware != null)
+                    context = middleware.Execute(context ?? new RequestContext
+                    {
+                        CommandInfo = commandInfo,
+                        Endpoint = endpoint,
+                        IrcResponseModel = messageResponse,
+                        BotContext = botContext,
+                        CustomTypeReaders = _customTypeReader
+                    });
             }
 
             return context;

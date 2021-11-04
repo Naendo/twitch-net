@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using TwitchNET.Core.Modules;
 
 namespace TwitchNET.Core.Modules
 {

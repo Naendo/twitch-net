@@ -9,7 +9,7 @@ namespace TwitchNET.Core
         //> :<user>!<user>@<user>.tmi.twitch.tv PART #<channel>
         //> :<user>!<user>@<user>.tmi.twitch.tv PRIVMSG #<channel> :This is a sample message
         //> :<user>!<user>@<user>.tmi.twitch.tv JOIN #<channel>
-        internal static IResponse? DeterminedResponseType(string response)
+        internal static IResponse DeterminedResponseType(string response)
         {
             //data[1] = ResponseType on Commands
             var data = response.Split(' ');

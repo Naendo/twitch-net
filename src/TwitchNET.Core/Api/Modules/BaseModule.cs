@@ -1,11 +1,8 @@
 ﻿using System.Threading.Tasks;
-using TwitchNET.Core;
 using TwitchNET.Core.Commands;
-using TwitchNET.Core.Modules;
 
 namespace TwitchNET.Core.Modules
 {
-    
     /// <summary>
     /// Provides a base class for a command module to inherit from
     /// </summary>

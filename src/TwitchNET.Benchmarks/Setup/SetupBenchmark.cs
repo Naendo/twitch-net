@@ -1,11 +1,8 @@
 using System;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Engines;
 using BenchmarkDotNet.Jobs;
 using Microsoft.Extensions.DependencyInjection;
-using TwitchLib.Client;
 using TwitchLib.Client.Events;
 using TwitchLib.Client.Models;
 using TwitchLib.Communication.Clients;
@@ -24,7 +21,7 @@ namespace TwitchNET.Benchmarks.TwitchNET.Setup
         {
             var bot = new TwitchClient();
             
-            var commander = new TwitchCommander(new TwitchClient());
+            var commander = new TwitchCommander(bot);
 
             await commander.InitializeCommanderAsync(
                 serviceCollection: new ServiceCollection(),

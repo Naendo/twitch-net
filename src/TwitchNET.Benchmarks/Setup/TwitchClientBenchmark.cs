@@ -1,10 +1,4 @@
-using System.Reflection;
 using BenchmarkDotNet.Attributes;
-using Microsoft.Extensions.DependencyInjection;
-using TwitchLib.Client;
-using TwitchLib.Client.Models;
-using TwitchNET.Core;
-using TwitchClient = TwitchNET.Core.TwitchClient;
 
 
 namespace TwitchNET.Benchmarks.TwitchNET.Setup

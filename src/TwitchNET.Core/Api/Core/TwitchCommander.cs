@@ -8,7 +8,6 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using TwitchNET.Core.Exceptions;
 using TwitchNET.Core.Extensions;
 using TwitchNET.Core.Interfaces;
-using TwitchNET.Core.Logging;
 using TwitchNET.Core.Modules;
 using TwitchNET.Core.Responses;
 
@@ -73,7 +72,7 @@ namespace TwitchNET.Core
         /// <param name="assembly">The assembly containing Command Modules inheriting <see cref="BaseModule"/></param>
         /// <param name="middlewareBuilder">Optional: ServiceCollection to register customized <see cref="IMiddleware"/></param>
         public Task InitializeCommanderAsync(IServiceCollection serviceCollection, Assembly assembly,
-            PipelineBuilder? middlewareBuilder = null)
+            PipelineBuilder middlewareBuilder = null)
         {
             _assembly = assembly;
             return Task.Run(() =>

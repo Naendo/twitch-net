@@ -1,4 +1,5 @@
-﻿using TwitchNET.Core.Modules;
+﻿using System.Globalization;
+using TwitchNET.Core.Modules;
 using Xunit;
 
 namespace TwitchNET.Tests.MiddlewareTests.TypeReaderTests
@@ -106,8 +107,8 @@ namespace TwitchNET.Tests.MiddlewareTests.TypeReaderTests
         [Fact]
         public void ConvertFrom_WithDouble()
         {
-            var min = double.MinValue.ToString();
-            var max = (double.MaxValue - 1).ToString();
+            var min = double.MinValue.ToString(CultureInfo.CurrentCulture);
+            var max = (double.MaxValue - 1).ToString(CultureInfo.CurrentCulture);
 
             var resultMin = MessageTypeReader.Default.ConvertFrom(typeof(double), min);
             Assert.IsType<double>(resultMin);
@@ -166,8 +167,8 @@ namespace TwitchNET.Tests.MiddlewareTests.TypeReaderTests
         [Fact]
         public void ConvertFrom_WithDecimal()
         {
-            var min = decimal.MinValue.ToString();
-            var max = (decimal.MaxValue - 1).ToString();
+            var min = decimal.MinValue.ToString(CultureInfo.CurrentCulture);
+            var max = (decimal.MaxValue - 1).ToString(CultureInfo.CurrentCulture);
 
             var resultMin = MessageTypeReader.Default.ConvertFrom(typeof(decimal), min);
             Assert.IsType<decimal>(resultMin);

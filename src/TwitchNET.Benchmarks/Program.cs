@@ -1,6 +1,4 @@
 using System.Linq;
-using System.Xml.Schema;
-using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Running;
 using TwitchNET.Benchmarks.TwitchNET.Setup;
