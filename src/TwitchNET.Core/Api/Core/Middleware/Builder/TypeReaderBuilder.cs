@@ -57,8 +57,7 @@ namespace TwitchNET.Core.Middleware
                         parameters.Length == 0
                             ? context.CommandInfo.Parameters[i].DefaultValue?.ToString()
                             : parameters[i]);
-
-
+            
             return context;
         }
     }

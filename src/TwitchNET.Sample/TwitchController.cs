@@ -39,7 +39,8 @@ namespace TwitchNET.Sample
 
 
         private static PipelineBuilder BuildRequestPipeline()
-            => new PipelineBuilder().UseMiddleware<DummyMiddleware>();
+            => new PipelineBuilder()
+                .UseTypeReader<DummyTypeReader>();
 
         private static IServiceCollection BuildServiceCollection()
             => new ServiceCollection().AddSingleton<DummyService>();

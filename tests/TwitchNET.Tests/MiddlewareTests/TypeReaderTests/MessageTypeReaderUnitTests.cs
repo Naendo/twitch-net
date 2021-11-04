@@ -1,5 +1,4 @@
-﻿
-using TwitchNET.Core.Modules;
+﻿using TwitchNET.Core.Modules;
 using Xunit;
 
 namespace TwitchNET.Tests.MiddlewareTests.TypeReaderTests
@@ -14,7 +13,6 @@ namespace TwitchNET.Tests.MiddlewareTests.TypeReaderTests
             var result = MessageTypeReader.Default.ConvertFrom<string>(input);
             Assert.IsType<string>(result);
         }
-
 
         [Theory]
         [InlineData("this is a string")]
@@ -181,11 +179,11 @@ namespace TwitchNET.Tests.MiddlewareTests.TypeReaderTests
         [Fact]
         public void ConvertFrom_WithNullableDecimal()
         {
-            var resultMin = (decimal?) MessageTypeReader.Default.ConvertFrom(typeof(decimal?), null);
+            var resultMin = (decimal?)MessageTypeReader.Default.ConvertFrom(typeof(decimal?), null);
 
             Assert.Null(resultMin);
 
-            var resultMax = (decimal?) MessageTypeReader.Default.ConvertFrom(typeof(decimal?), null);
+            var resultMax = (decimal?)MessageTypeReader.Default.ConvertFrom(typeof(decimal?), null);
             Assert.Null(resultMax);
         }
     }
