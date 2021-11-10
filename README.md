@@ -5,7 +5,7 @@
  <img src="https://img.shields.io/discord/298408053970305024?logo=discord">
 </p>
 
-<p align="center">A omfortable, odular and amazing library for the twitch api | <a href="https://naendo.github.io/twitch-net/">Documentation🚀</a></p>
+<p align="center">A comfortable, odular and amazing library for the twitch api | <a href="https://naendo.github.io/twitch-net/">Documentation🚀</a></p>
 
 ## About
 
