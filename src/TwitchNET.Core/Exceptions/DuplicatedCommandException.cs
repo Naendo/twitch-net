@@ -12,22 +12,8 @@ namespace TwitchNET.Core.Exceptions
         // and
         //    http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dncscol/html/csharp07192001.asp
         //
-
-        public DuplicatedCommandException()
-        {
-        }
-
+        
         public DuplicatedCommandException(string message) : base(message)
-        {
-        }
-
-        public DuplicatedCommandException(string message, Exception inner) : base(message, inner)
-        {
-        }
-
-        protected DuplicatedCommandException(
-            SerializationInfo info,
-            StreamingContext context) : base(info, context)
         {
         }
     }

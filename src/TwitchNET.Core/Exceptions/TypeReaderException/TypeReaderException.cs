@@ -17,12 +17,5 @@ namespace TwitchNET.Core.Exceptions
             $"TypeReader of type {typeReader.FullName} can not parse input: [{input}].")
         {
         }
-
-
-        protected TypeReaderException(
-            SerializationInfo info,
-            StreamingContext context) : base(info, context)
-        {
-        }
     }
 }

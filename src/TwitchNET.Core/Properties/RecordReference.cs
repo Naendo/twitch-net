@@ -1,3 +1,11 @@
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("TwitchNET.Tests", AllInternalsVisible = true)]
+
+
+
+
+
 namespace System.Runtime.CompilerServices
 {
     using System.ComponentModel;

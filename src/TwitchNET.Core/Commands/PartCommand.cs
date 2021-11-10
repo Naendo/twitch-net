@@ -1,4 +1,4 @@
-namespace TwitchNET.Core.Models
+namespace TwitchNET.Core.Commands
 {
     /// <inheritdoc cref="ICommand"/>
     internal class PartCommand : ICommand

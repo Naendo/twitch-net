@@ -2,7 +2,6 @@ using TwitchNET.Core.Models;
 
 namespace TwitchNET.Core.Responses
 {
-#nullable disable
     internal class MessageResponseModel
     {
         public bool IsModerator { get; set; }

@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Data.SqlTypes;
 using System.Runtime.CompilerServices;
 using TwitchNET.Core.Interfaces;
 using TwitchNET.Core.Modules;
 
 
-[assembly:InternalsVisibleTo("TwitchNET.Tests")]
+
+
 namespace TwitchNET.Core.Middleware
 {
     internal sealed class TypeReaderBuilder : IMiddleware
@@ -57,7 +59,7 @@ namespace TwitchNET.Core.Middleware
                         parameters.Length == 0
                             ? context.CommandInfo.Parameters[i].DefaultValue?.ToString()
                             : parameters[i]);
-            
+
             return context;
         }
     }
