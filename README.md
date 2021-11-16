@@ -37,68 +37,66 @@ Below are basic examples of how to utilize the Twitch .NET API.
 
 ```C#
  public class Program
-    {
-        static async Task Main(string[] args)
-            => await new TwitchController().InitializeTwitchClientAsync();
-    }
+ {
+     static async Task Main(string[] args)
+         => await new TwitchController().InitializeTwitchClientAsync();
+ }
 
 
-    public class TwitchController
-    {
-        private readonly TwitchBot _twitchBot;
+ public class TwitchController
+ {
+     private readonly TwitchBot _twitchBot;
 
-        public TwitchController()
-        {
-            _twitchBot = new TwitchBot();
-        }
+     public TwitchController()
+     {
+       _twitchBot = new TwitchBot();
+     }
 
-        public async Task InitializeTwitchClientAsync()
-        {
+     public async Task InitializeTwitchClientAsync()
+     {
+       var commander = new TwitchCommander(_twitchBot);
 
-            var commander = new TwitchCommander(_twitchBot);
+       await _twitchBot.LoginAsync("nick", "oauth:token");
 
-            await _twitchBot.LoginAsync("nick", "oauth:token");
+       await _twitchBot.JoinAsync("yourChannel");
 
-            await _twitchBot.JoinAsync("yourChannel");
-
-
-            await commander.InitalizeCommanderAsync(
+       await commander.InitalizeCommanderAsync(
                 serviceCollection: BuildServiceCollection(),
                 assembly: Assembly.GetEntryAssembly()
-            );
+       );
             
-            await Task.Delay(-1);
-        }
+       await Task.Delay(-1);
+  }
 
-        private static IServiceCollection BuildServiceCollection()
-            => new ServiceCollection()
+  private static IServiceCollection BuildServiceCollection()
+        => new ServiceCollection()
             .AddSingelton<YourDependency>();
-     }
+  }
 ```
 
 
 #### Twitch.Command
 
 ```C#  
-public class TestModule : BaseModule
-    {
-        private readonly YourDependency _dependency;
+  public class TestModule : BaseModule
+  {
+      private readonly YourDependency _dependency;
         
-        public TestModule(YourDependency dependency)
-        {
-            _dependency = dependency;
-        }
+      public TestModule(YourDependency dependency)
+      {
+          _dependency = dependency;
+      }
 
 
-        //Triggers on !test textAfterCommand
-        [Command("test")]
-        public async Task TestCommand(string value)
-        {
-            await _dependency.AddAsync(value);
-            await SendAsync($"{UserProxy.Name} sent a message: {value}");
-        }
+      //Triggers on !test textAfterCommand
+      [Command("test")]
+      public async Task TestCommand(string value)
+      {
+          await _dependency.AddAsync(value);
+          await SendAsync($"{UserProxy.Name} sent a message: {value}");
+       }
 
-    }
+  }
 
 ```
 
