@@ -66,12 +66,12 @@ Below are basic examples of how to utilize the Twitch .NET API.
        );
             
        await Task.Delay(-1);
-  }
+ }
 
   private static IServiceCollection BuildServiceCollection()
         => new ServiceCollection()
             .AddSingelton<YourDependency>();
-  }
+ }
 ```
 
 
