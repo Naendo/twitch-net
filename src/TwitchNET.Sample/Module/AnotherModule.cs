@@ -4,20 +4,20 @@ using TwitchNET.Sample.Services;
 
 namespace TwitchNET.Sample.Module
 {
-    public class DummyModule : BaseModule<DummyCommander>
+    public class AnotherModule : BaseModule<AnotherCommander>
     {
         private readonly DummyService _service;
 
-        public DummyModule(DummyService service) : base()
+        public AnotherModule(DummyService service)
         {
             _service = service;
         }
 
-        
+
         [Command("say")]
         public async Task EchoCommandAsync(string echo)
         {
-            await SendAsync(echo);
+            await SendAsync(string.Join(" ", echo));
         }
     }
 }

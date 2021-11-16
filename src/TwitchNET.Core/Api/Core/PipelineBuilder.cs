@@ -48,7 +48,8 @@ namespace TwitchNET.Core
         private readonly IServiceCollection _serviceCollection = new ServiceCollection();
 
 
-        internal RequestContext ExecutePipeline(CommandInfo commandInfo, BaseModule endpoint, TwitchClient botContext,
+        internal RequestContext ExecutePipeline(CommandInfo commandInfo, ModuleProxyBase endpoint,
+            TwitchClient botContext,
             MessageResponseModel messageResponse)
         {
             var serviceProvider = _serviceCollection.BuildServiceProvider();
@@ -79,7 +80,7 @@ namespace TwitchNET.Core
 
         internal Task InvokeEndpointAsync(RequestContext requestContext)
         {
-            return (Task)requestContext.CommandInfo.MethodInfo.Invoke(requestContext.Endpoint,
+            return (Task) requestContext.CommandInfo.MethodInfo.Invoke(requestContext.Endpoint,
                 requestContext.Parameters.Values)!;
         }
 

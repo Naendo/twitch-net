@@ -1,5 +1,6 @@
 ﻿using TwitchNET.Core;
 using TwitchNET.Core.Modules;
+using TwitchNET.Sample;
 using TwitchNET.Tests.MiddlewareTests.Setup;
 using Xunit;
 
@@ -12,19 +13,22 @@ namespace TwitchNET.Tests.MiddlewareTests.ProxyTests
         {
             var module = new DummyModule();
 
-            var baseModule = (BaseModule) module;
+            var baseModule = (BaseModule<DummyCommander>) module;
 
-            module.ChannelProxy = new ChannelProxy{
+            module.ChannelProxy = new ChannelProxy
+            {
                 Channel = "test"
             };
 
-            module.CommandProxy = new CommandProxy(){
+            module.CommandProxy = new CommandProxy()
+            {
                 Message = "this is a message ;)"
             };
 
             module.TwitchClient = new TwitchClient();
 
-            module.UserProxy = new UserProxy{
+            module.UserProxy = new UserProxy
+            {
                 Color = "green",
                 IsBroadcaster = false,
                 IsModerator = true,
@@ -33,7 +37,6 @@ namespace TwitchNET.Tests.MiddlewareTests.ProxyTests
                 IsVip = false,
                 Name = "testName"
             };
-
 
             Assert.NotNull(baseModule.ChannelProxy);
             Assert.NotNull(baseModule.CommandProxy);

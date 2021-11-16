@@ -35,11 +35,11 @@ namespace TwitchNET.Core
     /// </code>
     /// 
     /// </example>
-    public class TwitchCommander
+    public abstract class TwitchCommander<TCommander> where TCommander : class
     {
-        private static readonly Dictionary<string, CommandInfo> _commandCache = new();
+        private readonly Dictionary<string, CommandInfo> _commandCache = new();
 
-        private readonly TwitchClient _bot;
+        private readonly TwitchClient _twitchClient;
 
         private readonly string _prefix;
 
@@ -50,17 +50,15 @@ namespace TwitchNET.Core
         private IServiceProvider _serviceProvider;
 
 
-        public bool MultiplePrefixes { get; set; } = false;
-
         /// <summary>
         /// Initialize a new <see cref="TwitchCommander"/>
         /// </summary>
         /// <param name="bot">Instance of <see cref="TwitchClient"/></param>
         /// <param name="prefix">Choose your command prefix!</param>
-        public TwitchCommander(TwitchClient bot, string prefix = "!")
+        protected TwitchCommander(TwitchClient twitchClient, string prefix)
         {
+            _twitchClient = twitchClient;
             _prefix = prefix;
-            _bot = bot;
         }
 
 
@@ -71,13 +69,14 @@ namespace TwitchNET.Core
         /// <param name="serviceCollection">Dependency Injection - ServiceCollection</param>
         /// <param name="assembly">The assembly containing Command Modules inheriting <see cref="BaseModule"/></param>
         /// <param name="middlewareBuilder">Optional: ServiceCollection to register customized <see cref="IMiddleware"/></param>
-        public Task InitializeCommanderAsync(IServiceCollection serviceCollection, Assembly assembly,
+        protected Task InitializeCommanderAsync(IServiceCollection serviceCollection, Assembly assembly,
             PipelineBuilder middlewareBuilder = null)
         {
             _assembly = assembly;
+
             return Task.Run(() =>
             {
-                _bot.Client.OnMessageReceive += HandleCommandRequest;
+                _twitchClient.Client.OnMessageReceive += HandleCommandRequest;
                 ScanAssemblyForCommands(serviceCollection);
                 ConfigureMiddleware(middlewareBuilder ?? new PipelineBuilder());
             });
@@ -94,10 +93,7 @@ namespace TwitchNET.Core
                     $"{nameof(_assembly)} was null. {nameof(InitializeCommanderAsync)} invokation failed.");
 
             var types = _assembly.GetTypes()
-                .Where(type => type.IsSubclassOf(typeof(BaseModule)));
-
-            if (MultiplePrefixes)
-                types = types.Where(x => x.GetCustomAttribute<PrefixAttribute>().Prefix == _prefix);
+                .Where(type => type.IsSubclassOf(typeof(BaseModule<TCommander>)));
 
 
             foreach (var type in types)
@@ -105,7 +101,7 @@ namespace TwitchNET.Core
                 //ToDo: Remove LINQ
                 var result = type.GetMethods()
                     .Where(x => Attribute.IsDefined(x, typeof(CommandAttribute)))
-                    .Select(x => new { x.GetCustomAttribute<CommandAttribute>()!.Command, Method = x });
+                    .Select(x => new {x.GetCustomAttribute<CommandAttribute>()!.Command, Method = x});
 
 
                 ConfigureServiceCollection(type, serviceCollection);
@@ -113,10 +109,10 @@ namespace TwitchNET.Core
 
                 foreach (var item in result)
                     if (!_commandCache.TryAdd(item.Command, new CommandInfo
-                    {
-                        CommandKey = item.Command,
-                        MethodInfo = item.Method
-                    }))
+                        {
+                            CommandKey = item.Command,
+                            MethodInfo = item.Method
+                        }))
                         throw new DuplicatedCommandException(
                             $"Duplicated entry on {item.Command} on method {item.Method.Name}");
             }
@@ -150,9 +146,9 @@ namespace TwitchNET.Core
 
 
         /// <summary>
-        ///     CommandReceive EventHandler
+        ///  CommandReceive EventHandler
         /// </summary>
-        private async Task HandleCommandRequest(IResponse command)
+        protected virtual async Task HandleCommandRequest(IResponse command)
         {
             if (!IsCommand(command))
                 return;
@@ -194,7 +190,8 @@ namespace TwitchNET.Core
                 if (!await ValidateRoleAttributesAsync(commandInfo.MethodInfo, messageResponseModel))
                     return;
 
-                var instance = (BaseModule)_serviceProvider!.GetService(commandInfo.MethodInfo.DeclaringType!);
+                var instance =
+                    (BaseModule<TCommander>) _serviceProvider!.GetService(commandInfo.MethodInfo.DeclaringType!);
 
 
                 if (_pipelineBuilder is null)
@@ -202,13 +199,14 @@ namespace TwitchNET.Core
                         $"{nameof(_pipelineBuilder)}: Method {nameof(ExecuteCommandAsync)}");
 
 
-                var context = _pipelineBuilder.ExecutePipeline(commandInfo, instance, _bot, messageResponseModel);
+                var context =
+                    _pipelineBuilder.ExecutePipeline(commandInfo, instance, _twitchClient, messageResponseModel);
 
                 await _pipelineBuilder.InvokeEndpointAsync(context).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
-                await _bot.OnLogAsync(ex);
+                await _twitchClient.OnLogAsync(ex);
             }
         }
 

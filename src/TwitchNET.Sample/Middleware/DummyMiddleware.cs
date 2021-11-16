@@ -8,6 +8,7 @@ namespace TwitchNET.Sample.Middleware
         public RequestContext Execute(RequestContext context)
         {
             context.Parameters[0] += "[this was added by middleware]";
+
             return context;
         }
     }

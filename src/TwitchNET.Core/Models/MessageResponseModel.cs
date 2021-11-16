@@ -2,7 +2,7 @@ using TwitchNET.Core.Models;
 
 namespace TwitchNET.Core.Responses
 {
-    internal class MessageResponseModel
+    public class MessageResponseModel
     {
         public bool IsModerator { get; set; }
 
@@ -25,13 +25,14 @@ namespace TwitchNET.Core.Responses
         public string Channel { get; set; }
 
         public string Message { get; set; }
+        
         public ResponseType ResponseType { get; set; }
-
 
         internal CommandModel ParseResponse()
         {
             var responseStringAsArray = Message.Split(' ');
-            return new CommandModel{
+            return new CommandModel
+            {
                 CommandKey = responseStringAsArray[0][1..],
                 Parameter = responseStringAsArray[1..]
             };

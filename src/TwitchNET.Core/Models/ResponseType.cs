@@ -1,6 +1,6 @@
 namespace TwitchNET.Core.Responses
 {
-    internal enum ResponseType
+    public enum ResponseType
     {
         Ping,
         PrivMsg,

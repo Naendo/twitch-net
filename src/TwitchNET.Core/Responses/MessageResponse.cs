@@ -3,7 +3,6 @@ using System.Linq;
 
 namespace TwitchNET.Core.Responses
 {
-    
     /// <inheritdoc cref="IResponse"/>
     internal class MessageResponse : IResponse
     {
@@ -20,8 +19,15 @@ namespace TwitchNET.Core.Responses
                 tags.Add(splitedTag[0], splitedTag[1]);
             }
 
-            var indexOfSecondHashTag = response.IndexOf('#', response.IndexOf('#') + 1) + 1;
-            _response = new MessageResponseModel{
+
+            //Condition necessary because colors are not always set.
+            var indexOfSecondHashTag = response.Count(x => x == '#') > 1
+                ? response.IndexOf('#', response.IndexOf('#') + 1) + 1
+                : response.IndexOf('#') + 1;
+            
+            
+            _response = new MessageResponseModel
+            {
                 //first ':' to first '!'
                 Name = response[(response.IndexOf(':') + 1)..response.IndexOf('!')],
                 //second ':' to end
@@ -35,7 +41,7 @@ namespace TwitchNET.Core.Responses
             {
                 if (badge is "")
                     return;
-                
+
                 var userBadges = badge.Split(',').Select(x => x[..x.IndexOf('/')]).ToList();
 
                 foreach (var userBadge in userBadges)
@@ -47,7 +53,6 @@ namespace TwitchNET.Core.Responses
                         _response.IsModerator = true;
                     else if (userBadge == "subscriber")
                         _response.IsSubscriber = true;
-                    
             }
 
             if (tags.TryGetValue("color", out var color))

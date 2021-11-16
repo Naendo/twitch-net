@@ -8,6 +8,7 @@ using TwitchLib.Client.Models;
 using TwitchLib.Communication.Clients;
 using TwitchLib.Communication.Models;
 using TwitchNET.Core;
+using TwitchNET.Sample;
 using TwitchClient = TwitchNET.Core.TwitchClient;
 
 namespace TwitchNET.Benchmarks.TwitchNET.Setup
@@ -21,12 +22,9 @@ namespace TwitchNET.Benchmarks.TwitchNET.Setup
         {
             var bot = new TwitchClient();
             
-            var commander = new TwitchCommander(bot);
+            var commander = new DummyCommander(bot);
 
-            await commander.InitializeCommanderAsync(
-                serviceCollection: new ServiceCollection(),
-                assembly: typeof(Program).Assembly
-            );
+        
         }
 
         [Benchmark]

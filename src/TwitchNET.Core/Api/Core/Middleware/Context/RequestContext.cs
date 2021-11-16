@@ -10,7 +10,7 @@ namespace TwitchNET.Core.Middleware
     public class RequestContext
     {
         internal CommandInfo CommandInfo { get; init; }
-        internal BaseModule Endpoint { get; init; }
+        internal ModuleProxyBase Endpoint { get; init; }
         internal MessageResponseModel IrcResponseModel { get; init; }
         internal TwitchClient BotContext { get; init; }
 
