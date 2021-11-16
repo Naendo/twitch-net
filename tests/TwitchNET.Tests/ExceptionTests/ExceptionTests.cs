@@ -2,7 +2,7 @@ using TwitchNET.Core.Exceptions;
 using TwitchNET.Core.Modules;
 using Xunit;
 
-namespace TwitchWrapper.Tests.ExceptionTests
+namespace TwitchNET.Tests
 {
     public class ExceptionTests
     {
