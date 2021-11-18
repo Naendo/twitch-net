@@ -30,6 +30,6 @@ namespace TwitchNET.Sample
         }
 
         private static IServiceCollection BuildServiceCollection()
-            => new ServiceCollection().AddSingleton<DummyService>();
+            => new ServiceCollection().AddSingleton<TwitchService>();
     }
 }

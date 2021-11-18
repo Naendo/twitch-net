@@ -52,30 +52,12 @@ references:
   commentId: T:TwitchNET.Core.Exceptions.DuplicatedCommandException
   fullName: TwitchNET.Core.Exceptions.DuplicatedCommandException
   nameWithType: DuplicatedCommandException
-- uid: TwitchNET.Core.Exceptions.DuplicatedCommandException.#ctor
-  name: DuplicatedCommandException()
-  href: api/TwitchNET.Core.Exceptions.DuplicatedCommandException.html#TwitchNET_Core_Exceptions_DuplicatedCommandException__ctor
-  commentId: M:TwitchNET.Core.Exceptions.DuplicatedCommandException.#ctor
-  fullName: TwitchNET.Core.Exceptions.DuplicatedCommandException.DuplicatedCommandException()
-  nameWithType: DuplicatedCommandException.DuplicatedCommandException()
-- uid: TwitchNET.Core.Exceptions.DuplicatedCommandException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
-  name: DuplicatedCommandException(SerializationInfo, StreamingContext)
-  href: api/TwitchNET.Core.Exceptions.DuplicatedCommandException.html#TwitchNET_Core_Exceptions_DuplicatedCommandException__ctor_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
-  commentId: M:TwitchNET.Core.Exceptions.DuplicatedCommandException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
-  fullName: TwitchNET.Core.Exceptions.DuplicatedCommandException.DuplicatedCommandException(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
-  nameWithType: DuplicatedCommandException.DuplicatedCommandException(SerializationInfo, StreamingContext)
 - uid: TwitchNET.Core.Exceptions.DuplicatedCommandException.#ctor(System.String)
   name: DuplicatedCommandException(String)
   href: api/TwitchNET.Core.Exceptions.DuplicatedCommandException.html#TwitchNET_Core_Exceptions_DuplicatedCommandException__ctor_System_String_
   commentId: M:TwitchNET.Core.Exceptions.DuplicatedCommandException.#ctor(System.String)
   fullName: TwitchNET.Core.Exceptions.DuplicatedCommandException.DuplicatedCommandException(System.String)
   nameWithType: DuplicatedCommandException.DuplicatedCommandException(String)
-- uid: TwitchNET.Core.Exceptions.DuplicatedCommandException.#ctor(System.String,System.Exception)
-  name: DuplicatedCommandException(String, Exception)
-  href: api/TwitchNET.Core.Exceptions.DuplicatedCommandException.html#TwitchNET_Core_Exceptions_DuplicatedCommandException__ctor_System_String_System_Exception_
-  commentId: M:TwitchNET.Core.Exceptions.DuplicatedCommandException.#ctor(System.String,System.Exception)
-  fullName: TwitchNET.Core.Exceptions.DuplicatedCommandException.DuplicatedCommandException(System.String, System.Exception)
-  nameWithType: DuplicatedCommandException.DuplicatedCommandException(String, Exception)
 - uid: TwitchNET.Core.Exceptions.DuplicatedCommandException.#ctor*
   name: DuplicatedCommandException
   href: api/TwitchNET.Core.Exceptions.DuplicatedCommandException.html#TwitchNET_Core_Exceptions_DuplicatedCommandException__ctor_
@@ -89,30 +71,12 @@ references:
   commentId: T:TwitchNET.Core.Exceptions.IrcClientException
   fullName: TwitchNET.Core.Exceptions.IrcClientException
   nameWithType: IrcClientException
-- uid: TwitchNET.Core.Exceptions.IrcClientException.#ctor
-  name: IrcClientException()
-  href: api/TwitchNET.Core.Exceptions.IrcClientException.html#TwitchNET_Core_Exceptions_IrcClientException__ctor
-  commentId: M:TwitchNET.Core.Exceptions.IrcClientException.#ctor
-  fullName: TwitchNET.Core.Exceptions.IrcClientException.IrcClientException()
-  nameWithType: IrcClientException.IrcClientException()
-- uid: TwitchNET.Core.Exceptions.IrcClientException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
-  name: IrcClientException(SerializationInfo, StreamingContext)
-  href: api/TwitchNET.Core.Exceptions.IrcClientException.html#TwitchNET_Core_Exceptions_IrcClientException__ctor_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
-  commentId: M:TwitchNET.Core.Exceptions.IrcClientException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
-  fullName: TwitchNET.Core.Exceptions.IrcClientException.IrcClientException(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
-  nameWithType: IrcClientException.IrcClientException(SerializationInfo, StreamingContext)
 - uid: TwitchNET.Core.Exceptions.IrcClientException.#ctor(System.String)
   name: IrcClientException(String)
   href: api/TwitchNET.Core.Exceptions.IrcClientException.html#TwitchNET_Core_Exceptions_IrcClientException__ctor_System_String_
   commentId: M:TwitchNET.Core.Exceptions.IrcClientException.#ctor(System.String)
   fullName: TwitchNET.Core.Exceptions.IrcClientException.IrcClientException(System.String)
   nameWithType: IrcClientException.IrcClientException(String)
-- uid: TwitchNET.Core.Exceptions.IrcClientException.#ctor(System.String,System.Exception)
-  name: IrcClientException(String, Exception)
-  href: api/TwitchNET.Core.Exceptions.IrcClientException.html#TwitchNET_Core_Exceptions_IrcClientException__ctor_System_String_System_Exception_
-  commentId: M:TwitchNET.Core.Exceptions.IrcClientException.#ctor(System.String,System.Exception)
-  fullName: TwitchNET.Core.Exceptions.IrcClientException.IrcClientException(System.String, System.Exception)
-  nameWithType: IrcClientException.IrcClientException(String, Exception)
 - uid: TwitchNET.Core.Exceptions.IrcClientException.#ctor*
   name: IrcClientException
   href: api/TwitchNET.Core.Exceptions.IrcClientException.html#TwitchNET_Core_Exceptions_IrcClientException__ctor_
@@ -126,19 +90,6 @@ references:
   commentId: T:TwitchNET.Core.Exceptions.TypeReaderException
   fullName: TwitchNET.Core.Exceptions.TypeReaderException
   nameWithType: TypeReaderException
-- uid: TwitchNET.Core.Exceptions.TypeReaderException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
-  name: TypeReaderException(SerializationInfo, StreamingContext)
-  href: api/TwitchNET.Core.Exceptions.TypeReaderException.html#TwitchNET_Core_Exceptions_TypeReaderException__ctor_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
-  commentId: M:TwitchNET.Core.Exceptions.TypeReaderException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
-  fullName: TwitchNET.Core.Exceptions.TypeReaderException.TypeReaderException(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
-  nameWithType: TypeReaderException.TypeReaderException(SerializationInfo, StreamingContext)
-- uid: TwitchNET.Core.Exceptions.TypeReaderException.#ctor*
-  name: TypeReaderException
-  href: api/TwitchNET.Core.Exceptions.TypeReaderException.html#TwitchNET_Core_Exceptions_TypeReaderException__ctor_
-  commentId: Overload:TwitchNET.Core.Exceptions.TypeReaderException.#ctor
-  isSpec: "True"
-  fullName: TwitchNET.Core.Exceptions.TypeReaderException.TypeReaderException
-  nameWithType: TypeReaderException.TypeReaderException
 - uid: TwitchNET.Core.Extensions
   name: TwitchNET.Core.Extensions
   href: api/TwitchNET.Core.Extensions.html
@@ -404,64 +355,15 @@ references:
   commentId: N:TwitchNET.Core.Modules
   fullName: TwitchNET.Core.Modules
   nameWithType: TwitchNET.Core.Modules
-- uid: TwitchNET.Core.Modules.BaseModule
-  name: BaseModule
-  href: api/TwitchNET.Core.Modules.BaseModule.html
-  commentId: T:TwitchNET.Core.Modules.BaseModule
-  fullName: TwitchNET.Core.Modules.BaseModule
-  nameWithType: BaseModule
-- uid: TwitchNET.Core.Modules.BaseModule.ChannelProxy
-  name: ChannelProxy
-  href: api/TwitchNET.Core.Modules.BaseModule.html#TwitchNET_Core_Modules_BaseModule_ChannelProxy
-  commentId: P:TwitchNET.Core.Modules.BaseModule.ChannelProxy
-  fullName: TwitchNET.Core.Modules.BaseModule.ChannelProxy
-  nameWithType: BaseModule.ChannelProxy
-- uid: TwitchNET.Core.Modules.BaseModule.ChannelProxy*
-  name: ChannelProxy
-  href: api/TwitchNET.Core.Modules.BaseModule.html#TwitchNET_Core_Modules_BaseModule_ChannelProxy_
-  commentId: Overload:TwitchNET.Core.Modules.BaseModule.ChannelProxy
-  isSpec: "True"
-  fullName: TwitchNET.Core.Modules.BaseModule.ChannelProxy
-  nameWithType: BaseModule.ChannelProxy
-- uid: TwitchNET.Core.Modules.BaseModule.CommandProxy
-  name: CommandProxy
-  href: api/TwitchNET.Core.Modules.BaseModule.html#TwitchNET_Core_Modules_BaseModule_CommandProxy
-  commentId: P:TwitchNET.Core.Modules.BaseModule.CommandProxy
-  fullName: TwitchNET.Core.Modules.BaseModule.CommandProxy
-  nameWithType: BaseModule.CommandProxy
-- uid: TwitchNET.Core.Modules.BaseModule.CommandProxy*
-  name: CommandProxy
-  href: api/TwitchNET.Core.Modules.BaseModule.html#TwitchNET_Core_Modules_BaseModule_CommandProxy_
-  commentId: Overload:TwitchNET.Core.Modules.BaseModule.CommandProxy
-  isSpec: "True"
-  fullName: TwitchNET.Core.Modules.BaseModule.CommandProxy
-  nameWithType: BaseModule.CommandProxy
-- uid: TwitchNET.Core.Modules.BaseModule.SendAsync(System.String)
-  name: SendAsync(String)
-  href: api/TwitchNET.Core.Modules.BaseModule.html#TwitchNET_Core_Modules_BaseModule_SendAsync_System_String_
-  commentId: M:TwitchNET.Core.Modules.BaseModule.SendAsync(System.String)
-  fullName: TwitchNET.Core.Modules.BaseModule.SendAsync(System.String)
-  nameWithType: BaseModule.SendAsync(String)
-- uid: TwitchNET.Core.Modules.BaseModule.SendAsync*
-  name: SendAsync
-  href: api/TwitchNET.Core.Modules.BaseModule.html#TwitchNET_Core_Modules_BaseModule_SendAsync_
-  commentId: Overload:TwitchNET.Core.Modules.BaseModule.SendAsync
-  isSpec: "True"
-  fullName: TwitchNET.Core.Modules.BaseModule.SendAsync
-  nameWithType: BaseModule.SendAsync
-- uid: TwitchNET.Core.Modules.BaseModule.UserProxy
-  name: UserProxy
-  href: api/TwitchNET.Core.Modules.BaseModule.html#TwitchNET_Core_Modules_BaseModule_UserProxy
-  commentId: P:TwitchNET.Core.Modules.BaseModule.UserProxy
-  fullName: TwitchNET.Core.Modules.BaseModule.UserProxy
-  nameWithType: BaseModule.UserProxy
-- uid: TwitchNET.Core.Modules.BaseModule.UserProxy*
-  name: UserProxy
-  href: api/TwitchNET.Core.Modules.BaseModule.html#TwitchNET_Core_Modules_BaseModule_UserProxy_
-  commentId: Overload:TwitchNET.Core.Modules.BaseModule.UserProxy
-  isSpec: "True"
-  fullName: TwitchNET.Core.Modules.BaseModule.UserProxy
-  nameWithType: BaseModule.UserProxy
+- uid: TwitchNET.Core.Modules.BaseModule`1
+  name: BaseModule<TCommander>
+  href: api/TwitchNET.Core.Modules.BaseModule-1.html
+  commentId: T:TwitchNET.Core.Modules.BaseModule`1
+  name.vb: BaseModule(Of TCommander)
+  fullName: TwitchNET.Core.Modules.BaseModule<TCommander>
+  fullName.vb: TwitchNET.Core.Modules.BaseModule(Of TCommander)
+  nameWithType: BaseModule<TCommander>
+  nameWithType.vb: BaseModule(Of TCommander)
 - uid: TwitchNET.Core.Modules.BroadcasterAttribute
   name: BroadcasterAttribute
   href: api/TwitchNET.Core.Modules.BroadcasterAttribute.html
@@ -487,6 +389,34 @@ references:
   isSpec: "True"
   fullName: TwitchNET.Core.Modules.ChannelProxy.Channel
   nameWithType: ChannelProxy.Channel
+- uid: TwitchNET.Core.Modules.CollectionTypeReader
+  name: CollectionTypeReader
+  href: api/TwitchNET.Core.Modules.CollectionTypeReader.html
+  commentId: T:TwitchNET.Core.Modules.CollectionTypeReader
+  fullName: TwitchNET.Core.Modules.CollectionTypeReader
+  nameWithType: CollectionTypeReader
+- uid: TwitchNET.Core.Modules.CollectionTypeReader.ConvertFrom(System.Type,System.String)
+  name: ConvertFrom(Type, String)
+  href: api/TwitchNET.Core.Modules.CollectionTypeReader.html#TwitchNET_Core_Modules_CollectionTypeReader_ConvertFrom_System_Type_System_String_
+  commentId: M:TwitchNET.Core.Modules.CollectionTypeReader.ConvertFrom(System.Type,System.String)
+  fullName: TwitchNET.Core.Modules.CollectionTypeReader.ConvertFrom(System.Type, System.String)
+  nameWithType: CollectionTypeReader.ConvertFrom(Type, String)
+- uid: TwitchNET.Core.Modules.CollectionTypeReader.ConvertFrom*
+  name: ConvertFrom
+  href: api/TwitchNET.Core.Modules.CollectionTypeReader.html#TwitchNET_Core_Modules_CollectionTypeReader_ConvertFrom_
+  commentId: Overload:TwitchNET.Core.Modules.CollectionTypeReader.ConvertFrom
+  isSpec: "True"
+  fullName: TwitchNET.Core.Modules.CollectionTypeReader.ConvertFrom
+  nameWithType: CollectionTypeReader.ConvertFrom
+- uid: TwitchNET.Core.Modules.CollectionTypeReader.ConvertFrom``1(System.String)
+  name: ConvertFrom<TType>(String)
+  href: api/TwitchNET.Core.Modules.CollectionTypeReader.html#TwitchNET_Core_Modules_CollectionTypeReader_ConvertFrom__1_System_String_
+  commentId: M:TwitchNET.Core.Modules.CollectionTypeReader.ConvertFrom``1(System.String)
+  name.vb: ConvertFrom(Of TType)(String)
+  fullName: TwitchNET.Core.Modules.CollectionTypeReader.ConvertFrom<TType>(System.String)
+  fullName.vb: TwitchNET.Core.Modules.CollectionTypeReader.ConvertFrom(Of TType)(System.String)
+  nameWithType: CollectionTypeReader.ConvertFrom<TType>(String)
+  nameWithType.vb: CollectionTypeReader.ConvertFrom(Of TType)(String)
 - uid: TwitchNET.Core.Modules.CommandAttribute
   name: CommandAttribute
   href: api/TwitchNET.Core.Modules.CommandAttribute.html
@@ -544,6 +474,64 @@ references:
   commentId: T:TwitchNET.Core.Modules.ModeratorAttribute
   fullName: TwitchNET.Core.Modules.ModeratorAttribute
   nameWithType: ModeratorAttribute
+- uid: TwitchNET.Core.Modules.ModuleProxyBase
+  name: ModuleProxyBase
+  href: api/TwitchNET.Core.Modules.ModuleProxyBase.html
+  commentId: T:TwitchNET.Core.Modules.ModuleProxyBase
+  fullName: TwitchNET.Core.Modules.ModuleProxyBase
+  nameWithType: ModuleProxyBase
+- uid: TwitchNET.Core.Modules.ModuleProxyBase.ChannelProxy
+  name: ChannelProxy
+  href: api/TwitchNET.Core.Modules.ModuleProxyBase.html#TwitchNET_Core_Modules_ModuleProxyBase_ChannelProxy
+  commentId: P:TwitchNET.Core.Modules.ModuleProxyBase.ChannelProxy
+  fullName: TwitchNET.Core.Modules.ModuleProxyBase.ChannelProxy
+  nameWithType: ModuleProxyBase.ChannelProxy
+- uid: TwitchNET.Core.Modules.ModuleProxyBase.ChannelProxy*
+  name: ChannelProxy
+  href: api/TwitchNET.Core.Modules.ModuleProxyBase.html#TwitchNET_Core_Modules_ModuleProxyBase_ChannelProxy_
+  commentId: Overload:TwitchNET.Core.Modules.ModuleProxyBase.ChannelProxy
+  isSpec: "True"
+  fullName: TwitchNET.Core.Modules.ModuleProxyBase.ChannelProxy
+  nameWithType: ModuleProxyBase.ChannelProxy
+- uid: TwitchNET.Core.Modules.ModuleProxyBase.CommandProxy
+  name: CommandProxy
+  href: api/TwitchNET.Core.Modules.ModuleProxyBase.html#TwitchNET_Core_Modules_ModuleProxyBase_CommandProxy
+  commentId: P:TwitchNET.Core.Modules.ModuleProxyBase.CommandProxy
+  fullName: TwitchNET.Core.Modules.ModuleProxyBase.CommandProxy
+  nameWithType: ModuleProxyBase.CommandProxy
+- uid: TwitchNET.Core.Modules.ModuleProxyBase.CommandProxy*
+  name: CommandProxy
+  href: api/TwitchNET.Core.Modules.ModuleProxyBase.html#TwitchNET_Core_Modules_ModuleProxyBase_CommandProxy_
+  commentId: Overload:TwitchNET.Core.Modules.ModuleProxyBase.CommandProxy
+  isSpec: "True"
+  fullName: TwitchNET.Core.Modules.ModuleProxyBase.CommandProxy
+  nameWithType: ModuleProxyBase.CommandProxy
+- uid: TwitchNET.Core.Modules.ModuleProxyBase.SendAsync(System.String)
+  name: SendAsync(String)
+  href: api/TwitchNET.Core.Modules.ModuleProxyBase.html#TwitchNET_Core_Modules_ModuleProxyBase_SendAsync_System_String_
+  commentId: M:TwitchNET.Core.Modules.ModuleProxyBase.SendAsync(System.String)
+  fullName: TwitchNET.Core.Modules.ModuleProxyBase.SendAsync(System.String)
+  nameWithType: ModuleProxyBase.SendAsync(String)
+- uid: TwitchNET.Core.Modules.ModuleProxyBase.SendAsync*
+  name: SendAsync
+  href: api/TwitchNET.Core.Modules.ModuleProxyBase.html#TwitchNET_Core_Modules_ModuleProxyBase_SendAsync_
+  commentId: Overload:TwitchNET.Core.Modules.ModuleProxyBase.SendAsync
+  isSpec: "True"
+  fullName: TwitchNET.Core.Modules.ModuleProxyBase.SendAsync
+  nameWithType: ModuleProxyBase.SendAsync
+- uid: TwitchNET.Core.Modules.ModuleProxyBase.UserProxy
+  name: UserProxy
+  href: api/TwitchNET.Core.Modules.ModuleProxyBase.html#TwitchNET_Core_Modules_ModuleProxyBase_UserProxy
+  commentId: P:TwitchNET.Core.Modules.ModuleProxyBase.UserProxy
+  fullName: TwitchNET.Core.Modules.ModuleProxyBase.UserProxy
+  nameWithType: ModuleProxyBase.UserProxy
+- uid: TwitchNET.Core.Modules.ModuleProxyBase.UserProxy*
+  name: UserProxy
+  href: api/TwitchNET.Core.Modules.ModuleProxyBase.html#TwitchNET_Core_Modules_ModuleProxyBase_UserProxy_
+  commentId: Overload:TwitchNET.Core.Modules.ModuleProxyBase.UserProxy
+  isSpec: "True"
+  fullName: TwitchNET.Core.Modules.ModuleProxyBase.UserProxy
+  nameWithType: ModuleProxyBase.UserProxy
 - uid: TwitchNET.Core.Modules.PrefixAttribute
   name: PrefixAttribute
   href: api/TwitchNET.Core.Modules.PrefixAttribute.html
@@ -563,6 +551,34 @@ references:
   isSpec: "True"
   fullName: TwitchNET.Core.Modules.PrefixAttribute.PrefixAttribute
   nameWithType: PrefixAttribute.PrefixAttribute
+- uid: TwitchNET.Core.Modules.TypeReaderBase
+  name: TypeReaderBase
+  href: api/TwitchNET.Core.Modules.TypeReaderBase.html
+  commentId: T:TwitchNET.Core.Modules.TypeReaderBase
+  fullName: TwitchNET.Core.Modules.TypeReaderBase
+  nameWithType: TypeReaderBase
+- uid: TwitchNET.Core.Modules.TypeReaderBase.ConvertFrom(System.Type,System.String)
+  name: ConvertFrom(Type, String)
+  href: api/TwitchNET.Core.Modules.TypeReaderBase.html#TwitchNET_Core_Modules_TypeReaderBase_ConvertFrom_System_Type_System_String_
+  commentId: M:TwitchNET.Core.Modules.TypeReaderBase.ConvertFrom(System.Type,System.String)
+  fullName: TwitchNET.Core.Modules.TypeReaderBase.ConvertFrom(System.Type, System.String)
+  nameWithType: TypeReaderBase.ConvertFrom(Type, String)
+- uid: TwitchNET.Core.Modules.TypeReaderBase.ConvertFrom*
+  name: ConvertFrom
+  href: api/TwitchNET.Core.Modules.TypeReaderBase.html#TwitchNET_Core_Modules_TypeReaderBase_ConvertFrom_
+  commentId: Overload:TwitchNET.Core.Modules.TypeReaderBase.ConvertFrom
+  isSpec: "True"
+  fullName: TwitchNET.Core.Modules.TypeReaderBase.ConvertFrom
+  nameWithType: TypeReaderBase.ConvertFrom
+- uid: TwitchNET.Core.Modules.TypeReaderBase.ConvertFrom``1(System.String)
+  name: ConvertFrom<TType>(String)
+  href: api/TwitchNET.Core.Modules.TypeReaderBase.html#TwitchNET_Core_Modules_TypeReaderBase_ConvertFrom__1_System_String_
+  commentId: M:TwitchNET.Core.Modules.TypeReaderBase.ConvertFrom``1(System.String)
+  name.vb: ConvertFrom(Of TType)(String)
+  fullName: TwitchNET.Core.Modules.TypeReaderBase.ConvertFrom<TType>(System.String)
+  fullName.vb: TwitchNET.Core.Modules.TypeReaderBase.ConvertFrom(Of TType)(System.String)
+  nameWithType: TypeReaderBase.ConvertFrom<TType>(String)
+  nameWithType.vb: TypeReaderBase.ConvertFrom(Of TType)(String)
 - uid: TwitchNET.Core.Modules.UserProxy
   name: UserProxy
   href: api/TwitchNET.Core.Modules.UserProxy.html
@@ -666,6 +682,203 @@ references:
   commentId: T:TwitchNET.Core.PipelineBuilder
   fullName: TwitchNET.Core.PipelineBuilder
   nameWithType: PipelineBuilder
+- uid: TwitchNET.Core.Responses
+  name: TwitchNET.Core.Responses
+  href: api/TwitchNET.Core.Responses.html
+  commentId: N:TwitchNET.Core.Responses
+  fullName: TwitchNET.Core.Responses
+  nameWithType: TwitchNET.Core.Responses
+- uid: TwitchNET.Core.Responses.IResponse
+  name: IResponse
+  href: api/TwitchNET.Core.Responses.IResponse.html
+  commentId: T:TwitchNET.Core.Responses.IResponse
+  fullName: TwitchNET.Core.Responses.IResponse
+  nameWithType: IResponse
+- uid: TwitchNET.Core.Responses.IResponse.GetResult
+  name: GetResult()
+  href: api/TwitchNET.Core.Responses.IResponse.html#TwitchNET_Core_Responses_IResponse_GetResult
+  commentId: M:TwitchNET.Core.Responses.IResponse.GetResult
+  fullName: TwitchNET.Core.Responses.IResponse.GetResult()
+  nameWithType: IResponse.GetResult()
+- uid: TwitchNET.Core.Responses.IResponse.GetResult*
+  name: GetResult
+  href: api/TwitchNET.Core.Responses.IResponse.html#TwitchNET_Core_Responses_IResponse_GetResult_
+  commentId: Overload:TwitchNET.Core.Responses.IResponse.GetResult
+  isSpec: "True"
+  fullName: TwitchNET.Core.Responses.IResponse.GetResult
+  nameWithType: IResponse.GetResult
+- uid: TwitchNET.Core.Responses.MessageResponseModel
+  name: MessageResponseModel
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html
+  commentId: T:TwitchNET.Core.Responses.MessageResponseModel
+  fullName: TwitchNET.Core.Responses.MessageResponseModel
+  nameWithType: MessageResponseModel
+- uid: TwitchNET.Core.Responses.MessageResponseModel.Channel
+  name: Channel
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_Channel
+  commentId: P:TwitchNET.Core.Responses.MessageResponseModel.Channel
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.Channel
+  nameWithType: MessageResponseModel.Channel
+- uid: TwitchNET.Core.Responses.MessageResponseModel.Channel*
+  name: Channel
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_Channel_
+  commentId: Overload:TwitchNET.Core.Responses.MessageResponseModel.Channel
+  isSpec: "True"
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.Channel
+  nameWithType: MessageResponseModel.Channel
+- uid: TwitchNET.Core.Responses.MessageResponseModel.Color
+  name: Color
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_Color
+  commentId: P:TwitchNET.Core.Responses.MessageResponseModel.Color
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.Color
+  nameWithType: MessageResponseModel.Color
+- uid: TwitchNET.Core.Responses.MessageResponseModel.Color*
+  name: Color
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_Color_
+  commentId: Overload:TwitchNET.Core.Responses.MessageResponseModel.Color
+  isSpec: "True"
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.Color
+  nameWithType: MessageResponseModel.Color
+- uid: TwitchNET.Core.Responses.MessageResponseModel.IsBroadcaster
+  name: IsBroadcaster
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_IsBroadcaster
+  commentId: P:TwitchNET.Core.Responses.MessageResponseModel.IsBroadcaster
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.IsBroadcaster
+  nameWithType: MessageResponseModel.IsBroadcaster
+- uid: TwitchNET.Core.Responses.MessageResponseModel.IsBroadcaster*
+  name: IsBroadcaster
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_IsBroadcaster_
+  commentId: Overload:TwitchNET.Core.Responses.MessageResponseModel.IsBroadcaster
+  isSpec: "True"
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.IsBroadcaster
+  nameWithType: MessageResponseModel.IsBroadcaster
+- uid: TwitchNET.Core.Responses.MessageResponseModel.IsModerator
+  name: IsModerator
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_IsModerator
+  commentId: P:TwitchNET.Core.Responses.MessageResponseModel.IsModerator
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.IsModerator
+  nameWithType: MessageResponseModel.IsModerator
+- uid: TwitchNET.Core.Responses.MessageResponseModel.IsModerator*
+  name: IsModerator
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_IsModerator_
+  commentId: Overload:TwitchNET.Core.Responses.MessageResponseModel.IsModerator
+  isSpec: "True"
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.IsModerator
+  nameWithType: MessageResponseModel.IsModerator
+- uid: TwitchNET.Core.Responses.MessageResponseModel.IsSubscriber
+  name: IsSubscriber
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_IsSubscriber
+  commentId: P:TwitchNET.Core.Responses.MessageResponseModel.IsSubscriber
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.IsSubscriber
+  nameWithType: MessageResponseModel.IsSubscriber
+- uid: TwitchNET.Core.Responses.MessageResponseModel.IsSubscriber*
+  name: IsSubscriber
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_IsSubscriber_
+  commentId: Overload:TwitchNET.Core.Responses.MessageResponseModel.IsSubscriber
+  isSpec: "True"
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.IsSubscriber
+  nameWithType: MessageResponseModel.IsSubscriber
+- uid: TwitchNET.Core.Responses.MessageResponseModel.IsTurbo
+  name: IsTurbo
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_IsTurbo
+  commentId: P:TwitchNET.Core.Responses.MessageResponseModel.IsTurbo
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.IsTurbo
+  nameWithType: MessageResponseModel.IsTurbo
+- uid: TwitchNET.Core.Responses.MessageResponseModel.IsTurbo*
+  name: IsTurbo
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_IsTurbo_
+  commentId: Overload:TwitchNET.Core.Responses.MessageResponseModel.IsTurbo
+  isSpec: "True"
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.IsTurbo
+  nameWithType: MessageResponseModel.IsTurbo
+- uid: TwitchNET.Core.Responses.MessageResponseModel.IsVip
+  name: IsVip
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_IsVip
+  commentId: P:TwitchNET.Core.Responses.MessageResponseModel.IsVip
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.IsVip
+  nameWithType: MessageResponseModel.IsVip
+- uid: TwitchNET.Core.Responses.MessageResponseModel.IsVip*
+  name: IsVip
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_IsVip_
+  commentId: Overload:TwitchNET.Core.Responses.MessageResponseModel.IsVip
+  isSpec: "True"
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.IsVip
+  nameWithType: MessageResponseModel.IsVip
+- uid: TwitchNET.Core.Responses.MessageResponseModel.Message
+  name: Message
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_Message
+  commentId: P:TwitchNET.Core.Responses.MessageResponseModel.Message
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.Message
+  nameWithType: MessageResponseModel.Message
+- uid: TwitchNET.Core.Responses.MessageResponseModel.Message*
+  name: Message
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_Message_
+  commentId: Overload:TwitchNET.Core.Responses.MessageResponseModel.Message
+  isSpec: "True"
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.Message
+  nameWithType: MessageResponseModel.Message
+- uid: TwitchNET.Core.Responses.MessageResponseModel.Name
+  name: Name
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_Name
+  commentId: P:TwitchNET.Core.Responses.MessageResponseModel.Name
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.Name
+  nameWithType: MessageResponseModel.Name
+- uid: TwitchNET.Core.Responses.MessageResponseModel.Name*
+  name: Name
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_Name_
+  commentId: Overload:TwitchNET.Core.Responses.MessageResponseModel.Name
+  isSpec: "True"
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.Name
+  nameWithType: MessageResponseModel.Name
+- uid: TwitchNET.Core.Responses.MessageResponseModel.ResponseType
+  name: ResponseType
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_ResponseType
+  commentId: P:TwitchNET.Core.Responses.MessageResponseModel.ResponseType
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.ResponseType
+  nameWithType: MessageResponseModel.ResponseType
+- uid: TwitchNET.Core.Responses.MessageResponseModel.ResponseType*
+  name: ResponseType
+  href: api/TwitchNET.Core.Responses.MessageResponseModel.html#TwitchNET_Core_Responses_MessageResponseModel_ResponseType_
+  commentId: Overload:TwitchNET.Core.Responses.MessageResponseModel.ResponseType
+  isSpec: "True"
+  fullName: TwitchNET.Core.Responses.MessageResponseModel.ResponseType
+  nameWithType: MessageResponseModel.ResponseType
+- uid: TwitchNET.Core.Responses.ResponseType
+  name: ResponseType
+  href: api/TwitchNET.Core.Responses.ResponseType.html
+  commentId: T:TwitchNET.Core.Responses.ResponseType
+  fullName: TwitchNET.Core.Responses.ResponseType
+  nameWithType: ResponseType
+- uid: TwitchNET.Core.Responses.ResponseType.Authenticate
+  name: Authenticate
+  href: api/TwitchNET.Core.Responses.ResponseType.html#TwitchNET_Core_Responses_ResponseType_Authenticate
+  commentId: F:TwitchNET.Core.Responses.ResponseType.Authenticate
+  fullName: TwitchNET.Core.Responses.ResponseType.Authenticate
+  nameWithType: ResponseType.Authenticate
+- uid: TwitchNET.Core.Responses.ResponseType.Join
+  name: Join
+  href: api/TwitchNET.Core.Responses.ResponseType.html#TwitchNET_Core_Responses_ResponseType_Join
+  commentId: F:TwitchNET.Core.Responses.ResponseType.Join
+  fullName: TwitchNET.Core.Responses.ResponseType.Join
+  nameWithType: ResponseType.Join
+- uid: TwitchNET.Core.Responses.ResponseType.Part
+  name: Part
+  href: api/TwitchNET.Core.Responses.ResponseType.html#TwitchNET_Core_Responses_ResponseType_Part
+  commentId: F:TwitchNET.Core.Responses.ResponseType.Part
+  fullName: TwitchNET.Core.Responses.ResponseType.Part
+  nameWithType: ResponseType.Part
+- uid: TwitchNET.Core.Responses.ResponseType.Ping
+  name: Ping
+  href: api/TwitchNET.Core.Responses.ResponseType.html#TwitchNET_Core_Responses_ResponseType_Ping
+  commentId: F:TwitchNET.Core.Responses.ResponseType.Ping
+  fullName: TwitchNET.Core.Responses.ResponseType.Ping
+  nameWithType: ResponseType.Ping
+- uid: TwitchNET.Core.Responses.ResponseType.PrivMsg
+  name: PrivMsg
+  href: api/TwitchNET.Core.Responses.ResponseType.html#TwitchNET_Core_Responses_ResponseType_PrivMsg
+  commentId: F:TwitchNET.Core.Responses.ResponseType.PrivMsg
+  fullName: TwitchNET.Core.Responses.ResponseType.PrivMsg
+  nameWithType: ResponseType.PrivMsg
 - uid: TwitchNET.Core.TwitchClient
   name: TwitchClient
   href: api/TwitchNET.Core.TwitchClient.html
@@ -737,48 +950,63 @@ references:
   isSpec: "True"
   fullName: TwitchNET.Core.TwitchClient.StartAsync
   nameWithType: TwitchClient.StartAsync
-- uid: TwitchNET.Core.TwitchCommander
-  name: TwitchCommander
-  href: api/TwitchNET.Core.TwitchCommander.html
-  commentId: T:TwitchNET.Core.TwitchCommander
-  fullName: TwitchNET.Core.TwitchCommander
-  nameWithType: TwitchCommander
-- uid: TwitchNET.Core.TwitchCommander.#ctor(TwitchNET.Core.TwitchClient,System.String)
+- uid: TwitchNET.Core.TwitchCommander`1
+  name: TwitchCommander<TCommander>
+  href: api/TwitchNET.Core.TwitchCommander-1.html
+  commentId: T:TwitchNET.Core.TwitchCommander`1
+  name.vb: TwitchCommander(Of TCommander)
+  fullName: TwitchNET.Core.TwitchCommander<TCommander>
+  fullName.vb: TwitchNET.Core.TwitchCommander(Of TCommander)
+  nameWithType: TwitchCommander<TCommander>
+  nameWithType.vb: TwitchCommander(Of TCommander)
+- uid: TwitchNET.Core.TwitchCommander`1.#ctor(TwitchNET.Core.TwitchClient,System.String)
   name: TwitchCommander(TwitchClient, String)
-  href: api/TwitchNET.Core.TwitchCommander.html#TwitchNET_Core_TwitchCommander__ctor_TwitchNET_Core_TwitchClient_System_String_
-  commentId: M:TwitchNET.Core.TwitchCommander.#ctor(TwitchNET.Core.TwitchClient,System.String)
-  fullName: TwitchNET.Core.TwitchCommander.TwitchCommander(TwitchNET.Core.TwitchClient, System.String)
-  nameWithType: TwitchCommander.TwitchCommander(TwitchClient, String)
-- uid: TwitchNET.Core.TwitchCommander.#ctor*
+  href: api/TwitchNET.Core.TwitchCommander-1.html#TwitchNET_Core_TwitchCommander_1__ctor_TwitchNET_Core_TwitchClient_System_String_
+  commentId: M:TwitchNET.Core.TwitchCommander`1.#ctor(TwitchNET.Core.TwitchClient,System.String)
+  fullName: TwitchNET.Core.TwitchCommander<TCommander>.TwitchCommander(TwitchNET.Core.TwitchClient, System.String)
+  fullName.vb: TwitchNET.Core.TwitchCommander(Of TCommander).TwitchCommander(TwitchNET.Core.TwitchClient, System.String)
+  nameWithType: TwitchCommander<TCommander>.TwitchCommander(TwitchClient, String)
+  nameWithType.vb: TwitchCommander(Of TCommander).TwitchCommander(TwitchClient, String)
+- uid: TwitchNET.Core.TwitchCommander`1.#ctor*
   name: TwitchCommander
-  href: api/TwitchNET.Core.TwitchCommander.html#TwitchNET_Core_TwitchCommander__ctor_
-  commentId: Overload:TwitchNET.Core.TwitchCommander.#ctor
+  href: api/TwitchNET.Core.TwitchCommander-1.html#TwitchNET_Core_TwitchCommander_1__ctor_
+  commentId: Overload:TwitchNET.Core.TwitchCommander`1.#ctor
   isSpec: "True"
-  fullName: TwitchNET.Core.TwitchCommander.TwitchCommander
-  nameWithType: TwitchCommander.TwitchCommander
-- uid: TwitchNET.Core.TwitchCommander.InitializeCommanderAsync(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly,TwitchNET.Core.PipelineBuilder)
+  fullName: TwitchNET.Core.TwitchCommander<TCommander>.TwitchCommander
+  fullName.vb: TwitchNET.Core.TwitchCommander(Of TCommander).TwitchCommander
+  nameWithType: TwitchCommander<TCommander>.TwitchCommander
+  nameWithType.vb: TwitchCommander(Of TCommander).TwitchCommander
+- uid: TwitchNET.Core.TwitchCommander`1.HandleCommandRequest(TwitchNET.Core.Responses.IResponse)
+  name: HandleCommandRequest(IResponse)
+  href: api/TwitchNET.Core.TwitchCommander-1.html#TwitchNET_Core_TwitchCommander_1_HandleCommandRequest_TwitchNET_Core_Responses_IResponse_
+  commentId: M:TwitchNET.Core.TwitchCommander`1.HandleCommandRequest(TwitchNET.Core.Responses.IResponse)
+  fullName: TwitchNET.Core.TwitchCommander<TCommander>.HandleCommandRequest(TwitchNET.Core.Responses.IResponse)
+  fullName.vb: TwitchNET.Core.TwitchCommander(Of TCommander).HandleCommandRequest(TwitchNET.Core.Responses.IResponse)
+  nameWithType: TwitchCommander<TCommander>.HandleCommandRequest(IResponse)
+  nameWithType.vb: TwitchCommander(Of TCommander).HandleCommandRequest(IResponse)
+- uid: TwitchNET.Core.TwitchCommander`1.HandleCommandRequest*
+  name: HandleCommandRequest
+  href: api/TwitchNET.Core.TwitchCommander-1.html#TwitchNET_Core_TwitchCommander_1_HandleCommandRequest_
+  commentId: Overload:TwitchNET.Core.TwitchCommander`1.HandleCommandRequest
+  isSpec: "True"
+  fullName: TwitchNET.Core.TwitchCommander<TCommander>.HandleCommandRequest
+  fullName.vb: TwitchNET.Core.TwitchCommander(Of TCommander).HandleCommandRequest
+  nameWithType: TwitchCommander<TCommander>.HandleCommandRequest
+  nameWithType.vb: TwitchCommander(Of TCommander).HandleCommandRequest
+- uid: TwitchNET.Core.TwitchCommander`1.InitializeCommanderAsync(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly,TwitchNET.Core.PipelineBuilder)
   name: InitializeCommanderAsync(IServiceCollection, Assembly, PipelineBuilder)
-  href: api/TwitchNET.Core.TwitchCommander.html#TwitchNET_Core_TwitchCommander_InitializeCommanderAsync_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly_TwitchNET_Core_PipelineBuilder_
-  commentId: M:TwitchNET.Core.TwitchCommander.InitializeCommanderAsync(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly,TwitchNET.Core.PipelineBuilder)
-  fullName: TwitchNET.Core.TwitchCommander.InitializeCommanderAsync(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Reflection.Assembly, TwitchNET.Core.PipelineBuilder)
-  nameWithType: TwitchCommander.InitializeCommanderAsync(IServiceCollection, Assembly, PipelineBuilder)
-- uid: TwitchNET.Core.TwitchCommander.InitializeCommanderAsync*
+  href: api/TwitchNET.Core.TwitchCommander-1.html#TwitchNET_Core_TwitchCommander_1_InitializeCommanderAsync_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Reflection_Assembly_TwitchNET_Core_PipelineBuilder_
+  commentId: M:TwitchNET.Core.TwitchCommander`1.InitializeCommanderAsync(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly,TwitchNET.Core.PipelineBuilder)
+  fullName: TwitchNET.Core.TwitchCommander<TCommander>.InitializeCommanderAsync(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Reflection.Assembly, TwitchNET.Core.PipelineBuilder)
+  fullName.vb: TwitchNET.Core.TwitchCommander(Of TCommander).InitializeCommanderAsync(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.Reflection.Assembly, TwitchNET.Core.PipelineBuilder)
+  nameWithType: TwitchCommander<TCommander>.InitializeCommanderAsync(IServiceCollection, Assembly, PipelineBuilder)
+  nameWithType.vb: TwitchCommander(Of TCommander).InitializeCommanderAsync(IServiceCollection, Assembly, PipelineBuilder)
+- uid: TwitchNET.Core.TwitchCommander`1.InitializeCommanderAsync*
   name: InitializeCommanderAsync
-  href: api/TwitchNET.Core.TwitchCommander.html#TwitchNET_Core_TwitchCommander_InitializeCommanderAsync_
-  commentId: Overload:TwitchNET.Core.TwitchCommander.InitializeCommanderAsync
+  href: api/TwitchNET.Core.TwitchCommander-1.html#TwitchNET_Core_TwitchCommander_1_InitializeCommanderAsync_
+  commentId: Overload:TwitchNET.Core.TwitchCommander`1.InitializeCommanderAsync
   isSpec: "True"
-  fullName: TwitchNET.Core.TwitchCommander.InitializeCommanderAsync
-  nameWithType: TwitchCommander.InitializeCommanderAsync
-- uid: TwitchNET.Core.TwitchCommander.MultiplePrefixes
-  name: MultiplePrefixes
-  href: api/TwitchNET.Core.TwitchCommander.html#TwitchNET_Core_TwitchCommander_MultiplePrefixes
-  commentId: P:TwitchNET.Core.TwitchCommander.MultiplePrefixes
-  fullName: TwitchNET.Core.TwitchCommander.MultiplePrefixes
-  nameWithType: TwitchCommander.MultiplePrefixes
-- uid: TwitchNET.Core.TwitchCommander.MultiplePrefixes*
-  name: MultiplePrefixes
-  href: api/TwitchNET.Core.TwitchCommander.html#TwitchNET_Core_TwitchCommander_MultiplePrefixes_
-  commentId: Overload:TwitchNET.Core.TwitchCommander.MultiplePrefixes
-  isSpec: "True"
-  fullName: TwitchNET.Core.TwitchCommander.MultiplePrefixes
-  nameWithType: TwitchCommander.MultiplePrefixes
+  fullName: TwitchNET.Core.TwitchCommander<TCommander>.InitializeCommanderAsync
+  fullName.vb: TwitchNET.Core.TwitchCommander(Of TCommander).InitializeCommanderAsync
+  nameWithType: TwitchCommander<TCommander>.InitializeCommanderAsync
+  nameWithType.vb: TwitchCommander(Of TCommander).InitializeCommanderAsync

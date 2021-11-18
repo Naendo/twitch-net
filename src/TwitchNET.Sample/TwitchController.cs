@@ -19,30 +19,25 @@ namespace TwitchNET.Sample
         public async Task InitializeAsync()
         {
             var commander = new DummyCommander(_client);
+            
+            await _client.LoginAsync("nick", "oauth:oauth");
 
-            var commander2 = new AnotherCommander(_client);
-
-
-            await _client.LoginAsync("thatnandotho", "oauth:48sb0z73bega0ucljik58mtagfc8ab");
-
-            await _client.JoinAsync("thatnandotho");
+            await _client.JoinAsync("channel");
 
             await _client.StartAsync();
 
             await commander.InitializeAsync();
 
-            await commander2.InitializeAsync();
-
-
+            
             await Task.Delay(-1);
         }
 
 
         private static PipelineBuilder BuildRequestPipeline()
             => new PipelineBuilder()
-                .UseMiddleware<DummyMiddleware>();
+                .UseMiddleware<TwitchMiddleware>();
 
         private static IServiceCollection BuildServiceCollection()
-            => new ServiceCollection().AddSingleton<DummyService>();
+            => new ServiceCollection().AddSingleton<TwitchService>();
     }
 }

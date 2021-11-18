@@ -3,7 +3,7 @@ using TwitchNET.Core.Middleware;
 
 namespace TwitchNET.Sample.Middleware
 {
-    public class DummyMiddleware : IMiddleware
+    public class TwitchMiddleware : IMiddleware
     {
         public RequestContext Execute(RequestContext context)
         {

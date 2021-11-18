@@ -14,24 +14,47 @@ using TwitchNET.Core.Responses;
 namespace TwitchNET.Core
 {
     /// <summary>
-    /// The <see cref="TwitchCommander"/> defines a framework for our module framework. The Commander invokes the request pipeline using
+    /// The <see cref="TwitchCommander{TCommander}"/> defines a framework for our module framework. The Commander tasks are to receive incoming messages from <see cref="TwitchClient"/> and to invokes the request pipeline using
     /// <see cref="PipelineBuilder"/> and <see cref="ServiceCollection"/>.
-    /// To utilize the module framework see <see cref="BaseModule"/>
+    /// To utilize the module framework see <see cref="BaseModule{TCommander}"/>
     /// </summary>
     /// <example>
-    /// The following code shows, how to utilize the <see cref="TwitchCommander"/>.
-    /// <code>
-    /// await commander.InitializeCommanderAsync(
-    ///     serviceCollection: BuildServiceCollection(),
-    ///     assembly: typeof(Program).Assembly,
-    ///     requestBuilder: null
+    /// The following code shows, how to utilize the <see cref="TwitchCommander{TCommander}"/>.
+    /// <code lang="cs">
+    /// public class DummyCommander : TwitchCommander{T}
+    ///{
+    ///public DummyCommander(TwitchClient client) : base(client, "!")
+    ///{
+    ///}
+    ///
+    ///public async Task InitializeAsync()
+    ///{
+    ///        await InitializeCommanderAsync(
+    ///       serviceCollection: BuildServiceCollection(),
+    ///     typeof(Program).Assembly,
+    ///     BuildRequestPipeline()
     /// );
+    ///}
+    ///
+    ///protected override async Task HandleCommandRequest(IResponse command)
+    ///{
+    ///  await base.HandleCommandRequest(command);
+    ///}
+    ///
+    ///private static PipelineBuilder BuildRequestPipeline()
+    ///  => new PipelineBuilder()
+    ///       .UseMiddleware{TMiddleware}();
+    ///
+    ///private static IServiceCollection BuildServiceCollection()
+    ///  => new ServiceCollection().AddSingleton{TService}();
+    ///}
+    /// 
     /// </code>
     ///
-    /// This Methode will now scan all classes that inherit from <see cref="BaseModule"/>.
+    /// This Methode will now scan all classes that inherit from <see cref="BaseModule{TCommander}"/>.
     ///
     /// <code>
-    ///  public class ExampleModule : BaseModule { }
+    ///  public class ExampleModule : BaseModule{TCommander} { }
     /// </code>
     /// 
     /// </example>
@@ -80,6 +103,23 @@ namespace TwitchNET.Core
                 ScanAssemblyForCommands(serviceCollection);
                 ConfigureMiddleware(middlewareBuilder ?? new PipelineBuilder());
             });
+        }
+        
+        /// <summary>
+        /// <see cref="HandleCommandRequest"/> is a virtual base method that acts as event handler for all incoming message events.
+        /// Overriding <see cref="HandleCommandRequest"/> allows you to add custom behavior before the request pipeline gets executed.
+        /// > [!IMPORTANT]
+        /// >
+        /// > IMPORTANT: not calling base.HandleCommandRequest(command) will lead to the request pipeline not getting executed!
+        ///  </summary>
+        protected  virtual async Task HandleCommandRequest(IResponse command)
+        {
+            if (!IsCommand(command))
+                return;
+
+            var result = command.GetResult();
+
+            await ExecuteCommandAsync(result);
         }
 
 
@@ -145,18 +185,7 @@ namespace TwitchNET.Core
         }
 
 
-        /// <summary>
-        ///  CommandReceive EventHandler
-        /// </summary>
-        protected virtual async Task HandleCommandRequest(IResponse command)
-        {
-            if (!IsCommand(command))
-                return;
 
-            var result = command.GetResult();
-
-            await ExecuteCommandAsync(result);
-        }
 
 
         /// <summary>

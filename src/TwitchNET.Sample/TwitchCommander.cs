@@ -26,21 +26,14 @@ namespace TwitchNET.Sample
 
         protected override async Task HandleCommandRequest(IResponse command)
         {
-            var result = command.GetResult();
-
-            if (result.ResponseType != ResponseType.PrivMsg)
-                return;
-
-            Console.WriteLine($"Message from: {result.Name}: {result.Message}");
-
             await base.HandleCommandRequest(command);
         }
 
         private static PipelineBuilder BuildRequestPipeline()
             => new PipelineBuilder()
-                .UseMiddleware<DummyMiddleware>();
+                .UseMiddleware<TwitchMiddleware>();
 
         private static IServiceCollection BuildServiceCollection()
-            => new ServiceCollection().AddSingleton<DummyService>();
+            => new ServiceCollection().AddSingleton<TwitchService>();
     }
 }

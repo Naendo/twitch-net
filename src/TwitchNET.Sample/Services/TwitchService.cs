@@ -2,7 +2,7 @@
 
 namespace TwitchNET.Sample.Services
 {
-    public class DummyService
+    public class TwitchService
     {
         public string TransformResponse(string value)
         {

@@ -9,20 +9,16 @@
 
 ## About
 
-Twitch .NET is an unoffical Twitch API Wrapper targeting .netstandard 2.1. 
-Currently supporting full capabilities of Twitchs IRC Chat.
+Twitch .NET is an unofficial Twitch API Wrapper targeting **.NET 6**, **.NET 5** and  **.NET Standard 2.1**.
+We are currently supporting the whole **Twitch Chat API**.
 
-Twitch .NET is still work in progress, if you are missing any features dont hesitate to [contact](#notes) me.
+Twitch .NET is still work in progress, if you are missing any features don't hesitate to [contact](#notes) me.
 
 ## Why Twitch .NET?
 
-Twitch .NET is focusing on clean archtitecture, decoupling and performance for every user by default.<br/>
-We offer full [`Dependency Injection`](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-3.1) support.
+Twitch .NET is focusing on clean architecture, decoupling and performance for every user without having deep .NET knowledge. If you are familiar with [`Discord .NET`](https://github.com/discord-net/Discord.Net) you will easily be able to write your very own Twitch Bot in under 10 minutes.
 
-If you are familiar with [`Discord .NET`](https://github.com/discord-net/Discord.Net) you will easily be able to write your very own Twitch Bot in under 10 minutes.
-
-
-Benchmarks:
+## Benchmarks:
 Coming soon..
 
 ## Installation
@@ -31,53 +27,78 @@ Install Twitch .NET via nuget [now](https://www.nuget.org/packages/TwitchNET). <
 
 ## Basic Setup
 
-Below are basic examples of how to utilize the Twitch .NET API.
+Below are basic examples of how to utilize the Twitch .NET API. For more information please visit our [docs]("https://naendo.github.io/twitch-net/").
 
 #### Twitch.Client
 
 ```C#
  public class Program
-    {
+ {
         static async Task Main(string[] args)
             => await new TwitchController().InitializeTwitchClientAsync();
-    }
+ }
 
+ public class TwitchController
+ {
+       private readonly TwitchClient _client;
 
-    public class TwitchController
-    {
-        private readonly TwitchBot _twitchBot;
+       public TwitchController()
+       {
+           _client = new TwitchClient();
+       }
 
-        public TwitchController()
-        {
-            _twitchBot = new TwitchBot();
+       public async Task InitializeAsync()
+       {
+           var commander = new DummyCommander(_client);
+           
+           await commander.InitializeAsync();
+           
+           await _client.LoginAsync("nick", "oauth:oauth");
+
+           await _client.JoinAsync("channel");
+
+           await _client.StartAsync();
+
+           await Task.Delay(-1);
         }
+```
 
-        public async Task InitializeTwitchClientAsync()
-        {
+#### Twitch.DummyCommander
 
-            var commander = new TwitchCommander(_twitchBot);
+```c#
+ public class DummyCommander : TwitchCommander<TwitchCommander>
+ {
+       public TwitchCommander(TwitchClient client) : base(client, "!")
+       {
+       }
 
-            await _twitchBot.LoginAsync("nick", "oauth:token");
+       public async Task InitializeAsync()
+       {
+           await InitializeCommanderAsync(
+               serviceCollection: BuildServiceCollection(),
+               typeof(Program).Assembly,
+               BuildRequestPipeline()
+           );
+       }
 
-            await _twitchBot.JoinAsync("yourChannel");
+       protected override async Task HandleCommandRequest(IResponse command)
+       {
+           await base.HandleCommandRequest(command);
+       }
 
+       private static PipelineBuilder BuildRequestPipeline()
+            => new PipelineBuilder()
+                .UseMiddleware<TwitchMiddleware>();
 
-            await commander.InitalizeCommanderAsync(
-                serviceCollection: BuildServiceCollection(),
-                assembly: Assembly.GetEntryAssembly()
-            );
-            
-            await Task.Delay(-1);
-        }
+       private static IServiceCollection BuildServiceCollection()
+            => new ServiceCollection().AddSingleton<YourDependency>();
+ }
 
-        private static IServiceCollection BuildServiceCollection()
-            => new ServiceCollection()
-            .AddSingelton<YourDependency>();
-     }
 ```
 
 
-#### Twitch.Command
+
+#### Twitch.CommandModule
 
 ```C#  
 public class TestModule : BaseModule
@@ -89,9 +110,8 @@ public class TestModule : BaseModule
             _dependency = dependency;
         }
 
-
-        //Triggers on !test textAfterCommand
-        [Command("test")]
+        //executes on !echo {message}
+        [Command("echo")]
         public async Task TestCommand(string value)
         {
             await _dependency.AddAsync(value);

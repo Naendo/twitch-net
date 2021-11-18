@@ -6,9 +6,9 @@ namespace TwitchNET.Sample.Module
 {
     public class AnotherModule : BaseModule<AnotherCommander>
     {
-        private readonly DummyService _service;
+        private readonly TwitchService _service;
 
-        public AnotherModule(DummyService service)
+        public AnotherModule(TwitchService service)
         {
             _service = service;
         }
