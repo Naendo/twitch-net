@@ -1,8 +1,10 @@
+
+ <h2 align="center">  ⚠️⚠️⚠️THIS IS OBVIOUSLY DEAD - RIP IRC ⚠️⚠️⚠️</h1> 
+
 <p align="center">
  <img src="https://img.shields.io/github/issues-raw/naendo/twitch-net">
  <img src="https://img.shields.io/badge/.NETCore-5.0-ff69b4.svg">
- <img src="https://img.shields.io/github/workflow/status/naendo/twitchwrapper/.NET%20Core">
- <img src="https://img.shields.io/discord/298408053970305024?logo=discord">
+<img src="https://img.shields.io/nuget/dt/TwitchNET?logo=nuget">
 </p>
 
 <p align="center">A comfortable, modular and amazing library for the twitch api | <a href="https://naendo.github.io/twitch-net/">Documentation🚀</a></p>
